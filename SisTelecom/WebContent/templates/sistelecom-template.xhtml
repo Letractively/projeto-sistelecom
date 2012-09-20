@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<ui:insert name="cabecalho">
+		<head>
+			<title>Bem vindo ao SisTelecom</title>
+			<ui:insert name="css" />
+			<ui:insert name="javascript" />
+			
+			<ui:insert name="default-javascript">
+				
+				<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+				
+				<script type="text/javascript">
+					var SisTelecom = jQuery.noConflict();
+
+					SisTelecom(document).ready(function(){
+						alert("Bem vindo ao SisTelecom.");
+					});		
+				</script>
+				
+			</ui:insert>
+			
+		</head>
+	</ui:insert>
+
+	<body>
+		<f:view>
+			
+			<rich:modalPanel id="modal">
+					<f:facet name="controls">
+						<h:outputLabel value="x" onclick="Richfaces.hideModalPanel('modal');" />
+					</f:facet>
+					
+					<a4j:form>
+						<h:panelGrid>
+							
+							<h:panelGroup>
+								<h:outputLabel value="Bem vindo, " />
+								<h:outputLabel id="inf-nome" value="#{loginBean.nome}" />
+							</h:panelGroup>
+							
+							<h:panelGroup>
+								<h:outputLabel value="Sua senha, " />
+								<h:outputLabel id="inf-senha" value="#{loginBean.senha}" />	
+							</h:panelGroup>
+						</h:panelGrid>
+					</a4j:form>
+					
+			</rich:modalPanel>
+			
+			<ui:insert name="pagina" />
+			<rich:spacer width="100%" height="10px" />
+			<ui:insert name="rodape" />
+	
+		</f:view>
+	</body>
+
+</html>
