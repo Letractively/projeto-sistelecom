@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	
+	<ui:composition template="/templates/sistelecom-template.xhtml">
+		<ui:define name="pagina">
+				
+			<h:form id="formulario-login" prependId="false">
+				<div id="div-login" align="center">
+					<rich:panel style="width:270px">
+					    
+					    <f:facet name="header">
+					    	<h:outputLabel value="Login" />
+					    </f:facet>
+					    
+						<h:panelGrid columns="1" style="width:100%;">
+							
+							<h:outputLabel id="lab-nome" value="Nome"/>
+							<h:inputText id="txt-nome" style="width:100%;" value="#{loginBean.nome}"/>
+					
+							<h:outputLabel id="lab-senha" value="Senha"/>
+							<h:inputSecret id="txt-senha" style="FONT-WEIGHT: bold; width:100%;" value="#{loginBean.senha}"/>
+							
+							<h:panelGroup>
+								<a4j:commandButton value="Enviar" actionListener="#{loginBean.logar}" oncomplete="Richfaces.showModalPanel('modal');"
+								process="inf-nome,inf-senha" reRender="inf-nome,inf-senha"/>
+								
+								<a4j:commandButton value="Limpar" type="reset" process="inf-nome,inf-senha" reRender="inf-nome,inf-senha" />
+							</h:panelGroup>
+							
+						</h:panelGrid>	
+					</rich:panel>
+				</div>
+			</h:form>		
+		</ui:define>
+	</ui:composition>
+</html>
