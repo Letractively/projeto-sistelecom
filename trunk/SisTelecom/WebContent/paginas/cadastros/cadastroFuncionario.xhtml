@@ -43,7 +43,8 @@
             			
            			<h:outputLabel id="lab-tel1" value="Telefone: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
            			<h:outputText id="txt-tel1" value="#{funcionarioC.funcionario.tel1}" />
-           			
+           		</h:panelGrid>
+           		<h:panelGrid columns="7">	
            			<h:outputLabel id="lab-tel2" value="Celular: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
            			<h:outputText id="txt-tel2" value="#{funcionarioC.funcionario.tel2}" />
            			
@@ -63,7 +64,8 @@
            					<f:selectItem itemValue="5" itemLabel="Outro Não Listado"/>
            				</rich:select>
            			</rich:panel>
-           			
+           		</h:panelGrid>
+           		<h:panelGrid columns="7">	
            			<h:outputLabel id="lab-supervNome" value="Nome do Supervisor: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
            			<h:outputText id="txt-supervNome" value="#{funcionarioC.funcionario.supervNome}" />
            			
@@ -100,36 +102,39 @@
            			</rich:panel>
            			
            			<label style="FONT-SIZE: large; FONT-FAMILY: 'Arial';">Data de Admissão: </label>
-              		<input name="admissao" type="text" value="#{funcionarioC.funcionario.admissao}" id="admissao" size="8" jsfc="h:inputText" required="true" title="Utilize o formato dd/mm/aaaa" requiredMessage="O campo Data de Admissão é obrigatório!" class="campo"><f:convertDateTime pattern="dd/MM/yyyy"/></input>
-           			
+              		<input name="admissao" type="text" value="#{funcionarioC.funcionario.admissao}" id="admissao" size="8" jsfc="h:inputText" required="true" title="Utilize o formato dd/mm/aaaa" requiredMessage="O campo Data de Admissão é obrigatório!" class="campo"><f:convertDateTime pattern="dd/MM/yyyy"/></input>	
             	</h:panelGrid>
             	</rich:panel>
-            	
-            		<h:outputLabel id="lab-logradouro" value="Logradouro: " />
-            		<h:outputText id="txt-logradouro" value="#{funcionarioC.funcionario.logradouro}" />
+            	<rich:panel>
+            		<f:facet name="header">
+            			Endereço Residencial
+            		</f:facet>
+            		<h:panelGrid columns="6">
             		
-            		<h:outputLabel id="lab-numero" value="Número: " />
-            		<h:outputText id="txt-numero" value="#{funcionarioC.funcionario.numero}" />
+            			<h:outputLabel id="lab-logradouro" value="Logradouro: " style="FONT-FAMILY: 'Arial'; FONT-SIZE: large;"/>
+            			<h:outputText id="txt-logradouro" value="#{funcionarioC.funcionario.logradouro}" />
             		
-            		<h:outputLabel id="lab-complemento" value="Complemento: " />
-            		<h:outputText id="txt-complemento" value="#{funcionarioC.funcionario.complemento}" />
+            			<h:outputLabel id="lab-numero" value="Número: " style="FONT-FAMILY: 'Arial'; FONT-SIZE: large;"/>
+            			<h:outputText id="txt-numero" value="#{funcionarioC.funcionario.numero}" />
             		
-            		<h:outputLabel id="lab-bairro" value="Bairro: " />
-            		<h:outputText id="txt-bairro" value="#{funcionarioC.funcionario.bairro}" />
+            			<h:outputLabel id="lab-complemento" value="Complemento: " style="FONT-FAMILY: 'Arial'; FONT-SIZE: large;"/>
+            			<h:outputText id="txt-complemento" value="#{funcionarioC.funcionario.complemento}" />
             		
-            		<h:selectOneMenu id="UF" value="#{departamentoC.todosDepartamentos}">
+            			<h:outputLabel id="lab-bairro" value="Bairro: " style="FONT-FAMILY: 'Arial'; FONT-SIZE: large;"/>
+            			<h:outputText id="txt-bairro" value="#{funcionarioC.funcionario.bairro}" />
+            		
+            			<h:selectOneMenu id="UF" value="#{departamentoC.todosDepartamentos}">
                     	<f:selectItems value="#{departamentoC.todosDepartamentos}" />
-            		</h:selectOneMenu>
+            			</h:selectOneMenu>
             		
-            		<h:selectOneMenu id="Cidade" value="#{departamentoC.todosDepartamentos}">
-                    	<f:selectItems value="#{departamentoC.todosDepartamentos}" />
-            		</h:selectOneMenu>
+            			<h:selectOneMenu id="Cidade" value="#{departamentoC.todosDepartamentos}">
+                	    	<f:selectItems value="#{departamentoC.todosDepartamentos}" />
+            			</h:selectOneMenu>
             		
-            		<h:outputLabel id="lab-cep" value="CEP: " />
-            		<h:outputText id="txt-cep" value="#{funcionarioC.funcionario.cep}" />
-            		
-            		
-				</h:panelGrid>
+            			<h:outputLabel id="lab-cep" value="CEP: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
+            			<h:outputText id="txt-cep" value="#{funcionarioC.funcionario.cep}" />
+            		</h:panelGrid>
+            	</rich:panel>
 			</rich:panel>
 		</div>
 	</h:form>
