@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+	<ui:insert name="cabecalho">
+		<head>
+			<title>Bem vindo ao SisTelecom</title>
+			
+			<ui:insert name="css" />
+			
+			<ui:insert name="javascript" />
+			
+			<ui:insert name="default-javascript">
+				
+				<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+				
+				<script type="text/javascript">
+					
+				</script>
+				
+			</ui:insert>
+			
+			<ui:insert name="default-css">
+				
+				<style type="text/css">
+					
+					body{
+						background-color: #eee;
+					}
+					
+				</style>
+				
+			</ui:insert>
+			
+		</head>
+	</ui:insert>
+<body background="/imagens/BrackGround1.jpg">
+	<ui:composition>
+		<h:outputStylesheet>
+			.optionList {
+			heigth: 22px;
+			}
+			
+			.vertical-menu-cell {
+			padding: 0px 4px 0px 4px;
+			}
+		</h:outputStylesheet>
+		<h:panelGrid styleClass="vertical-menu-cell" columnClasses="optionList" columns="1" cellspacing="0" cellpadding="0">
+			<rich:dropDownMenu style="border:1px solid #{aj4Skin.panelBorderColor}" label="Gestão de Carteira" mode="client" jointPoint="topRight" direction="bottomRight">
+				<rich:menuItem label="Inclusão de Carteira" ahref="#" jsfc="h:commandLink" action="novoClienteOK" immediate="true"/>
+				<rich:menuItem label="Inclusão de Carteira" ahref="#" jsfc="h:commandLink" action="novoClienteOK" immediate="true"/>
+			</rich:dropDownMenu>
+		</h:panelGrid>
+	</ui:composition>
+
+</body> 
+</html>

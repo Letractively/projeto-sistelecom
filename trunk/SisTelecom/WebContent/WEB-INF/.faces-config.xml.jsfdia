@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
  <PROCESS-ITEM NAME="rules:#principal#relatorios.xhtml"
-  PATH="/principal/relatorios.xhtml" SHAPE="371,166,0,0"
+  PATH="/principal/relatorios.xhtml" SHAPE="200,128,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#paginas#cadastros#cadastrocliente.xhtml"
+  PATH="/paginas/cadastros/cadastrocliente.xhtml" SHAPE="208,240,50,25"
   model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>
