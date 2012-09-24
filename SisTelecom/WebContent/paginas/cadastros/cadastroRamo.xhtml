@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+
+<body>
+	<h:form id="formulario-cadastroRamo" prependId="false">
+		<div id="div-cadastro" align="left" >
+			<rich:panel style="800px;">
+				<f:facet name="header" >
+					Cadastro de Atividades Econômicas
+				</f:facet>
+				
+				<h:outputLabel id="lab-nomeRamo" value="Atividade Econômica: " />
+				<h:outputText id="txt-nomeRamo" value="#{ramoC.setRamo}" />
+			</rich:panel>
+		</div>
+		<div id="div-buttons" align="center" >
+		<h:panelGroup id="pgroup-buttons">
+					<a4j:commandButton value="Salvar" render="salvarOK"
+						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
+						execute="#{clienteC.ClienteDAO.salvar}" />
+					<a4j:commandButton value="Atualizar" render="atualizarOK"
+						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial'; width : 92px;"
+						execute="#{clienteC.ClienteDAO.atualizar}" />
+					<a4j:commandButton value="Excluir" render="excluirOK"
+						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
+						execute="#{clienteC.ClienteDAO.excluir}" />
+					<a4j:commandButton value="Limpar" type="reset"
+						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
+						process="inf-nome,inf-senha" reRender="inf-nome,inf-senha" />
+		</h:panelGroup>
+		</div>
+	</h:form>
+</body> 
+</html>
