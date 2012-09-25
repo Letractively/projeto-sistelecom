@@ -22,7 +22,7 @@
 					<h:panelGroup>
 						<h:outputLabel id="lab-cnpj" value="CNPJ: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-cnpj" style="width=100%;"
+						<h:inputText id="txt-cnpj" style="width=100%;"
 							value="#{clienteC.cliente.cnpj}" />
 
 						<a4j:commandButton value="Pesquisar"
@@ -34,12 +34,12 @@
 					<h:panelGrid columns="9" style="width=100%">
 						<h:outputLabel id="lab-razaoSocial" value="Razão Social: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-razaoSocial" style="width=100%;"
+						<h:inputText id="txt-razaoSocial" style="width=100%;"
 							value="#{clienteC.cliente.razaoSocial}" />
 
 						<h:outputLabel id="lab-nomeFantasia" value="Nome Fantasia: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-nomeFantasia" style="width=100%;"
+						<h:inputText id="txt-nomeFantasia" style="width=100%;"
 							value="#{clienteC.cliente.nomeFantasia}" />
 
 						<h:selectOneMenu id="ramo" value="{ramoC.listaRamos}">
@@ -48,12 +48,12 @@
 
 						<h:outputLabel id="lab-logradouro" value="Logradouro: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-logradouro" style="width=100%;"
+						<h:inputText id="txt-logradouro" style="width=100%;"
 							value="#{clienteC.cliente.logradouro}" />
 
 						<h:outputLabel id="lab-numero" value="Número: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-numero" style="width=100%;"
+						<h:inputText id="txt-numero" style="width=100%;"
 							value="#{clienteC.cliente.numero}" />
 					</h:panelGrid>
 					<br />
@@ -61,12 +61,12 @@
 
 						<h:outputLabel id="lab-complemento" value="Complemento: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-complemento" style="width=100%;"
+						<h:inputText id="txt-complemento" style="width=100%;"
 							value="#{clienteC.cliente.complemento}" />
 
 						<h:outputLabel id="lab-bairro" value="Bairro: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-bairro" style="width=100%;"
+						<h:inputText id="txt-bairro" style="width=100%;"
 							value="#{clienteC.cliente.bairro}" />
 
 						<h:selectOneMenu id="UF" value="{ramoC.listaRamos}">
@@ -79,12 +79,12 @@
 
 						<h:outputLabel id="lab-cep" value="CEP: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-cep" style="width=100%;"
+						<h:inputText id="txt-cep" style="width=100%;"
 							value="#{clienteC.cliente.cep}" />
 
 						<h:outputLabel id="lab-tel1" value="Telefone: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-tel1" style="width=100%;"
+						<h:inputText id="txt-tel1" style="width=100%;"
 							value="#{clienteC.cliente.tel1}" />
 					</h:panelGrid>
 					<br />
@@ -92,17 +92,17 @@
 
 						<h:outputLabel id="lab-tel2" value="Celular: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-tel2" style="width=100%;"
+						<h:inputText id="txt-tel2" style="width=100%;"
 							value="#{clienteC.cliente.tel2}" />
 
 						<h:outputLabel id="lab-email" value="E-mail: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-email" style="width=100%;"
+						<h:inputText id="txt-email" style="width=100%;"
 							value="#{clienteC.cliente.email}" />
 
 						<h:outputLabel id="lab-inscEst" value="Inscrição Estadual: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-inscEst" style="width=100%;"
+						<h:inputText id="txt-inscEst" style="width=100%;"
 							value="#{clienteC.cliente.inscEst}" />
 
 
@@ -124,12 +124,12 @@
 					<h:panelGrid columns="6" style="width=100%">
 						<h:outputLabel id="lab-cpfResp1" value="CPF do Administrador: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-cpfResp1" style="width=100%;"
+						<h:inputText id="txt-cpfResp1" style="width=100%;"
 							value="#{clienteC.cliente.cpfResp1}" />
 
 						<h:outputLabel id="lab-nomeResp1" value="Nome do Administrador: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-nomeResp1" style="width=100%;"
+						<h:inputText id="txt-nomeResp1" style="width=100%;"
 							value="#{clienteC.cliente.nomeResp1}" />
 
 						<label style="FONT-SIZE: large; FONT-FAMILY: 'Arial';">Data
@@ -143,12 +143,12 @@
 
 						<h:outputLabel id="lab-cpfResp2" value="CPF do Sócio 1: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-cpfResp2" style="width=100%;"
+						<h:inputText id="txt-cpfResp2" style="width=100%;"
 							value="#{clienteC.cliente.cpfResp2}" />
 
 						<h:outputLabel id="lab-nomeResp2" value="Nome do Sócio 1:  "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-nomeResp2" style="width=100%;"
+						<h:inputText id="txt-nomeResp2" style="width=100%;"
 							value="#{clienteC.cliente.nomeResp2}" />
 
 						<label style="FONT-SIZE: large; FONT-FAMILY: 'Arial';">Data
@@ -160,12 +160,12 @@
 
 						<h:outputLabel id="lab-cpfResp3" value="CPF do Sócio 2: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-cpfResp3" style="width=100%;"
+						<h:inputText id="txt-cpfResp3" style="width=100%;"
 							value="#{clienteC.cliente.cpfResp3}" />
 
 						<h:outputLabel id="lab-nomeResp3" value="Nome do Sócio 2: "
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:outputText id="txt-nomeResp3" style="width=100%;"
+						<h:inputText id="txt-nomeResp3" style="width=100%;"
 							value="#{clienteC.cliente.nomeResp3}" />
 
 						<label style="FONT-SIZE: large; FONT-FAMILY: 'Arial';">Data

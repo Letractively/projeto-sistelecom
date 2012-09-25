@@ -29,6 +29,7 @@
 				<style type="text/css">
 					
 					body{
+						background-image: url("/imagens/BrackGround1.jpg");
 						background-color: #eee;
 					}
 					
@@ -38,23 +39,29 @@
 			
 		</head>
 	</ui:insert>
-<body background="/imagens/BrackGround1.jpg">
+	
+	<body>
 	<ui:composition>
+		
 		<h:outputStylesheet>
-			.optionList {
-			heigth: 22px;
-			}
-			
-			.vertical-menu-cell {
-			padding: 0px 4px 0px 4px;
-			}
+			<style type="text/css">
+				.optionList {
+				heigth: 22px;
+				}
+				
+				.vertical-menu-cell {
+					padding: 0px 4px 0px 4px;
+				}
+			</style>
 		</h:outputStylesheet>
+		
 		<h:panelGrid styleClass="vertical-menu-cell" columnClasses="optionList" columns="1" cellspacing="0" cellpadding="0">
 			<rich:dropDownMenu style="border:1px solid #{aj4Skin.panelBorderColor}" label="Gestão de Carteira" mode="client" jointPoint="topRight" direction="bottomRight">
 				<rich:menuItem label="Inclusão de Carteira" ahref="#" jsfc="h:commandLink" action="novoClienteOK" immediate="true"/>
 				<rich:menuItem label="Inclusão de Carteira" ahref="#" jsfc="h:commandLink" action="novoClienteOK" immediate="true"/>
 			</rich:dropDownMenu>
 		</h:panelGrid>
+		
 	</ui:composition>
 
 </body> 

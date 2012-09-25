@@ -23,7 +23,7 @@
 					
 					<h:panelGroup>
 						<h:outputLabel id="lab-cpf" value="CPF: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
-						<h:outputText id="txt-cpf" value="#{funcionarioC.funcionario.cpf}" />
+						<h:inputText id="txt-cpf" value="#{funcionarioC.funcionario.cpf}" />
 
 						<a4j:commandButton value="Pesquisar"
 							execute="#{funcionarioC.FuncionarioDAO.procurarCpf}" />
@@ -32,7 +32,7 @@
 				<h:panelGrid columns="7" style="width=100%">
 										            		
             		<h:outputLabel id="lab-nome" value="Nome: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
-            		<h:outputText id="txt-nome" value="#{funcionarioC.funcionario.nome}" />
+            		<h:inputText id="txt-nome" value="#{funcionarioC.funcionario.nome}" />
             		
             		<label style="FONT-SIZE: large; FONT-FAMILY: 'Arial';">Data de nascimento: </label>
               		<input name="nasc" type="text" value="#{funcionarioC.funcionario.nasc}" id="nasc" size="8" jsfc="h:inputText" required="true" title="Utilize o formato dd/mm/aaaa" requiredMessage="O campo Data de Nascimento é obrigatório!" class="campo"><f:convertDateTime pattern="dd/MM/yyyy"/></input>
@@ -46,14 +46,14 @@
            		</h:panelGrid>
            		<h:panelGrid columns="7">	
            			<h:outputLabel id="lab-tel2" value="Celular: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
-           			<h:outputText id="txt-tel2" value="#{funcionarioC.funcionario.tel2}" />
+           			<h:inputText id="txt-tel2" value="#{funcionarioC.funcionario.tel2}" />
            			
            			<h:outputLabel id="lab-doc" value="Documento: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
-           			<h:outputText id="txt-doc" value="#{funcionarioC.funcionario.doc}" />
+           			<h:inputText id="txt-doc" value="#{funcionarioC.funcionario.doc}" />
            			
            			<rich:panel style="220px;">
            				<f:facet name="header">
-           					<h:outputText style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" value="Tipo de Documento" />
+           					<h:inputText style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" value="Tipo de Documento" />
            				</f:facet>
            				<rich:select>
            					<f:selectItem itemValue="0" itemLabel="Carteira de Identidade"/>
@@ -67,11 +67,11 @@
            		</h:panelGrid>
            		<h:panelGrid columns="7">	
            			<h:outputLabel id="lab-supervNome" value="Nome do Supervisor: " style="FONT-SIZE: large; FONT-FAMILY: 'Arial';"/>
-           			<h:outputText id="txt-supervNome" value="#{funcionarioC.funcionario.supervNome}" />
+           			<h:inputText id="txt-supervNome" value="#{funcionarioC.funcionario.supervNome}" />
            			
            			<rich:panel style="220px;">
            				<f:facet name="header">
-           					<h:outputText style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" value="Hierarquia do Supervisor: " />
+           					<h:inputText style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" value="Hierarquia do Supervisor: " />
            				</f:facet>
            				<rich:select>
            					<f:selectItem itemValue="0" itemLabel="Supervisor de Back Office"/>
@@ -107,7 +107,7 @@
             	</rich:panel>
             	<rich:panel>
             		<f:facet name="header">
-            			Endereço Residencial
+            			Endereço de Residência
             		</f:facet>
             		<h:panelGrid columns="6">
             		

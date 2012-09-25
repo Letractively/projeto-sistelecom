@@ -11,90 +11,10 @@
   <managed-bean-name>clienteC</managed-bean-name>
   <managed-bean-class>br.com.sistelecom.bean.ClienteController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
-  <managed-property>
-   <property-name>cliente</property-name>
-   <property-class>br.com.sistelecom.entity.Cliente</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>clienteAtualizarOuExcluir</property-name>
-   <property-class>br.com.sistelecom.entity.Cliente</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>modelCliente</property-name>
-   <property-class>javax.faces.model.DataModel</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>todosClientes</property-name>
-   <property-class>javax.faces.model.DataModel</property-class>
-   <value/>
-  </managed-property>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>funcionarioC</managed-bean-name>
-  <managed-bean-class>br.com.sistelecom.bean.FuncionarioController</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
-  <managed-property>
-   <property-name>funcionario</property-name>
-   <property-class>br.com.sistelecom.entity.Funcionario</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>funcionarioAtualizarOuExcluir</property-name>
-   <property-class>br.com.sistelecom.entity.Funcionario</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>modelFuncionario</property-name>
-   <property-class>javax.faces.model.DataModel</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>todosFuncionarios</property-name>
-   <property-class>javax.faces.model.DataModel</property-class>
-   <value/>
-  </managed-property>
  </managed-bean>
  <managed-bean>
   <managed-bean-name>ramoC</managed-bean-name>
   <managed-bean-class>br.com.sistelecom.bean.RamoController</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
-  <managed-property>
-   <property-name>listaRamos</property-name>
-   <property-class>java.util.List</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>modelRamo</property-name>
-   <property-class>javax.faces.model.DataModel</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>ramo</property-name>
-   <property-class>br.com.sistelecom.entity.Ramo</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>ramoAtualizarOuExcluir</property-name>
-   <property-class>br.com.sistelecom.entity.Ramo</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>ramos</property-name>
-   <property-class>java.util.List</property-class>
-   <value/>
-  </managed-property>
-  <managed-property>
-   <property-name>todosProdutos</property-name>
-   <property-class>javax.faces.model.DataModel</property-class>
-   <value/>
-  </managed-property>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>departamentoC</managed-bean-name>
-  <managed-bean-class>br.com.sistelecom.bean.DepartamentoController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
  <application>
