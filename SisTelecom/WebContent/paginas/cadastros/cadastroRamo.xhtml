@@ -15,15 +15,15 @@
 					Cadastro de Atividades Econômicas
 				</f:facet>
 				
-				<h:outputLabel id="lab-nomeRamo" value="Atividade Econômica: " />
-				<h:outputText id="txt-nomeRamo" value="#{ramoC.setRamo}" />
+				<h:outputLabel id="lab-nomeRamo" value="Atividade Econômica: " style="FONT-SIZE: medium; FONT-WEIGHT: bold;"/>
+				<h:inputText id="txt-nomeRamo" value="#{ramoC.ramo.nomeRamo}" />
 			</rich:panel>
 		</div>
 		<div id="div-buttons" align="center" >
 		<h:panelGroup id="pgroup-buttons">
 					<a4j:commandButton value="Salvar" render="salvarOK"
 						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
-						execute="#{clienteC.ClienteDAO.salvar}" />
+						execute="#{ramoC.RamoDAO.salvar}" />
 					<a4j:commandButton value="Atualizar" render="atualizarOK"
 						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial'; width : 92px;"
 						execute="#{clienteC.ClienteDAO.atualizar}" />
