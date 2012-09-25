@@ -28,8 +28,14 @@ public class RamoController {
     private DataModel modelRamo;
 
     public String novoRamo() {
-        this.ramo = new Ramo();
-        return "novoRamoOK";
+    	RamoDAO ramodao = new RamoDAOImp();
+    	try {
+			ramodao.salvar(this.getRamo());
+			System.out.println("Salvo!");
+		} catch (Exception e) {
+			System.out.println("Não Salvo!");
+		}
+        return null;
     }
 
     public Ramo getRamo() {
