@@ -12,6 +12,7 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 import br.com.sistelecom.dao.RamoDAOImp;
+import br.com.sistelecom.entity.Cargo;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.interfaces.dao.RamoDAO;
 
@@ -26,12 +27,15 @@ public class RamoController {
     private Ramo ramo;
     private DataModel modelRamo;
 
-    public String novoProduto() {
+    public String novoRamo() {
         this.ramo = new Ramo();
         return "novoRamoOK";
     }
 
     public Ramo getRamo() {
+    	if(this.ramo == null){
+    		this.ramo = new Ramo();
+    	}
         return ramo;
     }
 

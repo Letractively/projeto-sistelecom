@@ -49,7 +49,7 @@ public class RamoDAOImpTest {
      */
     @Test
     public void salvar() throws Exception {
-        System.out.println("create");
+        System.out.println("salvar");
         final Ramo ramo = new Ramo(null, "Padaria");
         final RamoDAOImp instance = new RamoDAOImp();
         instance.salvar(ramo);
@@ -67,7 +67,7 @@ public class RamoDAOImpTest {
      */
     @Test
     public void atualizar() throws Exception {
-        System.out.println("update");
+        System.out.println("atualizar");
         final Ramo ramo = new Ramo(2, "Borracharia");
         final RamoDAOImp instance = new RamoDAOImp();
         instance.atualizar(ramo);
@@ -79,7 +79,7 @@ public class RamoDAOImpTest {
      */
     @Test
     public void todosRamos() throws Exception {
-        System.out.println("allRamo");
+        System.out.println("todosRamos");
         final RamoDAOImp instance = new RamoDAOImp();
         List expResult = null;
         List result = instance.todosRamos();
@@ -93,7 +93,7 @@ public class RamoDAOImpTest {
      */
     @Test
     public void procurarIdRamo() throws Exception {
-        System.out.println("searchIdRamo");
+        System.out.println("procurarIdRamo");
         final Integer idRamo = 1;
         final Ramo ramo = pesquisarId(idRamo);
         assertNotNull(ramo);
@@ -106,7 +106,7 @@ public class RamoDAOImpTest {
      */
     @Test
     public void excluir() throws Exception {
-        System.out.println("delete");
+        System.out.println("excluir");
         Ramo ramo = new Ramo();
         Integer idRamo = 2;
         ramo.setIdRamo(idRamo);
