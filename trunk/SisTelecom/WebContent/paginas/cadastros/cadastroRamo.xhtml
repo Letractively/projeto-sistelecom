@@ -21,18 +21,18 @@
 		</div>
 		<div id="div-buttons" align="center" >
 		<h:panelGroup id="pgroup-buttons">
-					<a4j:commandButton value="Salvar" render="salvarOK"
+					<a4j:commandButton value="Salvar" actionListener="#{ramoC.salvar}"
 						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
-						execute="#{ramoC.RamoDAO.salvar}" />
-					<a4j:commandButton value="Atualizar" render="atualizarOK"
+						 />
+					<a4j:commandButton value="Atualizar" action="atualizarOK"
 						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial'; width : 92px;"
 						execute="#{clienteC.ClienteDAO.atualizar}" />
-					<a4j:commandButton value="Excluir" render="excluirOK"
+					<a4j:commandButton value="Excluir" action="excluirOK"
 						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
 						execute="#{clienteC.ClienteDAO.excluir}" />
 					<a4j:commandButton value="Limpar" type="reset"
 						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
-						process="inf-nome,inf-senha" reRender="inf-nome,inf-senha" />
+						process="inf-nomeRamo" reRender="inf-nomeRamo" />
 		</h:panelGroup>
 		</div>
 	</h:form>
