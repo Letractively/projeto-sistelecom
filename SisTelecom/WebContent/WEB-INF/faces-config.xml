@@ -17,6 +17,16 @@
   <managed-bean-class>br.com.sistelecom.bean.RamoController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>ramoTO</managed-bean-name>
+  <managed-bean-class>br.com.sistelecom.to.RamoTO</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>estadoC</managed-bean-name>
+  <managed-bean-class>br.com.sistelecom.bean.EstadoController</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>

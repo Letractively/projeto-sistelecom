@@ -68,9 +68,10 @@
 							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
 						<h:inputText id="txt-bairro" style="width=100%;"
 							value="#{clienteC.cliente.bairro}" />
-
-						<h:selectOneMenu id="UF" value="{ramoC.listaRamos}">
-							<f:selectItems value="#{ramoC.listaRamos}" />
+							
+						<h:outputLabel id="lab-uf" value="UF: " />
+						<h:selectOneMenu id="UF" value="">
+							<f:selectItems value="#{estadoC.listaEstados}" />
 						</h:selectOneMenu>
 
 						<h:selectOneMenu id="Cidade" value="{ramoC.listaRamos}">
@@ -181,9 +182,9 @@
 		<div id="buttons" align="center">
 			
 				<h:panelGroup id="pgroup-buttons">
-					<a4j:commandButton value="Salvar" render="salvarOK" 
+					<a4j:commandButton value="Salvar" action="#{clienteC.novoCliente}"
 						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
-						execute="#{clienteC.ClienteDAO.salvar}" />
+						 />
 					<a4j:commandButton value="Atualizar" render="atualizarOK"
 						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial'; width : 92px;"
 						execute="#{clienteC.ClienteDAO.atualizar}" />

@@ -4,17 +4,19 @@
  */
 package br.com.sistelecom.bean;
 
+
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
 import br.com.sistelecom.dao.RamoDAOImp;
-import br.com.sistelecom.entity.Cargo;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.interfaces.dao.RamoDAO;
+import br.com.sistelecom.to.RamoTO;
 
 /**
  *
@@ -26,11 +28,12 @@ public class RamoController {
    
     private Ramo ramo;
     private DataModel modelRamo;
-
+    private List<RamoTO> listaDeTodosOsRamos;
+    
     public String novoRamo() {
     	RamoDAO ramodao = new RamoDAOImp();
     	try {
-			ramodao.salvar(this.getRamo());
+    		ramodao.salvar(this.getRamo());
 			System.out.println("Salvo!");
 		} catch (Exception e) {
 			System.out.println("Não Salvo!");
@@ -66,8 +69,8 @@ public class RamoController {
         return "atualizarOK";
     }
 
-    public String excluir() throws Exception {
-        RamoDAO ramodao = new RamoDAOImp();
+    public String excluirRamo() throws Exception {
+    	RamoDAO ramodao = new RamoDAOImp();
         ramo = getRamoAtualizarOuExcluir();
         ramodao.excluir(ramo);
         return "excluirOK";
@@ -111,5 +114,32 @@ public class RamoController {
 
 	public void setModelRamo(javax.faces.model.DataModel modelRamo) {
 		this.modelRamo = modelRamo;
+	}
+	
+	public String listarRegistros(){
+		if(this.listaDeTodosOsRamos == null){
+			this.listaDeTodosOsRamos = new LinkedList<RamoTO>();
+			try {
+				this.setListaDeTodosOsRamos(new RamoDAOImp().todosRamosParaExibirEmTabela());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * @return the listaDeTodosOsRamos
+	 */
+	public List<RamoTO> getListaDeTodosOsRamos() {
+		
+		return listaDeTodosOsRamos;
+	}
+
+	/**
+	 * @param listaDeTodosOsRamos the listaDeTodosOsRamos to set
+	 */
+	public void setListaDeTodosOsRamos(List<RamoTO> listaDeTodosOsRamos) {
+		this.listaDeTodosOsRamos = listaDeTodosOsRamos;
 	}
 }
