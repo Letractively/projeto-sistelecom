@@ -50,7 +50,7 @@ public class RamoDAOImpTest {
     @Test
     public void salvar() throws Exception {
         System.out.println("salvar");
-        final Ramo ramo = new Ramo(null, "Padaria");
+        final Ramo ramo = new Ramo(null, "Padaria", true);
         final RamoDAOImp instance = new RamoDAOImp();
         instance.salvar(ramo);
         assertNotNull(ramo);
@@ -68,7 +68,7 @@ public class RamoDAOImpTest {
     @Test
     public void atualizar() throws Exception {
         System.out.println("atualizar");
-        final Ramo ramo = new Ramo(2, "Borracharia");
+        final Ramo ramo = new Ramo(20, "Borracharia", false);
         final RamoDAOImp instance = new RamoDAOImp();
         instance.atualizar(ramo);
         assertNotNull(ramo);

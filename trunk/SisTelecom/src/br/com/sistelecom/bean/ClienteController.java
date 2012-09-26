@@ -8,8 +8,10 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import br.com.sistelecom.dao.ClienteDAOImp;
+import br.com.sistelecom.dao.RamoDAOImp;
 import br.com.sistelecom.entity.Cliente;
 import br.com.sistelecom.interfaces.dao.ClienteDAO;
+import br.com.sistelecom.interfaces.dao.RamoDAO;
 
 /**
  *
@@ -21,9 +23,16 @@ public class ClienteController {
     
     private DataModel modelCliente;
     
-    public String novoCliente(){
-        this.cliente = new Cliente();
-        return "novoClienteOK";
+    public String novoCliente() throws Exception{
+    	
+    	ClienteDAO clientedao = new ClienteDAOImp();
+    	try {
+			clientedao.salvar(this.getCliente());
+			System.out.println("Salvo!");
+		} catch (Exception e) {
+			System.out.println("Não Salvo!");
+		}
+        return null;
     }
     
     public Cliente getCliente(){
