@@ -27,6 +27,35 @@
   <managed-bean-class>br.com.sistelecom.bean.EstadoController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <navigation-rule>
+  <from-view-id>/paginas/cadastros/ramo/ramo.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>novo</from-outcome>
+   <to-view-id>/paginas/cadastros/ramo/novo.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listagem</from-outcome>
+   <to-view-id>/paginas/cadastros/ramo/listagem.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/cadastros/ramo/listagem.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>ramo</from-outcome>
+   <to-view-id>/paginas/cadastros/ramo/ramo.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>alteracao</from-outcome>
+   <to-view-id>/paginas/cadastros/ramo/alteracao.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/paginas/cadastros/ramo/novo.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>ramo</from-outcome>
+   <to-view-id>/paginas/cadastros/ramo/ramo.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>

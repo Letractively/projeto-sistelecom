@@ -37,14 +37,10 @@ public class RamoDAOImp implements RamoDAO {
 	 * @throws Exception 
 	 */
 	//@Override
-	public void salvar(Ramo ramo) throws Exception {
+	public void salvar(Ramo ramo) {
 
 		PreparedStatement ps = null;
 		Connection conn = null;
-
-		if(ramo==null) {
-			throw new Exception("O valor passado não pode ser nulo");
-		}
 
 		try{
 
@@ -55,11 +51,9 @@ public class RamoDAOImp implements RamoDAO {
 			ps.setString(1, ramo.getNomeRamo());
 			ps.setBoolean(2, ramo.getStatus());
 			ps.executeUpdate();
-		} catch (Exception sqle) {
-			throw new Exception("Erro ao inserir o ramo: " + sqle);
-		} finally {
-			ConnectionFactory.closeConnection(conn, ps);
-		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 	}
 	/**
 	 * Método que atualiza um ramo
@@ -67,14 +61,10 @@ public class RamoDAOImp implements RamoDAO {
 	 * @throws Exception 
 	 */
 	//@Override
-	public void atualizar(Ramo ramo) throws Exception {
+	public void atualizar(Ramo ramo){
 
 		PreparedStatement ps = null;
 		Connection conn = null;
-
-		if(ramo==null) {
-			throw new Exception("O valor passado não pode ser nulo");
-		}
 
 		try{
 
@@ -87,10 +77,8 @@ public class RamoDAOImp implements RamoDAO {
 			ps.setInt(3, ramo.getIdRamo());
 
 			ps.executeUpdate();
-		} catch (Exception sqle) {
-			throw new Exception("Erro ao atualizar ramo: " + sqle);
-		} finally {
-			ConnectionFactory.closeConnection(conn, ps);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	/**
@@ -99,7 +87,7 @@ public class RamoDAOImp implements RamoDAO {
 	 * @throws Exception 
 	 */
 	//@Override
-	public List todosRamos() throws Exception {
+	public List todosRamos(){
 		PreparedStatement ps = null;
 		Connection conn = null;
 		ResultSet rs = null;
@@ -117,14 +105,13 @@ public class RamoDAOImp implements RamoDAO {
 				list.add(new Ramo(idRamo, nomeRamo, status));
 			}
 			return list;
-		} catch (Exception sqle) {
-			throw new Exception (sqle);
-		} finally {
-			ConnectionFactory.closeConnection(conn, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
 
-	public List todosRamosParaExibirEmTabela() throws Exception {
+	public List todosRamosParaExibirEmTabela() {
 		PreparedStatement ps = null;
 		Connection conn = null;
 		ResultSet rs = null;
@@ -141,11 +128,10 @@ public class RamoDAOImp implements RamoDAO {
 				list.add(new RamoTO(Boolean.FALSE,idRamo, nomeRamo));
 			}
 			return list;
-		} catch (Exception sqle) {
-			throw new Exception (sqle);
-		} finally {
-			ConnectionFactory.closeConnection(conn, ps, rs);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
 	/**
 	 * Método que busca um ramo a partir de um id
@@ -154,7 +140,7 @@ public class RamoDAOImp implements RamoDAO {
 	 * @throws Exception 
 	 */
 	//@Override
-	public Ramo procurarIdRamo(Integer idRamo) throws Exception {
+	public Ramo procurarIdRamo(Integer idRamo){
 
 		PreparedStatement ps = null;
 		Connection conn = null;
@@ -173,11 +159,10 @@ public class RamoDAOImp implements RamoDAO {
 			Boolean status = rs.getBoolean(3);
 
 			return new Ramo(idRamo, nomeRamo, status);
-		} catch (Exception sqle) {
-			throw new Exception(sqle);
-		} finally {
-			ConnectionFactory.closeConnection(conn, ps, rs);
-		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return null;
 	}
 	/**
 	 * Método que deleta um ramo
@@ -185,28 +170,22 @@ public class RamoDAOImp implements RamoDAO {
 	 * @throws Exception 
 	 */
 	//@Override
-	public void excluir(Ramo ramo) throws Exception {
+	public void excluir(Ramo ramo) {
 
 		PreparedStatement ps = null;
 		Connection conn = null;
 
-		if(ramo==null) {
-			throw new Exception("O valor passado não pode ser nulo");
-		}
-
 		try{
 
-			String SQL = "UPDATE ramo status=0 where idramo = ?";
+			String SQL = "delete from ramo where idramo = ?";
 			conn = this.conn;
 			ps = conn.prepareStatement(SQL);
-			ps.setBoolean(1, ramo.getStatus());
-			ps.setInt(2, ramo.getIdRamo());
+			ps.setInt(1, ramo.getIdRamo());
 
 			ps.executeUpdate();
-		} catch (Exception sqle) {
-			throw new Exception("Erro ao atualizar ramo: " + sqle);
-		} finally {
-			ConnectionFactory.closeConnection(conn, ps);
+			System.out.println("Status: " + ramo.getStatus());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<body>
+	<h:form>
+		<rich:panel>
+			<f:facet name="header">
+				<h:outputLabel value="Novo Ramo (Atividades Econômicas)" />
+			</f:facet>
+			
+			<h:panelGrid columns="1">
+				
+				<h:panelGroup>
+					<h:outputLabel value="ID" />
+					<h:inputText value="#{ramoC.ramo.idRamo}" />
+				</h:panelGroup>
+				
+				<h:panelGroup>
+					<h:outputLabel value="Nome" />
+					<h:inputText value="#{ramoC.ramo.nomeRamo}" />
+				</h:panelGroup>
+				
+			</h:panelGrid>
+			
+			<h:commandButton value="Alterar" action="#{ramoC.carregarRegistro}"/>
+
+			<rich:spacer width="100%" height="10px" />
+			
+			<h:messages />
+
+			<h:commandLink value="Voltar" action="ramo" />
+		</rich:panel>
+	</h:form>
+</body>
+</html>
