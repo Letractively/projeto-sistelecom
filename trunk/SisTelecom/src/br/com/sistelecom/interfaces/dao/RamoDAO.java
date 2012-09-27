@@ -19,21 +19,21 @@ public interface RamoDAO {
      * @return
      * @throws Exception
      */
-    List todosRamos() throws Exception;
+    List todosRamos();
 
     /**
      * Método que cria os tios de ramos que o cliente pode ter
      * @param ramo
      * @throws Exception
      */
-    void salvar(Ramo ramo) throws Exception;
+    void salvar(Ramo ramo);
 
     /**
      * Método que deleta um ramo
      * @param ramo
      * @throws Exception
      */
-    void excluir(Ramo ramo) throws Exception;
+    void excluir(Ramo ramo);
 
     /**
      * Método que busca um ramo a partir de um id
@@ -41,13 +41,13 @@ public interface RamoDAO {
      * @return
      * @throws Exception
      */
-    Ramo procurarIdRamo(Integer idramo) throws Exception;
+    Ramo procurarIdRamo(Integer idramo);
 
     /**
      * Método que atualiza um ramo
      * @param ramo
      * @throws Exception
      */
-    void atualizar(Ramo ramo) throws Exception;
+    void atualizar(Ramo ramo);
     
 }
