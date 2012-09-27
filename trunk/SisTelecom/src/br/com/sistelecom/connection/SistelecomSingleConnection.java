@@ -14,7 +14,7 @@ import java.sql.Statement;
  *
  * @author Danilo Alves
  */
-public final class ConnectionFactory {
+public final class SistelecomSingleConnection {
 
 	private static Connection connection;
 	private static final String URL = "jdbc:mysql://localhost/sistelecom";
@@ -30,7 +30,7 @@ public final class ConnectionFactory {
 		}
 	}
 	
-    private ConnectionFactory() {}
+    private SistelecomSingleConnection() {}
         
     public static Connection getConnection() throws Exception{
     	 return connection;

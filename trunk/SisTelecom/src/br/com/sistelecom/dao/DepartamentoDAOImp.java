@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.sistelecom.connection.ConnectionFactory;
+import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Departamento;
 import br.com.sistelecom.interfaces.dao.DepartamentoDAO;
 
@@ -27,7 +27,7 @@ public class DepartamentoDAOImp implements DepartamentoDAO {
 
         try {
 
-            this.conn = ConnectionFactory.getConnection();
+            this.conn = SistelecomSingleConnection.getConnection();
         } catch (Exception e) {
             throw new Exception("Erro " + "\n" + e.getMessage());
         }
@@ -59,7 +59,7 @@ public class DepartamentoDAOImp implements DepartamentoDAO {
         } catch (SQLException sqle) {
             throw new Exception("Erro ao inserir departamento " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
     /**
@@ -90,7 +90,7 @@ public class DepartamentoDAOImp implements DepartamentoDAO {
         } catch (SQLException sqle) {
             throw new Exception("Erro ao atualizar dados " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
     /**
@@ -122,7 +122,7 @@ public class DepartamentoDAOImp implements DepartamentoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -153,7 +153,7 @@ public class DepartamentoDAOImp implements DepartamentoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -185,7 +185,7 @@ public class DepartamentoDAOImp implements DepartamentoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -212,7 +212,7 @@ public class DepartamentoDAOImp implements DepartamentoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
 }

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.sistelecom.connection.ConnectionFactory;
+import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Cargo;
 import br.com.sistelecom.interfaces.dao.CargoDAO;
 
@@ -26,7 +26,7 @@ public class CargoDAOImp implements CargoDAO {
     public CargoDAOImp () throws Exception {
         
         try{
-            this.conn = ConnectionFactory.getConnection();
+            this.conn = SistelecomSingleConnection.getConnection();
         } catch (Exception e) {
             throw new Exception("Erro " + "\n" + e.getMessage());
         }
@@ -57,7 +57,7 @@ public class CargoDAOImp implements CargoDAO {
         } catch (SQLException sqle) {
             throw new Exception ("Erro ao inserir o cargo: " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
     /**
@@ -87,7 +87,7 @@ public class CargoDAOImp implements CargoDAO {
         } catch (SQLException sqle) {
             throw new Exception("Erro ao atualizar os dados: " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
     /**
@@ -118,7 +118,7 @@ public class CargoDAOImp implements CargoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -149,7 +149,7 @@ public class CargoDAOImp implements CargoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -175,7 +175,7 @@ public class CargoDAOImp implements CargoDAO {
         } catch (SQLException sqle) {
             throw new Exception("Erro ao excluir dados: " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
 }

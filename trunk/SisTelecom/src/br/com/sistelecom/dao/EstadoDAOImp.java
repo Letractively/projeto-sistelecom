@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.sistelecom.connection.ConnectionFactory;
+import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Estado;
 import br.com.sistelecom.interfaces.dao.EstadoDAO;
 
@@ -18,7 +18,7 @@ public class EstadoDAOImp implements EstadoDAO{
 	public EstadoDAOImp () throws Exception {
 		
 		try{
-			this.conn = ConnectionFactory.getConnection();
+			this.conn = SistelecomSingleConnection.getConnection();
 		}
 		catch(Exception e){
 			throw new Exception("Erro: " + "\n" + e.getMessage());
@@ -53,7 +53,7 @@ public class EstadoDAOImp implements EstadoDAO{
 		}catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
 	}
 
