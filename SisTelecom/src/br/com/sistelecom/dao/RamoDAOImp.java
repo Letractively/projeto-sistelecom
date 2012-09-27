@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.sistelecom.connection.ConnectionFactory;
+import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.interfaces.dao.RamoDAO;
 import br.com.sistelecom.to.RamoTO;
@@ -26,7 +26,7 @@ public class RamoDAOImp implements RamoDAO {
 	public RamoDAOImp (){
 
 		try{
-			this.conn = ConnectionFactory.getConnection();
+			this.conn = SistelecomSingleConnection.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.sistelecom.connection.ConnectionFactory;
+import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Produto;
 import br.com.sistelecom.interfaces.dao.ProdutoDAO;
 
@@ -27,7 +27,7 @@ public class ProdutoDAOImp implements ProdutoDAO {
     public ProdutoDAOImp() throws Exception {
 
         try {
-            this.conn = ConnectionFactory.getConnection();
+            this.conn = SistelecomSingleConnection.getConnection();
         } catch (Exception e) {
             throw new Exception("Erro " + "\n" + e.getMessage());
         }
@@ -64,7 +64,7 @@ public class ProdutoDAOImp implements ProdutoDAO {
         } catch (SQLException sqle) {
             throw new Exception("Não foi possível cadastrar esse produto: " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
 
     }
@@ -102,7 +102,7 @@ public class ProdutoDAOImp implements ProdutoDAO {
         } catch (SQLException sqle) {
             throw new Exception("Não foi possível atualizar esse produto: " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
     /**
@@ -136,7 +136,7 @@ public class ProdutoDAOImp implements ProdutoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -171,7 +171,7 @@ public class ProdutoDAOImp implements ProdutoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -206,7 +206,7 @@ public class ProdutoDAOImp implements ProdutoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -230,7 +230,7 @@ public class ProdutoDAOImp implements ProdutoDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
 }

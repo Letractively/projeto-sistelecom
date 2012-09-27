@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.sistelecom.connection.ConnectionFactory;
+import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Funcionario;
 import br.com.sistelecom.interfaces.dao.FuncionarioDAO;
 
@@ -31,7 +31,7 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
     public FuncionarioDAOImp () throws Exception {
         
         try{
-            this.conn = ConnectionFactory.getConnection();
+            this.conn = SistelecomSingleConnection.getConnection();
         } catch (Exception e) {
             throw new Exception("Erro " + "\n" + e.getMessage());
         }
@@ -88,7 +88,7 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
         } catch (Exception sqle) {
             throw new Exception ("Erro ao inserir o funcionário: " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
     /**
@@ -142,7 +142,7 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
         } catch (Exception sqle) {
             throw new Exception ("Erro ao atualizar os dados " + sqle.getMessage());
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
     /**
@@ -195,7 +195,7 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
         } catch (SQLException sqle) {
             throw new Exception (sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -248,7 +248,7 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -302,7 +302,7 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
         } catch (SQLException sqle) {
             throw new Exception (sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     /**
@@ -328,7 +328,7 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
         } catch (SQLException sqle) {
             throw new Exception("Erro ao excluir dados: " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, null);
+            SistelecomSingleConnection.closeConnection(conn, ps, null);
         }
     }
 }

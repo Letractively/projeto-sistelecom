@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.sistelecom.connection.ConnectionFactory;
+import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Cliente;
 import br.com.sistelecom.interfaces.dao.ClienteDAO;
 
@@ -27,7 +27,7 @@ public class ClienteDAOImp implements ClienteDAO {
     public ClienteDAOImp () throws Exception {
         
         try{
-            this.conn = ConnectionFactory.getConnection();
+            this.conn = SistelecomSingleConnection.getConnection();
         }
         catch(Exception e){
             throw new Exception("Erro " + "\n" + e.getMessage());
@@ -88,7 +88,7 @@ public class ClienteDAOImp implements ClienteDAO {
         catch (SQLException sqle) {
             throw new Exception("Erro ao inserir cliente: "+ sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }    
         
     }
@@ -147,7 +147,7 @@ public class ClienteDAOImp implements ClienteDAO {
         } catch (SQLException sqle) {
             throw new Exception ("Erro ao atualizar dados: "+ sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
         
     }
@@ -205,7 +205,7 @@ public class ClienteDAOImp implements ClienteDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
 
@@ -264,7 +264,7 @@ public class ClienteDAOImp implements ClienteDAO {
         } catch(SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     
@@ -323,7 +323,7 @@ public class ClienteDAOImp implements ClienteDAO {
         } catch (SQLException sqle) {
             throw new Exception(sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps, rs);
+            SistelecomSingleConnection.closeConnection(conn, ps, rs);
         }
     }
     
@@ -351,7 +351,7 @@ public class ClienteDAOImp implements ClienteDAO {
         } catch (SQLException sqle) {
             throw new Exception("Erro ao excluir dados: " + sqle);
         } finally {
-            ConnectionFactory.closeConnection(conn, ps);
+            SistelecomSingleConnection.closeConnection(conn, ps);
         }
     }
     

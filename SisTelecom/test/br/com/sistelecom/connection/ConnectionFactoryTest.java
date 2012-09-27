@@ -7,7 +7,7 @@ package br.com.sistelecom.connection;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.sistelecom.connection.ConnectionFactory;
+import br.com.sistelecom.connection.SistelecomSingleConnection;
 
 /**
  *
@@ -17,7 +17,7 @@ public class ConnectionFactoryTest {
     
     @Test
     public void testConexaoComBancoDeDados() throws Exception{
-        Assert.assertNotNull(ConnectionFactory.getConnection());
+        Assert.assertNotNull(SistelecomSingleConnection.getConnection());
     }
         
 }
