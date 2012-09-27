@@ -7,29 +7,33 @@ package br.com.sistelecom.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
  *
  * @author Danilo Alves
  */
-public class ConnectionFactory {
+public final class ConnectionFactory {
 
-    public ConnectionFactory() {
-    }
+	private static Connection connection;
+	private static final String URL = "jdbc:mysql://localhost/sistelecom";
+	private static final String USERNAME = "root";
+	private static final String PASSWORD = "";
+	
+	static{
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+    private ConnectionFactory() {}
         
     public static Connection getConnection() throws Exception{
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost/sistelecom";
-            return DriverManager.getConnection(url, "root", "danilo");
-        }
-        catch (ClassNotFoundException e){
-            throw new Exception (e.getMessage());
-        }
-        catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
+    	 return connection;
     }
     
     public static void closeConnection (Connection conn, Statement stmt, ResultSet rs) throws Exception{
