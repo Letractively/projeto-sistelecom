@@ -21,35 +21,22 @@ import br.com.sistelecom.to.RamoTO;
  */
 public class RamoDAOImp implements RamoDAO {
 
-	private Connection conn;
-
-	public RamoDAOImp (){
-
-		try{
-			this.conn = SistelecomSingleConnection.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	/**
 	 * Método que cria os tios de ramos que o cliente pode ter
 	 * @param ramo
 	 * @throws Exception 
 	 */
-	//@Override
 	public void salvar(Ramo ramo) {
 
 		PreparedStatement ps = null;
-		Connection conn = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
 
 		try{
 
-			String SQL = "INSERT INTO ramo (nome_ramo, status) values (?, ?)";
+			String SQL = "INSERT INTO ramo (nome_ramo) values (?)";
 
-			conn = this.conn;
 			ps = conn.prepareStatement(SQL);
 			ps.setString(1, ramo.getNomeRamo());
-			ps.setBoolean(2, ramo.getStatus());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,13 +51,12 @@ public class RamoDAOImp implements RamoDAO {
 	public void atualizar(Ramo ramo){
 
 		PreparedStatement ps = null;
-		Connection conn = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
 
 		try{
 
 			String SQL = "UPDATE ramo SET nome_ramo=?, status=? " +
 					"where idramo = ?";
-			conn = this.conn;
 			ps = conn.prepareStatement(SQL);
 			ps.setString(1, ramo.getNomeRamo());
 			ps.setBoolean(2, ramo.getStatus());
@@ -89,11 +75,10 @@ public class RamoDAOImp implements RamoDAO {
 	//@Override
 	public List todosRamos(){
 		PreparedStatement ps = null;
-		Connection conn = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
 
 		try{
-			conn = this.conn;
 			ps = conn.prepareStatement("select * from ramo");
 			rs = ps.executeQuery();
 			List<Ramo> list = new ArrayList<Ramo>();
@@ -113,11 +98,10 @@ public class RamoDAOImp implements RamoDAO {
 
 	public List todosRamosParaExibirEmTabela() {
 		PreparedStatement ps = null;
-		Connection conn = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
 
 		try{
-			conn = this.conn;
 			ps = conn.prepareStatement("select * from ramo");
 			rs = ps.executeQuery();
 			List<RamoTO> list = new ArrayList<RamoTO>();
@@ -143,11 +127,10 @@ public class RamoDAOImp implements RamoDAO {
 	public Ramo procurarIdRamo(Integer idRamo){
 
 		PreparedStatement ps = null;
-		Connection conn = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
 
 		try {
-			conn = this.conn;
 			ps = conn.prepareStatement("select * from ramo where idramo = ?");
 			ps.setInt(1, idRamo);
 			rs = ps.executeQuery();
@@ -169,16 +152,14 @@ public class RamoDAOImp implements RamoDAO {
 	 * @param ramo
 	 * @throws Exception 
 	 */
-	//@Override
 	public void excluir(Ramo ramo) {
 
 		PreparedStatement ps = null;
-		Connection conn = null;
-
+		Connection conn = SistelecomSingleConnection.getConnection();
+		
 		try{
 
 			String SQL = "delete from ramo where idramo = ?";
-			conn = this.conn;
 			ps = conn.prepareStatement(SQL);
 			ps.setInt(1, ramo.getIdRamo());
 
