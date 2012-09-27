@@ -32,7 +32,7 @@ public final class SistelecomSingleConnection {
 	
     private SistelecomSingleConnection() {}
         
-    public static Connection getConnection() throws Exception{
+    public static Connection getConnection(){
     	 return connection;
     }
     
