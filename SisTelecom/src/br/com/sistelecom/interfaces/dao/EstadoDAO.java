@@ -4,9 +4,7 @@ import java.util.List;
 
 public interface EstadoDAO {
 
-	/* (non-Javadoc)
-	 * @see br.com.sistelecom.dao.EstadoDAO#todosEstados()
-	 */
-	public abstract List todosEstados() throws Exception;
+	
+	public abstract List todosEstados();
 
 }

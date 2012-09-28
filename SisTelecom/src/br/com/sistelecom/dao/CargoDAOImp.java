@@ -21,43 +21,28 @@ import br.com.sistelecom.interfaces.dao.CargoDAO;
  */
 public class CargoDAOImp implements CargoDAO {
     
-    private Connection conn;
-    
-    public CargoDAOImp () throws Exception {
-        
-        try{
-            this.conn = SistelecomSingleConnection.getConnection();
-        } catch (Exception e) {
-            throw new Exception("Erro " + "\n" + e.getMessage());
-        }
-    }
-    /**
+	
+	/**
      * Método que cria cargos
      * @param cargo
      * @throws Exception 
      */
     //@Override
-    public void salvar(Cargo cargo) throws Exception {
-        PreparedStatement ps = null;
-        Connection conn = null;
-        
-        if(cargo==null) {
-            throw new Exception("O valor passado não pode ser nulo.");
-        }
+    public void salvar(Cargo cargo){
+    	
+    	PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
         
         try{
             
             String SQL = "INSERT INTO cargo (nome_cargo) VALUES (?)";
             
-            conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, cargo.getNomeCargo());
             
             ps.executeUpdate();
-        } catch (SQLException sqle) {
-            throw new Exception ("Erro ao inserir o cargo: " + sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
     /**
@@ -66,28 +51,21 @@ public class CargoDAOImp implements CargoDAO {
      * @throws Exception 
      */
     //@Override
-    public void atualizar(Cargo cargo) throws Exception {
+    public void atualizar(Cargo cargo) {
         
-        PreparedStatement ps = null;
-        Connection conn = null;
-        
-        if(cargo==null) {
-            throw new Exception("O valor passado não pode ser nulo");
-        }
+    	PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
         
         try {
             
             String SQL = "UPDATE cargo SET nome_cargo=? where idcargo = ?";
-            conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, cargo.getNomeCargo());
             ps.setInt(2, cargo.getIdCargo());            
             ps.executeUpdate();
             
-        } catch (SQLException sqle) {
-            throw new Exception("Erro ao atualizar os dados: " + sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
     /**
@@ -96,15 +74,14 @@ public class CargoDAOImp implements CargoDAO {
      * @throws Exception 
      */
     //@Override
-    public List todosCargos() throws Exception {
+    public List todosCargos() {
         
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
         ResultSet rs = null;
         
         try {
             
-            conn = this.conn;
             ps = conn.prepareStatement("select * from cargo");
             rs = ps.executeQuery();
             List<Cargo> list = new ArrayList<Cargo>();
@@ -115,11 +92,10 @@ public class CargoDAOImp implements CargoDAO {
                 list.add(new Cargo(idCargo, nomeCargo));
             }
             return list;
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     /**
      * Método que procurar cargo pelo idcargo
@@ -128,29 +104,24 @@ public class CargoDAOImp implements CargoDAO {
      * @throws Exception 
      */
     ///@Override
-    public Cargo procurarIdCargo(Integer idCargo) throws Exception {
+    public Cargo procurarIdCargo(Integer idCargo) {
         
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();;
         ResultSet rs = null;
         
         try {
-            conn = this.conn;
             ps = conn.prepareStatement("select * from cargo where idcargo = ?");
             ps.setInt(1, idCargo);
             rs = ps.executeQuery();
-            if (!rs.next()) {
-                throw new Exception("Não foi encontrado o cargo com esse id: " + idCargo);
-            }
             
             String nomeCargo = rs.getString(2);
             
             return new Cargo(idCargo, nomeCargo);
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     /**
      * Método que deleta o cargo
@@ -158,24 +129,17 @@ public class CargoDAOImp implements CargoDAO {
      * @throws Exception 
      */
     //@Override
-    public void excluir(Cargo cargo) throws Exception {
+    public void excluir(Cargo cargo) {
         
         PreparedStatement ps = null;
         Connection conn = null;
         
-        if(cargo==null) {
-            throw new Exception("O valoar passado não pode ser nulo.");
-        }
-        
         try{
-            conn = this.conn;
             ps = conn.prepareStatement("delete from cargo where idcargo = ?");
             ps.setInt(1, cargo.getIdCargo());
             ps.executeUpdate();
-        } catch (SQLException sqle) {
-            throw new Exception("Erro ao excluir dados: " + sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
 }

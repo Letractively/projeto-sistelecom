@@ -97,6 +97,7 @@ public class RamoDAOImp implements RamoDAO {
 	}
 
 	public List todosRamosParaExibirEmTabela() {
+		
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
@@ -164,7 +165,6 @@ public class RamoDAOImp implements RamoDAO {
 			ps.setInt(1, ramo.getIdRamo());
 
 			ps.executeUpdate();
-			System.out.println("Status: " + ramo.getStatus());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

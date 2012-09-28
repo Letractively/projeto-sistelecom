@@ -21,35 +21,16 @@ import br.com.sistelecom.interfaces.dao.FuncionarioDAO;
  * @author Danilo Alves
  */
 public class FuncionarioDAOImp implements FuncionarioDAO {
-    
-    private Connection conn;
-    
-    /**
-     * 
-     * @throws Exception 
-     */
-    public FuncionarioDAOImp () throws Exception {
-        
-        try{
-            this.conn = SistelecomSingleConnection.getConnection();
-        } catch (Exception e) {
-            throw new Exception("Erro " + "\n" + e.getMessage());
-        }
-    }
     /**
      * Método que cria um funcionário
      * @param funcionario
      * @throws Exception 
      */
     //@Override
-    public void salvar(Funcionario funcionario) throws Exception {
+    public void salvar(Funcionario funcionario) {
         
         PreparedStatement ps = null;
-        Connection conn = null;
-        
-        if(funcionario == null) {
-            throw new Exception("O valor que é passado não pode ser nulo.");
-        }
+        Connection conn = SistelecomSingleConnection.getConnection();
         
         try{
             
@@ -58,7 +39,6 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
                     + " superv_nome, admissao, status, auditoria, login, password)" +
                     "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
-            conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, funcionario.getCpf());
             ps.setInt(2, funcionario.getDepartamento());
@@ -85,10 +65,8 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
             ps.setString(23, funcionario.getPassword());
             
             ps.executeUpdate();
-        } catch (Exception sqle) {
-            throw new Exception ("Erro ao inserir o funcionário: " + sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
     /**
@@ -97,21 +75,17 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
      * @throws Exception 
      */
     //@Override
-    public void atualizar(Funcionario funcionario) throws Exception {
+    public void atualizar(Funcionario funcionario) {
         
         PreparedStatement ps = null;
-        Connection conn = null;
-        
-        if(funcionario == null) {
-            throw new Exception ("O valor a ser passado não pode ser nulo.");
-        }
+        Connection conn = SistelecomSingleConnection.getConnection();
+
         try{
             String SQL = "UPDATE funcionario SET cpf=?, departamento=?, nome=?, logradouro=?, numero=?, complemento=?, " +
                     "bairro=?, cidade=?, uf=?, cep=?, nasc=?, tel_1=?, tel_2=?, doc=?, tipo_doc=?, cargo=?, superv_funcao=?, superv_nome=?, " +
                     "admissao=?, status=?, auditoria=?, login=?, password=? " +
                     "WHERE idfuncionario = ?;";
             
-            conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, funcionario.getCpf());
             ps.setInt(2, funcionario.getDepartamento());
@@ -139,10 +113,8 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
             ps.setInt(24, funcionario.getIdFuncionario());
             
             ps.executeUpdate();
-        } catch (Exception sqle) {
-            throw new Exception ("Erro ao atualizar os dados " + sqle.getMessage());
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
     /**
@@ -151,15 +123,14 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
      * @throws Exception 
      */
     //@Override
-    public List todosFuncionarios() throws Exception {
+    public List todosFuncionarios(){
         
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
         ResultSet rs = null;
         
         try{
             
-            conn = this.conn;
             ps = conn.prepareStatement("select * from funcionario");
             rs = ps.executeQuery();
             List<Funcionario> list = new ArrayList<Funcionario>();
@@ -192,11 +163,10 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
                 list.add(new Funcionario(idFuncionario, cpf, departamento, nome, logradouro, numero, complemento, bairro, cidade, uf, cep, nasc, tel1, tel2, doc, tipoDoc, cargo, supervFuncao, supervNome, admissao, status, auditorio, login, password));
             }
             return list;
-        } catch (SQLException sqle) {
-            throw new Exception (sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     /**
      * Método que procura um funcionário pelo id
@@ -206,20 +176,17 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
      */
 
     //@Override
-    public Funcionario procurarIdFuncionario(Integer idFuncionario) throws Exception {
+    public Funcionario procurarIdFuncionario(Integer idFuncionario) {
         
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
         ResultSet rs = null;
         
         try{
-            conn = this.conn;
             ps = conn.prepareStatement("select * from funcionario where idfuncionario = ?");
             ps.setInt(1, idFuncionario);
             rs = ps.executeQuery();
-            if (!rs.next()) {
-                throw new Exception("Não foi encontrado nenhum funcionario com esse id: " + idFuncionario);
-        }
+        
             String cpf = rs.getString(2);
             Integer departamento = rs.getInt(3);
             String nome = rs.getString(4);
@@ -245,11 +212,10 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
             String password = rs.getString(24);
             
             return new Funcionario(idFuncionario, cpf, departamento, nome, logradouro, numero, complemento, bairro, cidade, uf, cep, nasc, tel1, tel2, doc, tipoDoc, cargo, supervFuncao, supervNome, admissao, status, auditoria, login, password);
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     /**
      * Método que procura um funcionario pelo cpf
@@ -258,21 +224,16 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
      * @throws Exception 
      */
     //@Override
-    public Funcionario procurarCpf(String cpf) throws Exception {
+    public Funcionario procurarCpf(String cpf){
         
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
         ResultSet rs = null;
         
         try {
-            conn = this.conn;
             ps = conn.prepareStatement("select * from funcionario where cpf = ?");
             ps.setString(1, cpf);
             rs = ps.executeQuery();
-            
-            if(!rs.next()) {
-                throw new Exception ("Não foi possível localizar o funcionario do cpf: " + cpf);
-            }
             
             Integer idFuncionario = rs.getInt(1);
             Integer departamento = rs.getInt(3);
@@ -299,11 +260,10 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
             String password = rs.getString(24);
             
             return new Funcionario(idFuncionario, cpf, departamento, nome, logradouro, numero, complemento, bairro, cidade, uf, cep, nasc, tel1, tel2, doc, tipoDoc, cargo, supervFuncao, supervNome, admissao, status, auditoria, login, password);
-        } catch (SQLException sqle) {
-            throw new Exception (sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     /**
      * Método que deleta o funcionario
@@ -311,24 +271,17 @@ public class FuncionarioDAOImp implements FuncionarioDAO {
      * @throws Exception 
      */
     //@Override
-    public void excluir(Funcionario funcionario) throws Exception {
+    public void excluir(Funcionario funcionario) {
         
         PreparedStatement ps = null;
-        Connection conn = null;
-        
-        if(funcionario == null) {
-            throw new Exception("O valor passado não pode ser nulo");
-        }
+        Connection conn = SistelecomSingleConnection.getConnection();
         
         try {
-            conn = this.conn;
             ps = conn.prepareStatement("delete from funcionario where idfuncionario = ?");
             ps.setInt(1, funcionario.getIdFuncionario());
             ps.executeUpdate();
-        } catch (SQLException sqle) {
-            throw new Exception("Erro ao excluir dados: " + sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, null);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
 }

@@ -22,17 +22,6 @@ import br.com.sistelecom.interfaces.dao.ProdutoDAO;
  */
 public class ProdutoDAOImp implements ProdutoDAO {
 
-    private Connection conn;
-
-    public ProdutoDAOImp() throws Exception {
-
-        try {
-            this.conn = SistelecomSingleConnection.getConnection();
-        } catch (Exception e) {
-            throw new Exception("Erro " + "\n" + e.getMessage());
-        }
-    }
-
     /**
      * Método que cria novos produtos
      *
@@ -40,19 +29,15 @@ public class ProdutoDAOImp implements ProdutoDAO {
      * @throws Exception
      */
     //@Override
-    public void salvar(Produto produto) throws Exception {
-        Connection conn = null;
+    public void salvar(Produto produto) {
+    	
+        Connection conn = SistelecomSingleConnection.getConnection();
         PreparedStatement ps = null;
-
-        if (produto == null) {
-            throw new Exception("O valor passado não pode ser nulo.");
-        }
 
         try {
             String SQL = "INSERT into produto (nome_produto, tipo, valor_receita, criacao, status, auditoria)"
                     + "values(?, ?, ?, ?, ?, ?)";
 
-            conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, produto.getNomeProduto());
             ps.setString(2, produto.getTipo());
@@ -61,10 +46,8 @@ public class ProdutoDAOImp implements ProdutoDAO {
             ps.setString(5, produto.getStatus());
             ps.setDate(6, new java.sql.Date(produto.getAuditoria().getTime()));
             ps.executeUpdate();
-        } catch (SQLException sqle) {
-            throw new Exception("Não foi possível cadastrar esse produto: " + sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
 
     }
@@ -76,19 +59,15 @@ public class ProdutoDAOImp implements ProdutoDAO {
      * @throws Exception
      */
     //@Override
-    public void atualizar(Produto produto) throws Exception {
+    public void atualizar(Produto produto) {
+    	
         PreparedStatement ps = null;
-        Connection conn = null;
-
-        if (produto == null) {
-            throw new Exception("O valor passado não pode ser nulo.");
-        }
+        Connection conn = SistelecomSingleConnection.getConnection();
 
         try {
 
             String SQL = "UPDATE produto SET nome_produto=?, tipo=?, valor_receita=?, criacao=?, status=?, auditoria=? "
                     + "where idproduto = ?";
-            conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, produto.getNomeProduto());
             ps.setString(2, produto.getTipo());
@@ -99,10 +78,8 @@ public class ProdutoDAOImp implements ProdutoDAO {
             ps.setInt(7, produto.getIdProduto());
 
             ps.executeUpdate();
-        } catch (SQLException sqle) {
-            throw new Exception("Não foi possível atualizar esse produto: " + sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
     /**
@@ -111,13 +88,13 @@ public class ProdutoDAOImp implements ProdutoDAO {
      * @throws Exception 
      */
     //@Override
-    public List todosProdutos() throws Exception {
+    public List todosProdutos() {
+    	
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
         ResultSet rs = null;
 
         try {
-            conn = this.conn;
             ps = conn.prepareStatement("select * from produto");
             rs = ps.executeQuery();
             List<Produto> list = new ArrayList<Produto>();
@@ -133,11 +110,10 @@ public class ProdutoDAOImp implements ProdutoDAO {
                 list.add(new Produto(idProduto, nomeProduto, tipo, valorReceita, criacao, status, auditoria));
             }
             return list;
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     /**
      * Método que busca um produto pelo id
@@ -146,19 +122,16 @@ public class ProdutoDAOImp implements ProdutoDAO {
      * @throws Exception 
      */
     //@Override
-    public Produto procurarIdProduto(Integer idProduto) throws Exception {
+    public Produto procurarIdProduto(Integer idProduto) {
+    	
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
         ResultSet rs = null;
 
         try {
-            conn = this.conn;
             ps = conn.prepareStatement("select * from produto where idproduto = ?");
             ps.setInt(1, idProduto);
             rs = ps.executeQuery();
-            if (!rs.next()) {
-                throw new Exception("Não foi encontrado com o numero de registro: " + idProduto);
-            }
 
             String nomeProduto = rs.getString(2);
             String tipo = rs.getString(3);
@@ -168,11 +141,10 @@ public class ProdutoDAOImp implements ProdutoDAO {
             Date auditoria = rs.getDate(7);
             
             return new Produto(idProduto, nomeProduto, tipo, valorReceita, criacao, status, auditoria);
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     /**
      * Méotod que busca um produto pelo nome
@@ -181,20 +153,17 @@ public class ProdutoDAOImp implements ProdutoDAO {
      * @throws Exception 
      */
     //@Override
-    public Produto procurarNomeProduto(String nomeProduto) throws Exception {
+    public Produto procurarNomeProduto(String nomeProduto) {
+    	
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
         ResultSet rs = null;
         
         try{ 
-            conn = this.conn;
             ps = conn.prepareStatement("select * from produto where nome_produto = ?");
             ps.setString(1, nomeProduto);
             rs = ps.executeQuery();
             
-            if(!rs.next()) {
-                throw new Exception("Não foi localizado o produto com esse nome: " + nomeProduto);
-            }
             Integer idProduto = rs.getInt(1);
             String tipo = rs.getString(3);
             Integer valorReceita = rs.getInt(4);
@@ -203,11 +172,10 @@ public class ProdutoDAOImp implements ProdutoDAO {
             Date auditoria = rs.getDate(7);
             
             return new Produto(idProduto, nomeProduto, tipo, valorReceita, criacao, status, auditoria);
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     /**
      * Método que deleta um produto
@@ -215,22 +183,16 @@ public class ProdutoDAOImp implements ProdutoDAO {
      * @throws Exception 
      */
     //@Override
-    public void excluir(Produto produto) throws Exception {
+    public void excluir(Produto produto) {
         PreparedStatement ps = null;
-        Connection conn = null;
-        
-        if(produto==null) {
-            throw new Exception("O valor passado não pode ser nulo.");
-        }
+        Connection conn = SistelecomSingleConnection.getConnection();
+
         try{
-            conn = this.conn;
             ps = conn.prepareStatement("delete from produto where idproduto = ?");
             ps.setInt(1, produto.getIdProduto());
             ps.executeUpdate();
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
 }

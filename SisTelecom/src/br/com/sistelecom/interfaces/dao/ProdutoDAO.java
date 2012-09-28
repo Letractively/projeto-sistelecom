@@ -19,7 +19,7 @@ public interface ProdutoDAO {
      * @return
      * @throws Exception
      */
-    List todosProdutos() throws Exception;
+    List todosProdutos();
 
     /**
      * Método que cria novos produtos
@@ -27,14 +27,14 @@ public interface ProdutoDAO {
      * @param produto
      * @throws Exception
      */
-    void salvar(Produto produto) throws Exception;
+    void salvar(Produto produto);
 
     /**
      * Método que deleta um produto
      * @param produto
      * @throws Exception
      */
-    void excluir(Produto produto) throws Exception;
+    void excluir(Produto produto);
 
     /**
      * Método que busca um produto pelo id
@@ -42,7 +42,7 @@ public interface ProdutoDAO {
      * @return
      * @throws Exception
      */
-    Produto procurarIdProduto(Integer idproduto) throws Exception;
+    Produto procurarIdProduto(Integer idproduto);
 
     /**
      * Méotod que busca um produto pelo nome
@@ -50,7 +50,7 @@ public interface ProdutoDAO {
      * @return
      * @throws Exception
      */
-    Produto procurarNomeProduto(String nome_produto) throws Exception;
+    Produto procurarNomeProduto(String nome_produto);
 
     /**
      * Método que atualiza os produtos
@@ -58,6 +58,6 @@ public interface ProdutoDAO {
      * @param produto
      * @throws Exception
      */
-    void atualizar(Produto produto) throws Exception;
+    void atualizar(Produto produto);
     
 }

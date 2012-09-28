@@ -19,21 +19,21 @@ public interface DepartamentoDAO {
      * @return
      * @throws Exception
      */
-    List todosDepartamentos() throws Exception;
+    List todosDepartamentos();
 
     /**
      * Método que cria departamentos
      * @param departamento
      * @throws Exception
      */
-    void salvar(Departamento departamento) throws Exception;
+    void salvar(Departamento departamento);
 
     /**
      * Método que deleta um departamento
      * @param departamento
      * @throws Exception
      */
-    void excluir(Departamento departamento) throws Exception;
+    void excluir(Departamento departamento);
 
     /**
      * Método que procura um departamento pelo id
@@ -41,7 +41,7 @@ public interface DepartamentoDAO {
      * @return
      * @throws Exception
      */
-    Departamento procurarIdDepartamento(Integer iddepartamento) throws Exception;
+    Departamento procurarIdDepartamento(Integer iddepartamento);
 
     /**
      * Método que procura um departamento pelo seu nome
@@ -49,13 +49,13 @@ public interface DepartamentoDAO {
      * @return
      * @throws Exception
      */
-    Departamento procurarNomeDepartamento(String nome_departamento) throws Exception;
+    Departamento procurarNomeDepartamento(String nome_departamento);
 
     /**
      * Método que atualiza os departamentos
      * @param departamento
      * @throws Exception
      */
-    void atualizar(Departamento departamento) throws Exception;
+    void atualizar(Departamento departamento);
     
 }
