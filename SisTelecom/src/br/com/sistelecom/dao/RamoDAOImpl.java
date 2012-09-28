@@ -20,39 +20,35 @@ import br.com.sistelecom.to.RamoTO;
 public class RamoDAOImpl implements DAO<Ramo> {
 
 	public void salvar(Ramo ramo) throws Exception {
-
-		PreparedStatement ps = null;
-		Connection conn = SistelecomSingleConnection.getConnection();
-
 		try{
-
+			Connection conn = SistelecomSingleConnection.getConnection();
+			
 			String SQL = "INSERT INTO ramo (nome_ramo) values (?)";
-
-			ps = conn.prepareStatement(SQL);
+			
+			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, ramo.getNomeRamo());
 			ps.executeUpdate();
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new Exception();
 		} 
 	}
 	
 	public void atualizar(Ramo ramo) throws Exception{
-
-		PreparedStatement ps = null;
-		Connection conn = SistelecomSingleConnection.getConnection();
-
 		try{
-
+			Connection conn = SistelecomSingleConnection.getConnection();
 			String SQL = "UPDATE ramo SET nome_ramo=?, status=? " +
 					"where idramo = ?";
-			ps = conn.prepareStatement(SQL);
+			
+			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, ramo.getNomeRamo());
 			ps.setBoolean(2, ramo.getStatus());
 			ps.setInt(3, ramo.getIdRamo());
 
 			ps.executeUpdate();
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new Exception();
 		}
 	}
 	
@@ -127,19 +123,17 @@ public class RamoDAOImpl implements DAO<Ramo> {
 	}
 	
 	public void excluir(Ramo ramo) throws Exception {
-
-		PreparedStatement ps = null;
-		Connection conn = SistelecomSingleConnection.getConnection();
-		
 		try{
-
+			Connection conn = SistelecomSingleConnection.getConnection();
+			
 			String SQL = "delete from ramo where idramo = ?";
-			ps = conn.prepareStatement(SQL);
+			
+			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setInt(1, ramo.getIdRamo());
-
 			ps.executeUpdate();
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new Exception();
 		}
 	}
 }
