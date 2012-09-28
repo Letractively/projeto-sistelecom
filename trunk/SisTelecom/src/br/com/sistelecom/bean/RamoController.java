@@ -1,81 +1,77 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.sistelecom.bean;
-
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
-import br.com.sistelecom.dao.RamoDAOImp;
+import br.com.sistelecom.dao.RamoDAOImpl;
 import br.com.sistelecom.entity.Ramo;
-import br.com.sistelecom.interfaces.dao.RamoDAO;
 import br.com.sistelecom.to.RamoTO;
 
-/**
- * 
- * @author Danilo Alves
- */
-public class RamoController extends Bean {
+public class RamoController extends Controller<Ramo> {
 
 	private Ramo ramo;
-	private List<RamoTO> listaDeTodosOsRamos;
-	private static final RamoDAO RAMO_DAO = new RamoDAOImp();
-
+	private List<RamoTO> lista;
+	
 	@Override
-	public String novoRegistro() {
-
+	public void novoRegistro(ActionEvent evento) {
 		if (validarDadosFormulario()) {
-			RAMO_DAO.salvar(this.getRamo());
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Ramo incluído com sucesso."));
+			try {
+				this.getDao().salvar(this.getRamo());
+			} catch (Exception e) {
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(e.getMessage()));
+				return;
+			}
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo incluído com sucesso."));
 		}
-
-		return null;
 	}
-
+	
 	@Override
-	public String listarTodos() {
-		this.listaDeTodosOsRamos = new LinkedList<RamoTO>();
-		this.setListaDeTodosOsRamos(new RamoDAOImp().todosRamosParaExibirEmTabela());
-		return "listagem";
+	public void listarTodos() {
+		this.lista = new LinkedList<RamoTO>();
+		this.setLista(this.getDao().todosRamosParaExibirEmTabela());
 	}
-
+	
 	@Override
-	public String carregarRegistro() {
-		int id = this.getRamo().getIdRamo();
+	public void carregarRegistro(ActionEvent evento) {
+		int idRamo = this.getRamo().getIdRamo();
 
-		final Ramo ramo = RAMO_DAO.procurarIdRamo(id);
+		final Ramo ramo = this.getDao().obterPorId(idRamo);
 
 		this.getRamo().setIdRamo(ramo.getIdRamo());
 		this.getRamo().setNomeRamo(ramo.getNomeRamo());
-
-		return "alteracao";
 	}
-
+	
+	@Override
+	public void excluirRegistro(ActionEvent actionEvent) {
+		int idRamo = this.getRamo().getIdRamo();
+		
+		final Ramo ramo = this.getDao().obterPorId(idRamo);
+		try {
+			this.getDao().excluir(ramo);
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(e.getMessage()));
+			e.printStackTrace();
+		}
+		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo excluído com sucesso."));
+	}
+	
 	@Override
 	public boolean validarDadosFormulario() {
-
 		if (this.getRamo().getNomeRamo().equals("")) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Informe o nome do ramo."));
+			
 			return false;
 		}
 		return true;
 	}
 	
 	@Override
-	public void excluirRegistro(ActionEvent action){
-		
-		int id = this.getRamo().getIdRamo();
-		
-		final Ramo ramo = RAMO_DAO.procurarIdRamo(id);
-		RAMO_DAO.excluir(ramo);
-	} 
-
+	public RamoDAOImpl getDao() {
+		return new RamoDAOImpl();
+	}
+	/**
+	 * @return the ramo
+	 */
 	public Ramo getRamo() {
 		if (this.ramo == null) {
 			this.ramo = new Ramo();
@@ -83,16 +79,25 @@ public class RamoController extends Bean {
 		return ramo;
 	}
 
+	/**
+	 * @param ramo the ramo to set
+	 */
 	public void setRamo(Ramo ramo) {
 		this.ramo = ramo;
 	}
 
-	public List<RamoTO> getListaDeTodosOsRamos() {
-		return listaDeTodosOsRamos;
+	/**
+	 * @return the lista
+	 */
+	public List<RamoTO> getLista() {
+		return lista;
 	}
 
-	public void setListaDeTodosOsRamos(List<RamoTO> listaDeTodosOsRamos) {
-		this.listaDeTodosOsRamos = listaDeTodosOsRamos;
+	/**
+	 * @param lista the lista to set
+	 */
+	public void setLista(List<RamoTO> lista) {
+		this.lista = lista;
 	}
-
+	
 }

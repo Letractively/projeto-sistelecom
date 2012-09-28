@@ -51,15 +51,15 @@ public class RamoDAOImpTest {
     public void salvar() throws Exception {
         System.out.println("salvar");
         final Ramo ramo = new Ramo(null, "Padaria", true);
-        final RamoDAOImp instance = new RamoDAOImp();
+        final RamoDAOImpl instance = new RamoDAOImpl();
         instance.salvar(ramo);
         assertNotNull(ramo);
         assertTrue(ramo.getNomeRamo().length() > 0);
     }
     
     public Ramo pesquisarId(Integer idramo) throws Exception {
-        RamoDAOImp instance = new RamoDAOImp();
-        return instance.procurarIdRamo(idramo);
+        RamoDAOImpl instance = new RamoDAOImpl();
+        return instance.obterPorId(idramo);
     }
 
     /**
@@ -69,7 +69,7 @@ public class RamoDAOImpTest {
     public void atualizar() throws Exception {
         System.out.println("atualizar");
         final Ramo ramo = new Ramo(20, "Borracharia", false);
-        final RamoDAOImp instance = new RamoDAOImp();
+        final RamoDAOImpl instance = new RamoDAOImpl();
         instance.atualizar(ramo);
         assertNotNull(ramo);
     }
@@ -80,9 +80,9 @@ public class RamoDAOImpTest {
     @Test
     public void todosRamos() throws Exception {
         System.out.println("todosRamos");
-        final RamoDAOImp instance = new RamoDAOImp();
-        List expResult = null;
-        List result = instance.todosRamos();
+        final RamoDAOImpl instance = new RamoDAOImpl();
+        List<Ramo> expResult = null;
+        List<Ramo> result = instance.listarTodos();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -110,7 +110,7 @@ public class RamoDAOImpTest {
         Ramo ramo = new Ramo();
         Integer idRamo = 2;
         ramo.setIdRamo(idRamo);
-        RamoDAOImp instance = new RamoDAOImp();
+        RamoDAOImpl instance = new RamoDAOImpl();
         instance.excluir(ramo);
         
         try{
