@@ -8,10 +8,8 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
 import br.com.sistelecom.dao.ClienteDAOImp;
-import br.com.sistelecom.dao.RamoDAOImp;
 import br.com.sistelecom.entity.Cliente;
 import br.com.sistelecom.interfaces.dao.ClienteDAO;
-import br.com.sistelecom.interfaces.dao.RamoDAO;
 
 /**
  *

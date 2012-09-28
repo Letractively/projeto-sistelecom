@@ -3,55 +3,10 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
  <managed-bean>
-  <managed-bean-name>loginBean</managed-bean-name>
-  <managed-bean-class>br.com.sistelecom.bean.LoginBean</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>clienteC</managed-bean-name>
-  <managed-bean-class>br.com.sistelecom.bean.ClienteController</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>ramoC</managed-bean-name>
+  <managed-bean-name>ramoController</managed-bean-name>
   <managed-bean-class>br.com.sistelecom.bean.RamoController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
- <managed-bean>
-  <managed-bean-name>ramoTO</managed-bean-name>
-  <managed-bean-class>br.com.sistelecom.to.RamoTO</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>estadoC</managed-bean-name>
-  <managed-bean-class>br.com.sistelecom.bean.EstadoController</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
- </managed-bean>
- <navigation-rule>
-  <from-view-id>/paginas/cadastros/ramo/ramo.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>novo</from-outcome>
-   <to-view-id>/paginas/cadastros/ramo/novo.xhtml</to-view-id>
-  </navigation-case>
-  <navigation-case>
-   <from-outcome>listagem</from-outcome>
-   <to-view-id>/paginas/cadastros/ramo/listagem.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/paginas/cadastros/ramo/listagem.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>ramo</from-outcome>
-   <to-view-id>/paginas/cadastros/ramo/ramo.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
- <navigation-rule>
-  <from-view-id>/paginas/cadastros/ramo/novo.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>ramo</from-outcome>
-   <to-view-id>/paginas/cadastros/ramo/ramo.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>

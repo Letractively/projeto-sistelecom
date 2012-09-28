@@ -9,24 +9,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Ramo;
-import br.com.sistelecom.interfaces.dao.RamoDAO;
 import br.com.sistelecom.to.RamoTO;
 
 /**
  *
  * @author Danilo Alves
  */
-public class RamoDAOImp implements RamoDAO {
+public class RamoDAOImpl implements DAO<Ramo> {
 
-	/**
-	 * Método que cria os tios de ramos que o cliente pode ter
-	 * @param ramo
-	 * @throws Exception 
-	 */
-	public void salvar(Ramo ramo) {
+	public void salvar(Ramo ramo) throws Exception {
 
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
@@ -42,13 +35,8 @@ public class RamoDAOImp implements RamoDAO {
 			e.printStackTrace();
 		} 
 	}
-	/**
-	 * Método que atualiza um ramo
-	 * @param ramo
-	 * @throws Exception 
-	 */
-	//@Override
-	public void atualizar(Ramo ramo){
+	
+	public void atualizar(Ramo ramo) throws Exception{
 
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
@@ -67,13 +55,8 @@ public class RamoDAOImp implements RamoDAO {
 			e.printStackTrace();
 		}
 	}
-	/**
-	 * Método que lista todos os ramos
-	 * @return
-	 * @throws Exception 
-	 */
-	//@Override
-	public List todosRamos(){
+	
+	public List<Ramo> listarTodos(){
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
@@ -96,7 +79,7 @@ public class RamoDAOImp implements RamoDAO {
 		return null;
 	}
 
-	public List todosRamosParaExibirEmTabela() {
+	public List<RamoTO> todosRamosParaExibirEmTabela() {
 		
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
@@ -118,14 +101,8 @@ public class RamoDAOImp implements RamoDAO {
 		}
 		return null;
 	}
-	/**
-	 * Método que busca um ramo a partir de um id
-	 * @param idRamo
-	 * @return
-	 * @throws Exception 
-	 */
-	//@Override
-	public Ramo procurarIdRamo(Integer idRamo){
+	
+	public Ramo obterPorId(int id){
 
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
@@ -133,27 +110,23 @@ public class RamoDAOImp implements RamoDAO {
 
 		try {
 			ps = conn.prepareStatement("select * from ramo where idramo = ?");
-			ps.setInt(1, idRamo);
+			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			if (!rs.next()) {
-				throw new Exception("Não foi encontrado o ramo com esse id: " + idRamo);
+				throw new Exception("Não foi encontrado o ramo com esse id: " + id);
 			}
 
 			String nomeRamo = rs.getString(2);
 			Boolean status = rs.getBoolean(3);
 
-			return new Ramo(idRamo, nomeRamo, status);
+			return new Ramo(id, nomeRamo, status);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		return null;
 	}
-	/**
-	 * Método que deleta um ramo
-	 * @param ramo
-	 * @throws Exception 
-	 */
-	public void excluir(Ramo ramo) {
+	
+	public void excluir(Ramo ramo) throws Exception {
 
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();

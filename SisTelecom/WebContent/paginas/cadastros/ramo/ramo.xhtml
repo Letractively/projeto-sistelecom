@@ -6,21 +6,83 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-
-<body>
-	<h:form id="formulario-cadastroRamo" prependId="false">
-		<div id="div-cadastro" align="left">
+	<body>
 			<rich:panel style="800px;">
 				<f:facet name="header">
 					<h:outputLabel value="Ramo (Atividade Econômica)" />
 				</f:facet>
+
+				<a4j:form id="formulario-dados-ramo" prependId="false">
+					<h:panelGrid columns="2">
+					
+						<h:outputLabel value="Id:" />	
+						<h:inputText value="#{ramoController.ramo.idRamo}" style="width:50px;" />
+						
+						<h:outputLabel value="Nome:" />
+						<h:inputText value="#{ramoController.ramo.nomeRamo}" />
+						
+					</h:panelGrid>
+					
+					<rich:spacer width="100%" height="10px" />
+									
+					<h:commandButton value="Salvar" actionListener="#{ramoController.novoRegistro}"/>
+				</a4j:form>
 				
-				<h:panelGrid>
-					<h:commandLink value="Novo" action="novo" />
-					<h:commandLink value="Listar" action="#{ramoC.listarTodos}" />
-				</h:panelGrid>
+				<rich:spacer width="100%" height="10px" />
+
+				<rich:separator width="100%" height="10px;"/>
+				
+				<rich:spacer width="100%" height="10px" />
+				
+				<a4j:form id="formulario-tabela-ramo" prependId="false">
+					<rich:dataTable id="tabela" value="#{ramoController.lista}" var="ramo" style="width:100%;">
+	
+						<rich:column width="50">
+		
+							<f:facet name="header">
+								<h:outputLabel value="ID" />
+							</f:facet>
+							
+							<h:outputLabel value="#{ramo.id}" />
+							
+						</rich:column>
+		
+						<rich:column width="500">
+						
+							<f:facet name="header">
+								<h:outputLabel value="Nome" />
+							</f:facet>
+							
+							<h:outputLabel value="#{ramo.nome}" />
+							
+						</rich:column>
+		
+						<rich:column width="50">
+		
+							<f:facet name="header">
+								<h:outputLabel value="Ações" />
+							</f:facet>
+							
+							<div align="center">
+								<h:panelGrid columns="3">
+									<h:commandButton value="Alterar" actionListener="#{ramoController.carregarRegistro}">
+										<f:setPropertyActionListener target="#{ramoController.ramo.idRamo}" value="#{ramo.idRamo}" />
+									</h:commandButton>
+									
+									<rich:spacer width="10px"/>
+									
+									<h:commandButton value="Excluir" actionListener="{ramoController.excluirRegisto}">
+										<f:setPropertyActionListener target="#{ramoController.ramo.idRamo}" value="#{ramo.idRamo}" />
+									</h:commandButton>
+								</h:panelGrid>	
+							</div>					
+							
+						</rich:column>
+		
+					</rich:dataTable>
+	
+					<h:messages />
+				</a4j:form>				
 			</rich:panel>
-		</div>
-	</h:form>
-</body>
+	</body>
 </html>
