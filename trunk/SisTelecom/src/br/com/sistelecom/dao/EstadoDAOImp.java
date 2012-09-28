@@ -12,33 +12,14 @@ import br.com.sistelecom.entity.Estado;
 import br.com.sistelecom.interfaces.dao.EstadoDAO;
 
 public class EstadoDAOImp implements EstadoDAO{
-	
-	private Connection conn;
-	
-	public EstadoDAOImp () throws Exception {
-		
-		try{
-			this.conn = SistelecomSingleConnection.getConnection();
-		}
-		catch(Exception e){
-			throw new Exception("Erro: " + "\n" + e.getMessage());
-		}
-	}
-	
-	/* (non-Javadoc)
-	 * @see br.com.sistelecom.dao.EstadoDAO#todosEstados()
-	 */
-	/* (non-Javadoc)
-	 * @see br.com.sistelecom.dao.EstadoDAO#todosEstados()
-	 */
-	public List todosEstados() throws Exception {
+
+	public List todosEstados() {
 		
 		PreparedStatement ps = null;
-		Connection conn = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
 		
 		try{
-			conn = this.conn;
 			ps = conn.prepareStatement("select * from estado");
 			rs = ps.executeQuery();
 			List<Estado> list = new ArrayList<Estado>();
@@ -50,11 +31,10 @@ public class EstadoDAOImp implements EstadoDAO{
 				list.add(new Estado(idEstado, siglaUf, nomeEstado));
 			}
 			return list;
-		}catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+		}catch (Exception e) {
+			e.printStackTrace();
         }
+		return null;
 	}
 
 }

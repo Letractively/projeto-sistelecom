@@ -19,21 +19,21 @@ public interface FuncionarioDAO {
      * @return
      * @throws Exception
      */
-    List todosFuncionarios() throws Exception;
+    List todosFuncionarios();
 
     /**
      * Método que cria um funcionário
      * @param funcionario
      * @throws Exception
      */
-    void salvar(Funcionario funcionario) throws Exception;
+    void salvar(Funcionario funcionario);
 
     /**
      * Método que deleta o funcionario
      * @param funcionario
      * @throws Exception
      */
-    void excluir(Funcionario funcionario) throws Exception;
+    void excluir(Funcionario funcionario);
 
     /**
      * Método que procura um funcionario pelo cpf
@@ -41,7 +41,7 @@ public interface FuncionarioDAO {
      * @return
      * @throws Exception
      */
-    Funcionario procurarCpf(String cpf) throws Exception;
+    Funcionario procurarCpf(String cpf);
 
     /**
      * Método que procura um funcinario pelo id
@@ -49,13 +49,13 @@ public interface FuncionarioDAO {
      * @return
      * @throws Exception 
      */
-    Funcionario procurarIdFuncionario(Integer idfuncionario) throws Exception;
+    Funcionario procurarIdFuncionario(Integer idfuncionario);
 
     /**
      * Métodos que atualiza o cadastro de funcionarios
      * @param funcionario
      * @throws Exception
      */
-    void atualizar(Funcionario funcionario) throws Exception;
+    void atualizar(Funcionario funcionario);
     
 }

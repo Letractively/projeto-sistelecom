@@ -18,20 +18,25 @@
 				var="ramo" style="width:100%;">
 
 				<rich:column width="50">
+					<div id="div-id" align="center">
 					<f:facet name="header">
 						<h:outputLabel value="ID" />
 					</f:facet>
 					<h:outputLabel value="#{ramo.id}" />
+					</div>
 				</rich:column>
 
 				<rich:column width="500">
-					<f:facet name="header">
-						<h:outputLabel value="Nome" />
-					</f:facet>
-					<h:outputLabel value="#{ramo.nome}" />
+					<div id="div-id" align="center">
+						<f:facet name="header">
+							<h:outputLabel value="Nome" />
+						</f:facet>
+						<h:outputLabel value="#{ramo.nome}" />
+					</div>
 				</rich:column>
 
 				<rich:column width="50">
+					<div id="id-buttons" align="center">
 					<f:facet name="header">
 						<h:outputLabel value="Ações" />
 					</f:facet>
@@ -41,8 +46,11 @@
 							<f:setPropertyActionListener target="#{ramoC.ramo.idRamo}" value="#{ramo.idRamo}" />
 						</h:commandButton>
 						<rich:spacer width="10px"/>
-						<h:commandButton value="Excluir">
+						<h:commandButton value="Excluir" actionListener="{ramoC.excluirRegisto}">
+						<h:outputText value="#{ramoC.ramo.idRamo}" />
+							<f:setPropertyActionListener target="#{ramoC.ramo.idRamo}" value="#{ramo.idRamo}" />
 						</h:commandButton>
+						</div>
 					</div>
 					
 				</rich:column>

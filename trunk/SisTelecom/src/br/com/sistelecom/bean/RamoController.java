@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
 import br.com.sistelecom.dao.RamoDAOImp;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.interfaces.dao.RamoDAO;
@@ -38,8 +40,7 @@ public class RamoController extends Bean {
 	@Override
 	public String listarTodos() {
 		this.listaDeTodosOsRamos = new LinkedList<RamoTO>();
-		this.setListaDeTodosOsRamos(new RamoDAOImp()
-				.todosRamosParaExibirEmTabela());
+		this.setListaDeTodosOsRamos(new RamoDAOImp().todosRamosParaExibirEmTabela());
 		return "listagem";
 	}
 
@@ -65,6 +66,15 @@ public class RamoController extends Bean {
 		}
 		return true;
 	}
+	
+	@Override
+	public void excluirRegistro(ActionEvent action){
+		
+		int id = this.getRamo().getIdRamo();
+		
+		final Ramo ramo = RAMO_DAO.procurarIdRamo(id);
+		RAMO_DAO.excluir(ramo);
+	} 
 
 	public Ramo getRamo() {
 		if (this.ramo == null) {

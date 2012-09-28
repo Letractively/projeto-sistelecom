@@ -22,39 +22,23 @@ import br.com.sistelecom.interfaces.dao.ClienteDAO;
  */
 public class ClienteDAOImp implements ClienteDAO {
     
-    private Connection conn;
-    
-    public ClienteDAOImp () throws Exception {
-        
-        try{
-            this.conn = SistelecomSingleConnection.getConnection();
-        }
-        catch(Exception e){
-            throw new Exception("Erro " + "\n" + e.getMessage());
-        }
-    }
-    
     /**
      * Método que salva os dados dos clientes cadastrados
      * @param cliente
      * @throws Exception 
      */
     //@Override
-    public void salvar(Cliente cliente) throws Exception {
-        PreparedStatement ps = null;
-        Connection conn = null;
+    public void salvar(Cliente cliente) {
         
-        if(cliente == null){
-            throw new Exception("O valor que é passado nao pode ser nulo");
-        }
-        
+    	PreparedStatement ps = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
+
         try{
             String SQL = "INSERT INTO cliente (cnpj, razao_social, nome_fantasia, ramo, logradouro, numero, complemento, bairro, cidade, uf, cep,"
                     + " tel_1, tel_2, email, insc_est, desde, cpf_resp_1, nome_resp_1, nasc_resp_1, cpf_resp_2, nome_resp_2,"
                     + " nasc_resp_2, cpf_resp_3, nome_resp_3, nasc_resp_3, auditoria)" +
                         "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     
-            conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, cliente.getCnpj());
             ps.setString(2, cliente.getRazaoSocial());
@@ -85,12 +69,9 @@ public class ClienteDAOImp implements ClienteDAO {
             
             ps.executeUpdate();
         }
-        catch (SQLException sqle) {
-            throw new Exception("Erro ao inserir cliente: "+ sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
-        }    
-        
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     /**
      * Método que atualiza os dados na tabela Clientes
@@ -98,14 +79,11 @@ public class ClienteDAOImp implements ClienteDAO {
      * @throws Exception 
      */
     //@Override
-    public void atualizar(Cliente cliente) throws Exception {
+    public void atualizar(Cliente cliente) {
     
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();;
         
-        if (cliente == null){
-            throw new Exception("O valor passado não pode ser nulo");
-        }
         try{
             String SQL = "UPDATE cliente SET cnpj=?, razao_social=?, nome_fantasia=?, ramo=?, logradouro=?, numero=?, " +
                     "complemento=?, bairro=?, cidade=?, uf=?, cep=?, tel_1=?, tel_2=?, email=?, insc_est=?, desde=?, cpf_resp_1=?, " +
@@ -113,7 +91,6 @@ public class ClienteDAOImp implements ClienteDAO {
                     "nome_resp_3=?, nasc_resp_3=?, auditoria=? " + 
                     "where idcliente = ?";
             
-            conn = this.conn;
             ps = conn.prepareStatement(SQL);
             ps.setString(1, cliente.getCnpj());
             ps.setString(2, cliente.getRazaoSocial());
@@ -144,10 +121,8 @@ public class ClienteDAOImp implements ClienteDAO {
             ps.setInt(27, cliente.getIdCliente());
             
             ps.executeUpdate();
-        } catch (SQLException sqle) {
-            throw new Exception ("Erro ao atualizar dados: "+ sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
         
     }
@@ -158,15 +133,14 @@ public class ClienteDAOImp implements ClienteDAO {
      * @throws Exception 
      */
     //@Override
-    public List todosClientes() throws Exception {
+    public List todosClientes() {
         
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();;
         ResultSet rs = null;
         
         try{
             
-            conn = this.conn;
             ps = conn.prepareStatement("select * from cliente");
             rs = ps.executeQuery();
             List<Cliente> list = new ArrayList<Cliente>();
@@ -202,11 +176,10 @@ public class ClienteDAOImp implements ClienteDAO {
                 list.add(new Cliente(idCliente, cnpj, razaoSocial, nomeFantasia, ramo, logradouro, numero, complemento, bairro, cidade, uf, cep, tel1, tel2, email, inscEst, desde, cpfResp1, nomeResp1, nascResp1, cpfResp2, nomeResp2, nascResp2, cpfResp3, nomeResp3, nascResp3, auditoria));
             }
             return list;
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+           e.printStackTrace();
         }
+        return null;
     }
 
     /**
@@ -217,20 +190,16 @@ public class ClienteDAOImp implements ClienteDAO {
      * @throws Exception
      */
     //@Override
-    public Cliente procurarIdCliente(Integer idCliente) throws Exception {
+    public Cliente procurarIdCliente(Integer idCliente) {
 
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();;
         ResultSet rs = null;
 
         try {
-            conn = this.conn;
             ps = conn.prepareStatement("select * from cliente where idcliente = ?");
             ps.setInt(1, idCliente);
             rs = ps.executeQuery();
-            if (!rs.next()) {
-                throw new Exception("Não foi encontrado nenhum cliente com o numero de registro " + idCliente);
-            }
 
             String cnpj = rs.getString(2);
             String razaoSocial = rs.getString(3);
@@ -261,11 +230,10 @@ public class ClienteDAOImp implements ClienteDAO {
             
             return new Cliente(idCliente, cnpj, razaoSocial, nomeFantasia, ramo, logradouro, numero, complemento, bairro, cidade, uf, cep, tel1, tel2, email, inscEst, desde, cpfResp1, nomeResp1, nascResp1, cpfResp2, nomeResp2, nascResp2, cpfResp3, nomeResp3, nascResp3, auditoria);
             
-        } catch(SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch(Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     
     /**
@@ -275,21 +243,16 @@ public class ClienteDAOImp implements ClienteDAO {
      * @throws Exception 
      */
     //@Override
-    public Cliente procurarCnpj (String cnpj) throws Exception {
+    public Cliente procurarCnpj (String cnpj) {
         
         PreparedStatement ps = null;
-        Connection conn = null;
+        Connection conn = SistelecomSingleConnection.getConnection();
         ResultSet rs = null;
         
         try{
-            conn = this.conn;
             ps = conn.prepareStatement("select * from cliente where cnpj= ?");
             ps.setString(1, cnpj);
             rs = ps.executeQuery();
-            
-            if(!rs.next()){
-                throw new Exception("Não foi encontrado nenhum cliente com o cnpj digitado " + cnpj);
-            }
             
             Integer idCliente = rs.getInt(1);
             String razaoSocial = rs.getString(3);
@@ -320,11 +283,10 @@ public class ClienteDAOImp implements ClienteDAO {
             
             return new Cliente(idCliente, cnpj, razaoSocial, nomeFantasia, ramo, logradouro, numero, complemento, bairro, cidade, uf, cep, tel1, tel2, email, inscEst, desde, cpfResp1, nomeResp1, nascResp1, cpfResp2, nomeResp2, nascResp2, cpfResp3, nomeResp3, nascResp3, auditoria);
             
-        } catch (SQLException sqle) {
-            throw new Exception(sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps, rs);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
+        return null;
     }
     
     /**
@@ -333,25 +295,18 @@ public class ClienteDAOImp implements ClienteDAO {
      * @throws Exception 
      */
     //@Override
-    public void excluir(Cliente cliente) throws Exception {
+    public void excluir(Cliente cliente) {
         
         PreparedStatement ps = null;
-        Connection conn = null;
-        
-        if(cliente == null){
-            throw new Exception("O valor passado não pode ser nulo");
-        }
+        Connection conn = SistelecomSingleConnection.getConnection();;
         
         try{
-            conn = this.conn;
             ps = conn.prepareStatement("delete from cliente where idcliente = ?");
             ps.setInt(1, cliente.getIdCliente());
             ps.executeUpdate();
             
-        } catch (SQLException sqle) {
-            throw new Exception("Erro ao excluir dados: " + sqle);
-        } finally {
-            SistelecomSingleConnection.closeConnection(conn, ps);
+        } catch (Exception e) {
+        	e.printStackTrace();
         }
     }
     

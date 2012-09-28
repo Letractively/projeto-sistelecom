@@ -19,21 +19,21 @@ public interface CargoDAO {
      * @return
      * @throws Exception
      */
-    List todosCargos() throws Exception;
+    List todosCargos();
 
     /**
      * Método que cria cargos
      * @param cargo
      * @throws Exception
      */
-    void salvar(Cargo cargo) throws Exception;
+    void salvar(Cargo cargo);
 
     /**
      * Método que deleta o cargo
      * @param cargo
      * @throws Exception
      */
-    void excluir(Cargo cargo) throws Exception;
+    void excluir(Cargo cargo);
 
     /**
      * Método que procurar cargo pelo idcargo
@@ -41,13 +41,13 @@ public interface CargoDAO {
      * @return
      * @throws Exception
      */
-    Cargo procurarIdCargo(Integer idcargo) throws Exception;
+    Cargo procurarIdCargo(Integer idcargo);
 
     /**
      * Método que atualiza os cargos
      * @param cargo
      * @throws Exception
      */
-    void atualizar(Cargo cargo) throws Exception;
+    void atualizar(Cargo cargo);
     
 }

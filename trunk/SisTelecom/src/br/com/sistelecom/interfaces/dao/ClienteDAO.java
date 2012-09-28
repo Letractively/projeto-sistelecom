@@ -19,14 +19,14 @@ public interface ClienteDAO {
      * @return
      * @throws Exception
      */
-    List todosClientes() throws Exception;
+    List todosClientes();
 
     /**
      * Método que salva os dados dos clientes cadastrados
      * @param cliente
      * @throws Exception
      */
-    void salvar(Cliente cliente) throws Exception;
+    void salvar(Cliente cliente);
     
     /**
      * Método que deleta o cliente a partir do id
@@ -34,7 +34,7 @@ public interface ClienteDAO {
      * @throws Exception 
      */
 
-    void excluir(Cliente cliente) throws Exception;
+    void excluir(Cliente cliente);
     
     /**
      * Método que procura o cliente a partir do cnpj
@@ -43,7 +43,7 @@ public interface ClienteDAO {
      * @throws Exception 
      */
 
-    Cliente procurarCnpj(String cnpj) throws Exception;
+    Cliente procurarCnpj(String cnpj);
 
     /**
      * Método que faz a busca na tabela cliente a partir do idcliente
@@ -51,13 +51,13 @@ public interface ClienteDAO {
      * @return
      * @throws Exception
      */
-    Cliente procurarIdCliente(Integer idcliente) throws Exception;
+    Cliente procurarIdCliente(Integer idcliente);
 
     /**
      * Método que atualiza os dados na tabela Clientes
      * @param cliente
      * @throws Exception
      */
-    void atualizar(Cliente cliente) throws Exception;
+    void atualizar(Cliente cliente);
     
 }
