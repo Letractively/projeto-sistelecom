@@ -25,7 +25,7 @@
 					
 					<rich:spacer width="100%" height="10px" />
 									
-					<h:commandButton value="Salvar" actionListener="#{ramoController.novoRegistro}"/>
+					<a4j:commandButton value="Salvar" actionListener="#{ramoController.novoRegistro}" reRender="formulario-tabela-ramo" process="formulario-dados-ramo"/>
 				</a4j:form>
 				
 				<rich:spacer width="100%" height="10px" />
@@ -35,7 +35,7 @@
 				<rich:spacer width="100%" height="10px" />
 				
 				<a4j:form id="formulario-tabela-ramo" prependId="false">
-					<rich:dataTable id="tabela" value="#{ramoController.lista}" var="ramo" style="width:100%;">
+					<rich:dataTable id="tabela" value="#{ramoController.lista}" var="ramo" style="width:100%;" rows="10">
 	
 						<rich:column width="50">
 		
@@ -78,6 +78,10 @@
 							</div>					
 							
 						</rich:column>
+						
+						<f:facet name="footer">
+							<rich:datascroller id="paginacao-ramo" for="tabela" maxPages="10" ajaxSingle="true"/>
+						</f:facet>
 		
 					</rich:dataTable>
 	

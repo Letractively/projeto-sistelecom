@@ -13,16 +13,28 @@ public class RamoController extends Controller<Ramo> {
 	private Ramo ramo;
 	private List<RamoTO> lista;
 	
+	public RamoController() {
+		this.carregarDadosNaTela();
+	}
+	
+	@Override
+	public void carregarDadosNaTela() {
+		if(this.getLista() == null){
+			this.listarTodos();
+		}
+	}
+	
 	@Override
 	public void novoRegistro(ActionEvent evento) {
 		if (validarDadosFormulario()) {
 			try {
 				this.getDao().salvar(this.getRamo());
+				this.listarTodos();
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo incluído com sucesso."));
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(e.getMessage()));
 				return;
 			}
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo incluído com sucesso."));
 		}
 	}
 	

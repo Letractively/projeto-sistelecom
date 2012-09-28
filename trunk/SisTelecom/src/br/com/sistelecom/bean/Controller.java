@@ -6,6 +6,8 @@ import br.com.sistelecom.dao.DAO;
 
 public abstract class Controller<E> {
 
+	public abstract void carregarDadosNaTela();
+	
 	public abstract void novoRegistro(ActionEvent evento);
 	
 	public abstract void listarTodos();
