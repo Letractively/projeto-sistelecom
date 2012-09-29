@@ -9,8 +9,8 @@
 	<head>
 	<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
 	<script type="text/javascript">
-				function inibirID(){
-					jQuery("id-ramo").bind("keypress",function(e){
+				function inibir(){
+					jQuery("#id-ramo").bind("keypress",function(e){
 						e.preventDefault();
 					});
 				}
@@ -40,12 +40,8 @@
 				<rich:spacer width="100%" height="10px" />
 	
 				<h:commandButton value="Salvar"
-					actionListener="#{ramoController.salvar}"/>
+					actionListener="#{ramoController.salvar}" />
 					
-				<h:commandButton value="Limpar" type="reset" />
-	
-				<rich:spacer width="100%" height="10px" />
-	
 				<h:messages />
 	
 			</h:form>
@@ -85,26 +81,24 @@
 						<f:facet name="header">
 							<h:outputLabel value="Alterar" />
 						</f:facet>
-	
-						<a4j:commandButton value="Alterar"
-							actionListener="#{ramoController.carregarRegistro}"
-							oncomplete="inibirID();" reRender="formulario-dados" process="formulario-dados" immediate="true" ajaxSingle="true">
-							<a4j:actionparam name="idRamo" value="#{ramo.id}"/>
-						</a4j:commandButton>
-	
-					</rich:column>
-	
-					<rich:column width="50">
-	
-						<f:facet name="header">
-							<h:outputLabel value="Excluir" />
-						</f:facet>
-	
-						<a4j:commandButton value="Excluir" 
-							actionListener="#{ramoController.excluirRegistro}" reRender="formulario-tabela,formulario-dados" process="formulario-tabela,formulario-dados" immediate="true" ajaxSingle="true">
-							<a4j:actionparam name="idRamo" value="#{ramo.id}" />
-						</a4j:commandButton>
-	
+						
+						<div align="center">
+							<h:panelGrid columns="3">
+							<a4j:commandButton value="Alterar"
+								actionListener="#{ramoController.carregarRegistro}"
+								oncomplete="inibir();" reRender="formulario-dados" process="formulario-dados" immediate="true" ajaxSingle="true">
+								<a4j:actionparam name="idRamo" value="#{ramo.id}"/>
+							</a4j:commandButton>
+							
+							<rich:spacer width="10px"/>
+							
+							<a4j:commandButton value="Excluir" 
+								actionListener="#{ramoController.excluirRegistro}" reRender="formulario-tabela,formulario-dados" process="formulario-tabela,formulario-dados" immediate="true" ajaxSingle="true">
+								<a4j:actionparam name="idRamo" value="#{ramo.id}" />
+							</a4j:commandButton>
+							</h:panelGrid>
+						</div>
+						
 					</rich:column>
 	
 				</rich:dataTable>
