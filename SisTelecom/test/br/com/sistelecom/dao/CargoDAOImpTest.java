@@ -17,7 +17,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.sistelecom.dao.CargoDAOImp;
 import br.com.sistelecom.entity.Cargo;
 
 /**
@@ -52,7 +51,7 @@ public class CargoDAOImpTest {
     public void salvar() throws Exception {
         System.out.println("create");
         final Cargo cargo = new Cargo(null, "Gerente Comercial");
-        final CargoDAOImp instance = new CargoDAOImp();
+        final CargoDAOImpl instance = new CargoDAOImpl();
         instance.salvar(cargo);
         assertNotNull(cargo);
         assertTrue(cargo.getNomeCargo().length() > 0);
@@ -66,7 +65,7 @@ public class CargoDAOImpTest {
     public void atualizar() throws Exception {
         System.out.println("update");
         final Cargo cargo = new Cargo(6, "Gerente Administrativo");
-        final CargoDAOImp instance = new CargoDAOImp();
+        final CargoDAOImpl instance = new CargoDAOImpl();
         instance.atualizar(cargo);
         assertNotNull(cargo);
         assertTrue(cargo.getNomeCargo().length() > 0);
@@ -78,17 +77,17 @@ public class CargoDAOImpTest {
     @Test
     public void testTodosCargos() throws Exception {
         System.out.println("allCargo");
-        CargoDAOImp instance = new CargoDAOImp();
+        CargoDAOImpl instance = new CargoDAOImpl();
         List expResult = null;
-        List result = instance.todosCargos();
+        List<Cargo> result = instance.listarTodos();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
     
     public Cargo pesquisarId(Integer idcargo) throws Exception {
-        CargoDAOImp instance = new CargoDAOImp();
-        return instance.procurarIdCargo(idcargo);
+        CargoDAOImpl instance = new CargoDAOImpl();
+        return instance.obterPorId(idcargo);
     }
 
     /**
@@ -113,7 +112,7 @@ public class CargoDAOImpTest {
         Cargo cargo = new Cargo();
         Integer idCargo = 1;
         cargo.setIdCargo(idCargo);
-        CargoDAOImp instance = new CargoDAOImp();
+        CargoDAOImpl instance = new CargoDAOImpl();
         instance.excluir(cargo);
         
         try {
