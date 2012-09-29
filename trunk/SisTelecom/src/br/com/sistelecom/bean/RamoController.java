@@ -73,10 +73,13 @@ public class RamoController implements Controller<Ramo> {
 		int idRamo = Integer.parseInt(id);
 		
 		final Ramo ramo = this.getDao().obterPorId(idRamo);
+		
 		try {
-			this.getDao().excluir(ramo);
-			this.listarTodos();
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo excluído com sucesso."));
+			if(ramo != null){
+				this.getDao().excluir(ramo);
+				this.listarTodos();
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo excluído com sucesso."));
+			}
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Erro na exclusão do ramo."));
 			e.printStackTrace();
