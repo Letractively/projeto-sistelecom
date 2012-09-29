@@ -24,9 +24,9 @@ public class RamoController implements Controller<Ramo> {
 			try {
 				this.getDao().salvar(this.getRamo());
 				this.listarTodos();
-				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo incluído com sucesso."));
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Ramo incluído com sucesso.",""));
 			} catch (Exception e) {
-				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(e.getMessage()));
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na inclusão do ramo.",""));
 				return;
 			}
 		}
@@ -52,9 +52,9 @@ public class RamoController implements Controller<Ramo> {
 			try {
 				this.getDao().atualizar(this.getRamo());
 				this.listarTodos();
-				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo atualizado com sucesso."));
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Ramo atualizado com sucesso.",""));
 			} catch (Exception e) {
-				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Erro na alteração do ramo."));
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na atualização do ramo.",""));
 				return;
 			}
 		}
@@ -78,16 +78,17 @@ public class RamoController implements Controller<Ramo> {
 			if(ramo != null){
 				this.getDao().excluir(ramo);
 				this.listarTodos();
-				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo excluído com sucesso."));
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Ramo excluído com sucesso.",""));
 			}
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Erro na exclusão do ramo."));
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na exclusão do ramo.",""));
 			e.printStackTrace();
 		}
 	}
 	
 	public boolean validarDadosFormulario() {
 		if (this.getRamo().getNomeRamo() == null || this.getRamo().getNomeRamo().equals("")) {
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Informe o nome do ramo.",""));
 			return false;
 		}
 		return true;
