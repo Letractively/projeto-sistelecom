@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
 import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.to.RamoTO;
