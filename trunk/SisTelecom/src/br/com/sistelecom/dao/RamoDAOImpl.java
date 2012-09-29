@@ -79,9 +79,9 @@ public class RamoDAOImpl implements DAO<Ramo> {
 			rs = ps.executeQuery();
 			List<RamoTO> list = new ArrayList<RamoTO>();
 			while(rs.next()) {
-				Integer idRamo = rs.getInt(1);
+				int idRamo = rs.getInt(1);
 				String nomeRamo = rs.getString(2);
-
+				
 				list.add(new RamoTO(Boolean.FALSE,idRamo, nomeRamo));
 			}
 			return list;

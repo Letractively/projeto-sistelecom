@@ -33,7 +33,6 @@ public class Funcionario {
 	private String supervNome;
 	private Date admissao;
 	private String status;
-	private Date auditoria;
 	private String login;
 	private String password;
 
@@ -45,7 +44,7 @@ public class Funcionario {
 			String bairro, Integer cidade, Integer uf, Integer cep, Date nasc,
 			Integer tel1, Integer tel2, Integer doc, String tipoDoc,
 			Integer cargo, String supervFuncao, String supervNome,
-			Date admissao, String status, Date auditoria, String login,
+			Date admissao, String status, String login,
 			String password) {
 
 		this.idFuncionario = idFuncionario;
@@ -69,7 +68,6 @@ public class Funcionario {
 		this.supervNome = supervNome;
 		this.admissao = admissao;
 		this.status = status;
-		this.auditoria = auditoria;
 		this.login = login
 				;
 		this.password = password;
@@ -241,14 +239,6 @@ public class Funcionario {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public Date getAuditoria() {
-		return auditoria;
-	}
-
-	public void setAuditoria(Date auditoria) {
-		this.auditoria = auditoria;
 	}
 
 	public String getLogin() {
