@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.to.RamoTO;
@@ -38,14 +37,11 @@ public class RamoDAOImpl implements DAO<Ramo> {
 	public void atualizar(Ramo ramo) throws Exception{
 		try{
 			Connection conn = SistelecomSingleConnection.getConnection();
-			String SQL = "UPDATE ramo SET nome_ramo=?, status=? " +
-					"where idramo = ?";
+			String SQL = "UPDATE ramo SET nome_ramo=? where idramo = ?";
 			
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, ramo.getNomeRamo());
-			ps.setBoolean(2, ramo.getStatus());
-			ps.setInt(3, ramo.getIdRamo());
-
+			ps.setInt(1, ramo.getIdRamo());
 			ps.executeUpdate();
 			
 		} catch (Exception e) {
@@ -63,11 +59,7 @@ public class RamoDAOImpl implements DAO<Ramo> {
 			rs = ps.executeQuery();
 			List<Ramo> list = new ArrayList<Ramo>();
 			while(rs.next()) {
-				Integer idRamo = rs.getInt(1);
-				String nomeRamo = rs.getString(2);
-				Boolean status = rs.getBoolean(3);
-
-				list.add(new Ramo(idRamo, nomeRamo, status));
+				list.add(new Ramo(rs.getInt(1), rs.getString(2)));
 			}
 			return list;
 		} catch (Exception e) {
@@ -112,11 +104,12 @@ public class RamoDAOImpl implements DAO<Ramo> {
 			if (!rs.next()) {
 				throw new Exception("Não foi encontrado o ramo com esse id: " + id);
 			}
-
-			String nomeRamo = rs.getString(2);
-			Boolean status = rs.getBoolean(3);
-
-			return new Ramo(id, nomeRamo, status);
+			
+			Ramo ramo = new Ramo();
+			ramo.setIdRamo(id);
+			ramo.setNomeRamo(rs.getString(2));
+			
+			return ramo;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

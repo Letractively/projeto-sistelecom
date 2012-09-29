@@ -11,8 +11,10 @@
 				<f:facet name="header">
 					<h:outputLabel value="Ramo (Atividade Econômica)" />
 				</f:facet>
-
+				
 				<a4j:form id="formulario-dados-ramo" prependId="false">
+
+				
 					<h:panelGrid columns="2">
 					
 						<h:outputLabel value="Id:" />	
@@ -35,7 +37,8 @@
 				<rich:spacer width="100%" height="10px" />
 				
 				<a4j:form id="formulario-tabela-ramo" prependId="false">
-					<rich:dataTable id="tabela" value="#{ramoController.lista}" var="ramo" style="width:100%;" rows="10">
+					<rich:dataTable id="tabela" value="#{ramoController.lista}" var="ramo" style="width:100%;"
+					 reRender="tabela">
 	
 						<rich:column width="50">
 		
@@ -66,23 +69,18 @@
 							<div align="center">
 								<h:panelGrid columns="3">
 									<h:commandButton value="Alterar" actionListener="#{ramoController.carregarRegistro}">
-										<f:setPropertyActionListener target="#{ramoController.ramo.idRamo}" value="#{ramo.idRamo}" />
+										<a4j:actionparam name="idRamo" value="#{ramo.id}" />
 									</h:commandButton>
 									
 									<rich:spacer width="10px"/>
 									
-									<h:commandButton value="Excluir" actionListener="{ramoController.excluirRegisto}">
-										<f:setPropertyActionListener target="#{ramoController.ramo.idRamo}" value="#{ramo.idRamo}" />
-									</h:commandButton>
+									<a4j:commandButton value="Excluir" actionListener="{ramoController.excluirRegisto}">
+										<a4j:actionparam name="idRamo" value="#{ramo.id}" />
+									</a4j:commandButton>
 								</h:panelGrid>	
 							</div>					
 							
 						</rich:column>
-						
-						<f:facet name="footer">
-							<rich:datascroller id="paginacao-ramo" for="tabela" maxPages="10" ajaxSingle="true"/>
-						</f:facet>
-		
 					</rich:dataTable>
 	
 					<h:messages />

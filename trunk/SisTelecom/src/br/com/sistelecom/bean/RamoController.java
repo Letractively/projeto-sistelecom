@@ -2,8 +2,12 @@ package br.com.sistelecom.bean;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+
+import org.ajax4jsf.component.html.HtmlActionParameter;
+
 import br.com.sistelecom.dao.RamoDAOImpl;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.to.RamoTO;
@@ -46,7 +50,8 @@ public class RamoController extends Controller<Ramo> {
 	
 	@Override
 	public void carregarRegistro(ActionEvent evento) {
-		int idRamo = this.getRamo().getIdRamo();
+		final String id = ((HtmlActionParameter)((HtmlCommandButton)evento.getSource()).getChildren().get(0)).getValue().toString();
+		int idRamo = Integer.parseInt(id);
 
 		final Ramo ramo = this.getDao().obterPorId(idRamo);
 
