@@ -6,85 +6,109 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+	<head>
+	<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+	<script type="text/javascript">
+				function inibirID(){
+					jQuery("id-ramo").bind("keypress",function(e){
+						e.preventDefault();
+					});
+				}
+			</script>
+	</head>
+
 	<body>
-			<rich:panel style="800px;">
-				<f:facet name="header">
-					<h:outputLabel value="Ramo (Atividade Econômica)" />
-				</f:facet>
-				
-				<a4j:form id="formulario-dados-ramo" prependId="false">
-
-				
-					<h:panelGrid columns="2">
-					
-						<h:outputLabel value="Id:" />	
-						<h:inputText value="#{ramoController.ramo.idRamo}" style="width:50px;" />
-						
-						<h:outputLabel value="Nome:" />
-						<h:inputText value="#{ramoController.ramo.nomeRamo}" />
-						
-					</h:panelGrid>
-					
-					<rich:spacer width="100%" height="10px" />
-									
-					<a4j:commandButton value="Salvar" actionListener="#{ramoController.novoRegistro}" reRender="formulario-tabela-ramo" process="formulario-dados-ramo"/>
-				</a4j:form>
-				
-				<rich:spacer width="100%" height="10px" />
-
-				<rich:separator width="100%" height="10px;"/>
-				
-				<rich:spacer width="100%" height="10px" />
-				
-				<a4j:form id="formulario-tabela-ramo" prependId="false">
-					<rich:dataTable id="tabela" value="#{ramoController.lista}" var="ramo" style="width:100%;"
-					 reRender="tabela">
+		<rich:panel style="800px;">
 	
-						<rich:column width="50">
-		
-							<f:facet name="header">
-								<h:outputLabel value="ID" />
-							</f:facet>
-							
-							<h:outputLabel value="#{ramo.id}" />
-							
-						</rich:column>
-		
-						<rich:column width="500">
-						
-							<f:facet name="header">
-								<h:outputLabel value="Nome" />
-							</f:facet>
-							
-							<h:outputLabel value="#{ramo.nome}" />
-							
-						</rich:column>
-		
-						<rich:column width="50">
-		
-							<f:facet name="header">
-								<h:outputLabel value="Ações" />
-							</f:facet>
-							
-							<div align="center">
-								<h:panelGrid columns="3">
-									<h:commandButton value="Alterar" actionListener="#{ramoController.carregarRegistro}">
-										<a4j:actionparam name="idRamo" value="#{ramo.id}" />
-									</h:commandButton>
-									
-									<rich:spacer width="10px"/>
-									
-									<a4j:commandButton value="Excluir" actionListener="{ramoController.excluirRegisto}">
-										<a4j:actionparam name="idRamo" value="#{ramo.id}" />
-									</a4j:commandButton>
-								</h:panelGrid>	
-							</div>					
-							
-						</rich:column>
-					</rich:dataTable>
+			<f:facet name="header">
+				<h:outputLabel value="Ramo (Atividade Econômica)" />
+			</f:facet>
 	
-					<h:messages />
-				</a4j:form>				
-			</rich:panel>
+			<h:form id="formulario-dados" prependId="false">
+	
+				<h:panelGrid columns="2">
+	
+					<h:outputLabel value="Id:" />
+					<h:inputText id="id-ramo" value="#{ramoController.ramo.idRamo}"
+						style="width:50px;" />
+	
+					<h:outputLabel value="Nome:" />
+					<h:inputText id="nome-ramo" value="#{ramoController.ramo.nomeRamo}" />
+	
+				</h:panelGrid>
+	
+				<rich:spacer width="100%" height="10px" />
+	
+				<h:commandButton value="Salvar"
+					actionListener="#{ramoController.salvar}"/>
+					
+				<h:commandButton value="Limpar" type="reset" />
+	
+				<rich:spacer width="100%" height="10px" />
+	
+				<h:messages />
+	
+			</h:form>
+	
+			<rich:spacer width="100%" height="10px" />
+	
+			<rich:separator width="100%" height="10px;" />
+	
+			<rich:spacer width="100%" height="10px" />
+	
+			<a4j:form id="formulario-tabela" prependId="false" >
+				<rich:dataTable id="tabela" value="#{ramoController.lista}"
+					var="ramo" style="width:100%;">
+	
+					<rich:column width="50">
+	
+						<f:facet name="header">
+							<h:outputLabel value="ID" />
+						</f:facet>
+	
+						<h:outputLabel value="#{ramo.id}" />
+	
+					</rich:column>
+	
+					<rich:column width="500">
+	
+						<f:facet name="header">
+							<h:outputLabel value="Nome" />
+						</f:facet>
+	
+						<h:outputLabel value="#{ramo.nome}" />
+	
+					</rich:column>
+	
+					<rich:column width="50">
+	
+						<f:facet name="header">
+							<h:outputLabel value="Alterar" />
+						</f:facet>
+	
+						<a4j:commandButton value="Alterar"
+							actionListener="#{ramoController.carregarRegistro}"
+							oncomplete="inibirID();" reRender="formulario-dados" process="formulario-dados" immediate="true" ajaxSingle="true">
+							<a4j:actionparam name="idRamo" value="#{ramo.id}"/>
+						</a4j:commandButton>
+	
+					</rich:column>
+	
+					<rich:column width="50">
+	
+						<f:facet name="header">
+							<h:outputLabel value="Excluir" />
+						</f:facet>
+	
+						<a4j:commandButton value="Excluir" 
+							actionListener="#{ramoController.excluirRegistro}" reRender="formulario-tabela,formulario-dados" process="formulario-tabela,formulario-dados" immediate="true" ajaxSingle="true">
+							<a4j:actionparam name="idRamo" value="#{ramo.id}" />
+						</a4j:commandButton>
+	
+					</rich:column>
+	
+				</rich:dataTable>
+			</a4j:form>
+		</rich:panel>
 	</body>
 </html>

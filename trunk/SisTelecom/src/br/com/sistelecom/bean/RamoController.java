@@ -2,34 +2,24 @@ package br.com.sistelecom.bean;
 import java.util.LinkedList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
 import org.ajax4jsf.component.html.HtmlActionParameter;
-
+import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 import br.com.sistelecom.dao.RamoDAOImpl;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.to.RamoTO;
 
-public class RamoController extends Controller<Ramo> {
+public class RamoController implements Controller<Ramo> {
 
 	private Ramo ramo;
 	private List<RamoTO> lista;
 	
 	public RamoController() {
-		this.carregarDadosNaTela();
+		this.listarTodos();
 	}
 	
-	@Override
-	public void carregarDadosNaTela() {
-		if(this.getLista() == null){
-			this.listarTodos();
-		}
-	}
-	
-	@Override
-	public void novoRegistro(ActionEvent evento) {
+	public void novoRegistro() {
 		if (validarDadosFormulario()) {
 			try {
 				this.getDao().salvar(this.getRamo());
@@ -42,15 +32,13 @@ public class RamoController extends Controller<Ramo> {
 		}
 	}
 	
-	@Override
 	public void listarTodos() {
 		this.lista = new LinkedList<RamoTO>();
 		this.setLista(this.getDao().todosRamosParaExibirEmTabela());
 	}
 	
-	@Override
 	public void carregarRegistro(ActionEvent evento) {
-		final String id = ((HtmlActionParameter)((HtmlCommandButton)evento.getSource()).getChildren().get(0)).getValue().toString();
+		final String id = ((HtmlActionParameter)((HtmlAjaxCommandButton)evento.getSource()).getChildren().get(0)).getValue().toString();
 		int idRamo = Integer.parseInt(id);
 
 		final Ramo ramo = this.getDao().obterPorId(idRamo);
@@ -59,33 +47,53 @@ public class RamoController extends Controller<Ramo> {
 		this.getRamo().setNomeRamo(ramo.getNomeRamo());
 	}
 	
-	@Override
-	public void excluirRegistro(ActionEvent actionEvent) {
-		int idRamo = this.getRamo().getIdRamo();
+	public void atualizarRegistro() {
+		if (validarDadosFormulario()) {
+			try {
+				this.getDao().atualizar(this.getRamo());
+				this.listarTodos();
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo atualizado com sucesso."));
+			} catch (Exception e) {
+				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Erro na alteração do ramo."));
+				return;
+			}
+		}
+	}
+	
+	public void salvar(ActionEvent evento) {
+		if(this.getRamo().getIdRamo() == 0){
+			this.novoRegistro();
+		}else{
+			this.atualizarRegistro();
+		}
+	}
+	
+	public void excluirRegistro(ActionEvent evento) {
+		final String id = ((HtmlActionParameter)((HtmlAjaxCommandButton)evento.getSource()).getChildren().get(0)).getValue().toString();
+		int idRamo = Integer.parseInt(id);
 		
 		final Ramo ramo = this.getDao().obterPorId(idRamo);
 		try {
 			this.getDao().excluir(ramo);
+			this.listarTodos();
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo excluído com sucesso."));
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(e.getMessage()));
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Erro na exclusão do ramo."));
 			e.printStackTrace();
 		}
-		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Ramo excluído com sucesso."));
 	}
 	
-	@Override
 	public boolean validarDadosFormulario() {
-		if (this.getRamo().getNomeRamo().equals("")) {
-			
+		if (this.getRamo().getNomeRamo() == null || this.getRamo().getNomeRamo().equals("")) {
 			return false;
 		}
 		return true;
 	}
 	
-	@Override
 	public RamoDAOImpl getDao() {
 		return new RamoDAOImpl();
 	}
+	
 	/**
 	 * @return the ramo
 	 */

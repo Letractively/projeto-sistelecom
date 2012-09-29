@@ -10,27 +10,7 @@
 		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
 		<param-value>.xhtml</param-value>
 	</context-param>
-
-	<context-param>
-		<param-name>facelets.SKIP_COMMENTS</param-name>
-		<param-value>true</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>facelets.DEVELOPMENT</param-name>
-		<param-value>true </param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>com.sun.faces.validateXml</param-name>
-		<param-value>false </param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>com.sun.faces.verifyObjects</param-name>
-		<param-value>true </param-value>
-	</context-param>
-
+	
 	<context-param>
 		<param-name>org.richfaces.SKIN</param-name>
 		<param-value>blueSky</param-value>
@@ -39,11 +19,6 @@
 	<context-param>
 		<param-name>org.richfaces.CONTROL_SKINNING</param-name>
 		<param-value>enable</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>org.richfaces.ExcludeScripts</param-name>
-		<param-value>Prototype,Scriptaculous</param-value>
 	</context-param>
 
 	<listener>
