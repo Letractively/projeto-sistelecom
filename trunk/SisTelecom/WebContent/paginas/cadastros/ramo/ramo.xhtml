@@ -7,14 +7,20 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<head>
-	<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
-	<script type="text/javascript">
-				function inibir(){
-					jQuery("#id-ramo").bind("keypress",function(e){
-						e.preventDefault();
-					});
-				}
-			</script>
+		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+		<script type="text/javascript">
+					function inibir(){
+						jQuery("#id-ramo").bind("keypress",function(e){
+							e.preventDefault();
+						});
+					}
+		</script>
+		
+		<style type="text/css">
+			.rich-messages-label{
+				font-weight:bold;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -42,7 +48,15 @@
 				<h:commandButton value="Salvar"
 					actionListener="#{ramoController.salvar}" />
 					
-				<h:messages />
+				<rich:messages>
+					 <f:facet name="errorMarker">
+            			<h:graphicImage url="/imagens/alerta.png"/>
+     				 </f:facet>
+
+      				<f:facet name="infoMarker">
+			            <h:graphicImage url="/imagens/ok.png"/>
+				    </f:facet>
+				</rich:messages>
 	
 			</h:form>
 	
@@ -84,7 +98,7 @@
 						
 						<div align="center">
 							<h:panelGrid columns="3">
-							<a4j:commandButton value="Alterar"
+							<a4j:commandButton value="Alterar" image="/imagens/editar.png"
 								actionListener="#{ramoController.carregarRegistro}"
 								oncomplete="inibir();" reRender="formulario-dados" process="formulario-dados" immediate="true" ajaxSingle="true">
 								<a4j:actionparam name="idRamo" value="#{ramo.id}"/>
@@ -92,7 +106,7 @@
 							
 							<rich:spacer width="10px"/>
 							
-							<a4j:commandButton value="Excluir" 
+							<a4j:commandButton value="Excluir" image="/imagens/delete.png"
 								actionListener="#{ramoController.excluirRegistro}" reRender="formulario-tabela,formulario-dados" process="formulario-tabela,formulario-dados" immediate="true" ajaxSingle="true">
 								<a4j:actionparam name="idRamo" value="#{ramo.id}" />
 							</a4j:commandButton>
