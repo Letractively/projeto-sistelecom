@@ -27,7 +27,7 @@
 		<rich:panel style="800px;">
 	
 			<f:facet name="header">
-				<h:outputLabel value="Produtos" />
+				<h:outputLabel value="Colaboradores" />
 			</f:facet>
 	
 			<h:form id="formulario-dados" prependId="false">
@@ -35,11 +35,36 @@
 				<h:panelGrid columns="2">
 					
 					<h:outputLabel value="Id:" />
-					<h:inputText id="id-produto" value="#{produtoController.produto.idProduto}"
+					<h:inputText id="id-funcionario" value="#{funcionarioController.funcionario.idFuncionario}"
 						style="width:50px;" />
-	
-					<h:outputLabel value="Nome:" />
-					<h:inputText id="nome-produto" value="#{produtoController.produto.nomeProduto}" />
+					
+					<h:outputLabel value="CPF:" />
+					<h:inputText id="cpf-funcionario" value="#{funcionarioController.funcionario.cpf}" />
+					
+					<h:outputLabel value="Cargo:" />
+					<h:selectOneMenu id="departamento-funcionario" value="#{funcionarioController.funcionario.departamento}">
+                    	<f:selectItems value="#{departamentoController.listarTodos}" />
+                	</h:selectOneMenu>
+					
+					<h:outputLabel value="Nome Completo:" />
+					<h:inputText id="nome-funcionario" value="#{funcionarioController.funcionario.nomeFuncionario}" />
+					
+					<h:outputLabel value="Logradouro:" />
+					<h:inputText id="logradouro-funcionario" value="#{funcionarioController.funcionario.logradouro}" />
+					
+					<h:outputLabel value="Número" />
+					<h:inputText id="numero-funcionario" value="#{funcionarioController.funcionario.numero}" />
+					
+					<h:outputLabel value="Complemento: " />
+					<h:inputText id="complemento-funcionario" value="#{funcionarioController.funcionario.complemento}" />
+					
+					<h:outputLabel value="Bairro: " />
+					<h:inputText id="bairro-funcionario" value="#{funcionarioController.funcionario.bairro}" />
+					
+					<h:outputLabel value="Uf:" />
+					<h:selectOneMenu id="uf-funcionario" value="#{funcionarioController.funcionario.uf}">
+                    	<f:selectItems value="#{estadoController.listarTodos}" />
+                	</h:selectOneMenu>
 					
 					<h:outputLabel value="Tipo de produto: " />
 					<h:selectOneMenu id="tipo-produto" value="#{produtoController.produto.tipo}">

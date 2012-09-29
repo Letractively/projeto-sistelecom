@@ -22,6 +22,16 @@
   <managed-bean-class>br.com.sistelecom.bean.ProdutoController</managed-bean-class>
   <managed-bean-scope>request</managed-bean-scope>
  </managed-bean>
+ <managed-bean>
+  <managed-bean-name>funcionarioController</managed-bean-name>
+  <managed-bean-class>br.com.sistelecom.bean.FuncionarioController</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>estadoController</managed-bean-name>
+  <managed-bean-class>br.com.sistelecom.bean.EstadoController</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
  </application>
