@@ -1,16 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-	<head>
+<head>
 		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
 		<script type="text/javascript">
 					function inibir(){
-						jQuery("#id-ramo").bind("keypress",function(e){
+						jQuery("#id-departamento").bind("keypress",function(e){
 							e.preventDefault();
 						});
 					}
@@ -27,26 +27,28 @@
 		<rich:panel style="800px;">
 	
 			<f:facet name="header">
-				<h:outputLabel value="Ramo (Atividade Econômica)" />
+				<h:outputLabel value="Departamento (Setores da Empresa)" />
 			</f:facet>
 	
 			<h:form id="formulario-dados" prependId="false">
 	
 				<h:panelGrid columns="2">
-					
+	
 					<h:outputLabel value="Id:" />
-					<h:inputText id="id-ramo" value="#{ramoController.ramo.idRamo}"
+					<h:inputText id="id-departamento" value="#{departamentoController.departamento.idDepartamento}"
 						style="width:50px;" />
 	
-					<h:outputLabel value="Nome:" />
-					<h:inputText id="nome-ramo" value="#{ramoController.ramo.nomeRamo}" />
+					<h:outputLabel value="Departamento:" />
+					<h:inputText id="nome-departamento" value="#{departamentoController.departamento.nomeDepartamento}" />
 	
+					<h:outputLabel value="Gerente do Departamento:" />
+					<h:inputText id="gerente-departamento" value="#{departamentoController.departamento.gerenteDepartamento}" />
 				</h:panelGrid>
 	
 				<rich:spacer width="100%" height="10px" />
 	
 				<h:commandButton value="Salvar"
-					actionListener="#{ramoController.salvar}" />
+					actionListener="#{departamentoController.salvar}" />
 					
 				<rich:messages>
 					 <f:facet name="errorMarker">
@@ -67,26 +69,35 @@
 			<rich:spacer width="100%" height="10px" />
 	
 			<a4j:form id="formulario-tabela" prependId="false" >
-				<rich:dataTable id="tabela" value="#{ramoController.lista}"
-					var="ramo" style="width:100%;">
+				<rich:dataTable id="tabela" value="#{departamentoController.lista}"
+					var="departamento" style="width:100%;">
 	
 					<rich:column width="50">
-						<div id="div-id" align="center">
+						<div id="div-id" align="center" >
 							<f:facet name="header">
 								<h:outputLabel value="ID" />
 							</f:facet>
 	
-							<h:outputLabel value="#{ramo.id}" />
+							<h:outputLabel value="#{departamento.idDepartamento}" />
 						</div>
 					</rich:column>
 	
-					<rich:column width="500">
-						<div id="div-nome" align="center">
+					<rich:column width="250">
+						<div id="div-nome" align="center" >
 							<f:facet name="header">
-								<h:outputLabel value="Nome" />
+								<h:outputLabel value="Departamento" />
 							</f:facet>
 	
-							<h:outputLabel value="#{ramo.nome}" />
+							<h:outputLabel value="#{departamento.nomeDepartamento}" />
+						</div>
+					</rich:column>
+					
+					<rich:column width="250">
+						<div id="div-gerente" align="center" >
+						<f:facet name="header">
+							<h:outputText value="Gerente do Departamento" />
+						</f:facet>
+						<h:outputLabel value="#{departamento.gerenteDepartamento}" />
 						</div>
 					</rich:column>
 	
@@ -99,16 +110,16 @@
 						<div align="center">
 							<h:panelGrid columns="3">
 							<a4j:commandButton value="Alterar" image="/imagens/editar.png"
-								actionListener="#{ramoController.carregarRegistro}"
+								actionListener="#{departamentoController.carregarRegistro}"
 								oncomplete="inibir();" reRender="formulario-dados" process="formulario-dados" immediate="true" ajaxSingle="true">
-								<a4j:actionparam name="idRamo" value="#{ramo.id}"/>
+								<a4j:actionparam name="idDepartamento" value="#{departamento.idDepartamento}"/>
 							</a4j:commandButton>
 							
 							<rich:spacer width="10px"/>
 							
 							<a4j:commandButton value="Excluir" image="/imagens/delete.png"
-								actionListener="#{ramoController.excluirRegistro}" reRender="formulario-tabela,formulario-dados" process="formulario-tabela,formulario-dados" immediate="true" ajaxSingle="true">
-								<a4j:actionparam name="idRamo" value="#{ramo.id}" />
+								actionListener="#{departamentoController.excluirRegistro}" reRender="formulario-tabela,formulario-dados" process="formulario-tabela,formulario-dados" immediate="true" ajaxSingle="true">
+								<a4j:actionparam name="idDepartamento" value="#{departamento.idDepartamento}" />
 							</a4j:commandButton>
 							</h:panelGrid>
 						</div>

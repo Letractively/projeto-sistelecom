@@ -10,22 +10,22 @@ package br.com.sistelecom.entity;
  */
 public class Cargo {
  
-    private Integer idCargo;
+    private int idCargo;
     private String nomeCargo;
 
     public Cargo() {
     }
     
-    public Cargo(Integer idCargo, String nomeCargo) {
+    public Cargo(int idCargo, String nomeCargo) {
         this.idCargo = idCargo;
         this.nomeCargo = nomeCargo;
     }
     
-    public Integer getIdCargo() {
+    public int getIdCargo() {
         return idCargo;
     }
 
-    public void setIdCargo(Integer idCargo) {
+    public void setIdCargo(int idCargo) {
         this.idCargo = idCargo;
     }
 

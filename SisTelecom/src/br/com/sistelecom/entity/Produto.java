@@ -17,20 +17,16 @@ public class Produto {
     private String tipo;
     private Integer valorReceita;
     private Date criacao;
-    private String status;
-    private Date auditoria;
 
     public Produto() {
     }
 
-    public Produto(Integer idProduto, String nomeProduto, String tipo, Integer valorReceita, Date criacao, String status, Date auditoria) {
+    public Produto(Integer idProduto, String nomeProduto, String tipo, Integer valorReceita, Date criacao) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.tipo = tipo;
         this.valorReceita = valorReceita;
         this.criacao = criacao;
-        this.status = status;
-        this.auditoria = auditoria;
     }
 
     public Integer getIdProduto() {
@@ -72,21 +68,4 @@ public class Produto {
     public void setCriacao(Date criacao) {
         this.criacao = criacao;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Date getAuditoria() {
-        return auditoria;
-    }
-
-    public void setAuditoria(Date auditoria) {
-        this.auditoria = auditoria;
-    }
-    
 }
