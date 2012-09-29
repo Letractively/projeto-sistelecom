@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<head>
+		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+		<script type="text/javascript">
+					function inibir(){
+						jQuery("#id-produto").bind("keypress",function(e){
+							e.preventDefault();
+						});
+					}
+		</script>
+		
+		<style type="text/css">
+			.rich-messages-label{
+				font-weight:bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<rich:panel style="800px;">
+	
+			<f:facet name="header">
+				<h:outputLabel value="Produtos" />
+			</f:facet>
+	
+			<h:form id="formulario-dados" prependId="false">
+	
+				<h:panelGrid columns="2">
+					
+					<h:outputLabel value="Id:" />
+					<h:inputText id="id-produto" value="#{produtoController.produto.idProduto}"
+						style="width:50px;" />
+	
+					<h:outputLabel value="Nome:" />
+					<h:inputText id="nome-produto" value="#{produtoController.produto.nomeProduto}" />
+					
+					<h:outputLabel value="Tipo de produto: " />
+					<h:selectOneMenu id="tipo-produto" value="#{produtoController.produto.tipo}">
+            			<f:selectItem itemLabel="Voz móvel" itemValue="Voz móvel"/>
+            			<f:selectItem itemLabel="Voz fixa" itemValue="Voz fixa"/>
+          				<f:selectItem itemLabel="Internet 3G" itemValue="Internet 3G"/>
+         			</h:selectOneMenu>
+					
+					<h:outputLabel value="Valor de Receita:" />
+					<h:inputText id="nome-valor-receita" value="#{produtoController.produto.valorReceita}" />
+					
+					<h:outputLabel value="Data de criação" />
+			        <h:inputText value="#{produtoController.produto.criacao}">
+		            <f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy"/></h:inputText>
+	
+				</h:panelGrid>
+	
+				<rich:spacer width="100%" height="10px" />
+	
+				<h:commandButton value="Salvar"
+					actionListener="#{produtoController.salvar}" />
+					
+				<rich:messages>
+					 <f:facet name="errorMarker">
+            			<h:graphicImage url="/imagens/alerta.png"/>
+     				 </f:facet>
+
+      				<f:facet name="infoMarker">
+			            <h:graphicImage url="/imagens/ok.png"/>
+				    </f:facet>
+				</rich:messages>
+	
+			</h:form>
+	
+			<rich:spacer width="100%" height="10px" />
+	
+			<rich:separator width="100%" height="10px;" />
+	
+			<rich:spacer width="100%" height="10px" />
+	
+			<a4j:form id="formulario-tabela" prependId="false" >
+				<rich:dataTable id="tabela" value="#{produtoController.lista}"
+					var="produto" style="width:100%;">
+	
+					<rich:column width="50">
+						<div id="div-id" align="center">
+							<f:facet name="header">
+								<h:outputLabel value="ID" />
+							</f:facet>
+	
+							<h:outputLabel value="#{produto.idProduto}" />
+						</div>
+					</rich:column>
+	
+					<rich:column width="150">
+						<div id="div-nome" align="center">
+							<f:facet name="header">
+								<h:outputLabel value="Nome" />
+							</f:facet>
+	
+							<h:outputLabel value="#{produto.nomeProduto}" />
+						</div>
+					</rich:column>
+					
+					<rich:column width="150">
+						<div id="div-tipo" align="center">
+							<f:facet name="header">
+								<h:outputLabel value="Tipo" />
+							</f:facet>
+	
+							<h:outputLabel value="#{produto.tipo}" />
+						</div>
+					</rich:column>
+					
+					<rich:column width="150">
+						<div id="div-nome" align="center">
+							<f:facet name="header">
+								<h:outputLabel value="Valor de receita" />
+							</f:facet>
+	
+							<h:outputLabel value="#{produto.valorReceita}" />
+						</div>
+					</rich:column>
+					
+					<rich:column width="45">
+          				<div id="div-criacao" align="center">
+          					<f:facet name="header">
+            					<h:outputLabel value="Data de Criação"/>
+          					</f:facet>
+          					
+          					<h:outputLabel id="lab-criacao" value="#{produto.criacao}">
+            				<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy"/></h:outputLabel>
+            			</div>
+            		</rich:column>
+					
+					<rich:column width="50">
+	
+						<f:facet name="header">
+							<h:outputLabel value="Alterar" />
+						</f:facet>
+						
+						<div align="center">
+							<h:panelGrid columns="3">
+							<a4j:commandButton value="Alterar" image="/imagens/editar.png"
+								actionListener="#{produtoController.carregarRegistro}"
+								oncomplete="inibir();" reRender="formulario-dados" process="formulario-dados" immediate="true" ajaxSingle="true">
+								<a4j:actionparam name="idProduto" value="#{produto.idProduto}"/>
+							</a4j:commandButton>
+							
+							<rich:spacer width="10px"/>
+							
+							<a4j:commandButton value="Excluir" image="/imagens/delete.png"
+								actionListener="#{produtoController.excluirRegistro}" reRender="formulario-tabela,formulario-dados" process="formulario-tabela,formulario-dados" immediate="true" ajaxSingle="true">
+								<a4j:actionparam name="idProduto" value="#{produto.idProduto}" />
+							</a4j:commandButton>
+							</h:panelGrid>
+						</div>
+						
+					</rich:column>
+	
+				</rich:dataTable>
+			</a4j:form>
+		</rich:panel>
+	</body>
+</html>
