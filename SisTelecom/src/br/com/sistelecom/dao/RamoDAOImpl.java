@@ -41,7 +41,7 @@ public class RamoDAOImpl implements DAO<Ramo> {
 			
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, ramo.getNomeRamo());
-			ps.setInt(1, ramo.getIdRamo());
+			ps.setInt(2, ramo.getIdRamo());
 			ps.executeUpdate();
 			
 		} catch (Exception e) {
