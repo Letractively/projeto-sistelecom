@@ -43,7 +43,7 @@
 					
 					<h:outputLabel value="Cargo:" />
 					<h:selectOneMenu id="departamento-funcionario" value="#{funcionarioController.funcionario.departamento}">
-                    	<f:selectItems value="#{departamentoController.listarTodos}" />
+                    	<f:selectItems value="#{departamentoController.lista}" />
                 	</h:selectOneMenu>
 					
 					<h:outputLabel value="Nome Completo:" />
@@ -62,8 +62,13 @@
 					<h:inputText id="bairro-funcionario" value="#{funcionarioController.funcionario.bairro}" />
 					
 					<h:outputLabel value="Uf:" />
-					<h:selectOneMenu id="uf-funcionario" value="#{funcionarioController.funcionario.uf}">
-                    	<f:selectItems value="#{estadoController.listarTodos}" />
+					<h:selectOneMenu id="uf-funcionario" value="#{funcionarioController.funcionario.uf}" valueChangeListener="#{cidadeController.listarCidadesPorUf}">
+                    	<f:selectItems value="#{estadoController.lista}" />
+                	</h:selectOneMenu>
+					
+					<h:outputLabel value="Cidade: " />
+					<h:selectOneMenu id="cidade-funcionario" value="#{funcionarioController.funcionario.cidade}">
+                    	<f:selectItems value="#{cidadeController.lista}" />
                 	</h:selectOneMenu>
 					
 					<h:outputLabel value="Tipo de produto: " />
