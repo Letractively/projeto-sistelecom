@@ -12,7 +12,7 @@ import br.com.sistelecom.entity.Estado;
 
 public class CidadeDAOImpl implements DAO<Cidade>{
 	
-	private Estado estado;
+	private Estado estado = new Estado();
 	
 	public void salvar(Cidade cidade) throws Exception {
 	}
@@ -28,6 +28,26 @@ public class CidadeDAOImpl implements DAO<Cidade>{
 		try{
 			ps = conn.prepareStatement("select idcidade, nome_cidade from cidade inner join estado on estado.idestado = cidade.uf where estado.idestado = ?");
 			ps.setInt(1, estado.getIdEstado());
+			rs = ps.executeQuery();
+			List<Cidade> list = new ArrayList<Cidade>();
+			while(rs.next()) {
+				list.add(new Cidade(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<Cidade> listarCidadesPorUf(int id){
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
+
+		try{
+			ps = conn.prepareStatement("select idcidade, nome_cidade from cidade inner join estado on estado.idestado = cidade.uf where estado.idestado = ?");
+			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			List<Cidade> list = new ArrayList<Cidade>();
 			while(rs.next()) {

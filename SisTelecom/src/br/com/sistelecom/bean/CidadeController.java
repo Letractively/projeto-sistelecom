@@ -3,7 +3,9 @@ package br.com.sistelecom.bean;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 
 import br.com.sistelecom.dao.CidadeDAOImpl;
 import br.com.sistelecom.entity.Cidade;
@@ -23,6 +25,10 @@ public class CidadeController {
 	public void listarTodos() {
 		this.lista = new LinkedList<Cidade>();
 		this.setLista(this.getDao().listarTodos());
+	}
+	
+	public void listarCidadesPorUf(ValueChangeEvent event) throws AbortProcessingException {
+		List<Cidade> cidade = this.getDao().listarCidadesPorUf(Integer.valueOf(event.getNewValue().toString()));
 	}
 	
 	public void carregarRegistro(ActionEvent evento) {
