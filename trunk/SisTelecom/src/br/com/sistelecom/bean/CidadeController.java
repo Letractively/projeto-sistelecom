@@ -3,6 +3,7 @@ package br.com.sistelecom.bean;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
@@ -32,9 +33,22 @@ public class CidadeController {
 		this.setLista(this.getDao().listarTodos());
 	}
 	
-	@SuppressWarnings("unused")
-	public void listarCidadesPorUf(ValueChangeEvent event) throws AbortProcessingException {
-		List<Cidade> cidade = this.getDao().listarCidadesPorUf(Integer.valueOf(event.getNewValue().toString()));
+	public void listarCidadesPorUf(ActionEvent event){
+		int id = Integer.valueOf(((HtmlSelectOneMenu)event.getComponent().getParent()).getValue().toString());
+		
+		if(id > 0){
+			List<Cidade> cidade = this.getDao().listarCidadesPorUf(id);
+		
+			final List<SelectItem> listaCidadesPorUF = new LinkedList<SelectItem>();
+		
+			for (Cidade c : cidade) {
+				listaCidadesPorUF.add(new SelectItem(c.getUf(),c.getNomeCidade()));
+			}
+		
+			this.setListaCidade(listaCidadesPorUF);
+		}else{
+			this.setListaCidade(new LinkedList<SelectItem>());
+		}
 	}
 	
 	public void carregarRegistro(ActionEvent evento) {

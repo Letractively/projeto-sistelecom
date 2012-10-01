@@ -61,13 +61,17 @@
 					<h:inputText id="bairro-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.bairro}" />
 					
 					<h:outputLabel value="Uf:" />
-					<h:selectOneMenu id="uf-funcionario" value="#{funcionarioController.funcionario.uf}">
-					<a4j:support event="onchange" actionListener="#{cidadeController.listarCidadesPorUf}" reRender="cidade-funcionario" process="cidade-funcionario"/>
-                    	<f:selectItems value="#{estadoController.listaEstado}" />
+					<h:selectOneMenu id="uf-funcionario" value="#{funcionarioController.funcionario.uf}" onchange="listarCidades();">
+						<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+						<a4j:jsFunction name="listarCidades" actionListener="#{cidadeController.listarCidadesPorUf}" reRender="cidade-funcionario" process="cidade-funcionario"/>
+						<f:selectItems value="#{estadoController.listaEstado}" />
                 	</h:selectOneMenu>
+                	
+                	
 					
 					<h:outputLabel value="Cidade:" />
 					<h:selectOneMenu id="cidade-funcionario" value="#{funcionarioController.funcionario.cidade}" >	
+						<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
                     	<f:selectItems value="#{cidadeController.listaCidade}" />
                 	</h:selectOneMenu>
                 	
