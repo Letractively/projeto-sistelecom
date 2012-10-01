@@ -20,7 +20,7 @@ public class ProdutoDAOImpl implements DAO<Produto> {
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, produto.getNomeProduto());
 			ps.setString(2, produto.getTipo());
-			ps.setInt(3, produto.getValorReceita());
+			ps.setFloat(3, produto.getValorReceita());
 			ps.setDate(4, new java.sql.Date(produto.getCriacao().getTime()));
 			ps.executeUpdate();
 
@@ -37,7 +37,7 @@ public class ProdutoDAOImpl implements DAO<Produto> {
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, produto.getNomeProduto());
 			ps.setString(2, produto.getTipo());
-			ps.setInt(3, produto.getValorReceita());
+			ps.setFloat(3, produto.getValorReceita());
 			ps.setDate(4, new java.sql.Date(produto.getCriacao().getTime()));
 			ps.setInt(5, produto.getIdProduto());
 			ps.executeUpdate();
@@ -57,7 +57,7 @@ public class ProdutoDAOImpl implements DAO<Produto> {
 			rs = ps.executeQuery();
 			List<Produto> list = new ArrayList<Produto>();
 			while(rs.next()) {
-				list.add(new Produto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDate(5)));
+				list.add(new Produto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getDate(5)));
 			}
 			return list;
 		} catch (Exception e) {
@@ -84,7 +84,7 @@ public class ProdutoDAOImpl implements DAO<Produto> {
 			produto.setIdProduto(id);
 			produto.setNomeProduto(rs.getString(2));
 			produto.setTipo(rs.getString(3));
-			produto.setValorReceita(rs.getInt(4));
+			produto.setValorReceita(rs.getFloat(4));
 			produto.setCriacao(rs.getDate(5));
 
 			return produto;

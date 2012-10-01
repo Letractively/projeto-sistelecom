@@ -11,6 +11,7 @@ import javax.faces.model.SelectItem;
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
+import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.dao.DepartamentoDAOImpl;
 import br.com.sistelecom.entity.Departamento;
 
@@ -18,6 +19,8 @@ public class DepartamentoController implements Controller<Departamento>{
 	
 	private Departamento departamento;
 	private List<Departamento> lista;
+	private List<SelectItem> listaDepartamento;
+	private DAO<Departamento> departamentoDAO = new DepartamentoDAOImpl();
 	
 	public DepartamentoController() {
 		this.listarTodos();
@@ -131,6 +134,28 @@ public class DepartamentoController implements Controller<Departamento>{
 	 */
 	public void setLista(List<Departamento> lista) {
 		this.lista = lista;
+	}
+	
+	/**
+	 * @return the listaDepartamento
+	 */
+	public List<SelectItem> getListaDepartamento() {
+		List<Departamento> listaDeDepartamento = departamentoDAO.listarTodos();
+		
+		if(this.listaDepartamento == null){
+			this.listaDepartamento = new LinkedList<SelectItem>();
+			for (Departamento departamento : listaDeDepartamento) {
+				this.listaDepartamento.add(new SelectItem(departamento.getIdDepartamento(), departamento.getNomeDepartamento()));
+			}
+		}
+		return listaDepartamento;
+	}
+
+	/**
+	 * @param listaDepartamento the listaDepartamento to set
+	 */
+	public void setListaDepartamento(List<SelectItem> listaDepartamento) {
+		this.listaDepartamento = listaDepartamento;
 	}
 	
 

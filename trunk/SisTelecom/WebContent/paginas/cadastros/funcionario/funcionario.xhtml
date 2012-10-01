@@ -41,13 +41,13 @@
 					<h:outputLabel value="CPF:" />
 					<h:inputText id="cpf-funcionario" value="#{funcionarioController.funcionario.cpf}" />
 					
-					<h:outputLabel value="Cargo:" />
+					<h:outputLabel value="Departamento:" />
 					<h:selectOneMenu id="departamento-funcionario" value="#{funcionarioController.funcionario.departamento}">
                     	<f:selectItems value="#{departamentoController.listaDepartamento}" />
                 	</h:selectOneMenu>
 					
 					<h:outputLabel value="Nome Completo:" />
-					<h:inputText id="nome-funcionario" value="#{funcionarioController.funcionario.nomeFuncionario}" />
+					<h:inputText id="nome-funcionario" value="#{funcionarioController.funcionario.nome}" />
 					
 					<h:outputLabel value="Logradouro:" />
 					<h:inputText id="logradouro-funcionario" value="#{funcionarioController.funcionario.logradouro}" />
@@ -63,11 +63,11 @@
 					
 					<h:outputLabel value="Uf:" />
 					<h:selectOneMenu id="uf-funcionario" value="#{funcionarioController.funcionario.uf}" valueChangeListener="#{cidadeController.listarCidadesPorUf}">
-                    	<f:selectItems value="#{estadoController.lista}" />
+                    	<f:selectItems value="#{estadoController.listaEstado}" />
                 	</h:selectOneMenu>
 					
 					<h:outputLabel value="Cidade: " />
-					<h:selectOneMenu id="cidade-funcionario" value="#{funcionarioController.funcionario.cidade}">
+					<h:selectOneMenu id="cidade-funcionario" value="#{funcionarioController.funcionario.cidade}" >
                     	<f:selectItems value="#{cidadeController.lista}" />
                 	</h:selectOneMenu>
 					
@@ -111,7 +111,7 @@
 			<rich:spacer width="100%" height="10px" />
 	
 			<a4j:form id="formulario-tabela" prependId="false" >
-				<rich:dataTable id="tabela" value="#{produtoController.lista}"
+				<rich:dataTable id="tabela" value="#{funcionarioController.lista}"
 					var="produto" style="width:100%;">
 	
 					<rich:column width="50">

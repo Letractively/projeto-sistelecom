@@ -12,16 +12,16 @@ import java.util.Date;
  */
 public class Produto {
     
-    private Integer idProduto;
+    private int idProduto;
     private String nomeProduto;
     private String tipo;
-    private Integer valorReceita;
+    private float valorReceita;
     private Date criacao;
 
     public Produto() {
     }
 
-    public Produto(Integer idProduto, String nomeProduto, String tipo, Integer valorReceita, Date criacao) {
+    public Produto(int idProduto, String nomeProduto, String tipo, float valorReceita, Date criacao) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.tipo = tipo;
@@ -29,11 +29,11 @@ public class Produto {
         this.criacao = criacao;
     }
 
-    public Integer getIdProduto() {
+    public int getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(Integer idProduto) {
+    public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
     }
 
@@ -53,11 +53,11 @@ public class Produto {
         this.tipo = tipo;
     }
 
-    public Integer getValorReceita() {
+    public float getValorReceita() {
         return valorReceita;
     }
 
-    public void setValorReceita(Integer valorReceita) {
+    public void setValorReceita(float valorReceita) {
         this.valorReceita = valorReceita;
     }
 
