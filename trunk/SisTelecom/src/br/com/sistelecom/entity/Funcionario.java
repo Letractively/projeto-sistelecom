@@ -12,24 +12,25 @@ import java.util.Date;
  */
 public class Funcionario {
 
-	private Integer idFuncionario;
+	private int idFuncionario;
 	private String cpf;
-	private Integer departamento;
+	private int departamento;
 	private String nome;
 	private String logradouro;
-	private Integer numero;
+	private int numero;
 	private String complemento;
 	private String bairro;
-	private Integer cidade;
-	private Integer uf;
-	private Integer cep;
+	private int cidade;
+	private int uf;
+	private int cep;
 	private Date nasc;
-	private Integer tel1;
-	private Integer tel2;
-	private Integer doc;
+	private int tel1;
+	private int tel2;
+	private String email;
+	private int doc;
 	private String tipoDoc;
-	private Integer cargo;
-	private String supervFuncao;
+	private int cargo;
+	private int supervFuncao;
 	private String supervNome;
 	private Date admissao;
 	private String status;
@@ -39,11 +40,11 @@ public class Funcionario {
 	public Funcionario() {
 	}
 
-	public Funcionario(Integer idFuncionario, String cpf, Integer departamento,
-			String nome, String logradouro, Integer numero, String complemento,
-			String bairro, Integer cidade, Integer uf, Integer cep, Date nasc,
-			Integer tel1, Integer tel2, Integer doc, String tipoDoc,
-			Integer cargo, String supervFuncao, String supervNome,
+	public Funcionario(int idFuncionario, String cpf, int departamento,
+			String nome, String logradouro, int numero, String complemento,
+			String bairro, int cidade, int uf, int cep, Date nasc,
+			int tel1, int tel2, String email, int doc, String tipoDoc,
+			int cargo, int supervFuncao, String supervNome,
 			Date admissao, String status, String login,
 			String password) {
 
@@ -61,6 +62,7 @@ public class Funcionario {
 		this.nasc = nasc;
 		this.tel1 = tel1;
 		this.tel2 = tel2;
+		this.email = email;
 		this.doc = doc;
 		this.tipoDoc = tipoDoc;
 		this.cargo = cargo;
@@ -68,16 +70,15 @@ public class Funcionario {
 		this.supervNome = supervNome;
 		this.admissao = admissao;
 		this.status = status;
-		this.login = login
-				;
+		this.login = login;
 		this.password = password;
 	}
 
-	public Integer getIdFuncionario() {
+	public int getIdFuncionario() {
 		return idFuncionario;
 	}
 
-	public void setIdFuncionario(Integer idFuncionario) {
+	public void setIdFuncionario(int idFuncionario) {
 		this.idFuncionario = idFuncionario;
 	}
 
@@ -89,11 +90,11 @@ public class Funcionario {
 		this.cpf = cpf;
 	}
 
-	public Integer getDepartamento() {
+	public int getDepartamento() {
 		return departamento;
 	}
 
-	public void setDepartamento(Integer departamento) {
+	public void setDepartamento(int departamento) {
 		this.departamento = departamento;
 	}
 
@@ -113,11 +114,11 @@ public class Funcionario {
 		this.logradouro = logradouro;
 	}
 
-	public Integer getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Integer numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 
@@ -137,27 +138,27 @@ public class Funcionario {
 		this.bairro = bairro;
 	}
 
-	public Integer getCidade() {
+	public int getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(Integer cidade) {
+	public void setCidade(int cidade) {
 		this.cidade = cidade;
 	}
 
-	public Integer getUf() {
+	public int getUf() {
 		return uf;
 	}
 
-	public void setUf(Integer uf) {
+	public void setUf(int uf) {
 		this.uf = uf;
 	}
 
-	public Integer getCep() {
+	public int getCep() {
 		return cep;
 	}
 
-	public void setCep(Integer cep) {
+	public void setCep(int cep) {
 		this.cep = cep;
 	}
 
@@ -169,27 +170,35 @@ public class Funcionario {
 		this.nasc = nasc;
 	}
 
-	public Integer getTel1() {
+	public int getTel1() {
 		return tel1;
 	}
 
-	public void setTel1(Integer tel1) {
+	public void setTel1(int tel1) {
 		this.tel1 = tel1;
 	}
 
-	public Integer getTel2() {
+	public int getTel2() {
 		return tel2;
 	}
 
-	public void setTel2(Integer tel2) {
+	public void setTel2(int tel2) {
 		this.tel2 = tel2;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email){
+		this.email = email;
+	}
 
-	public Integer getDoc() {
+	public int getDoc() {
 		return doc;
 	}
 
-	public void setDoc(Integer doc) {
+	public void setDoc(int doc) {
 		this.doc = doc;
 	}
 
@@ -201,19 +210,19 @@ public class Funcionario {
 		this.tipoDoc = tipoDoc;
 	}
 
-	public Integer getCargo() {
+	public int getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(Integer cargo) {
+	public void setCargo(int cargo) {
 		this.cargo = cargo;
 	}
 
-	public String getSupervFuncao() {
+	public int getSupervFuncao() {
 		return supervFuncao;
 	}
 
-	public void setSupervFuncao(String supervFuncao) {
+	public void setSupervFuncao(int supervFuncao) {
 		this.supervFuncao = supervFuncao;
 	}
 

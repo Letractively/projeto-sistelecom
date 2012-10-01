@@ -6,18 +6,24 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.model.SelectItem;
 
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
 import br.com.sistelecom.dao.CargoDAOImpl;
+import br.com.sistelecom.dao.DAO;
+import br.com.sistelecom.dao.EstadoDAOImpl;
 import br.com.sistelecom.entity.Cargo;
+import br.com.sistelecom.entity.Estado;
 import br.com.sistelecom.to.RamoTO;
 
 public class CargoController implements Controller<Cargo>{
 	
 	private Cargo cargo;
 	private List<Cargo> lista;
+	private List<SelectItem> listaCargo;
+	private DAO<Cargo> cargoDAO = new CargoDAOImpl();
 	
 	public CargoController() {
 		this.listarTodos();
@@ -128,6 +134,25 @@ public class CargoController implements Controller<Cargo>{
 	 */
 	public void setLista(List<Cargo> lista) {
 		this.lista = lista;
+	}
+	
+	public List<SelectItem> getListaCargo() {
+		List<Cargo> listaDeCargo = cargoDAO.listarTodos();
+		
+		if(this.listaCargo == null){
+			this.listaCargo = new LinkedList<SelectItem>();
+			for (Cargo cargo : listaDeCargo) {
+				this.listaCargo.add(new SelectItem(cargo.getIdCargo(), cargo.getNomeCargo()));
+			}
+		}
+		return listaCargo;
+	}
+
+	/**
+	 * @param listaDepartamento the listaDepartamento to set
+	 */
+	public void setListaCargo(List<SelectItem> listaCargo) {
+		this.listaCargo = listaCargo;
 	}
 
 }
