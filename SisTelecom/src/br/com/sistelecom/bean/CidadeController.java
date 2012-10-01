@@ -32,6 +32,7 @@ public class CidadeController {
 		this.setLista(this.getDao().listarTodos());
 	}
 	
+	@SuppressWarnings("unused")
 	public void listarCidadesPorUf(ValueChangeEvent event) throws AbortProcessingException {
 		List<Cidade> cidade = this.getDao().listarCidadesPorUf(Integer.valueOf(event.getNewValue().toString()));
 	}
