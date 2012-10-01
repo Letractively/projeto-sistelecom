@@ -51,7 +51,10 @@ public class CidadeDAOImpl implements DAO<Cidade>{
 			rs = ps.executeQuery();
 			List<Cidade> list = new ArrayList<Cidade>();
 			while(rs.next()) {
-				list.add(new Cidade(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+				final Cidade cidade = new Cidade();
+				cidade.setUf(rs.getInt(1));
+				cidade.setNomeCidade(rs.getString(2));
+				list.add(cidade);
 			}
 			return list;
 		} catch (Exception e) {
