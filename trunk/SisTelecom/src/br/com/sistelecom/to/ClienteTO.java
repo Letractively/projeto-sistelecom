@@ -1,0 +1,127 @@
+package br.com.sistelecom.to;
+
+public class ClienteTO {
+	
+	private boolean selecionado;
+	private int id;
+	private String cnpj;
+	private String razaoSocial;
+	private String nomeResp1;
+	private int tel1;
+	private int tel2;
+	
+	public ClienteTO() {
+		super();
+	}
+
+	public ClienteTO(boolean selecionado, int id, String cnpj,
+			String razaoSocial, String nomeResp1, int tel1, int tel2) {
+		super();
+		this.selecionado = selecionado;
+		this.id = id;
+		this.cnpj = cnpj;
+		this.razaoSocial = razaoSocial;
+		this.nomeResp1 = nomeResp1;
+		this.tel1 = tel1;
+		this.tel2 = tel2;
+	}
+
+	/**
+	 * @return the selecionado
+	 */
+	public boolean isSelecionado() {
+		return selecionado;
+	}
+
+	/**
+	 * @param selecionado the selecionado to set
+	 */
+	public void setSelecionado(boolean selecionado) {
+		this.selecionado = selecionado;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the cnpj
+	 */
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	/**
+	 * @param cnpj the cnpj to set
+	 */
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	/**
+	 * @return the razaoSocial
+	 */
+	public String getRazaoSocial() {
+		return razaoSocial;
+	}
+
+	/**
+	 * @param razaoSocial the razaoSocial to set
+	 */
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+
+	/**
+	 * @return the nomeResp1
+	 */
+	public String getNomeResp1() {
+		return nomeResp1;
+	}
+
+	/**
+	 * @param nomeResp1 the nomeResp1 to set
+	 */
+	public void setNomeResp1(String nomeResp1) {
+		this.nomeResp1 = nomeResp1;
+	}
+
+	/**
+	 * @return the tel1
+	 */
+	public int getTel1() {
+		return tel1;
+	}
+
+	/**
+	 * @param tel1 the tel1 to set
+	 */
+	public void setTel1(int tel1) {
+		this.tel1 = tel1;
+	}
+
+	/**
+	 * @return the tel2
+	 */
+	public int getTel2() {
+		return tel2;
+	}
+
+	/**
+	 * @param tel2 the tel2 to set
+	 */
+	public void setTel2(int tel2) {
+		this.tel2 = tel2;
+	}
+
+}
