@@ -226,7 +226,7 @@
 							<h:outputLabel value="ID" />
 						</f:facet>
 
-						<h:outputLabel value="#{cliente.idCliente}" />
+						<h:outputLabel value="#{cliente.id}" />
 					</div>
 				</rich:column>
 
@@ -250,7 +250,7 @@
 					</div>
 				</rich:column>
 
-				<rich:column width="100">
+				<rich:column width="150">
 					<div id="div-nome-administrador" align="center">
 						<f:facet name="header">
 							<h:outputLabel value="Administrador" />
@@ -271,16 +271,6 @@
 				</rich:column>
 
 				<rich:column width="50">
-					<div id="div-tel2" align="center">
-						<f:facet name="header">
-							<h:outputLabel value="Celular" />
-						</f:facet>
-
-						<h:outputLabel value="#{cliente.tel2}" />
-					</div>
-				</rich:column>
-
-				<rich:column width="50">
 
 					<f:facet name="header">
 						<h:outputLabel value="Alterar" />
@@ -292,7 +282,7 @@
 								actionListener="#{clienteController.carregarRegistro}"
 								oncomplete="inibir();" reRender="formulario-dados"
 								process="formulario-dados" immediate="true" ajaxSingle="true">
-								<a4j:actionparam name="idCliente" value="#{cliente.idCliente}" />
+								<a4j:actionparam name="id" value="#{cliente.id}" />
 							</a4j:commandButton>
 
 							<rich:spacer width="10px" />
@@ -302,7 +292,7 @@
 								reRender="formulario-tabela,formulario-dados"
 								process="formulario-tabela,formulario-dados" immediate="true"
 								ajaxSingle="true">
-								<a4j:actionparam name="idCliente" value="#{cliente.idCliente}" />
+								<a4j:actionparam name="id" value="#{cliente.id}" />
 							</a4j:commandButton>
 						</h:panelGrid>
 					</div>

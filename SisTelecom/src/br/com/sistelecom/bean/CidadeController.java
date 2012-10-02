@@ -105,7 +105,7 @@ public class CidadeController {
 		if(this.listaCidade == null){
 			this.listaCidade = new LinkedList<SelectItem>();
 			for (Cidade cidade : listaDeCidade) {
-				this.listaCidade.add(new SelectItem(cidade.getIdCidade(), String.valueOf(cidade.getUf()), cidade.getNomeCidade()));
+				this.listaCidade.add(new SelectItem(cidade.getIdCidade(), cidade.getNomeCidade()));
 			}
 		}
 		return listaCidade;

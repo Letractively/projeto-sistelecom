@@ -6,10 +6,12 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.model.SelectItem;
 
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
+import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.dao.ProdutoDAOImpl;
 import br.com.sistelecom.entity.Produto;
 
@@ -17,6 +19,8 @@ public class ProdutoController implements Controller<Produto>{
 	
 	private Produto produto;
 	private List<Produto> lista;
+	private List<SelectItem> listaProduto;
+	private DAO<Produto> produtoDAO = new ProdutoDAOImpl();
 	
 	public ProdutoController(){
 		this.listarTodos();
@@ -130,6 +134,25 @@ public class ProdutoController implements Controller<Produto>{
 	 */
 	public void setLista(List<Produto> lista) {
 		this.lista = lista;
+	}
+	
+	public List<SelectItem> getListaProduto() {
+		List<Produto> listaDeProduto = produtoDAO.listarTodos();
+		
+		if(this.listaProduto == null){
+			this.listaProduto = new LinkedList<SelectItem>();
+			for (Produto produto : listaDeProduto) {
+				this.listaProduto.add(new SelectItem(produto.getIdProduto(), produto.getNomeProduto(), produto.getTipo()));
+			}
+		}
+		return listaProduto;
+	}
+
+	/**
+	 * @param listaDepartamento the listaDepartamento to set
+	 */
+	public void setListaProduto(List<SelectItem> listaProduto) {
+		this.listaProduto = listaProduto;
 	}
 
 }

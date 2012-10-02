@@ -8,14 +8,13 @@ public class ClienteTO {
 	private String razaoSocial;
 	private String nomeResp1;
 	private int tel1;
-	private int tel2;
 	
 	public ClienteTO() {
 		super();
 	}
 
 	public ClienteTO(boolean selecionado, int id, String cnpj,
-			String razaoSocial, String nomeResp1, int tel1, int tel2) {
+			String razaoSocial, String nomeResp1, int tel1) {
 		super();
 		this.selecionado = selecionado;
 		this.id = id;
@@ -23,7 +22,6 @@ public class ClienteTO {
 		this.razaoSocial = razaoSocial;
 		this.nomeResp1 = nomeResp1;
 		this.tel1 = tel1;
-		this.tel2 = tel2;
 	}
 
 	/**
@@ -109,19 +107,4 @@ public class ClienteTO {
 	public void setTel1(int tel1) {
 		this.tel1 = tel1;
 	}
-
-	/**
-	 * @return the tel2
-	 */
-	public int getTel2() {
-		return tel2;
-	}
-
-	/**
-	 * @param tel2 the tel2 to set
-	 */
-	public void setTel2(int tel2) {
-		this.tel2 = tel2;
-	}
-
 }
