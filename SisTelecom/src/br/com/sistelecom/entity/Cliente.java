@@ -38,13 +38,12 @@ public class Cliente {
     private String cpfResp3;
     private String nomeResp3;
     private Date nascResp3;
-    private Date auditoria;
 
     public Cliente(Integer idCliente, String cnpj, String razaoSocial, String nomeFantasia, Integer ramo, 
             String logradouro, Integer numero, String complemento, String bairro, Integer cidade, Integer uf, 
             Integer cep, Integer tel1, Integer tel2, String email, Integer inscEst, Date desde, String cpfResp1, 
             String nomeResp1, Date nascResp1, String cpfResp2, String nomeResp2, Date nascResp2, 
-            String cpfResp3, String nomeResp3, Date nascResp3, Date auditoria) {
+            String cpfResp3, String nomeResp3, Date nascResp3) {
         
         this.idCliente = idCliente;
         this.cnpj = cnpj;
@@ -72,7 +71,6 @@ public class Cliente {
         this.cpfResp3 = cpfResp3;
         this.nomeResp3 = nomeResp3;
         this.nascResp3 = nascResp3;
-        this.auditoria = auditoria;
     }
     
     
@@ -411,20 +409,6 @@ public class Cliente {
      */
     public void setNascResp3(Date nascResp3) {
         this.nascResp3 = nascResp3;
-    }
-
-    /**
-     * @return the auditoria
-     */
-    public Date getAuditoria() {
-        return auditoria;
-    }
-
-    /**
-     * @param auditoria the auditoria to set
-     */
-    public void setAuditoria(Date auditoria) {
-        this.auditoria = auditoria;
     }
 
     public String getBairro() {

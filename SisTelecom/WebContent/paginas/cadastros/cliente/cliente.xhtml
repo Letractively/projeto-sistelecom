@@ -6,196 +6,311 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+<head>
+<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+<script type="text/javascript">
+					function inibir(){
+						jQuery("#id-cliente").bind("keypress",function(e){
+							e.preventDefault();
+						});
+					}
+		</script>
+
+<style type="text/css">
+.rich-messages-label {
+	font-weight: bold;
+}
+</style>
+</head>
 
 <body>
-	<h:form id="formulario-cadastroCliente" prependId="false">
-		<div id="div-cadastro" align="left">
-			<rich:panel style="width=800px;">
-				<f:facet name="header">
-       Cadastro de Clientes
-       </f:facet>
+	<rich:panel style="800px;">
 
-				<rich:panel style="width=100%;">
+		<f:facet name="header">
+			<h:outputLabel value="Cadastro de clientes" />
+		</f:facet>
+
+		<h:form id="formulario-dados" prependId="false">
+
+			<h:panelGrid columns="1">
+				<rich:panel>
 					<f:facet name="header">
-		Dados da Empresa
-	</f:facet>
-					<h:panelGroup>
-						<h:outputLabel id="lab-cnpj" value="CNPJ: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-cnpj" style="width=100%;"
-							value="#{clienteC.cliente.cnpj}" />
+						<h:outputLabel value="Dados da Empresa" />
+					</f:facet>
+					<h:panelGrid columns="4">
+						<h:outputLabel value="Id:" />
+						<h:inputText id="id-cliente"
+							value="#{clienteController.cliente.idCliente}"
+							style="width:50px;" />
 
-						<a4j:commandButton value="Pesquisar"
-							execute="#{clienteC.ClienteDAO.procurarCnpj}" />
-					</h:panelGroup>
+						<h:outputLabel value="CNPJ:" />
+						<h:inputText id="cnpj-cliente" style="width:100px;"
+							value="#{clienteController.cliente.cnpj}" />
 
-					<br />
+						<h:outputLabel value="Razão Social:" />
+						<h:inputText id="razao-social-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.razaoSocial}" style="width:200px"/>
 
-					<h:panelGrid columns="9" style="width=100%">
-						<h:outputLabel id="lab-razaoSocial" value="Razão Social: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-razaoSocial" style="width=100%;"
-							value="#{clienteC.cliente.razaoSocial}" />
+						<h:outputLabel value="Nome Fantasia:" />
+						<h:inputText id="nome-fantasia-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.nomeFantasia}" />
 
-						<h:outputLabel id="lab-nomeFantasia" value="Nome Fantasia: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-nomeFantasia" style="width=100%;"
-							value="#{clienteC.cliente.nomeFantasia}" />
-
-						<h:selectOneMenu id="ramo" value="{ramoC.listaRamos}">
-							<f:selectItems value="#{ramoC.listaRamos}" />
+						<h:outputLabel value="Ramo (Atividade econômica):" />
+						<h:selectOneMenu id="ramo-cliente"
+							value="#{clienteController.cliente.ramo}">
+							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+							<f:selectItems value="#{ramoController.listaRamo}" />
 						</h:selectOneMenu>
 
-						<h:outputLabel id="lab-logradouro" value="Logradouro: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-logradouro" style="width=100%;"
-							value="#{clienteC.cliente.logradouro}" />
+						<h:outputLabel value="Inscrição Estadual:" />
+						<h:inputText id="inscest-cliente"
+							value="#{clienteController.cliente.inscEst}" />
 
-						<h:outputLabel id="lab-numero" value="Número: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-numero" style="width=100%;"
-							value="#{clienteC.cliente.numero}" />
-					</h:panelGrid>
-					<br />
-					<h:panelGrid columns="10" style="width=100%">
-
-						<h:outputLabel id="lab-complemento" value="Complemento: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-complemento" style="width=100%;"
-							value="#{clienteC.cliente.complemento}" />
-
-						<h:outputLabel id="lab-bairro" value="Bairro: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-bairro" style="width=100%;"
-							value="#{clienteC.cliente.bairro}" />
-							
-						<h:outputLabel id="lab-uf" value="UF: " />
-						<h:selectOneMenu id="UF" value="">
-							<f:selectItems value="#{estadoC.listaEstados}" />
-						</h:selectOneMenu>
-
-						<h:selectOneMenu id="Cidade" value="{ramoC.listaRamos}">
-							<f:selectItems value="#{ramoC.listaRamos}" />
-						</h:selectOneMenu>
-
-						<h:outputLabel id="lab-cep" value="CEP: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-cep" style="width=100%;"
-							value="#{clienteC.cliente.cep}" />
-
-						<h:outputLabel id="lab-tel1" value="Telefone: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-tel1" style="width=100%;"
-							value="#{clienteC.cliente.tel1}" />
-					</h:panelGrid>
-					<br />
-					<h:panelGrid columns="8">
-
-						<h:outputLabel id="lab-tel2" value="Celular: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-tel2" style="width=100%;"
-							value="#{clienteC.cliente.tel2}" />
-
-						<h:outputLabel id="lab-email" value="E-mail: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-email" style="width=100%;"
-							value="#{clienteC.cliente.email}" />
-
-						<h:outputLabel id="lab-inscEst" value="Inscrição Estadual: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-inscEst" style="width=100%;"
-							value="#{clienteC.cliente.inscEst}" />
-
-
-						<label>Data de fundação: </label>
-						<input name="desde" type="text" value="#{clienteC.cliente.desde}"
-							id="desde" size="8" jsfc="h:inputText" required="true"
-							title="Utilize o formato dd/mm/aaaa"
-							requiredMessage="O campo Data de fundação é obrigatório!"
-							class="campo"><f:convertDateTime pattern="dd/MM/yyyy" /></input>
 					</h:panelGrid>
 				</rich:panel>
-				<br />
-				<br />
-				<br />
-				<rich:panel style="width=100%">
+				<rich:spacer style="10px">
+				</rich:spacer>
+				
+				<rich:panel style="100%px;">
+
 					<f:facet name="header">
-		Dados dos Administradores/Sócios
-	</f:facet>
-					<h:panelGrid columns="6" style="width=100%">
-						<h:outputLabel id="lab-cpfResp1" value="CPF do Administrador: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-cpfResp1" style="width=100%;"
-							value="#{clienteC.cliente.cpfResp1}" />
+						<h:outputLabel value="Localização e Contatos" />
+					</f:facet>
 
-						<h:outputLabel id="lab-nomeResp1" value="Nome do Administrador: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-nomeResp1" style="width=100%;"
-							value="#{clienteC.cliente.nomeResp1}" />
+					<h:panelGrid columns="6">
 
-						<label style="FONT-SIZE: large; FONT-FAMILY: 'Arial';">Data
-							de Nascimento: </label>
-						<input name="nascResp1" type="text"
-							value="#{clienteC.cliente.nascResp1}" id="nascResp1" size="8"
-							jsfc="h:inputText" required="true"
-							title="Utilize o formato dd/mm/aaaa"
-							requiredMessage="O campo Data de Nascimento é obrigatório!"
-							class="campo"><f:convertDateTime pattern="dd/MM/yyyy" /></input>
+						<h:outputLabel value="Logradouro:" />
+						<h:inputText id="logradouro-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.logradouro}" />
 
-						<h:outputLabel id="lab-cpfResp2" value="CPF do Sócio 1: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-cpfResp2" style="width=100%;"
-							value="#{clienteC.cliente.cpfResp2}" />
+						<h:outputLabel value="Número:" />
+						<h:inputText id="numero-cliente"
+							value="#{clienteController.cliente.numero}" />
 
-						<h:outputLabel id="lab-nomeResp2" value="Nome do Sócio 1:  "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-nomeResp2" style="width=100%;"
-							value="#{clienteC.cliente.nomeResp2}" />
+						<h:outputLabel value="Complemento: " />
+						<h:inputText id="complemento-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.complemento}" />
 
-						<label style="FONT-SIZE: large; FONT-FAMILY: 'Arial';">Data
-							de Nascimento: </label>
-						<input name="nascResp2" type="text"
-							value="#{clienteC.cliente.nascResp1}" id="nascResp2" size="8"
-							jsfc="h:inputText" title="Utilize o formato dd/mm/aaaa"
-							class="campo"><f:convertDateTime pattern="dd/MM/yyyy" /></input>
+						<h:outputLabel value="Bairro: " />
+						<h:inputText id="bairro-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.bairro}" />
 
-						<h:outputLabel id="lab-cpfResp3" value="CPF do Sócio 2: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-cpfResp3" style="width=100%;"
-							value="#{clienteC.cliente.cpfResp3}" />
+						<h:outputLabel value="Uf:" />
+						<h:selectOneMenu id="uf-cliente"
+							value="#{clienteController.cliente.uf}"
+							onchange="listarCidades();">
+							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+							<a4j:jsFunction name="listarCidades"
+								actionListener="#{cidadeController.listarCidadesPorUf}"
+								reRender="cidade-cliente" process="cidade-cliente" />
+							<f:selectItems value="#{estadoController.listaEstado}" />
+						</h:selectOneMenu>
 
-						<h:outputLabel id="lab-nomeResp3" value="Nome do Sócio 2: "
-							style="FONT-SIZE: large; FONT-FAMILY: 'Arial';" />
-						<h:inputText id="txt-nomeResp3" style="width=100%;"
-							value="#{clienteC.cliente.nomeResp3}" />
+						<h:outputLabel value="Cidade:" />
+						<h:selectOneMenu id="cidade-cliente"
+							value="#{clienteController.cliente.cidade}">
+							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+							<f:selectItems value="#{cidadeController.listaCidade}" />
+						</h:selectOneMenu>
 
-						<label style="FONT-SIZE: large; FONT-FAMILY: 'Arial';">Data
-							de Nascimento: </label>
-						<input name="nascResp3" type="text"
-							value="#{clienteC.cliente.nascResp3}" id="nascResp3" size="8"
-							jsfc="h:inputText" title="Utilize o formato dd/mm/aaaa"
-							class="campo"><f:convertDateTime pattern="dd/MM/yyyy" /></input>
+						<h:outputLabel value="CEP:" />
+						<h:inputText id="cep-cliente"
+							value="#{clienteController.cliente.cep}" />
+
+						<h:outputLabel value="Telefone:" />
+						<h:inputText id="tel1-cliente"
+							value="#{clienteController.cliente.tel1}" />
+
+						<h:outputLabel value="Celular:" />
+						<h:inputText id="tel2-cliente"
+							value="#{clienteController.cliente.tel2}" />
+
+						<h:outputLabel value="E-mail:" />
+						<h:inputText id="email-cliente"
+							onkeypress="this.style.textTransform = 'lowercase';"
+							value="#{clienteController.cliente.email}" />
+
+					</h:panelGrid>
+				</rich:panel>
+				<rich:spacer style="10px">
+				</rich:spacer>
+				<rich:panel>
+					<f:facet name="header">
+						<h:outputLabel value="Dados dos Administrador/Sócios" />
+					</f:facet>
+					<h:panelGrid columns="6">
+						<h:outputLabel value="CPF do Administrador:" />
+						<h:inputText id="cpf-administrador-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.cpfResp1}" />
+
+						<h:outputLabel value="Nome do Administrador:" />
+						<h:inputText id="nome-administrador-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.nomeResp1}" />
+
+						<h:outputLabel value="Data de nascimento do Administrador:" />
+						<h:inputText value="#{clienteController.cliente.nascResp1}">
+							<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
+						</h:inputText>
+
+						<h:outputLabel value="CPF do Sócio 1: " />
+						<h:inputText id="cpf-socio1-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.cpfResp2}" />
+
+						<h:outputLabel value="Nome do Sócio 1:" />
+						<h:inputText id="nome-socio1-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.nomeResp2}" />
+
+						<h:outputLabel value="Data de nascimento do Sócio 1:" />
+						<h:inputText value="#{clienteController.cliente.nascResp2}">
+							<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
+						</h:inputText>
+
+						<h:outputLabel value="CPF do Sócio 2:" />
+						<h:inputText id="cpf-socio2-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.cpfResp3}" />
+
+						<h:outputLabel value="Nome do Sócio 2:" />
+						<h:inputText id="nome-socio2-cliente"
+							onkeypress="this.style.textTransform = 'uppercase';"
+							value="#{clienteController.cliente.nomeResp3}" />
+
+						<h:outputLabel value="Data de nascimento do Sócio 2:" />
+						<h:inputText value="#{clienteController.cliente.nascResp2}">
+							<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
+						</h:inputText>
+					</h:panelGrid>
+				</rich:panel>
+
+			</h:panelGrid>
+
+			<rich:spacer width="100%" height="10px" />
+
+			<h:commandButton value="Salvar"
+				actionListener="#{clienteController.salvar}" />
+
+			<rich:messages>
+				<f:facet name="errorMarker">
+					<h:graphicImage url="/imagens/alerta.png" />
+				</f:facet>
+
+				<f:facet name="infoMarker">
+					<h:graphicImage url="/imagens/ok.png" />
+				</f:facet>
+			</rich:messages>
+
+		</h:form>
+
+		<rich:spacer width="100%" height="10px" />
+
+		<rich:separator width="100%" height="10px;" />
+
+		<rich:spacer width="100%" height="10px" />
+
+		<a4j:form id="formulario-tabela" prependId="false">
+			<rich:dataTable id="tabela" value="#{clienteController.lista}"
+				var="cliente" style="width:100%;">
+
+				<rich:column width="50">
+					<div id="div-id" align="center">
+						<f:facet name="header">
+							<h:outputLabel value="ID" />
+						</f:facet>
+
+						<h:outputLabel value="#{cliente.idCliente}" />
+					</div>
+				</rich:column>
+
+				<rich:column width="70">
+					<div id="div-cnpj" align="center">
+						<f:facet name="header">
+							<h:outputLabel value="CNPJ" />
+						</f:facet>
+
+						<h:outputLabel value="#{cliente.cnpj}" />
+					</div>
+				</rich:column>
+
+				<rich:column width="100">
+					<div id="div-razao-social" align="center">
+						<f:facet name="header">
+							<h:outputLabel value="Razão Social" />
+						</f:facet>
+
+						<h:outputLabel value="#{cliente.razaoSocial}" />
+					</div>
+				</rich:column>
+
+				<rich:column width="100">
+					<div id="div-nome-administrador" align="center">
+						<f:facet name="header">
+							<h:outputLabel value="Administrador" />
+						</f:facet>
+
+						<h:outputLabel value="#{cliente.nomeResp1}" />
+					</div>
+				</rich:column>
+
+				<rich:column width="50">
+					<div id="div-tel1" align="center">
+						<f:facet name="header">
+							<h:outputLabel value="Telefone" />
+						</f:facet>
+
+						<h:outputLabel value="#{cliente.tel1}" />
+					</div>
+				</rich:column>
+
+				<rich:column width="50">
+					<div id="div-tel2" align="center">
+						<f:facet name="header">
+							<h:outputLabel value="Celular" />
+						</f:facet>
+
+						<h:outputLabel value="#{cliente.tel2}" />
+					</div>
+				</rich:column>
+
+				<rich:column width="50">
+
+					<f:facet name="header">
+						<h:outputLabel value="Alterar" />
+					</f:facet>
+
+					<div align="center">
+						<h:panelGrid columns="3">
+							<a4j:commandButton value="Alterar" image="/imagens/editar.png"
+								actionListener="#{clienteController.carregarRegistro}"
+								oncomplete="inibir();" reRender="formulario-dados"
+								process="formulario-dados" immediate="true" ajaxSingle="true">
+								<a4j:actionparam name="idCliente" value="#{cliente.idCliente}" />
+							</a4j:commandButton>
+
+							<rich:spacer width="10px" />
+
+							<a4j:commandButton value="Excluir" image="/imagens/delete.png"
+								actionListener="#{clienteController.excluirRegistro}"
+								reRender="formulario-tabela,formulario-dados"
+								process="formulario-tabela,formulario-dados" immediate="true"
+								ajaxSingle="true">
+								<a4j:actionparam name="idCliente" value="#{cliente.idCliente}" />
+							</a4j:commandButton>
 						</h:panelGrid>
-				</rich:panel>
-			</rich:panel>
-		</div>
-		<div id="buttons" align="center">
-			
-				<h:panelGroup id="pgroup-buttons">
-					<a4j:commandButton value="Salvar" action="#{clienteC.novoCliente}"
-						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
-						 />
-					<a4j:commandButton value="Atualizar" render="atualizarOK"
-						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial'; width : 92px;"
-						execute="#{clienteC.ClienteDAO.atualizar}" />
-					<a4j:commandButton value="Excluir" render="excluirOK"
-						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
-						execute="#{clienteC.ClienteDAO.excluir}" />
-					<a4j:commandButton value="Limpar" type="reset"
-						style="FONT-SIZE: medium; FONT-FAMILY: 'Arial';"
-						process="inf-nome,inf-senha" reRender="inf-nome,inf-senha" />
-				</h:panelGroup>
-		</div>
-	</h:form>
+					</div>
+
+				</rich:column>
+
+			</rich:dataTable>
+		</a4j:form>
+	</rich:panel>
 </body>
 </html>

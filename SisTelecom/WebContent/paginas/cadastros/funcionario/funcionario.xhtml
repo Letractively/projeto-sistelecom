@@ -42,6 +42,7 @@
 					
 					<h:outputLabel value="Departamento:" />
 					<h:selectOneMenu id="departamento-funcionario" value="#{funcionarioController.funcionario.departamento}">
+             			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
                     	<f:selectItems value="#{departamentoController.listaDepartamento}" />
                 	</h:selectOneMenu>
 					
@@ -65,9 +66,10 @@
 						<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 						<a4j:jsFunction name="listarCidades" actionListener="#{cidadeController.listarCidadesPorUf}" reRender="cidade-funcionario" process="cidade-funcionario"/>
 						<f:selectItems value="#{estadoController.listaEstado}" />
-                	</h:selectOneMenu>
-                	
-                	
+                	</h:selectOneMenu>                	
+					
+					
+					
 					
 					<h:outputLabel value="Cidade:" />
 					<h:selectOneMenu id="cidade-funcionario" value="#{funcionarioController.funcionario.cidade}" >	
@@ -96,6 +98,7 @@
 					
 					<h:outputLabel value="Tipo de documento: " />
 					<h:selectOneMenu id="tipo-doc-funcionario" value="#{funcionarioController.funcionario.tipoDoc}">
+            			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
             			<f:selectItem itemLabel="RG" itemValue="RG"/>
             			<f:selectItem itemLabel="Carteira de habilitação" itemValue="Carteira de habilitação"/>
           				<f:selectItem itemLabel="Titulo de eleitor" itemValue="Titulo de eleitor"/>
@@ -104,11 +107,13 @@
          			
          			<h:outputLabel value="Cargo: " />
 					<h:selectOneMenu id="cargo-funcionario" value="#{funcionarioController.funcionario.cargo}" >
+                    	<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
                     	<f:selectItems value="#{cargoController.listaCargo}" />
                 	</h:selectOneMenu>
 					
 					<h:outputLabel value="Cargo Supervisor: " />
 					<h:selectOneMenu id="cargo-supervisor-funcionario" value="#{funcionarioController.funcionario.supervFuncao}" >
+                    	<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
                     	<f:selectItems value="#{cargoController.listaCargo}" />
                 	</h:selectOneMenu>
 					
@@ -121,6 +126,7 @@
 		            
 		            <h:outputLabel value="Status: " />
 					<h:selectOneMenu id="status-funcionario" value="#{funcionarioController.funcionario.status}">
+            			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
             			<f:selectItem itemLabel="Ativo" itemValue="Ativo"/>
             			<f:selectItem itemLabel="Desligado" itemValue="Desligado"/>
           				<f:selectItem itemLabel="Férias" itemValue="Férias"/>
