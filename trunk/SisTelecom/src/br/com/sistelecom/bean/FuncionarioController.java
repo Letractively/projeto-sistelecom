@@ -6,11 +6,14 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.model.SelectItem;
 
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
+import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.dao.FuncionarioDAOImpl;
+import br.com.sistelecom.entity.Cliente;
 import br.com.sistelecom.entity.Funcionario;
 import br.com.sistelecom.to.FuncionarioTO;
 
@@ -18,6 +21,8 @@ public class FuncionarioController implements Controller<Funcionario>{
 	
 	private Funcionario funcionario;
 	private List<FuncionarioTO> lista;
+	private List<SelectItem> listaFuncionario;
+	private DAO<Funcionario> funcionarioDAO = new FuncionarioDAOImpl();
 		
 	public FuncionarioController() {
 		this.listarTodos();
@@ -135,6 +140,25 @@ public class FuncionarioController implements Controller<Funcionario>{
 	 */
 	public void setLista(List<FuncionarioTO> lista) {
 		this.lista = lista;
+	}
+	
+	public List<SelectItem> getListaEstado() {
+		List<Funcionario> listaDeFuncionario = funcionarioDAO.listarTodos();
+		
+		if(this.listaFuncionario == null){
+			this.listaFuncionario = new LinkedList<SelectItem>();
+			for (Funcionario funcionario : listaDeFuncionario) {
+				this.listaFuncionario.add(new SelectItem(funcionario.getIdFuncionario(), funcionario.getCpf(), funcionario.getNome()));
+			}
+		}
+		return listaFuncionario;
+	}
+
+	/**
+	 * @param listaDepartamento the listaDepartamento to set
+	 */
+	public void setListaFuncionario(List<SelectItem> listaFuncionario) {
+		this.listaFuncionario = listaFuncionario;
 	}
 
 }

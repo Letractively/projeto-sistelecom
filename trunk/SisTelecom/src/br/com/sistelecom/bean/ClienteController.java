@@ -56,7 +56,6 @@ public class ClienteController implements Controller<Cliente>{
 		this.getCliente().setRazaoSocial(cliente.getRazaoSocial());
 		this.getCliente().setNomeResp1(cliente.getNomeResp1());
 		this.getCliente().setTel1(cliente.getTel1());
-		this.getCliente().setTel2(cliente.getTel2());
 	}
 	
 	public void atualizarRegistro() {

@@ -26,8 +26,7 @@ public class CidadeDAOImpl implements DAO<Cidade>{
 		ResultSet rs = null;
 
 		try{
-			ps = conn.prepareStatement("select idcidade, nome_cidade from cidade inner join estado on estado.idestado = cidade.uf where estado.idestado = ?");
-			ps.setInt(1, estado.getIdEstado());
+			ps = conn.prepareStatement("select * from cidade");
 			rs = ps.executeQuery();
 			List<Cidade> list = new ArrayList<Cidade>();
 			while(rs.next()) {

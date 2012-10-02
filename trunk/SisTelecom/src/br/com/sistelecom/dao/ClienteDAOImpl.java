@@ -131,9 +131,8 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 				String razaoSocial = rs.getString(3);
 				String nomeResp1 = rs.getString(4);
 				int tel1 = rs.getInt(5);
-				int tel2 = rs.getInt(6);
 
-				list.add(new ClienteTO(Boolean.FALSE, idCliente, cnpj, razaoSocial, nomeResp1, tel1, tel2));
+				list.add(new ClienteTO(Boolean.FALSE, idCliente, cnpj, razaoSocial, nomeResp1, tel1));
 			}
 			return list;
 		} catch (Exception e) {
