@@ -9,163 +9,183 @@
 <head>
 		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
 		<script type="text/javascript">
-					function inibir(){
-						jQuery("#id-funcionario").bind("keypress",function(e){
-							e.preventDefault();
-						});
-					}
-		</script>
-		
-		<style type="text/css">
-			.rich-messages-label{
-				font-weight:bold;
-			}
-		</style>
-	</head>
+				function inibir(){
+					jQuery("#id-funcionario").bind("keypress",function(e){
+						e.preventDefault();
+					});
+				}
+	</script>
+	
+	<style type="text/css">
+		.rich-messages-label{
+			font-weight:bold;
+		}
+	</style>
+</head>
 
-	<body>
-		<rich:panel style="800px;">
-	
-			<f:facet name="header">
-				<h:outputLabel value="Colaboradores" />
-			</f:facet>
-	
-			<h:form id="formulario-dados" prependId="false">
-	
-				<h:panelGrid columns="2">
-					
-					<h:outputLabel value="Id:" />
-					<h:inputText id="id-funcionario" value="#{funcionarioController.funcionario.idFuncionario}" style="width:50px;" />
-					
-					<h:outputLabel value="CPF:" />
-					<h:inputText id="cpf-funcionario" value="#{funcionarioController.funcionario.cpf}" />
-					
-					<h:outputLabel value="Departamento:" />
-					<h:selectOneMenu id="departamento-funcionario" value="#{funcionarioController.funcionario.departamento}">
-             			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-                    	<f:selectItems value="#{departamentoController.listaDepartamento}" />
-                	</h:selectOneMenu>
-					
-					<h:outputLabel value="Nome Completo:" />
-					<h:inputText id="nome-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.nome}" />
-					
-					<h:outputLabel value="Logradouro:" />
-					<h:inputText id="logradouro-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.logradouro}" />
-					
-					<h:outputLabel value="Número:" />
-					<h:inputText id="numero-funcionario" value="#{funcionarioController.funcionario.numero}" />
-					
-					<h:outputLabel value="Complemento: " />
-					<h:inputText id="complemento-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.complemento}" />
-					
-					<h:outputLabel value="Bairro: " />
-					<h:inputText id="bairro-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.bairro}" />
-					
-					<h:outputLabel value="Uf:" />
-					<h:selectOneMenu id="uf-funcionario" value="#{funcionarioController.funcionario.uf}" onchange="listarCidades();">
-						<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-						<a4j:jsFunction name="listarCidades" actionListener="#{cidadeController.listarCidadesPorUf}" reRender="cidade-funcionario" process="cidade-funcionario"/>
-						<f:selectItems value="#{estadoController.listaEstado}" />
-                	</h:selectOneMenu>                	
-					
-					
-					<h:outputLabel value="Cidade:" />
-					<h:selectOneMenu id="cidade-funcionario" value="#{funcionarioController.funcionario.cidade}" >	
-						<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-                    	<f:selectItems value="#{cidadeController.listaCidade}" />
-                	</h:selectOneMenu>
-                	
-                	<h:outputLabel value="CEP:" />
-					<h:inputText id="cep-funcionario" value="#{funcionarioController.funcionario.cep}" />
-					
-					<h:outputLabel value="Data de nascimento:" />
-			        <h:inputText value="#{funcionarioController.funcionario.nasc}">
-		            <f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy"/></h:inputText>
-		            
-		            <h:outputLabel value="Telefone:" />
-					<h:inputText id="tel1-funcionario" value="#{funcionarioController.funcionario.tel1}" />
-					
-					<h:outputLabel value="Celular:" />
-					<h:inputText id="tel2-funcionario" value="#{funcionarioController.funcionario.tel2}" />
-					
-					<h:outputLabel value="E-mail:" />
-					<h:inputText id="email-funcionario" onkeypress="this.style.textTransform = 'lowercase';" value="#{funcionarioController.funcionario.email}" />
-					
-					<h:outputLabel value="Número de documento:" />
-					<h:inputText id="doc-funcionario" value="#{funcionarioController.funcionario.doc}" />
-					
-					<h:outputLabel value="Tipo de documento: " />
-					<h:selectOneMenu id="tipo-doc-funcionario" value="#{funcionarioController.funcionario.tipoDoc}">
+<body>
+	<rich:panel style="800px;">
+
+		<f:facet name="header">
+			<h:outputLabel value="Colaboradores" />
+		</f:facet>
+
+		<h:form id="formulario-dados" prependId="false">
+
+			<h:panelGrid columns="1">
+			
+				<rich:panel>
+				<f:facet name="header">
+				<h:outputLabel value="Dados pessoais" />
+				</f:facet>
+				<h:panelGrid columns="6">
+				<h:outputLabel value="Id:" />
+				<h:inputText id="id-funcionario" value="#{funcionarioController.funcionario.idFuncionario}" style="width:50px;" />
+				
+				<h:outputLabel value="CPF:" />
+				<h:inputText id="cpf-funcionario" value="#{funcionarioController.funcionario.cpf}" />
+				
+				<h:outputLabel value="Nome Completo:" />
+				<h:inputText id="nome-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.nome}" />
+				
+				<h:outputLabel value="Data de nascimento:" />
+		        <h:inputText value="#{funcionarioController.funcionario.nasc}">
+	            <f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy"/></h:inputText>
+				
+				<h:outputLabel value="Departamento:" />
+				<h:selectOneMenu id="departamento-funcionario" value="#{funcionarioController.funcionario.departamento}">
             			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-            			<f:selectItem itemLabel="RG" itemValue="RG"/>
-            			<f:selectItem itemLabel="Carteira de habilitação" itemValue="Carteira de habilitação"/>
-          				<f:selectItem itemLabel="Titulo de eleitor" itemValue="Titulo de eleitor"/>
-          				<f:selectItem itemLabel="Carteira profissional" itemValue="Carteira profissional"/>
-         			</h:selectOneMenu>
-         			
-         			<h:outputLabel value="Cargo: " />
-					<h:selectOneMenu id="cargo-funcionario" value="#{funcionarioController.funcionario.cargo}" >
-                    	<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-                    	<f:selectItems value="#{cargoController.listaCargo}" />
-                	</h:selectOneMenu>
-					
-					<h:outputLabel value="Cargo Supervisor: " />
-					<h:selectOneMenu id="cargo-supervisor-funcionario" value="#{funcionarioController.funcionario.supervFuncao}" >
-                    	<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-                    	<f:selectItems value="#{cargoController.listaCargo}" />
-                	</h:selectOneMenu>
-					
-					<h:outputLabel value="Nome do Supervisor:" />
-					<h:inputText id="nome-supervisor-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.supervNome}" />
-					
-					<h:outputLabel value="Data de admissão: " />
-			        <h:inputText value="#{funcionarioController.funcionario.admissao}">
-		            <f:convertDateTime id="padraoDataAdmissao" pattern="dd/MM/yyyy"/></h:inputText>
-		            
-		            <h:outputLabel value="Status: " />
-					<h:selectOneMenu id="status-funcionario" value="#{funcionarioController.funcionario.status}">
-            			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-            			<f:selectItem itemLabel="Ativo" itemValue="Ativo"/>
-            			<f:selectItem itemLabel="Desligado" itemValue="Desligado"/>
-          				<f:selectItem itemLabel="Férias" itemValue="Férias"/>
-          				<f:selectItem itemLabel="Ausente (Motivos pessoais)" itemValue="Ausente (Motivos pessoais)"/>
-          				<f:selectItem itemLabel="Outro" itemValue="Outro"/>
-         			</h:selectOneMenu>
-         			
-         			<h:outputLabel value="Login SisTelecom:" />
-					<h:inputText id="login-funcionario" value="#{funcionarioController.funcionario.login}" />
-					
-					<h:outputLabel value="Senha SisTelecom:" />
-					<h:inputSecret id="password-funcionario" value="#{funcionarioController.funcionario.password}" />
-	
+                   	<f:selectItems value="#{departamentoController.listaDepartamento}" />
+               	</h:selectOneMenu>
+               	
+               	<h:outputLabel value="Número de documento:" />
+				<h:inputText id="doc-funcionario" value="#{funcionarioController.funcionario.doc}" />
+				
+				<h:outputLabel value="Tipo de documento: " />
+				<h:selectOneMenu id="tipo-doc-funcionario" value="#{funcionarioController.funcionario.tipoDoc}">
+           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+           			<f:selectItem itemLabel="RG" itemValue="RG"/>
+           			<f:selectItem itemLabel="Carteira de habilitação" itemValue="Carteira de habilitação"/>
+         				<f:selectItem itemLabel="Titulo de eleitor" itemValue="Titulo de eleitor"/>
+         				<f:selectItem itemLabel="Carteira profissional" itemValue="Carteira profissional"/>
+        		</h:selectOneMenu>
+				
+				<h:outputLabel value="Data de admissão: " />
+		        <h:inputText value="#{funcionarioController.funcionario.admissao}">
+	            <f:convertDateTime id="padraoDataAdmissao" pattern="dd/MM/yyyy"/></h:inputText>
+	            
+	            <h:outputLabel value="Status: " />
+				<h:selectOneMenu id="status-funcionario" value="#{funcionarioController.funcionario.status}">
+           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+           			<f:selectItem itemLabel="Ativo" itemValue="Ativo"/>
+           			<f:selectItem itemLabel="Desligado" itemValue="Desligado"/>
+         				<f:selectItem itemLabel="Férias" itemValue="Férias"/>
+         				<f:selectItem itemLabel="Ausente (Motivos pessoais)" itemValue="Ausente (Motivos pessoais)"/>
+         				<f:selectItem itemLabel="Outro" itemValue="Outro"/>
+        		</h:selectOneMenu>
+        		
+        		<h:outputLabel value="Cargo: " />
+				<h:selectOneMenu id="cargo-funcionario" value="#{funcionarioController.funcionario.cargo}" >
+                   	<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+                   	<f:selectItems value="#{cargoController.listaCargo}" />
+               	</h:selectOneMenu>
+				
+				<h:outputLabel value="Cargo Supervisor: " />
+				<h:selectOneMenu id="cargo-supervisor-funcionario" value="#{funcionarioController.funcionario.supervFuncao}" >
+                   	<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+                   	<f:selectItems value="#{cargoController.listaCargo}" />
+               	</h:selectOneMenu>
+				
+				<h:outputLabel value="Nome do Supervisor:" />
+				<h:inputText id="nome-supervisor-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.supervNome}" />
+        		</h:panelGrid>        		
+        		</rich:panel>
+        		
+        		<rich:spacer style="width:10px"></rich:spacer>
+        		
+        		<rich:panel>
+        		<f:facet name="header">
+				<h:outputLabel value="Localização e Contatos" />
+				</f:facet>
+				<h:panelGrid columns="8">
+				
+				<h:outputLabel value="Logradouro:" />
+				<h:inputText id="logradouro-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.logradouro}" />
+				
+				<h:outputLabel value="Número:" />
+				<h:inputText id="numero-funcionario" value="#{funcionarioController.funcionario.numero}" />
+				
+				<h:outputLabel value="Complemento: " />
+				<h:inputText id="complemento-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.complemento}" />
 				</h:panelGrid>
-	
-				<rich:spacer width="100%" height="10px" />
-	
-				<h:commandButton value="Salvar"
-					actionListener="#{funcionarioController.salvar}" />
-					
-				<rich:messages>
-					 <f:facet name="errorMarker">
-            			<h:graphicImage url="/imagens/alerta.png"/>
-     				 </f:facet>
+				
+				<h:outputLabel value="Bairro: " />
+				<h:inputText id="bairro-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.bairro}" />
+				
+				<h:panelGrid columns="8">
+				<h:outputLabel value="Uf:" />
+				<h:selectOneMenu id="uf-funcionario" value="#{funcionarioController.funcionario.uf}" onchange="listarCidades();">
+					<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+					<a4j:jsFunction name="listarCidades" actionListener="#{cidadeController.listarCidadesPorUf}" reRender="cidade-funcionario" process="cidade-funcionario"/>
+					<f:selectItems value="#{estadoController.listaEstado}" />
+               	</h:selectOneMenu>                	
+				
+				
+				<h:outputLabel value="Cidade:" />
+				<h:selectOneMenu id="cidade-funcionario" value="#{funcionarioController.funcionario.cidade}" >	
+					<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+                   	<f:selectItems value="#{cidadeController.listaCidade}" />
+               	</h:selectOneMenu>
+               	
+               	<h:outputLabel value="CEP:" />
+				<h:inputText id="cep-funcionario" value="#{funcionarioController.funcionario.cep}" />
+	            
+	            <h:outputLabel value="Telefone:" />
+				<h:inputText id="tel1-funcionario" value="#{funcionarioController.funcionario.tel1}" />
+				
+				<h:outputLabel value="Celular:" />
+				<h:inputText id="tel2-funcionario" value="#{funcionarioController.funcionario.tel2}" />
+				
+				<h:outputLabel value="E-mail:" />
+				<h:inputText id="email-funcionario" onkeypress="this.style.textTransform = 'lowercase';" value="#{funcionarioController.funcionario.email}" />
+        		</h:panelGrid>
+        		</rich:panel>	
+        			
+        			
+        			<h:outputLabel value="Login SisTelecom:" />
+				<h:inputText id="login-funcionario" value="#{funcionarioController.funcionario.login}" />
+				
+				<h:outputLabel value="Senha SisTelecom:" />
+				<h:inputSecret id="password-funcionario" value="#{funcionarioController.funcionario.password}" />
+			
+			</h:panelGrid>
 
-      				<f:facet name="infoMarker">
-			            <h:graphicImage url="/imagens/ok.png"/>
-				    </f:facet>
-				</rich:messages>
-	
-			</h:form>
-	
 			<rich:spacer width="100%" height="10px" />
-	
-			<rich:separator width="100%" height="10px;" />
-	
-			<rich:spacer width="100%" height="10px" />
-	
-			<a4j:form id="formulario-tabela" prependId="false" >
-				<rich:dataTable id="tabela" value="#{funcionarioController.lista}"
-					var="funcionario" style="width:100%;">
+
+			<h:commandButton value="Salvar"
+				actionListener="#{funcionarioController.salvar}" />
+				
+			<rich:messages>
+				 <f:facet name="errorMarker">
+           			<h:graphicImage url="/imagens/alerta.png"/>
+    				 </f:facet>
+
+     				<f:facet name="infoMarker">
+		            <h:graphicImage url="/imagens/ok.png"/>
+			    </f:facet>
+			</rich:messages>
+
+		</h:form>
+
+		<rich:spacer width="100%" height="10px" />
+
+		<rich:separator width="100%" height="10px;" />
+
+		<rich:spacer width="100%" height="10px" />
+
+		<a4j:form id="formulario-tabela" prependId="false" >
+			<rich:dataTable id="tabela" value="#{funcionarioController.lista}"
+				var="funcionario" style="width:100%;">
 	
 					<rich:column width="50">
 						<div id="div-id" align="center">

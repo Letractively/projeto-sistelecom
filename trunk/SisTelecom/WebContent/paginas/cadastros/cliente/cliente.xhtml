@@ -67,13 +67,18 @@
 						<h:outputLabel value="Inscrição Estadual:" />
 						<h:inputText id="inscest-cliente"
 							value="#{clienteController.cliente.inscEst}" />
+							
+						<h:outputLabel value="Data de fundação:" />
+						<h:inputText value="#{clienteController.cliente.desde}">
+							<f:convertDateTime id="padraoDataDesde" pattern="dd/MM/yyyy" />
+						</h:inputText>
 
 					</h:panelGrid>
 				</rich:panel>
 				<rich:spacer style="10px">
 				</rich:spacer>
 				
-				<rich:panel style="100%px;">
+				<rich:panel>
 
 					<f:facet name="header">
 						<h:outputLabel value="Localização e Contatos" />
