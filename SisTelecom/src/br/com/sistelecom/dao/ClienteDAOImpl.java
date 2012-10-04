@@ -57,10 +57,9 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 	public void atualizar(Cliente cliente) throws Exception{
 		try{
 			Connection conn = SistelecomSingleConnection.getConnection();
-			String SQL = "UPDATE cliente SET cnpj=?, razao_social=?, nome_fantasia=?, ramo=?, logradouro=?, numero=?, " +
-					"complemento=?, bairro=?, cidade=?, uf=?, cep=?, tel_1=?, tel_2=?, email=?, insc_est=?, desde=?, cpf_resp_1=?, " +
-					"nome_resp_1=?, nasc_resp_1=?, cpf_resp_2=?, nome_resp_2=?, nasc_resp_2=?, cpf_resp_3=?, " +
-					"nome_resp_3=?, nasc_resp_3=? where idcliente = ?";
+			
+			String SQL = "UPDATE cliente SET cnpj=?, razao_social=?, nome_fantasia=?, ramo=?, logradouro=?, numero=?, complemento=?, bairro=?, cidade=?, uf=?, cep=?, tel_1=?, tel_2=?, email=?, insc_est=?, desde=?, cpf_resp_1=?, " +
+					"nome_resp_1=?, nasc_resp_1=?, cpf_resp_2=?, nome_resp_2=?, nasc_resp_2=?, cpf_resp_3=?, nome_resp_3=?, nasc_resp_3=? where idcliente = ?";
 
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, cliente.getCnpj());
