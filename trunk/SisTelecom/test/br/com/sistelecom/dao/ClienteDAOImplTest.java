@@ -5,7 +5,10 @@
 package br.com.sistelecom.dao;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Date;
 import java.util.List;
@@ -66,22 +69,22 @@ public class ClienteDAOImplTest {
     @Test
     public void update() throws Exception {
         System.out.println("update");
-        final Cliente cliente = new Cliente(2, "12345678000109", "Danilo razao", " ", 1, "Teste 2 logradorou", 500, "Teste 2 complemento", "Guanabara", 50, 9, 74675690, 623207, 62851001, "danilo.brt.corp@gmail.com", 1020312, new Date(), "00891310100", "Danilo Fernando Alves", new Date(), null, null, new Date(), null, null, new Date());
+        final Cliente cliente = new Cliente(3, "000000", "dededede", "desdedes", 50, "rua qlauqer", 800, "dqdq000", "fdasfasd", 60, 10, 10233, 32112, 321312, "dasdfaf@", 12023, new Date(), "93211232", "dtegadas", new Date(), null, null, new Date(), null, null, new Date());
         final ClienteDAOImpl instance = new ClienteDAOImpl();
         instance.atualizar(cliente);
         assertNotNull(cliente);
-        assertEquals("Danilo razao", pesquisarId(2).getRazaoSocial());
+        assertEquals("Danilo razao", pesquisarId(4).getRazaoSocial());
     }
 
     /**
      * Test of allCliente method, of class ClienteDAOImp.
      */
     @Test
-    public void allCliente() throws Exception {
-        System.out.println("allCliente");
-        ClienteDAOImp instance = new ClienteDAOImp();
+    public void listarTodos() throws Exception {
+        System.out.println("listarTodos");
+        ClienteDAOImpl instance = new ClienteDAOImpl();
         List expResult = null;
-        List result = instance.allCliente();
+        List result = instance.listarTodos();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -89,40 +92,22 @@ public class ClienteDAOImplTest {
     
     public Cliente pesquisarId(Integer id) throws Exception {
         
-        ClienteDAOImp instance = new ClienteDAOImp();
-        return instance.searchidcliente(id);
+        ClienteDAOImpl instance = new ClienteDAOImpl();
+        return instance.obterPorId(id);
     }
     /**
      * Test of searchidcliente method, of class ClienteDAOImp.
      */
     @Test
-    public void searchidcliente() throws Exception {
-        System.out.println("searchidcliente");
-        final Integer id = 1;
+    public void obterPorId() throws Exception {
+        System.out.println("obterPorId");
+        final Integer id = 4;
         final Cliente cliente = pesquisarId(id); 
         assertNotNull(cliente);
-        assertTrue(cliente.getNome_fantasia().length() > 0);
-        System.out.println(cliente.getRazao_social());
+        assertTrue(cliente.getNomeFantasia().length() > 0);
+        System.out.println(cliente.getRazaoSocial());
     }
     
-    public Cliente pesquisarCnpj(String cnpj) throws Exception {
-        
-        ClienteDAOImp instance = new ClienteDAOImp();
-        return instance.searchcnpj(cnpj);
-    }
-    /**
-     * Test of searchcnpj method, of class ClienteDAOImp.
-     */
-    @Test
-    public void searchcnpj() throws Exception {
-        System.out.println("searchcnpj");
-        final String cnpj = "12345678000109";
-        final Cliente cliente = pesquisarCnpj(cnpj);
-        assertNotNull(cliente);
-        assertTrue(cliente.getBairro().length() > 0);
-        System.out.println(cliente.getRazao_social());
-    }
-
     /**
      * Test of delete method, of class ClienteDAOImp.
      */
@@ -130,10 +115,10 @@ public class ClienteDAOImplTest {
     public void delete() throws Exception {
         System.out.println("delete");
         Cliente cliente = new Cliente();
-        Integer id = 1;
-        cliente.setIdcliente(id);
-        ClienteDAOImp instance = new ClienteDAOImp();
-        instance.delete(cliente);
+        Integer id = 2;
+        cliente.setIdCliente(id);
+        ClienteDAOImpl instance = new ClienteDAOImpl();
+        instance.excluir(cliente);
         
         try{
             cliente = pesquisarId(id);
