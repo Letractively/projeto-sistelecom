@@ -92,11 +92,11 @@
 								
 							<h:outputLabel value="Data de fundação:" />
 							
-							<h:inputText value="#{clienteController.cliente.desde}">
-							
+							<rich:calendar value="#{clienteController.cliente.desde}" datePattern="dd/MM/yyyy">
+								
 								<f:convertDateTime id="padraoDataDesde" pattern="dd/MM/yyyy" />
 								
-							</h:inputText>
+							</rich:calendar>
 	
 						</h:panelGrid>
 						
@@ -219,11 +219,11 @@
 	
 							<h:outputLabel value="Data de nascimento do Administrador:" />
 							
-							<h:inputText value="#{clienteController.cliente.nascResp1}">
-							
+							<rich:calendar value="#{clienteController.cliente.nascResp1}" datePattern="dd/MM/yyyy">
+								
 								<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
 								
-							</h:inputText>
+							</rich:calendar>
 	
 							<h:outputLabel value="CPF do Sócio 1: " />
 							
@@ -239,11 +239,11 @@
 	
 							<h:outputLabel value="Data de nascimento do Sócio 1:" />
 							
-							<h:inputText value="#{clienteController.cliente.nascResp2}">
-							
+							<rich:calendar value="#{clienteController.cliente.nascResp2}" datePattern="dd/MM/yyyy">
+								
 								<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
 								
-							</h:inputText>
+							</rich:calendar>
 	
 							<h:outputLabel value="CPF do Sócio 2:" />
 							
@@ -259,11 +259,11 @@
 	
 							<h:outputLabel value="Data de nascimento do Sócio 2:" />
 							
-							<h:inputText value="#{clienteController.cliente.nascResp2}">
-							
+							<rich:calendar value="#{clienteController.cliente.nascResp2}" datePattern="dd/MM/yyyy">
+								
 								<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
 								
-							</h:inputText>
+							</rich:calendar>
 							
 						</h:panelGrid>
 						
