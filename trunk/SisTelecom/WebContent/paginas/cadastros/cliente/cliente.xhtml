@@ -6,306 +6,419 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<head>
-<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
-<script type="text/javascript">
-					function inibir(){
-						jQuery("#id-cliente").bind("keypress",function(e){
-							e.preventDefault();
-						});
-					}
+	<head>
+	
+		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+		
+		<script type="text/javascript">
+				function inibir(){
+					jQuery("#id-cliente").bind("keypress",function(e){
+						e.preventDefault();
+					});
+				}
 		</script>
+	
+		<style type="text/css">
+			.rich-messages-label {
+				font-weight: bold;
+			}
+		</style>
+		
+	</head>
 
-<style type="text/css">
-.rich-messages-label {
-	font-weight: bold;
-}
-</style>
-</head>
-
-<body>
-	<rich:panel style="800px;">
-
-		<f:facet name="header">
-			<h:outputLabel value="Cadastro de clientes" />
-		</f:facet>
-
-		<h:form id="formulario-dados" prependId="false">
-
-			<h:panelGrid columns="1">
-				<rich:panel>
-					<f:facet name="header">
-						<h:outputLabel value="Dados da Empresa" />
-					</f:facet>
-					<h:panelGrid columns="4">
-						<h:outputLabel value="Id:" />
-						<h:inputText id="id-cliente"
-							value="#{clienteController.cliente.idCliente}"
-							style="width:50px;" />
-
-						<h:outputLabel value="CNPJ:" />
-						<h:inputText id="cnpj-cliente" style="width:100px;"
-							value="#{clienteController.cliente.cnpj}" />
-
-						<h:outputLabel value="Razão Social:" />
-						<h:inputText id="razao-social-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.razaoSocial}" style="width:200px"/>
-
-						<h:outputLabel value="Nome Fantasia:" />
-						<h:inputText id="nome-fantasia-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.nomeFantasia}" />
-
-						<h:outputLabel value="Ramo (Atividade econômica):" />
-						<h:selectOneMenu id="ramo-cliente"
-							value="#{clienteController.cliente.ramo}">
-							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-							<f:selectItems value="#{ramoController.listaRamo}" />
-						</h:selectOneMenu>
-
-						<h:outputLabel value="Inscrição Estadual:" />
-						<h:inputText id="inscest-cliente"
-							value="#{clienteController.cliente.inscEst}" />
-							
-						<h:outputLabel value="Data de fundação:" />
-						<h:inputText value="#{clienteController.cliente.desde}">
-							<f:convertDateTime id="padraoDataDesde" pattern="dd/MM/yyyy" />
-						</h:inputText>
-
-					</h:panelGrid>
-				</rich:panel>
-				<rich:spacer style="10px">
-				</rich:spacer>
+	<body>
+	
+		<rich:panel style="800px;">
+	
+			<f:facet name="header">
+			
+				<h:outputLabel value="Cadastro de clientes" />
 				
-				<rich:panel>
-
-					<f:facet name="header">
-						<h:outputLabel value="Localização e Contatos" />
-					</f:facet>
-
-					<h:panelGrid columns="6">
-
-						<h:outputLabel value="Logradouro:" />
-						<h:inputText id="logradouro-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.logradouro}" />
-
-						<h:outputLabel value="Número:" />
-						<h:inputText id="numero-cliente"
-							value="#{clienteController.cliente.numero}" />
-
-						<h:outputLabel value="Complemento: " />
-						<h:inputText id="complemento-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.complemento}" />
-
-						<h:outputLabel value="Bairro: " />
-						<h:inputText id="bairro-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.bairro}" />
-
-						<h:outputLabel value="Uf:" />
-						<h:selectOneMenu id="uf-cliente"
-							value="#{clienteController.cliente.uf}"
-							onchange="listarCidades();">
-							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-							<a4j:jsFunction name="listarCidades"
-								actionListener="#{cidadeController.listarCidadesPorUf}"
-								reRender="cidade-cliente" process="cidade-cliente" />
-							<f:selectItems value="#{estadoController.listaEstado}" />
-						</h:selectOneMenu>
-
-						<h:outputLabel value="Cidade:" />
-						<h:selectOneMenu id="cidade-cliente"
-							value="#{clienteController.cliente.cidade}">
-							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-							<f:selectItems value="#{cidadeController.listaCidade}" />
-						</h:selectOneMenu>
-
-						<h:outputLabel value="CEP:" />
-						<h:inputText id="cep-cliente"
-							value="#{clienteController.cliente.cep}" />
-
-						<h:outputLabel value="Telefone:" />
-						<h:inputText id="tel1-cliente"
-							value="#{clienteController.cliente.tel1}" />
-
-						<h:outputLabel value="Celular:" />
-						<h:inputText id="tel2-cliente"
-							value="#{clienteController.cliente.tel2}" />
-
-						<h:outputLabel value="E-mail:" />
-						<h:inputText id="email-cliente"
-							onkeypress="this.style.textTransform = 'lowercase';"
-							value="#{clienteController.cliente.email}" />
-
-					</h:panelGrid>
-				</rich:panel>
-				<rich:spacer style="10px">
-				</rich:spacer>
-				<rich:panel>
-					<f:facet name="header">
-						<h:outputLabel value="Dados dos Administrador/Sócios" />
-					</f:facet>
-					<h:panelGrid columns="6">
-						<h:outputLabel value="CPF do Administrador:" />
-						<h:inputText id="cpf-administrador-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.cpfResp1}" />
-
-						<h:outputLabel value="Nome do Administrador:" />
-						<h:inputText id="nome-administrador-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.nomeResp1}" />
-
-						<h:outputLabel value="Data de nascimento do Administrador:" />
-						<h:inputText value="#{clienteController.cliente.nascResp1}">
-							<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
-						</h:inputText>
-
-						<h:outputLabel value="CPF do Sócio 1: " />
-						<h:inputText id="cpf-socio1-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.cpfResp2}" />
-
-						<h:outputLabel value="Nome do Sócio 1:" />
-						<h:inputText id="nome-socio1-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.nomeResp2}" />
-
-						<h:outputLabel value="Data de nascimento do Sócio 1:" />
-						<h:inputText value="#{clienteController.cliente.nascResp2}">
-							<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
-						</h:inputText>
-
-						<h:outputLabel value="CPF do Sócio 2:" />
-						<h:inputText id="cpf-socio2-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.cpfResp3}" />
-
-						<h:outputLabel value="Nome do Sócio 2:" />
-						<h:inputText id="nome-socio2-cliente"
-							onkeypress="this.style.textTransform = 'uppercase';"
-							value="#{clienteController.cliente.nomeResp3}" />
-
-						<h:outputLabel value="Data de nascimento do Sócio 2:" />
-						<h:inputText value="#{clienteController.cliente.nascResp2}">
-							<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
-						</h:inputText>
-					</h:panelGrid>
-				</rich:panel>
-
-			</h:panelGrid>
-
-			<rich:spacer width="100%" height="10px" />
-
-			<h:commandButton value="Salvar"
-				actionListener="#{clienteController.salvar}" />
-
-			<rich:messages>
-				<f:facet name="errorMarker">
-					<h:graphicImage url="/imagens/alerta.png" />
-				</f:facet>
-
-				<f:facet name="infoMarker">
-					<h:graphicImage url="/imagens/ok.png" />
-				</f:facet>
-			</rich:messages>
-
-		</h:form>
-
-		<rich:spacer width="100%" height="10px" />
-
-		<rich:separator width="100%" height="10px;" />
-
-		<rich:spacer width="100%" height="10px" />
-
-		<a4j:form id="formulario-tabela" prependId="false">
-			<rich:dataTable id="tabela" value="#{clienteController.lista}"
-				var="cliente" style="width:100%;">
-
-				<rich:column width="50">
-					<div id="div-id" align="center">
+			</f:facet>
+	
+			<h:form id="formulario-dados" prependId="false">
+	
+				<h:panelGrid columns="1">
+				
+					<rich:panel>
+					
 						<f:facet name="header">
-							<h:outputLabel value="ID" />
+						
+							<h:outputLabel value="Dados da Empresa" />
+							
 						</f:facet>
-
-						<h:outputLabel value="#{cliente.id}" />
-					</div>
-				</rich:column>
-
-				<rich:column width="70">
-					<div id="div-cnpj" align="center">
-						<f:facet name="header">
-							<h:outputLabel value="CNPJ" />
-						</f:facet>
-
-						<h:outputLabel value="#{cliente.cnpj}" />
-					</div>
-				</rich:column>
-
-				<rich:column width="100">
-					<div id="div-razao-social" align="center">
-						<f:facet name="header">
-							<h:outputLabel value="Razão Social" />
-						</f:facet>
-
-						<h:outputLabel value="#{cliente.razaoSocial}" />
-					</div>
-				</rich:column>
-
-				<rich:column width="150">
-					<div id="div-nome-administrador" align="center">
-						<f:facet name="header">
-							<h:outputLabel value="Administrador" />
-						</f:facet>
-
-						<h:outputLabel value="#{cliente.nomeResp1}" />
-					</div>
-				</rich:column>
-
-				<rich:column width="50">
-					<div id="div-tel1" align="center">
-						<f:facet name="header">
-							<h:outputLabel value="Telefone" />
-						</f:facet>
-
-						<h:outputLabel value="#{cliente.tel1}" />
-					</div>
-				</rich:column>
-
-				<rich:column width="50">
-
-					<f:facet name="header">
-						<h:outputLabel value="Alterar" />
-					</f:facet>
-
-					<div align="center">
-						<h:panelGrid columns="3">
-							<a4j:commandButton value="Alterar" image="/imagens/editar.png"
-								actionListener="#{clienteController.carregarRegistro}"
-								oncomplete="inibir();" reRender="formulario-dados"
-								process="formulario-dados" immediate="true" ajaxSingle="true">
-								<a4j:actionparam name="id" value="#{cliente.id}" />
-							</a4j:commandButton>
-
-							<rich:spacer width="10px" />
-
-							<a4j:commandButton value="Excluir" image="/imagens/delete.png"
-								actionListener="#{clienteController.excluirRegistro}"
-								reRender="formulario-tabela,formulario-dados"
-								process="formulario-tabela,formulario-dados" immediate="true"
-								ajaxSingle="true">
-								<a4j:actionparam name="id" value="#{cliente.id}" />
-							</a4j:commandButton>
+						
+						<h:panelGrid columns="4">
+						
+							<h:outputLabel value="Id:" />
+							
+							<h:inputText id="id-cliente" value="#{clienteController.cliente.idCliente}" style="width:50px;" />
+	
+							<h:outputLabel value="CNPJ:" />
+							
+							<h:inputText id="cnpj-cliente" style="width:100px;" value="#{clienteController.cliente.cnpj}" />
+	
+							<h:outputLabel value="Razão Social:" />
+							
+							<h:inputText id="razao-social-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.razaoSocial}" style="width:200px"/>
+	
+							<h:outputLabel value="Nome Fantasia:" />
+							
+							<h:inputText id="nome-fantasia-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.nomeFantasia}" />
+	
+							<h:outputLabel value="Ramo (Atividade econômica):" />
+							
+							<h:selectOneMenu id="ramo-cliente"
+								value="#{clienteController.cliente.ramo}">
+								
+								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+								
+								<f:selectItems value="#{ramoController.listaRamo}" />
+								
+							</h:selectOneMenu>
+	
+							<h:outputLabel value="Inscrição Estadual:" />
+							
+							<h:inputText id="inscest-cliente"
+								value="#{clienteController.cliente.inscEst}" />
+								
+							<h:outputLabel value="Data de fundação:" />
+							
+							<h:inputText value="#{clienteController.cliente.desde}">
+							
+								<f:convertDateTime id="padraoDataDesde" pattern="dd/MM/yyyy" />
+								
+							</h:inputText>
+	
 						</h:panelGrid>
-					</div>
-
-				</rich:column>
-
-			</rich:dataTable>
-		</a4j:form>
-	</rich:panel>
-</body>
+						
+					</rich:panel>
+					
+					<rich:spacer style="10px">
+					
+					</rich:spacer>
+					
+					<rich:panel>
+	
+						<f:facet name="header">
+						
+							<h:outputLabel value="Localização e Contatos" />
+							
+						</f:facet>
+	
+						<h:panelGrid columns="6">
+	
+							<h:outputLabel value="Logradouro:" />
+							
+							<h:inputText id="logradouro-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.logradouro}" />
+	
+							<h:outputLabel value="Número:" />
+							
+							<h:inputText id="numero-cliente"
+								value="#{clienteController.cliente.numero}" />
+	
+							<h:outputLabel value="Complemento: " />
+							
+							<h:inputText id="complemento-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.complemento}" />
+	
+							<h:outputLabel value="Bairro: " />
+							
+							<h:inputText id="bairro-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.bairro}" />
+	
+							<h:outputLabel value="Uf:" />
+							
+							<h:selectOneMenu id="uf-cliente"
+								value="#{clienteController.cliente.uf}"
+								onchange="listarCidades();">
+								
+								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+								
+								<a4j:jsFunction name="listarCidades"
+									actionListener="#{cidadeController.listarCidadesPorUf}"
+									reRender="cidade-cliente" process="cidade-cliente" />
+									
+								<f:selectItems value="#{estadoController.listaEstado}" />
+								
+							</h:selectOneMenu>
+	
+							<h:outputLabel value="Cidade:" />
+							
+							<h:selectOneMenu id="cidade-cliente"
+								value="#{clienteController.cliente.cidade}">
+								
+								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+								
+								<f:selectItems value="#{cidadeController.listaCidade}" />
+								
+							</h:selectOneMenu>
+	
+							<h:outputLabel value="CEP:" />
+							
+							<h:inputText id="cep-cliente"
+								value="#{clienteController.cliente.cep}" />
+	
+							<h:outputLabel value="Telefone:" />
+							
+							<h:inputText id="tel1-cliente"
+								value="#{clienteController.cliente.tel1}" />
+	
+							<h:outputLabel value="Celular:" />
+							
+							<h:inputText id="tel2-cliente"
+								value="#{clienteController.cliente.tel2}" />
+	
+							<h:outputLabel value="E-mail:" />
+							
+							<h:inputText id="email-cliente"
+								onkeypress="this.style.textTransform = 'lowercase';"
+								value="#{clienteController.cliente.email}" />
+	
+						</h:panelGrid>
+						
+					</rich:panel>
+					
+					<rich:spacer style="10px">
+					
+					</rich:spacer>
+					
+					<rich:panel>
+					
+						<f:facet name="header">
+						
+							<h:outputLabel value="Dados dos Administrador/Sócios" />
+							
+						</f:facet>
+						
+						<h:panelGrid columns="6">
+						
+							<h:outputLabel value="CPF do Administrador:" />
+							
+							<h:inputText id="cpf-administrador-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.cpfResp1}" />
+	
+							<h:outputLabel value="Nome do Administrador:" />
+							
+							<h:inputText id="nome-administrador-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.nomeResp1}" />
+	
+							<h:outputLabel value="Data de nascimento do Administrador:" />
+							
+							<h:inputText value="#{clienteController.cliente.nascResp1}">
+							
+								<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
+								
+							</h:inputText>
+	
+							<h:outputLabel value="CPF do Sócio 1: " />
+							
+							<h:inputText id="cpf-socio1-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.cpfResp2}" />
+	
+							<h:outputLabel value="Nome do Sócio 1:" />
+							
+							<h:inputText id="nome-socio1-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.nomeResp2}" />
+	
+							<h:outputLabel value="Data de nascimento do Sócio 1:" />
+							
+							<h:inputText value="#{clienteController.cliente.nascResp2}">
+							
+								<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
+								
+							</h:inputText>
+	
+							<h:outputLabel value="CPF do Sócio 2:" />
+							
+							<h:inputText id="cpf-socio2-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.cpfResp3}" />
+	
+							<h:outputLabel value="Nome do Sócio 2:" />
+							
+							<h:inputText id="nome-socio2-cliente"
+								onkeypress="this.style.textTransform = 'uppercase';"
+								value="#{clienteController.cliente.nomeResp3}" />
+	
+							<h:outputLabel value="Data de nascimento do Sócio 2:" />
+							
+							<h:inputText value="#{clienteController.cliente.nascResp2}">
+							
+								<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
+								
+							</h:inputText>
+							
+						</h:panelGrid>
+						
+					</rich:panel>
+	
+				</h:panelGrid>
+	
+				<rich:spacer width="100%" height="10px" />
+	
+				<h:commandButton value="Salvar"
+					actionListener="#{clienteController.salvar}" />
+	
+				<rich:messages>
+				
+					<f:facet name="errorMarker">
+					
+						<h:graphicImage url="/imagens/alerta.png" />
+						
+					</f:facet>
+	
+					<f:facet name="infoMarker">
+					
+						<h:graphicImage url="/imagens/ok.png" />
+						
+					</f:facet>
+					
+				</rich:messages>
+	
+			</h:form>
+	
+			<rich:spacer width="100%" height="10px" />
+	
+			<rich:separator width="100%" height="10px;" />
+	
+			<rich:spacer width="100%" height="10px" />
+	
+			<a4j:form id="formulario-tabela" prependId="false">
+			
+				<rich:dataTable id="tabela" value="#{clienteController.lista}" var="cliente" style="width:100%;">
+	
+					<rich:column width="50">
+					
+						<div id="div-id" align="center">
+						
+							<f:facet name="header">
+							
+								<h:outputLabel value="ID" />
+								
+							</f:facet>
+	
+							<h:outputLabel value="#{cliente.id}" />
+							
+						</div>
+						
+					</rich:column>
+	
+					<rich:column width="70">
+					
+						<div id="div-cnpj" align="center">
+						
+							<f:facet name="header">
+							
+								<h:outputLabel value="CNPJ" />
+								
+							</f:facet>
+	
+							<h:outputLabel value="#{cliente.cnpj}" />
+							
+						</div>
+						
+					</rich:column>
+	
+					<rich:column width="100">
+					
+						<div id="div-razao-social" align="center">
+						
+							<f:facet name="header">
+							
+								<h:outputLabel value="Razão Social" />
+								
+							</f:facet>
+	
+							<h:outputLabel value="#{cliente.razaoSocial}" />
+							
+						</div>
+						
+					</rich:column>
+	
+					<rich:column width="150">
+					
+						<div id="div-nome-administrador" align="center">
+						
+							<f:facet name="header">
+							
+								<h:outputLabel value="Administrador" />
+								
+							</f:facet>
+	
+							<h:outputLabel value="#{cliente.nomeResp1}" />
+							
+						</div>
+						
+					</rich:column>
+	
+					<rich:column width="50">
+					
+						<div id="div-tel1" align="center">
+						
+							<f:facet name="header">
+							
+								<h:outputLabel value="Telefone" />
+								
+							</f:facet>
+	
+							<h:outputLabel value="#{cliente.tel1}" />
+							
+						</div>
+						
+					</rich:column>
+	
+					<rich:column width="50">
+	
+						<f:facet name="header">
+						
+							<h:outputLabel value="Alterar" />
+							
+						</f:facet>
+	
+						<div align="center">
+						
+							<h:panelGrid columns="3">
+							
+								<a4j:commandButton value="Alterar" image="/imagens/editar.png"
+									actionListener="#{clienteController.carregarRegistro}"
+									oncomplete="inibir();" reRender="formulario-dados"
+									process="formulario-dados" immediate="true" ajaxSingle="true">
+									
+									<a4j:actionparam name="id" value="#{cliente.id}" />
+									
+								</a4j:commandButton>
+	
+								<rich:spacer width="10px" />
+	
+								<a4j:commandButton value="Excluir" image="/imagens/delete.png"
+									actionListener="#{clienteController.excluirRegistro}"
+									reRender="formulario-tabela,formulario-dados"
+									process="formulario-tabela,formulario-dados" immediate="true"
+									ajaxSingle="true">
+									
+									<a4j:actionparam name="id" value="#{cliente.id}" />
+									
+								</a4j:commandButton>
+								
+							</h:panelGrid>
+							
+						</div>
+	
+					</rich:column>
+	
+				</rich:dataTable>
+			</a4j:form>
+		</rich:panel>
+	</body>
 </html>
