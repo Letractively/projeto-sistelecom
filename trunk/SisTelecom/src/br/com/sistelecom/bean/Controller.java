@@ -20,6 +20,8 @@ public interface Controller<E> {
 	
 	public abstract boolean validarDadosFormulario();
 	
+	public abstract void limpar();
+	
 	public abstract DAO<E> getDao();
 	
 	

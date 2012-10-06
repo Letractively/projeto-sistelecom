@@ -45,6 +45,11 @@ public class EstadoController implements Controller<Estado>{
 		return true;
 	}
 	
+	public void limpar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public EstadoDAOImpl getDao() {
 		return new EstadoDAOImpl();
 	}

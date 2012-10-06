@@ -106,6 +106,11 @@ public class FuncionarioController implements Controller<Funcionario>{
 		return true;
 	}
 	
+	public void limpar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public FuncionarioDAOImpl getDao() {
 		return new FuncionarioDAOImpl();
 	}

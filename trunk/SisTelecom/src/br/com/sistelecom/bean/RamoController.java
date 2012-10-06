@@ -101,6 +101,11 @@ public class RamoController implements Controller<Ramo> {
 		return true;
 	}
 	
+	public void limpar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public RamoDAOImpl getDao() {
 		return new RamoDAOImpl();
 	}
