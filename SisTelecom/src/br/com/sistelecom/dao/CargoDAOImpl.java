@@ -8,7 +8,6 @@ import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entity.Cargo;
-import br.com.sistelecom.entity.Ramo;
 
 public class CargoDAOImpl implements DAO<Cargo>{
 	

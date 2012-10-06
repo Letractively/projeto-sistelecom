@@ -73,6 +73,7 @@ public class DepartamentoController implements Controller<Departamento>{
 		}else{
 			this.atualizarRegistro();
 		}
+		this.limpar();
 	}
 	
 	public void excluirRegistro(ActionEvent evento) {
@@ -91,6 +92,7 @@ public class DepartamentoController implements Controller<Departamento>{
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na exclusão do departamento.",""));
 			e.printStackTrace();
 		}
+		this.limpar();
 	}
 	
 	public boolean validarDadosFormulario() {
@@ -102,8 +104,7 @@ public class DepartamentoController implements Controller<Departamento>{
 	}
 	
 	public void limpar() {
-		// TODO Auto-generated method stub
-		
+		this.departamento = new Departamento();
 	}
 	
 	public DepartamentoDAOImpl getDao() {

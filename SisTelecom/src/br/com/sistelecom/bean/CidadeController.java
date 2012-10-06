@@ -4,15 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.component.html.HtmlSelectOneMenu;
-import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
 import br.com.sistelecom.dao.CidadeDAOImpl;
 import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.entity.Cidade;
-import br.com.sistelecom.entity.Departamento;
 
 public class CidadeController {
 	
