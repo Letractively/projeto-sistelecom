@@ -198,7 +198,7 @@
 							
 							<h:selectOneMenu id="uf-cliente"
 								value="#{clienteController.cliente.uf}"
-								onchange="listarCidades();">
+								onchange="submeter('formulario-dados');listarCidades();" >
 								
 								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 								
@@ -461,7 +461,7 @@
 							
 								<h:commandButton value="Alterar" image="/imagens/editar.png"
 									actionListener="#{clienteController.carregarRegistro}"
-									oncomplete="inibir();" process="formulario-dados" reRender="formulario-dados">
+									process="formulario-dados" reRender="formulario-dados">
 									
 									<a4j:actionparam name="id" value="#{cliente.id}" />
 									
