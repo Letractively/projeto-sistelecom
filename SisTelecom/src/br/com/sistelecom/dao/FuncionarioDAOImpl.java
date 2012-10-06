@@ -29,12 +29,12 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
             ps.setString(7, funcionario.getBairro());
             ps.setInt(8, funcionario.getCidade());
             ps.setInt(9, funcionario.getUf());
-            ps.setInt(10, funcionario.getCep());
+            ps.setLong(10, funcionario.getCep());
             ps.setDate(11, new java.sql.Date(funcionario.getNasc().getTime()));
-            ps.setInt(12, funcionario.getTel1());
-            ps.setInt(13, funcionario.getTel2());
+            ps.setLong(12, funcionario.getTel1());
+            ps.setLong(13, funcionario.getTel2());
             ps.setString(14, funcionario.getEmail());
-            ps.setInt(15, funcionario.getDoc());
+            ps.setLong(15, funcionario.getDoc());
             ps.setString(16, funcionario.getTipoDoc());
             ps.setInt(17, funcionario.getCargo());
             ps.setInt(18, funcionario.getSupervFuncao());
@@ -69,12 +69,12 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 	            ps.setString(7, funcionario.getBairro());
 	            ps.setInt(8, funcionario.getCidade());
 	            ps.setInt(9, funcionario.getUf());
-	            ps.setInt(10, funcionario.getCep());
+	            ps.setLong(10, funcionario.getCep());
 	            ps.setDate(11, new java.sql.Date(funcionario.getNasc().getTime()));
-	            ps.setInt(12, funcionario.getTel1());
-	            ps.setInt(13, funcionario.getTel2());
+	            ps.setLong(12, funcionario.getTel1());
+	            ps.setLong(13, funcionario.getTel2());
 	            ps.setString(14, funcionario.getEmail());
-	            ps.setInt(15, funcionario.getDoc());
+	            ps.setLong(15, funcionario.getDoc());
 	            ps.setString(16, funcionario.getTipoDoc());
 	            ps.setInt(17, funcionario.getCargo());
 	            ps.setInt(18, funcionario.getSupervFuncao());
@@ -101,7 +101,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 			rs = ps.executeQuery();
 			List<Funcionario> list = new ArrayList<Funcionario>();
 			while(rs.next()) {
-				list.add(new Funcionario(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getDate(12), rs.getInt(13), rs.getInt(14), rs.getString(15), rs.getInt(16), rs.getString(17), rs.getInt(18), rs.getInt(19), rs.getString(20), rs.getDate(21), rs.getString(22), rs.getString(23), rs.getString(24)));
+				list.add(new Funcionario(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getLong(11), rs.getDate(12), rs.getLong(13), rs.getLong(14), rs.getString(15), rs.getLong(16), rs.getString(17), rs.getInt(18), rs.getInt(19), rs.getString(20), rs.getDate(21), rs.getString(22), rs.getString(23), rs.getString(24)));
 			}
 			return list;
 		} catch (Exception e) {
@@ -160,11 +160,11 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 			funcionario.setBairro(rs.getString(8));
 			funcionario.setCidade(rs.getInt(9));
 			funcionario.setUf(rs.getInt(10));
-			funcionario.setCep(rs.getInt(11));
+			funcionario.setCep(rs.getLong(11));
 			funcionario.setNasc(rs.getDate(12));
-			funcionario.setTel1(rs.getInt(13));
-			funcionario.setTel2(rs.getInt(14));
-			funcionario.setDoc(rs.getInt(15));
+			funcionario.setTel1(rs.getLong(13));
+			funcionario.setTel2(rs.getLong(14));
+			funcionario.setDoc(rs.getLong(15));
 			funcionario.setTipoDoc(rs.getString(16));
 			funcionario.setCargo(rs.getInt(17));
 			funcionario.setSupervFuncao(rs.getInt(18));
