@@ -176,18 +176,27 @@
 	
 							<h:outputLabel value="CEP:" />
 							
-							<h:inputText id="cep-cliente"
-								value="#{clienteController.cliente.cep}" />
+							<h:inputText id="cep-cliente" value="#{clienteController.cliente.cep}" >
+									
+								<rich:jQuery query="mask('99999-999');" selector="#cep-cliente" timing="onload"/>
+									
+							</h:inputText>
 	
 							<h:outputLabel value="Telefone:" />
 							
-							<h:inputText id="tel1-cliente"
-								value="#{clienteController.cliente.tel1}" />
+							<h:inputText id="tel1-cliente" value="#{clienteController.cliente.tel1}" >
+								
+								<rich:jQuery query="mask('(99) 9999-9999');" selector="#tel1-cliente" timing="onload"/>
+								
+							</h:inputText>
 	
 							<h:outputLabel value="Celular:" />
 							
-							<h:inputText id="tel2-cliente"
-								value="#{clienteController.cliente.tel2}" />
+							<h:inputText id="tel2-cliente" value="#{clienteController.cliente.tel2}" >
+							
+								<rich:jQuery query="mask('(99) 9999-9999');" selector="#tel2-cliente" timing="onload"/>
+							
+							</h:inputText>
 	
 							<h:outputLabel value="E-mail:" />
 							
