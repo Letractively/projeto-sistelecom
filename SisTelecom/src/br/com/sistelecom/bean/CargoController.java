@@ -104,6 +104,11 @@ public class CargoController implements Controller<Cargo>{
 		return true;
 	}
 	
+	public void limpar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public CargoDAOImpl getDao() {
 		return new CargoDAOImpl();
 	}

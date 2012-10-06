@@ -77,6 +77,8 @@ public class ClienteController implements Controller<Cliente>{
 		}else{
 			this.atualizarRegistro();
 		}
+		
+		this.limpar();
 	}
 	
 	public void excluirRegistro(ActionEvent evento) {
@@ -95,6 +97,8 @@ public class ClienteController implements Controller<Cliente>{
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na exclusão do cliente.",""));
 			e.printStackTrace();
 		}
+		
+		this.limpar();
 	}
 	
 	public boolean validarDadosFormulario() {
@@ -103,6 +107,10 @@ public class ClienteController implements Controller<Cliente>{
 			return false;
 		}
 		return true;
+	}
+	
+	public void limpar() {
+		this.cliente = new Cliente();
 	}
 	
 	public ClienteDAOImpl getDao() {

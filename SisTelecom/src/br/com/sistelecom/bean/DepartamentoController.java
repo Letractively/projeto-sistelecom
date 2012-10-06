@@ -101,6 +101,11 @@ public class DepartamentoController implements Controller<Departamento>{
 		return true;
 	}
 	
+	public void limpar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public DepartamentoDAOImpl getDao() {
 		return new DepartamentoDAOImpl();
 	}

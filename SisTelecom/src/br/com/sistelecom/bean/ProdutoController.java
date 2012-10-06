@@ -104,6 +104,11 @@ public class ProdutoController implements Controller<Produto>{
 		return true;
 	}
 	
+	public void limpar() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public ProdutoDAOImpl getDao() {
 		return new ProdutoDAOImpl();
 	}
