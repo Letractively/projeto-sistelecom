@@ -14,7 +14,51 @@
 		
 		<script type="text/javascript">
 
-				var jQuery = jQuery.noConflict();
+				function submeter(formId){
+					jQuery("#"+formId).submit(function(){
+
+						var cnpjFormatado = jQuery("#cnpj-cliente").val().replace(".","").replace(".","").replace("/","").replace("-","");
+
+						if(cnpjFormatado != ""){
+
+							jQuery("#cnpj-cliente").val(cnpjFormatado);
+							
+						}
+
+						var incricaoEstadualFormatada = jQuery("#inscest-cliente").val().replace(".","").replace(".","").replace("-","");
+
+						if(incricaoEstadualFormatada != ""){
+
+							jQuery("#inscest-cliente").val(incricaoEstadualFormatada);
+							
+						}
+
+						var cepFormatado = jQuery("#cep-cliente").val().replace("-","");
+						
+						if(cepFormatado != ""){
+
+							jQuery("#cep-cliente").val(cepFormatado);
+							
+						}
+
+						var telefoneFormatado = jQuery("#tel1-cliente").val().replace("(","").replace(")","").replace(" ","").replace("-","");
+						
+						if(telefoneFormatado != ""){
+
+							jQuery("#tel1-cliente").val(telefoneFormatado);
+							
+						}
+
+						var celularFormatado = jQuery("#tel2-cliente").val().replace("(","").replace(")","").replace(" ","").replace("-","");
+						
+						if(celularFormatado != ""){
+
+							jQuery("#tel2-cliente").val(celularFormatado);
+							
+						}
+
+					});
+				}
 				
 				function inibir(){
 					jQuery("#id-cliente").bind("keypress",function(e){
@@ -95,8 +139,11 @@
 	
 							<h:outputLabel value="Inscrição Estadual:" />
 							
-							<h:inputText id="inscest-cliente"
-								value="#{clienteController.cliente.inscEst}" />
+							<h:inputText id="inscest-cliente" value="#{clienteController.cliente.inscEst}" >
+								
+								<rich:jQuery query="mask('99.999.999-99')" selector="#inscest-cliente" timing="onload"/>
+								
+							</h:inputText>
 								
 							<h:outputLabel value="Data de fundação:" />
 							
@@ -290,8 +337,7 @@
 	
 				<rich:spacer width="100%" height="10px" />
 	
-				<h:commandButton value="Salvar"
-					actionListener="#{clienteController.salvar}" />
+				<h:commandButton value="Salvar" actionListener="#{clienteController.salvar}" onclick="submeter('formulario-dados');"/>
 	
 				<rich:messages>
 				
@@ -416,7 +462,7 @@
 								<a4j:commandButton value="Alterar" image="/imagens/editar.png"
 									actionListener="#{clienteController.carregarRegistro}"
 									oncomplete="inibir();" reRender="formulario-dados"
-									process="formulario-dados" immediate="true" ajaxSingle="true">
+									process="formulario-dados">
 									
 									<a4j:actionparam name="id" value="#{cliente.id}" />
 									

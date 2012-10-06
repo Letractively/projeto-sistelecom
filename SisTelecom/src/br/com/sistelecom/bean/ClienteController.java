@@ -54,8 +54,31 @@ public class ClienteController implements Controller<Cliente>{
 		this.getCliente().setIdCliente(cliente.getIdCliente());
 		this.getCliente().setCnpj(cliente.getCnpj());
 		this.getCliente().setRazaoSocial(cliente.getRazaoSocial());
+		this.getCliente().setNomeFantasia(cliente.getNomeFantasia());
+		this.getCliente().setRamo(cliente.getRamo());
+		this.getCliente().setInscEst(cliente.getInscEst());
+		this.getCliente().setDesde(cliente.getDesde());
 		this.getCliente().setNomeResp1(cliente.getNomeResp1());
 		this.getCliente().setTel1(cliente.getTel1());
+		this.getCliente().setLogradouro(cliente.getLogradouro());
+		this.getCliente().setNumero(cliente.getNumero());	
+		this.getCliente().setComplemento(cliente.getComplemento());
+		this.getCliente().setBairro(cliente.getBairro());
+		this.getCliente().setUf(cliente.getUf());
+		this.getCliente().setCidade(cliente.getCidade());
+		this.getCliente().setCep(cliente.getCep());
+		this.getCliente().setTel1(cliente.getTel1());
+		this.getCliente().setTel2(cliente.getTel2());
+		this.getCliente().setEmail(cliente.getEmail());
+		this.getCliente().setCpfResp1(cliente.getCpfResp1());
+		this.getCliente().setCpfResp2(cliente.getCpfResp2());
+		this.getCliente().setCpfResp3(cliente.getCpfResp3());
+		this.getCliente().setNomeResp1(cliente.getNomeResp1());
+		this.getCliente().setNomeResp2(cliente.getNomeResp2());
+		this.getCliente().setNomeResp3(cliente.getNomeResp3());
+		this.getCliente().setNascResp1(cliente.getNascResp1());
+		this.getCliente().setNascResp2(cliente.getNascResp2());
+		this.getCliente().setNascResp3(cliente.getNascResp3());
 	}
 	
 	public void atualizarRegistro() {
