@@ -7,14 +7,14 @@ public class ClienteTO {
 	private String cnpj;
 	private String razaoSocial;
 	private String nomeResp1;
-	private int tel1;
+	private long tel1;
 	
 	public ClienteTO() {
 		super();
 	}
 
 	public ClienteTO(boolean selecionado, int id, String cnpj,
-			String razaoSocial, String nomeResp1, int tel1) {
+			String razaoSocial, String nomeResp1, long tel1) {
 		super();
 		this.selecionado = selecionado;
 		this.id = id;
@@ -97,14 +97,14 @@ public class ClienteTO {
 	/**
 	 * @return the tel1
 	 */
-	public int getTel1() {
+	public long getTel1() {
 		return tel1;
 	}
 
 	/**
 	 * @param tel1 the tel1 to set
 	 */
-	public void setTel1(int tel1) {
+	public void setTel1(long tel1) {
 		this.tel1 = tel1;
 	}
 }
