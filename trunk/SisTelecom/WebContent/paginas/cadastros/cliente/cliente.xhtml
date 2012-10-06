@@ -10,14 +10,18 @@
 	
 		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
 		
-		<script type="text/javascript">
+		<a4j:loadScript src="/recursos/js/jquery.maskedinput-1.2.1.js"></a4j:loadScript>
 		
+		<script type="text/javascript">
+
+				var jQuery = jQuery.noConflict();
+				
 				function inibir(){
 					jQuery("#id-cliente").bind("keypress",function(e){
 						e.preventDefault();
 					});
 				}
-				
+
 		</script>
 	
 		<style type="text/css">
@@ -59,10 +63,14 @@
 							<h:outputLabel value="Id:" />
 							
 							<h:inputText id="id-cliente" value="#{clienteController.cliente.idCliente}" style="width:50px;" />
-	
+						
 							<h:outputLabel value="CNPJ:" />
 							
-							<h:inputText id="cnpj-cliente" style="width:100px;" value="#{clienteController.cliente.cnpj}" />
+							<h:inputText id="cnpj-cliente" style="width:125px;" value="#{clienteController.cliente.cnpj}" >
+								
+								<rich:jQuery query="mask('99.999.999/9999-99');" selector="#cnpj-cliente" timing="onload"/>
+								
+							</h:inputText>
 	
 							<h:outputLabel value="Razão Social:" />
 							
