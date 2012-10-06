@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
@@ -46,7 +47,7 @@ public class ClienteController implements Controller<Cliente>{
 	}
 	
 	public void carregarRegistro(ActionEvent evento) {
-		final String id = ((HtmlActionParameter)((HtmlAjaxCommandButton)evento.getSource()).getChildren().get(0)).getValue().toString();
+		final String id = ((HtmlActionParameter)((HtmlCommandButton)evento.getSource()).getChildren().get(0)).getValue().toString();
 		int idCliente = Integer.parseInt(id);
 
 		final Cliente cliente = this.getDao().obterPorId(idCliente);
