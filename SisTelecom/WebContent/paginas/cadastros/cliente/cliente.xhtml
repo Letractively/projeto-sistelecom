@@ -363,7 +363,7 @@
 	
 			<rich:spacer width="100%" height="10px" />
 	
-			<a4j:form id="formulario-tabela" prependId="false">
+			<h:form id="formulario-tabela" prependId="false">
 			
 				<rich:dataTable id="tabela" value="#{clienteController.lista}" var="cliente" style="width:100%;">
 	
@@ -451,7 +451,7 @@
 	
 						<f:facet name="header">
 						
-							<h:outputLabel value="Alterar" />
+							<h:outputLabel value="Ações" />
 							
 						</f:facet>
 	
@@ -459,22 +459,20 @@
 						
 							<h:panelGrid columns="3">
 							
-								<a4j:commandButton value="Alterar" image="/imagens/editar.png"
+								<h:commandButton value="Alterar" image="/imagens/editar.png"
 									actionListener="#{clienteController.carregarRegistro}"
-									oncomplete="inibir();" reRender="formulario-dados"
-									process="formulario-dados">
+									oncomplete="inibir();" process="formulario-dados" reRender="formulario-dados">
 									
 									<a4j:actionparam name="id" value="#{cliente.id}" />
 									
-								</a4j:commandButton>
+								</h:commandButton>
 	
 								<rich:spacer width="10px" />
 	
 								<a4j:commandButton value="Excluir" image="/imagens/delete.png"
 									actionListener="#{clienteController.excluirRegistro}"
 									reRender="formulario-tabela,formulario-dados"
-									process="formulario-tabela,formulario-dados" immediate="true"
-									ajaxSingle="true">
+									process="formulario-tabela,formulario-dados">
 									
 									<a4j:actionparam name="id" value="#{cliente.id}" />
 									
@@ -487,7 +485,7 @@
 					</rich:column>
 	
 				</rich:dataTable>
-			</a4j:form>
+			</h:form>
 		</rich:panel>
 	</body>
 </html>
