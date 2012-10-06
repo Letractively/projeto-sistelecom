@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Funcionario {
 
-	private int idFuncionario;
+	private Integer idFuncionario;
 	private String cpf;
 	private int departamento;
 	private String nome;
@@ -40,7 +40,7 @@ public class Funcionario {
 	public Funcionario() {
 	}
 
-	public Funcionario(int idFuncionario, String cpf, int departamento,
+	public Funcionario(Integer idFuncionario, String cpf, int departamento,
 			String nome, String logradouro, int numero, String complemento,
 			String bairro, int cidade, int uf, int cep, Date nasc,
 			int tel1, int tel2, String email, int doc, String tipoDoc,
@@ -74,11 +74,11 @@ public class Funcionario {
 		this.password = password;
 	}
 
-	public int getIdFuncionario() {
+	public Integer getIdFuncionario() {
 		return idFuncionario;
 	}
 
-	public void setIdFuncionario(int idFuncionario) {
+	public void setIdFuncionario(Integer idFuncionario) {
 		this.idFuncionario = idFuncionario;
 	}
 

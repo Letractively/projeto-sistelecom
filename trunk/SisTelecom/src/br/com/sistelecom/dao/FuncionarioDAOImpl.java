@@ -16,10 +16,8 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		try{
 			Connection conn = SistelecomSingleConnection.getConnection();
 			
-			String SQL = "INSERT INTO funcionario (cpf, departamento, nome, logradouro, numero,"
-                    + " complemento, bairro, cidade, uf, cep, nasc, tel_1, tel_2, email, doc, tipo_doc, cargo, superv_funcao,"
-                    + " superv_nome, admissao, status, login, password)" +
-                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String SQL = "INSERT INTO funcionario (cpf, departamento, nome, logradouro, numero, complemento, bairro, cidade, uf, cep, nasc, tel_1, tel_2, email, doc, tipo_doc, cargo, superv_funcao,"
+                    + " superv_nome, admissao, status, login, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, funcionario.getCpf());
@@ -55,6 +53,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 	public void atualizar(Funcionario funcionario) throws Exception{
 		try{
 			Connection conn = SistelecomSingleConnection.getConnection();
+			
 			String SQL = "UPDATE funcionario SET cpf=?, departamento=?, nome=?, logradouro=?, numero=?, complemento=?, " +
                     "bairro=?, cidade=?, uf=?, cep=?, nasc=?, tel_1=?, tel_2=?, email=?, doc=?, tipo_doc=?, cargo=?, superv_funcao=?, superv_nome=?, " +
                     "admissao=?, status=?, login=?, password=? " +
@@ -123,13 +122,11 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 			List<FuncionarioTO> list = new ArrayList<FuncionarioTO>();
 			while(rs.next()) {
 				Integer idFuncionario = rs.getInt(1);
-				String nomeFuncionario = rs.getString(2);
-				String cpf = rs.getString(3);
-				int cargo = rs.getInt(4);
-				int tel1 = rs.getInt(5);
-				int tel2 = rs.getInt(6);
+				String cpf = rs.getString(2);
+				int departamento = rs.getInt(3);
+				String nomeFuncionario = rs.getString(4);
 
-				list.add(new FuncionarioTO(Boolean.FALSE, idFuncionario, nomeFuncionario, cpf, cargo, tel1, tel2));
+				list.add(new FuncionarioTO(Boolean.FALSE, idFuncionario, cpf, departamento, nomeFuncionario));
 			}
 			return list;
 		} catch (Exception e) {
