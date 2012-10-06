@@ -22,12 +22,12 @@ public class Funcionario {
 	private String bairro;
 	private int cidade;
 	private int uf;
-	private int cep;
+	private long cep;
 	private Date nasc;
-	private int tel1;
-	private int tel2;
+	private long tel1;
+	private long tel2;
 	private String email;
-	private int doc;
+	private long doc;
 	private String tipoDoc;
 	private int cargo;
 	private int supervFuncao;
@@ -42,8 +42,8 @@ public class Funcionario {
 
 	public Funcionario(Integer idFuncionario, String cpf, int departamento,
 			String nome, String logradouro, int numero, String complemento,
-			String bairro, int cidade, int uf, int cep, Date nasc,
-			int tel1, int tel2, String email, int doc, String tipoDoc,
+			String bairro, int cidade, int uf, long cep, Date nasc,
+			long tel1, long tel2, String email, long doc, String tipoDoc,
 			int cargo, int supervFuncao, String supervNome,
 			Date admissao, String status, String login,
 			String password) {
@@ -154,11 +154,11 @@ public class Funcionario {
 		this.uf = uf;
 	}
 
-	public int getCep() {
+	public long getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(long cep) {
 		this.cep = cep;
 	}
 
@@ -170,19 +170,19 @@ public class Funcionario {
 		this.nasc = nasc;
 	}
 
-	public int getTel1() {
+	public long getTel1() {
 		return tel1;
 	}
 
-	public void setTel1(int tel1) {
+	public void setTel1(long tel1) {
 		this.tel1 = tel1;
 	}
 
-	public int getTel2() {
+	public long getTel2() {
 		return tel2;
 	}
 
-	public void setTel2(int tel2) {
+	public void setTel2(long tel2) {
 		this.tel2 = tel2;
 	}
 	
@@ -194,11 +194,11 @@ public class Funcionario {
 		this.email = email;
 	}
 
-	public int getDoc() {
+	public long getDoc() {
 		return doc;
 	}
 
-	public void setDoc(int doc) {
+	public void setDoc(long doc) {
 		this.doc = doc;
 	}
 
