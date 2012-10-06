@@ -196,6 +196,7 @@
 	
 							<h:outputLabel value="Uf:" />
 							
+							<a4j:region>
 							<h:selectOneMenu id="uf-cliente"
 								value="#{clienteController.cliente.uf}"
 								onchange="submeter('formulario-dados');listarCidades();" >
@@ -209,7 +210,8 @@
 								<f:selectItems value="#{estadoController.listaEstado}" />
 								
 							</h:selectOneMenu>
-	
+							</a4j:region>
+							
 							<h:outputLabel value="Cidade:" />
 							
 							<h:selectOneMenu id="cidade-cliente"
