@@ -32,11 +32,11 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 			ps.setString(8, cliente.getBairro());
 			ps.setInt(9, cliente.getCidade());
 			ps.setInt(10, cliente.getUf());
-			ps.setInt(11, cliente.getCep());
-			ps.setInt(12, cliente.getTel1());
-			ps.setInt(13, cliente.getTel2());
+			ps.setLong(11, cliente.getCep());
+			ps.setLong(12, cliente.getTel1());
+			ps.setLong(13, cliente.getTel2());
 			ps.setString(14, cliente.getEmail());
-			ps.setInt(15, cliente.getInscEst());
+			ps.setLong(15, cliente.getInscEst());
 			ps.setDate(16, new java.sql.Date(cliente.getDesde().getTime()));
 			ps.setString(17, cliente.getCpfResp1());
 			ps.setString(18, cliente.getNomeResp1());
@@ -72,11 +72,11 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 			ps.setString(8, cliente.getBairro());
 			ps.setInt(9, cliente.getCidade());
 			ps.setInt(10, cliente.getUf());
-			ps.setInt(11, cliente.getCep());
-			ps.setInt(12, cliente.getTel1());
-			ps.setInt(13, cliente.getTel2());
+			ps.setLong(11, cliente.getCep());
+			ps.setLong(12, cliente.getTel1());
+			ps.setLong(13, cliente.getTel2());
 			ps.setString(14, cliente.getEmail());
-			ps.setInt(15, cliente.getInscEst());
+			ps.setLong(15, cliente.getInscEst());
 			ps.setDate(16, new java.sql.Date(cliente.getDesde().getTime()));
 			ps.setString(17, cliente.getCpfResp1());
 			ps.setString(18, cliente.getNomeResp1());
@@ -105,7 +105,7 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 			rs = ps.executeQuery();
 			List<Cliente> list = new ArrayList<Cliente>();
 			while(rs.next()) {
-				list.add(new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getInt(11), rs.getInt(12), rs.getInt(13), rs.getString(14), rs.getInt(15), rs.getDate(16), rs.getString(17), rs.getString(18), rs.getDate(19), rs.getString(20), rs.getString(21), rs.getDate(22), rs.getString(23), rs.getString(24), rs.getDate(25)));
+				list.add(new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getLong(11), rs.getLong(12), rs.getLong(13), rs.getString(14), rs.getLong(15), rs.getDate(16), rs.getString(17), rs.getString(18), rs.getDate(19), rs.getString(20), rs.getString(21), rs.getDate(22), rs.getString(23), rs.getString(24), rs.getDate(25)));
 			}
 			return list;
 		} catch (Exception e) {
@@ -129,7 +129,7 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 				String cnpj = rs.getString(2);
 				String razaoSocial = rs.getString(3);
 				String nomeResp1 = rs.getString(4);
-				int tel1 = rs.getInt(5);
+				long tel1 = rs.getLong(5);
 
 				list.add(new ClienteTO(Boolean.FALSE, idCliente, cnpj, razaoSocial, nomeResp1, tel1));
 			}
@@ -166,11 +166,11 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 			cliente.setBairro(rs.getString(9));
 			cliente.setCidade(rs.getInt(10));
 			cliente.setUf(rs.getInt(11));
-			cliente.setCep(rs.getInt(12));
-			cliente.setTel1(rs.getInt(13));
-			cliente.setTel2(rs.getInt(14));
+			cliente.setCep(rs.getLong(12));
+			cliente.setTel1(rs.getLong(13));
+			cliente.setTel2(rs.getLong(14));
 			cliente.setEmail(rs.getString(15));
-			cliente.setInscEst(rs.getInt(16));
+			cliente.setInscEst(rs.getLong(16));
 			cliente.setDesde(rs.getDate(17));
 			cliente.setCpfResp1(rs.getString(18));
 			cliente.setNomeResp1(rs.getString(19));

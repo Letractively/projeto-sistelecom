@@ -23,11 +23,11 @@ public class Cliente {
     private String bairro;
     private Integer cidade;
     private Integer uf;
-    private Integer cep;
-    private Integer tel1;
-    private Integer tel2;
+    private long cep;
+    private long tel1;
+    private long tel2;
     private String email;
-    private Integer inscEst;
+    private long inscEst;
     private Date desde;
     private String cpfResp1;
     private String nomeResp1;
@@ -41,7 +41,7 @@ public class Cliente {
 
     public Cliente(Integer idCliente, String cnpj, String razaoSocial, String nomeFantasia, Integer ramo, 
             String logradouro, Integer numero, String complemento, String bairro, Integer cidade, Integer uf, 
-            Integer cep, Integer tel1, Integer tel2, String email, Integer inscEst, Date desde, String cpfResp1, 
+            long cep, long tel1, long tel2, String email, long inscEst, Date desde, String cpfResp1, 
             String nomeResp1, Date nascResp1, String cpfResp2, String nomeResp2, Date nascResp2, 
             String cpfResp3, String nomeResp3, Date nascResp3) {
         
@@ -207,42 +207,42 @@ public class Cliente {
     /**
      * @return the cep
      */
-    public Integer getCep() {
+    public long getCep() {
         return cep;
     }
 
     /**
      * @param cep the cep to set
      */
-    public void setCep(Integer cep) {
+    public void setCep(long cep) {
         this.cep = cep;
     }
 
     /**
      * @return the tel_1
      */
-    public Integer getTel1() {
+    public long getTel1() {
         return tel1;
     }
 
     /**
      * @param tel_1 the tel_1 to set
      */
-    public void setTel1(Integer tel1) {
+    public void setTel1(long tel1) {
         this.tel1 = tel1;
     }
 
     /**
      * @return the tel_2
      */
-    public Integer getTel2() {
+    public long getTel2() {
         return tel2;
     }
 
     /**
      * @param tel_2 the tel_2 to set
      */
-    public void setTel2(Integer tel2) {
+    public void setTel2(long tel2) {
         this.tel2 = tel2;
     }
 
@@ -263,11 +263,11 @@ public class Cliente {
     /**
      * @return the inscEst
      */
-    public Integer getInscEst() {
+    public long getInscEst() {
         return inscEst;
     }
 
-    public void setInscEst(Integer inscEst) {
+    public void setInscEst(long inscEst) {
         this.inscEst = inscEst;
     }
 
