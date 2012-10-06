@@ -50,8 +50,9 @@
 						<h:inputText id="nome-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.nome}" />
 				
 						<h:outputLabel value="Data de nascimento:" />
-		        		<h:inputText value="#{funcionarioController.funcionario.nasc}">
-	            			<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy"/></h:inputText>
+		        		<rich:calendar value="#{funcionarioController.funcionario.nasc}" datePattern="dd/MM/yyyy">
+	      	   		 	  <f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy"/>
+	      	   		 	  </rich:calendar>
 				
 						<h:outputLabel value="Departamento:" />
 						<h:selectOneMenu id="departamento-funcionario" value="#{funcionarioController.funcionario.departamento}">
@@ -72,8 +73,9 @@
 		        		</h:selectOneMenu>
 				
 						<h:outputLabel value="Data de admissão: " />
-		   			    <h:inputText value="#{funcionarioController.funcionario.admissao}">
-	      	   		 	  <f:convertDateTime id="padraoDataAdmissao" pattern="dd/MM/yyyy"/></h:inputText>
+		   			    <rich:calendar value="#{funcionarioController.funcionario.admissao}" datePattern="dd/MM/yyyy">
+	      	   		 	  <f:convertDateTime id="padraoDataAdmissao" pattern="dd/MM/yyyy"/>
+	      	   		 	  </rich:calendar>
 	           	 
 	        		    <h:outputLabel value="Status: " />
 						<h:selectOneMenu id="status-funcionario" value="#{funcionarioController.funcionario.status}">
@@ -124,21 +126,29 @@
 				<h:inputText id="bairro-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.bairro}" />
 				
 				<h:outputLabel value="Uf:" />
-						<h:selectOneMenu id="uf-funcionario"
+				
+						<h:selectOneMenu id="uf-funcionario"		
 							value="#{funcionarioController.funcionario.uf}"
 							onchange="listarCidades();">
+							
 							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+							
 							<a4j:jsFunction name="listarCidades"
-								actionListener="#{funcionarioController.listarCidadesPorUf}"
+								actionListener="#{cidadeController.listarCidadesPorUf}"
 								reRender="cidade-funcionario" process="cidade-funcionario" />
+								
 							<f:selectItems value="#{estadoController.listaEstado}" />
 						</h:selectOneMenu>              	
 			
 				<h:outputLabel value="Cidade:" />
+				
 						<h:selectOneMenu id="cidade-funcionario"
 							value="#{funcionarioController.funcionario.cidade}">
+							
 							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+							
 							<f:selectItems value="#{cidadeController.listaCidade}" />
+							
 						</h:selectOneMenu>
                	
                	<h:outputLabel value="CEP:" />
@@ -203,22 +213,12 @@
 								<h:outputLabel value="ID" />
 							</f:facet>
 	
-							<h:outputLabel value="#{funcionario.idFuncionario}" />
+							<h:outputLabel value="#{funcionario.id}" />
 						</div>
 					</rich:column>
 	
-					<rich:column width="250">
+					<rich:column width="80">
 						<div id="div-nome" align="center">
-							<f:facet name="header">
-								<h:outputLabel value="Nome" />
-							</f:facet>
-	
-							<h:outputLabel value="#{funcionario.nome}" />
-						</div>
-					</rich:column>
-					
-					<rich:column width="150">
-						<div id="div-tipo" align="center">
 							<f:facet name="header">
 								<h:outputLabel value="CPF" />
 							</f:facet>
@@ -227,26 +227,26 @@
 						</div>
 					</rich:column>
 					
-					<rich:column width="72">
-						<div id="div-nome" align="center">
+					<rich:column width="150">
+						<div id="div-tipo" align="center">
 							<f:facet name="header">
-								<h:outputLabel value="Telefone" />
+								<h:outputLabel value="Departamento" />
 							</f:facet>
 	
-							<h:outputLabel value="#{funcionario.tel1}" />
+							<h:outputLabel value="#{funcionario.departamento}" />
 						</div>
 					</rich:column>
 					
-					<rich:column width="72">
-          				<div id="div-criacao" align="center">
-          					<f:facet name="header">
-            					<h:outputLabel value="Celular"/>
-          					</f:facet>
-          					
-      						<h:outputLabel value="#{funcionario.tel2}" />
-            			</div>
-            		</rich:column>
-					
+					<rich:column width="312">
+						<div id="div-nome" align="center">
+							<f:facet name="header">
+								<h:outputLabel value="Nome" />
+							</f:facet>
+	
+							<h:outputLabel value="#{funcionario.nome}" />
+						</div>
+					</rich:column>
+									
 					<rich:column width="50">
 	
 						<f:facet name="header">
@@ -258,14 +258,14 @@
 							<a4j:commandButton value="Alterar" image="/imagens/editar.png"
 								actionListener="#{funcionarioController.carregarRegistro}"
 								oncomplete="inibir();" reRender="formulario-dados" process="formulario-dados" immediate="true" ajaxSingle="true">
-								<a4j:actionparam name="idFuncionario" value="#{funcionario.idFuncionario}"/>
+								<a4j:actionparam name="id" value="#{funcionario.id}"/>
 							</a4j:commandButton>
 							
 							<rich:spacer width="10px"/>
 							
 							<a4j:commandButton value="Excluir" image="/imagens/delete.png"
 								actionListener="#{funcionarioController.excluirRegistro}" reRender="formulario-tabela,formulario-dados" process="formulario-tabela,formulario-dados" immediate="true" ajaxSingle="true">
-								<a4j:actionparam name="idFuncionario" value="#{funcionario.idFuncionario}" />
+								<a4j:actionparam name="id" value="#{funcionario.id}" />
 							</a4j:commandButton>
 							</h:panelGrid>
 						</div>

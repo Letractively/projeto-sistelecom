@@ -53,11 +53,10 @@ public class FuncionarioController implements Controller<Funcionario>{
 		final Funcionario funcionario = this.getDao().obterPorId(idFuncionario);
 
 		this.getFuncionario().setIdFuncionario(funcionario.getIdFuncionario());
-		this.getFuncionario().setNome(funcionario.getNome());
 		this.getFuncionario().setCpf(funcionario.getCpf());
-		this.getFuncionario().setCargo(funcionario.getCargo());
-		this.getFuncionario().setTel1(funcionario.getTel1());
-		this.getFuncionario().setTel2(funcionario.getTel2());
+		this.getFuncionario().setDepartamento(funcionario.getDepartamento());
+		this.getFuncionario().setNome(funcionario.getNome());
+		//this.getFuncionario().setLogradouro(funcionario.getLogradouro());
 	}
 	
 	public void atualizarRegistro() {
