@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.sistelecom.connection;
 
 import java.sql.Connection;
@@ -19,10 +15,11 @@ public final class SistelecomSingleConnection {
 	private static final String URL = "jdbc:mysql://localhost/sistelecom";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "";
+	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	
 	static{
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(DRIVER);
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		} catch (Exception e) {
 			e.printStackTrace();
