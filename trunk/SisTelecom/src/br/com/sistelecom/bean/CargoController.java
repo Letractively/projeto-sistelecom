@@ -13,10 +13,7 @@ import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
 import br.com.sistelecom.dao.CargoDAOImpl;
 import br.com.sistelecom.dao.DAO;
-import br.com.sistelecom.dao.EstadoDAOImpl;
 import br.com.sistelecom.entity.Cargo;
-import br.com.sistelecom.entity.Estado;
-import br.com.sistelecom.to.RamoTO;
 
 public class CargoController implements Controller<Cargo>{
 	
@@ -76,6 +73,7 @@ public class CargoController implements Controller<Cargo>{
 		}else{
 			this.atualizarRegistro();
 		}
+		this.limpar();
 	}
 	
 	public void excluirRegistro(ActionEvent evento) {
@@ -94,6 +92,7 @@ public class CargoController implements Controller<Cargo>{
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na exclusão do cargo.",""));
 			e.printStackTrace();
 		}
+		this.limpar();
 	}
 	
 	public boolean validarDadosFormulario() {
@@ -105,8 +104,7 @@ public class CargoController implements Controller<Cargo>{
 	}
 	
 	public void limpar() {
-		// TODO Auto-generated method stub
-		
+		this.cargo = new Cargo();
 	}
 	
 	public CargoDAOImpl getDao() {

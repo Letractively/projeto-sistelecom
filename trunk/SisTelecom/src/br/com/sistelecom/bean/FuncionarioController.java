@@ -13,7 +13,6 @@ import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
 import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.dao.FuncionarioDAOImpl;
-import br.com.sistelecom.entity.Cliente;
 import br.com.sistelecom.entity.Funcionario;
 import br.com.sistelecom.to.FuncionarioTO;
 
@@ -78,6 +77,7 @@ public class FuncionarioController implements Controller<Funcionario>{
 		}else{
 			this.atualizarRegistro();
 		}
+		this.limpar();
 	}
 	
 	public void excluirRegistro(ActionEvent evento) {
@@ -96,6 +96,7 @@ public class FuncionarioController implements Controller<Funcionario>{
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na exclusão do funcionário.",""));
 			e.printStackTrace();
 		}
+		this.limpar();
 	}
 	
 	public boolean validarDadosFormulario() {
@@ -107,8 +108,7 @@ public class FuncionarioController implements Controller<Funcionario>{
 	}
 	
 	public void limpar() {
-		// TODO Auto-generated method stub
-		
+		this.funcionario = new Funcionario();
 	}
 	
 	public FuncionarioDAOImpl getDao() {

@@ -73,6 +73,8 @@ public class RamoController implements Controller<Ramo> {
 		}else{
 			this.atualizarRegistro();
 		}
+		
+		this.limpar();
 	}
 	
 	public void excluirRegistro(ActionEvent evento) {
@@ -91,6 +93,8 @@ public class RamoController implements Controller<Ramo> {
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na exclusão do ramo.",""));
 			e.printStackTrace();
 		}
+		
+		this.limpar();
 	}
 	
 	public boolean validarDadosFormulario() {
@@ -102,8 +106,7 @@ public class RamoController implements Controller<Ramo> {
 	}
 	
 	public void limpar() {
-		// TODO Auto-generated method stub
-		
+		this.ramo = new Ramo();
 	}
 	
 	public RamoDAOImpl getDao() {

@@ -76,6 +76,7 @@ public class ProdutoController implements Controller<Produto>{
 		}else{
 			this.atualizarRegistro();
 		}
+		this.limpar();
 	}
 	
 	public void excluirRegistro(ActionEvent evento) {
@@ -94,6 +95,7 @@ public class ProdutoController implements Controller<Produto>{
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na exclusão do produto.",""));
 			e.printStackTrace();
 		}
+		this.limpar();
 	}
 	
 	public boolean validarDadosFormulario() {
@@ -105,8 +107,7 @@ public class ProdutoController implements Controller<Produto>{
 	}
 	
 	public void limpar() {
-		// TODO Auto-generated method stub
-		
+		this.produto = new Produto();
 	}
 	
 	public ProdutoDAOImpl getDao() {
