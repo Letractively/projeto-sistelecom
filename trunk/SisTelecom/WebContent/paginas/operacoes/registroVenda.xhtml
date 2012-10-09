@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<head>
+		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+		<script type="text/javascript">
+					function inibir(){
+						jQuery("#id-cargo").bind("keypress",function(e){
+							e.preventDefault();
+						});
+					}
+		</script>
+		
+		<style type="text/css">
+			.rich-messages-label{
+				font-weight:bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<rich:panel style="800px;">
+	
+			<f:facet name="header">
+				<h:outputLabel value="Input de Pedidos" />
+			</f:facet>
+	
+			<h:form id="formulario-input" prependId="false">
+	
+				<h:panelGrid columns="2">
+					
+					<rich:panel style="100%">
+						<f:facet name="header">
+							<h:outputText value="Dados do cliente" />
+						</f:facet>
+						
+						<h:outputLabel value="CNPJ:" />
+						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
+						</a4j:commandButton>
+		
+						<h:outputLabel value="Cliente:" />
+						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png" >
+						</a4j:commandButton>
+						
+					</rich:panel>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="2">
+					<rich:panel style="100%">
+						<f:facet name="header">
+							<h:outputText value="Dados do Consultor" />
+						</f:facet>
+						
+						<h:outputLabel value="Matricula:" />
+						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
+						</a4j:commandButton>
+						
+						<h:outputLabel value="Nome:" />
+						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
+						</a4j:commandButton>
+						
+						<h:outputLabel value="Supervisor:" />
+						<h:outputText value="" />
+						
+					</rich:panel>
+				</h:panelGrid>
+
+			</h:form>
+
+		</rich:panel>
+	</body>
+</html>
