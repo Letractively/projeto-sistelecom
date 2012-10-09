@@ -39,21 +39,32 @@
 						style="width:50px;" />
 	
 					<h:outputLabel value="Nome:" />
-					<h:inputText id="nome-produto" value="#{produtoController.produto.nomeProduto}" />
+					<h:inputText id="nome-produto" style="width:250px" onkeypress="this.style.textTransform = 'uppercase';" value="#{produtoController.produto.nomeProduto}" />
 					
-					<h:outputLabel value="Tipo de produto: " />
+					<h:outputLabel value="Categoria do produto: " />
+					
 					<h:selectOneMenu id="tipo-produto" value="#{produtoController.produto.tipo}">
+					
+						<f:selectItem itemLabel="Selecione..." itemValue="#{0}"/>
+
             			<f:selectItem itemLabel="Voz móvel" itemValue="Voz móvel"/>
             			<f:selectItem itemLabel="Voz fixa" itemValue="Voz fixa"/>
           				<f:selectItem itemLabel="Internet 3G" itemValue="Internet 3G"/>
+          				<f:selectItem itemLabel="Internet fixa" itemValue="Internet fixa"/>
+          				<f:selectItem itemLabel="Voz avançada" itemValue="Voz avançada"/>
+          				<f:selectItem itemLabel="Dados avançados" itemValue="Dados avançados"/>
          			</h:selectOneMenu>
 					
 					<h:outputLabel value="Valor de Receita:" />
 					<h:inputText id="nome-valor-receita" value="#{produtoController.produto.valorReceita}" />
 					
 					<h:outputLabel value="Data de criação" />
-			        <h:inputText value="#{produtoController.produto.criacao}">
-		            <f:convertDateTime id="padraoDataCriacao" pattern="dd/MM/yyyy"/></h:inputText>
+					
+			        <rich:calendar value="#{produtoController.produto.criacao}" datePattern="dd/MM/yyyy">
+								
+						<f:convertDateTime id="padraoDataCriacao" pattern="dd/MM/yyyy" />
+								
+					</rich:calendar>
 	
 				</h:panelGrid>
 	

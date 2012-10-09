@@ -34,16 +34,18 @@
 	
 				<h:panelGrid columns="2">
 					
-					<rich:panel style="100%">
+					<rich:panel style="100%px">
 						<f:facet name="header">
 							<h:outputText value="Dados do cliente" />
 						</f:facet>
 						
 						<h:outputLabel value="CNPJ:" />
+						<h:inputText value="" />
 						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
 						</a4j:commandButton>
 		
 						<h:outputLabel value="Cliente:" />
+						<h:inputText value="" />
 						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png" >
 						</a4j:commandButton>
 						
@@ -51,16 +53,20 @@
 				</h:panelGrid>
 				
 				<h:panelGrid columns="2">
-					<rich:panel style="100%">
+				
+					<rich:panel style="100%px">
+					
 						<f:facet name="header">
 							<h:outputText value="Dados do Consultor" />
 						</f:facet>
 						
 						<h:outputLabel value="Matricula:" />
+						<h:inputText value="" />
 						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
 						</a4j:commandButton>
 						
 						<h:outputLabel value="Nome:" />
+						<h:inputText value="" />
 						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
 						</a4j:commandButton>
 						
@@ -69,6 +75,112 @@
 						
 					</rich:panel>
 				</h:panelGrid>
+				
+				<rich:panel style="100%px">
+					<f:facet name="header">
+						<h:outputText value="Produtos" />
+					</f:facet>
+				
+					<a4j:form id="formulario-tabela" prependId="false" >
+						<rich:dataTable id="tabela" value=""
+							var="itens" style="width:100%;">
+	
+						<rich:column width="20">
+							<div id="div-id-item" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Item" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+						</rich:column>
+	
+						<rich:column width="150">
+							<div id="div-produto" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Descrição do produto" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+						</rich:column>
+	
+						<rich:column width="50">
+							<div id="div-status" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Status" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+							
+						</rich:column>
+						
+						<rich:column width="50">
+							<div id="div-status" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Número SA3" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+						</rich:column>
+						
+						<rich:column width="50">
+							<div id="div-status" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Número Siebel" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+						</rich:column>
+						
+						<rich:column width="50">
+							<div id="div-status" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Número OI B2B" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+						</rich:column>
+						
+						<rich:column width="50">
+							<div id="div-status" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Número da OS" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+						</rich:column>
+						
+						<rich:column width="50">
+							<div id="div-status" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Fidelidade" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+						</rich:column>
+						
+						<rich:column width="50">
+							<div id="div-status" align="center">
+								<f:facet name="header">
+									<h:outputLabel value="Prazo da Fidelidade" />
+								</f:facet>
+	
+								<h:outputLabel value="" />
+							</div>
+						</rich:column>
+						
+	
+				</rich:dataTable>
+			</a4j:form>
+				
+				</rich:panel>
 
 			</h:form>
 
