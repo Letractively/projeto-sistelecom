@@ -1,47 +1,173 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a4j="http://richfaces.org/a4j"
-      xmlns:rich="http://richfaces.org/rich"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<ui:insert name="cabecalho">
-		<head>
-			<title>Bem vindo ao SisTelecom</title>
-			
-			<ui:insert name="css" />
-			
-			<ui:insert name="javascript" />
-			
-			<ui:insert name="default-javascript">
-				
-				<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
-				
-				<script type="text/javascript">
-					
-				</script>
-				
-			</ui:insert>
-			
-			<ui:insert name="default-css">
-				
-				<style type="text/css">
-					
-					body{
-						background-image: url("/SisTelecom/WebContent/imagens/bg.jpg");
-						background-color: #eee;
-					}
-					
-				</style>
-				
-			</ui:insert>
-			
-		</head>
-	</ui:insert>
-	
-	<body>
-	
+<ui:insert name="cabecalho">
+	<head>
+<title>Bem vindo ao SisTelecom</title>
 
-</body> 
+<ui:composition>
+
+	<style>
+.pic {
+	margin-bottom: -4px;
+	margin-right: 2px;
+}
+
+.search .rich-menu-item-hover {
+	background-color: transparent;
+	border-color: transparent;
+}
+</style>
+
+	<h:form>
+
+		<rich:toolBar>
+
+			<rich:dropDownMenu>
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:graphicImage value="/imagens/menu.png" styleClass="pic" />
+						<h:outputText value="Menu"/>
+					</h:panelGroup>
+				</f:facet>
+				
+				<rich:menuItem submitMode="ajax" value="Agenda" icon="/imagens/agenda.png"/>
+				
+				<rich:menuGroup value="Gestão de usuários" icon="/imagens/gestao_usuario.png">
+					<rich:menuItem submitMode="ajax" value="Alteração dos meus dados"/>
+					<rich:menuItem submitMode="ajax" value="Gestão de usuários"/>
+					<rich:menuItem submitMode="ajax" value="Gestão de departamentos"/>
+					<rich:menuItem submitMode="ajax" value="Gestão de funções">
+						<f:facet name="icon">
+							<h:graphicImage value="" />
+						</f:facet>
+					</rich:menuItem>
+				</rich:menuGroup>
+				
+				<rich:menuGroup value="Gestão de carteira">
+					<rich:menuItem submitMode="ajax" value="Cliente"/>
+					<rich:menuItem submitMode="ajax" value="Contatos"/>
+					<rich:menuItem submitMode="ajax" value="Atividades econômicas">
+						<f:facet name="icon">
+							<h:graphicImage value="" />
+						</f:facet>
+					</rich:menuItem>
+				</rich:menuGroup>
+				
+				<rich:menuGroup value="Gestão de produtos">
+					<rich:menuItem submitMode="ajax" value="Telefonia móvel"/>
+					<rich:menuItem submitMode="ajax" value="Telefoni fixa"/>
+					<rich:menuItem submitMode="ajax" value="Internet 3G"/>
+					<rich:menuItem submitMode="ajax" value="Internet fixa"/>
+					<rich:menuItem submitMode="ajax" value="Voz avançada"/>
+					<rich:menuItem submitMode="ajax" value="Dados avançados">
+						<f:facet name="icon">
+							<h:graphicImage value="" />
+						</f:facet>
+					</rich:menuItem>
+				</rich:menuGroup>
+				
+				<rich:menuGroup value="Relatórios">
+					<rich:menuItem submitMode="ajax" value="Usuários"/>
+					<rich:menuItem submitMode="ajax" value="Clientes"/>
+					<rich:menuItem submitMode="ajax" value="Atividades econômicas"/>
+					<rich:menuItem submitMode="ajax" value="Produtos"/>
+					<rich:menuItem submitMode="ajax" value="Departamentos"/>
+					<rich:menuItem submitMode="ajax" value="Funções"/>
+					<rich:menuItem submitMode="ajax" value="Pedidos">
+						<f:facet name="icon">
+							<h:graphicImage value="" />
+						</f:facet>
+					</rich:menuItem>
+				</rich:menuGroup>		
+
+				<rich:menuSeparator id="menuSeparator11" />
+				
+				<rich:menuItem submitMode="ajax" value="Sair"/>
+
+			</rich:dropDownMenu>
+
+			<rich:dropDownMenu>
+
+				<f:facet name="label">
+					<h:panelGrid cellpadding="0" cellspacing="0" columns="2"
+						style="vertical-align:middle" >
+						<h:outputText style="font:12px; font-weight:bold;" value="Links" />
+					</h:panelGrid>
+				</f:facet>
+				
+				<rich:menuItem submitMode="none"
+					onclick="http://www.telemarnetwork.com.br/">
+					<h:outputLink value="http://www.telemarnetwork.com.br/">
+						<h:outputText value="Telemarnetwork"></h:outputText>
+					</h:outputLink>
+				</rich:menuItem>
+				
+				<rich:menuItem submitMode="none"
+					onclick="http://sa3.oi.net.br/sa3/index.aspx">
+					<h:outputLink value="http://sa3.oi.net.br/sa3/index.aspx">
+						<h:outputText value="Oi SA3"></h:outputText>
+					</h:outputLink>
+				</rich:menuItem>
+				
+				<rich:menuItem submitMode="none"
+					onclick="http://www.oivendasb2b.com.br/">
+					<h:outputLink value="http://www.oivendasb2b.com.br/">
+						<h:outputText value="Oi Vendas B2B"></h:outputText>
+					</h:outputLink>
+				</rich:menuItem>
+				
+				<rich:menuItem submitMode="none"
+					onclick="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Solicitacao.asp">
+					<h:outputLink value="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Solicitacao.asp">
+						<h:outputText value="Receita Federal - Consulta CNPJ"></h:outputText>
+					</h:outputLink>
+				</rich:menuItem>
+				
+				<rich:menuItem submitMode="none"
+					onclick="http://www.sintegra.gov.br/">
+					<h:outputLink value="http://www.sintegra.gov.br/">
+						<h:outputText value="Sintegra - Consulta inscrição estadual"></h:outputText>
+					</h:outputLink>
+				</rich:menuItem>
+				
+			</rich:dropDownMenu>
+			<rich:toolBarGroup location="right">
+				<rich:dropDownMenu value="Busca" direction="bottom-left"
+					jointPoint="br" styleClass="search">
+					<rich:menuItem submitMode="none">
+						<h:inputText value="" id="searchinput" />
+						<button type="button">Buscar</button>
+					</rich:menuItem>
+					<rich:menuItem value="Digite o que deseja buscar"
+						disabled="true"></rich:menuItem>
+				</rich:dropDownMenu>
+			</rich:toolBarGroup>
+		</rich:toolBar>
+	</h:form>
+	<rich:spacer width="1" height="5" />
+	<br />
+	<a4j:outputPanel ajaxRendered="true">
+		<h:outputText value="Você está: "></h:outputText>
+		<h:outputText style="font-weight:bold" value=""></h:outputText>
+	</a4j:outputPanel>
+	<br />
+	<rich:spacer width="1" height="25" />
+
+</ui:composition>
+	</head>
+</ui:insert>
+
+<body>
+<h:form>
+<h:graphicImage value="/imagens/SisTelecom.png" />
+</h:form>
+
+
+</body>
 </html>
