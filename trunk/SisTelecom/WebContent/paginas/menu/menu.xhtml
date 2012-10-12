@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition>
+		
+		<a4j:form id="formulario_menu" prependId="false">
+			<rich:toolBar>
+				<rich:dropDownMenu>
+					<f:facet name="label">
+							<h:outputText value="Menu"/>
+					</f:facet>
+					
+					<rich:menuGroup value="Gestão de usuários">
+						<rich:menuItem submitMode="ajax" value="Alteração dos meus dados" />
+						<rich:menuItem submitMode="ajax" value="Gestão de funcionários" onclick="window.location='/SisTelecom/paginas/cadastros/funcionario/funcionario.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Gestão de departamentos"/>
+						<rich:menuItem submitMode="ajax" value="Gestão de funções"/>
+					</rich:menuGroup>
+					
+					<rich:menuGroup value="Gestão de carteira">
+						<rich:menuItem submitMode="ajax" value="Cliente"/>
+						<rich:menuItem submitMode="ajax" value="Contatos"/>
+						<rich:menuItem submitMode="ajax" value="Atividades econômicas"/>
+					</rich:menuGroup>
+					
+					<rich:menuGroup value="Gestão de produtos">
+						<rich:menuItem submitMode="ajax" value="Telefonia móvel"/>
+						<rich:menuItem submitMode="ajax" value="Telefoni fixa"/>
+						<rich:menuItem submitMode="ajax" value="Internet 3G"/>
+						<rich:menuItem submitMode="ajax" value="Internet fixa"/>
+						<rich:menuItem submitMode="ajax" value="Voz avançada"/>
+						<rich:menuItem submitMode="ajax" value="Dados avançados"/>
+					</rich:menuGroup>
+					
+					<rich:menuGroup value="Relatórios">
+						<rich:menuItem submitMode="ajax" value="Usuários"/>
+						<rich:menuItem submitMode="ajax" value="Clientes"/>
+						<rich:menuItem submitMode="ajax" value="Atividades econômicas"/>
+						<rich:menuItem submitMode="ajax" value="Produtos"/>
+						<rich:menuItem submitMode="ajax" value="Departamentos"/>
+						<rich:menuItem submitMode="ajax" value="Funções"/>
+						<rich:menuItem submitMode="ajax" value="Pedidos"/>
+					</rich:menuGroup>		
+	
+				</rich:dropDownMenu>
+	
+				<rich:dropDownMenu>
+	
+					<f:facet name="label">
+							<h:outputText value="Links" />
+					</f:facet>
+					
+					<rich:menuItem submitMode="none" onclick="http://www.telemarnetwork.com.br/">
+						<h:outputLink value="http://www.telemarnetwork.com.br/">
+							<h:outputText value="Telemarnetwork"/>
+						</h:outputLink>
+					</rich:menuItem>
+					
+					<rich:menuItem submitMode="none" onclick="http://sa3.oi.net.br/sa3/index.aspx">
+						<h:outputLink value="http://sa3.oi.net.br/sa3/index.aspx">
+							<h:outputText value="Oi SA3"/>
+						</h:outputLink>
+					</rich:menuItem>
+					
+					<rich:menuItem submitMode="none" onclick="http://www.oivendasb2b.com.br/">
+						<h:outputLink value="http://www.oivendasb2b.com.br/">
+							<h:outputText value="Oi Vendas B2B"/>
+						</h:outputLink>
+					</rich:menuItem>
+					
+					<rich:menuItem submitMode="none" onclick="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Solicitacao.asp">
+						<h:outputLink value="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Solicitacao.asp">
+							<h:outputText value="Receita Federal - Consulta CNPJ"/>
+						</h:outputLink>
+					</rich:menuItem>
+					
+					<rich:menuItem submitMode="none" onclick="http://www.sintegra.gov.br/">
+						<h:outputLink value="http://www.sintegra.gov.br/">
+							<h:outputText value="Sintegra - Consulta inscrição estadual"/>
+						</h:outputLink>
+					</rich:menuItem>
+					
+				</rich:dropDownMenu>
+				
+			</rich:toolBar>
+			
+		</a4j:form>
+		
+	</ui:composition>
+	
+</html>

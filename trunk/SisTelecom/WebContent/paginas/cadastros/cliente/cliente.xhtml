@@ -6,82 +6,70 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<head>
+	<ui:composition template="/templates/template-menu.xhtml">
 	
-		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
+		<ui:define name="scripts">
 		
-		<a4j:loadScript src="/recursos/js/jquery.maskedinput-1.2.1.js"></a4j:loadScript>
-		
-		<script type="text/javascript">
-
-				function submeter(formId){
-					jQuery("#"+formId).submit(function(){
-
-						var cnpjFormatado = jQuery("#cnpj-cliente").val().replace(".","").replace(".","").replace("/","").replace("-","");
-
-						if(cnpjFormatado != ""){
-
-							jQuery("#cnpj-cliente").val(cnpjFormatado);
-							
-						}
-
-						var incricaoEstadualFormatada = jQuery("#inscest-cliente").val().replace(".","").replace(".","").replace("-","");
-
-						if(incricaoEstadualFormatada != ""){
-
-							jQuery("#inscest-cliente").val(incricaoEstadualFormatada);
-							
-						}
-
-						var cepFormatado = jQuery("#cep-cliente").val().replace("-","");
-						
-						if(cepFormatado != ""){
-
-							jQuery("#cep-cliente").val(cepFormatado);
-							
-						}
-
-						var telefoneFormatado = jQuery("#tel1-cliente").val().replace("(","").replace(")","").replace(" ","").replace("-","");
-						
-						if(telefoneFormatado != ""){
-
-							jQuery("#tel1-cliente").val(telefoneFormatado);
-							
-						}
-
-						var celularFormatado = jQuery("#tel2-cliente").val().replace("(","").replace(")","").replace(" ","").replace("-","");
-						
-						if(celularFormatado != ""){
-
-							jQuery("#tel2-cliente").val(celularFormatado);
-							
-						}
-
-					});
-				}
-				
-				function inibir(){
-					jQuery("#id-cliente").bind("keypress",function(e){
-						e.preventDefault();
-					});
-				}
-
-		</script>
+				<script type="text/javascript">
 	
-		<style type="text/css">
-			
-			.rich-messages-label {
-				
-				font-weight: bold;
-				
-			}
-			
-		</style>
-		
-	</head>
-
-	<body>
+					function submeter(formId){
+						jQuery("#"+formId).submit(function(){
 	
+							var cnpjFormatado = jQuery("#cnpj-cliente").val().replace(".","").replace(".","").replace("/","").replace("-","");
+	
+							if(cnpjFormatado != ""){
+	
+								jQuery("#cnpj-cliente").val(cnpjFormatado);
+								
+							}
+	
+							var incricaoEstadualFormatada = jQuery("#inscest-cliente").val().replace(".","").replace(".","").replace("-","");
+	
+							if(incricaoEstadualFormatada != ""){
+	
+								jQuery("#inscest-cliente").val(incricaoEstadualFormatada);
+								
+							}
+	
+							var cepFormatado = jQuery("#cep-cliente").val().replace("-","");
+							
+							if(cepFormatado != ""){
+	
+								jQuery("#cep-cliente").val(cepFormatado);
+								
+							}
+	
+							var telefoneFormatado = jQuery("#tel1-cliente").val().replace("(","").replace(")","").replace(" ","").replace("-","");
+							
+							if(telefoneFormatado != ""){
+	
+								jQuery("#tel1-cliente").val(telefoneFormatado);
+								
+							}
+	
+							var celularFormatado = jQuery("#tel2-cliente").val().replace("(","").replace(")","").replace(" ","").replace("-","");
+							
+							if(celularFormatado != ""){
+	
+								jQuery("#tel2-cliente").val(celularFormatado);
+								
+							}
+	
+						});
+					}
+					
+					function inibir(){
+						jQuery("#id-cliente").bind("keypress",function(e){
+							e.preventDefault();
+						});
+					}
+	
+			</script>
+		
+		</ui:define>
+	
+		<ui:define name="body">
+		
 		<rich:panel style="800px;">
 	
 			<f:facet name="header">
@@ -92,7 +80,7 @@
 	
 			<h:form id="formulario-dados" prependId="false">
 	
-				<h:panelGrid columns="1">
+				<h:panelGrid columns="1" width="100%">
 				
 					<rich:panel>
 					
@@ -199,7 +187,7 @@
 							<a4j:region>
 							<h:selectOneMenu id="uf-cliente"
 								value="#{clienteController.cliente.uf}"
-								onchange="submeter('formulario-dados');listarCidades();" >
+								onchange="submeter('formulario-dados');listarCidades();">
 								
 								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 								
@@ -462,8 +450,7 @@
 							<h:panelGrid columns="3">
 							
 								<h:commandButton value="Alterar" image="/imagens/editar.png"
-									actionListener="#{clienteController.carregarRegistro}"
-									process="formulario-dados" reRender="formulario-dados">
+									actionListener="#{clienteController.carregarRegistro}">
 									
 									<a4j:actionparam name="id" value="#{cliente.id}" />
 									
@@ -489,5 +476,7 @@
 				</rich:dataTable>
 			</h:form>
 		</rich:panel>
-	</body>
+		</ui:define>
+	
+	</ui:composition>
 </html>
