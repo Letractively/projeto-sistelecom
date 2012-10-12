@@ -125,8 +125,9 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 				String cpf = rs.getString(2);
 				int departamento = rs.getInt(3);
 				String nomeFuncionario = rs.getString(4);
+		
 
-				list.add(new FuncionarioTO(Boolean.FALSE, idFuncionario, cpf, departamento, nomeFuncionario));
+				list.add(new FuncionarioTO(Boolean.FALSE, idFuncionario, cpf, departamento, null, nomeFuncionario));
 			}
 			return list;
 		} catch (Exception e) {

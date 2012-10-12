@@ -37,18 +37,29 @@ FROM
 		<band height="20" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="c90df5b9-5226-416d-a150-76ed8b51710b" x="0" y="0" width="128" height="20"/>
-				<textElement/>
-				<text><![CDATA[Static text]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Código]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="82baef00-00b8-4c5f-ae27-db52eda1a482" x="128" y="0" width="674" height="20"/>
-				<textElement/>
-				<text><![CDATA[Static text]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Descrição de atividade econômica]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e96daa52-afac-4945-8f12-446149ab940b" x="0" y="0" width="128" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f4100838-351a-4c91-8d75-85a62fefa945" x="128" y="0" width="674" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
