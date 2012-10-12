@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
@@ -196,6 +197,40 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		} catch (Exception e) {
 			throw new Exception();
 		}
+	}
+	
+	public List<Funcionario> buscarFuncionarioComCargoConsultorComercial(final int idCargo){
+		
+		String sql = "select f.idfuncionario, f.nome from funcionario as f ";
+		sql += "inner join cargo as c ";
+		sql += "on f.cargo = c.idcargo ";
+		sql += "where c.idcargo = ?";
+		
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, idCargo);
+			
+			rs = ps.executeQuery();
+			
+			List<Funcionario> lista = new LinkedList<Funcionario>();
+			
+			while (rs.next()) {
+				Funcionario funcionario = new Funcionario();
+				funcionario.setIdFuncionario(rs.getInt("idfuncionario"));
+				funcionario.setNome(rs.getString("nome"));
+				
+				lista.add(funcionario);
+			}
+			
+			return lista;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return null;
 	}
 
 }

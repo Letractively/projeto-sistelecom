@@ -32,47 +32,39 @@
 	
 			<h:form id="formulario-input" prependId="false">
 	
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" style="width:50%">
 					
-					<rich:panel style="100%px">
+					<rich:panel style="width:50%">
+					
 						<f:facet name="header">
-							<h:outputText value="Dados do cliente" />
+							<h:outputText value="Dados do Cliente" />
 						</f:facet>
 						
-						<h:outputLabel value="CNPJ:" />
-						<h:inputText value="" />
-						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
-						</a4j:commandButton>
-		
-						<h:outputLabel value="Cliente:" />
-						<h:inputText value="" />
-						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png" >
-						</a4j:commandButton>
-						
+						<h:selectOneMenu id="cliente" value="#{funcionarioController.funcionario.idFuncionario}" style="width:100%">
+								
+								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+								
+								<f:selectItems value="#{funcionarioController.listaCliente}" />
+								
+						</h:selectOneMenu>						
 					</rich:panel>
 				</h:panelGrid>
 				
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" style="width:50%">
 				
-					<rich:panel style="100%px">
+					<rich:panel style="width:50%">
 					
 						<f:facet name="header">
 							<h:outputText value="Dados do Consultor" />
 						</f:facet>
 						
-						<h:outputLabel value="Matricula:" />
-						<h:inputText value="" />
-						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
-						</a4j:commandButton>
-						
-						<h:outputLabel value="Nome:" />
-						<h:inputText value="" />
-						<a4j:commandButton value="Pesquisar" image="/imagens/procurar.png">
-						</a4j:commandButton>
-						
-						<h:outputLabel value="Supervisor:" />
-						<h:outputText value="" />
-						
+						<h:selectOneMenu id="consultor" value="#{funcionarioController.funcionario.idFuncionario}" style="width:100%">
+								
+								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+								
+								<f:selectItems value="#{funcionarioController.listaFuncionario}" />
+								
+						</h:selectOneMenu>						
 					</rich:panel>
 				</h:panelGrid>
 				
