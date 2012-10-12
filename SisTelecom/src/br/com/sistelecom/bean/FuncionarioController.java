@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
@@ -60,35 +61,37 @@ public class FuncionarioController implements Controller<Funcionario>{
 	}
 	
 	public void carregarRegistro(ActionEvent evento) {
-		final String id = ((HtmlActionParameter)((HtmlAjaxCommandButton)evento.getSource()).getChildren().get(0)).getValue().toString();
+		final String id = ((HtmlActionParameter)((HtmlCommandButton)evento.getSource()).getChildren().get(0)).getValue().toString();
 		int idFuncionario = Integer.parseInt(id);
 
 		final Funcionario funcionario = this.getDao().obterPorId(idFuncionario);
 
-		this.getFuncionario().setIdFuncionario(funcionario.getIdFuncionario());
-		this.getFuncionario().setCpf(funcionario.getCpf());
-		this.getFuncionario().setDepartamento(funcionario.getDepartamento());
-		this.getFuncionario().setNome(funcionario.getNome());
-		this.getFuncionario().setLogradouro(funcionario.getLogradouro());
-		this.getFuncionario().setNumero(funcionario.getNumero());
-		this.getFuncionario().setComplemento(funcionario.getComplemento());
-		this.getFuncionario().setBairro(funcionario.getBairro());
-		this.getFuncionario().setCidade(funcionario.getCidade());
-		this.getFuncionario().setUf(funcionario.getUf());
-		this.getFuncionario().setCep(funcionario.getCep());
-		this.getFuncionario().setNasc(funcionario.getNasc());
-		this.getFuncionario().setTel1(funcionario.getTel1());
-		this.getFuncionario().setTel2(funcionario.getTel2());
-		this.getFuncionario().setEmail(funcionario.getEmail());
-		this.getFuncionario().setDoc(funcionario.getDoc());
-		this.getFuncionario().setTipoDoc(funcionario.getTipoDoc());
-		this.getFuncionario().setCargo(funcionario.getCargo());
-		this.getFuncionario().setSupervFuncao(funcionario.getSupervFuncao());
-		this.getFuncionario().setSupervNome(funcionario.getSupervNome());
-		this.getFuncionario().setAdmissao(funcionario.getAdmissao());
-		this.getFuncionario().setStatus(funcionario.getStatus());
-		this.getFuncionario().setLogin(funcionario.getLogin());
-		this.getFuncionario().setPassword(funcionario.getPassword());
+		if(funcionario != null){
+			this.getFuncionario().setIdFuncionario(funcionario.getIdFuncionario());
+			this.getFuncionario().setCpf(funcionario.getCpf());
+			this.getFuncionario().setDepartamento(funcionario.getDepartamento());
+			this.getFuncionario().setNome(funcionario.getNome());
+			this.getFuncionario().setLogradouro(funcionario.getLogradouro());
+			this.getFuncionario().setNumero(funcionario.getNumero());
+			this.getFuncionario().setComplemento(funcionario.getComplemento());
+			this.getFuncionario().setBairro(funcionario.getBairro());
+			this.getFuncionario().setCidade(funcionario.getCidade());
+			this.getFuncionario().setUf(funcionario.getUf());
+			this.getFuncionario().setCep(funcionario.getCep());
+			this.getFuncionario().setNasc(funcionario.getNasc());
+			this.getFuncionario().setTel1(funcionario.getTel1());
+			this.getFuncionario().setTel2(funcionario.getTel2());
+			this.getFuncionario().setEmail(funcionario.getEmail());
+			this.getFuncionario().setDoc(funcionario.getDoc());
+			this.getFuncionario().setTipoDoc(funcionario.getTipoDoc());
+			this.getFuncionario().setCargo(funcionario.getCargo());
+			this.getFuncionario().setSupervFuncao(funcionario.getSupervFuncao());
+			this.getFuncionario().setSupervNome(funcionario.getSupervNome());
+			this.getFuncionario().setAdmissao(funcionario.getAdmissao());
+			this.getFuncionario().setStatus(funcionario.getStatus());
+			this.getFuncionario().setLogin(funcionario.getLogin());
+			this.getFuncionario().setPassword(funcionario.getPassword());
+		}
 	}
 	
 	public void atualizarRegistro() {

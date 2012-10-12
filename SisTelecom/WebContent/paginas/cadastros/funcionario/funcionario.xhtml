@@ -299,7 +299,7 @@
 				<h:inputText id="login-funcionario" value="#{funcionarioController.funcionario.login}" title="Digite seu login em caixa baixa"/>
 				
 				<h:outputLabel value="Senha SisTelecom:" />
-				<h:inputSecret id="password-funcionario" value="#{funcionarioController.funcionario.password}" />
+				<h:inputSecret id="password-funcionario" value="#{funcionarioController.funcionario.password}" redisplay="true"/>
 				</h:panelGrid>
 				</rich:panel>
 			</h:panelGrid>
@@ -307,7 +307,7 @@
 			<rich:spacer width="100%" height="10px" />
 
 			<h:commandButton value="Salvar"
-				actionListener="#{funcionarioController.salvar}" />
+				actionListener="#{funcionarioController.salvar}"  onclick="submeter('formulario-dados');"/>
 				
 			<rich:messages>
 				 <f:facet name="errorMarker">
