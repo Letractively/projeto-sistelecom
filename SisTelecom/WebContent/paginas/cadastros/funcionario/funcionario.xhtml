@@ -310,13 +310,19 @@
 				actionListener="#{funcionarioController.salvar}"  onclick="submeter('formulario-dados');"/>
 				
 			<rich:messages>
+			
 				 <f:facet name="errorMarker">
-           			<h:graphicImage url="/imagens/alerta.png"/>
+           			<h:graphicImage url="/imagens/error.png"/>
     				 </f:facet>
 
      				<f:facet name="infoMarker">
 		            <h:graphicImage url="/imagens/ok.png"/>
 			    </f:facet>
+			    
+			    <f:facet name="warnMarker">
+           			<h:graphicImage url="/imagens/alerta.png"/>
+    			</f:facet>
+    			
 			</rich:messages>
 
 		</h:form>

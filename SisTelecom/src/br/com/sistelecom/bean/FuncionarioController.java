@@ -95,11 +95,21 @@ public class FuncionarioController implements Controller<Funcionario>{
 	}
 	
 	public void atualizarRegistro() {
+		
+		final int id = funcionario.getIdFuncionario();
+		
 		if (validarDadosFormulario()) {
 			try {
-				this.getDao().atualizar(this.getFuncionario());
-				this.listarTodos();
-				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Funcionário atualizado com sucesso.",""));
+				
+				if(funcionarioDAO.obterPorId(id) != null){
+					
+					this.getDao().atualizar(this.getFuncionario());
+					this.listarTodos();
+					FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Funcionário atualizado com sucesso.",""));
+				}
+				else{
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Funcionário a ser atualizado não existe.",""));
+				}
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na atualização do funcionário.",""));
 				return;
