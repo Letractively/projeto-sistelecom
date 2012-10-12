@@ -165,15 +165,16 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 			funcionario.setNasc(rs.getDate(12));
 			funcionario.setTel1(rs.getLong(13));
 			funcionario.setTel2(rs.getLong(14));
-			funcionario.setDoc(rs.getLong(15));
-			funcionario.setTipoDoc(rs.getString(16));
-			funcionario.setCargo(rs.getInt(17));
-			funcionario.setSupervFuncao(rs.getInt(18));
-			funcionario.setSupervNome(rs.getString(19));
-			funcionario.setAdmissao(rs.getDate(20));
-			funcionario.setStatus(rs.getString(21));
-			funcionario.setLogin(rs.getString(22));
-			funcionario.setPassword(rs.getString(23));
+			funcionario.setEmail(rs.getString(15));
+			funcionario.setDoc(rs.getLong(16));
+			funcionario.setTipoDoc(rs.getString(17));
+			funcionario.setCargo(rs.getInt(18));
+			funcionario.setSupervFuncao(rs.getInt(19));
+			funcionario.setSupervNome(rs.getString(20));
+			funcionario.setAdmissao(rs.getDate(21));
+			funcionario.setStatus(rs.getString(22));
+			funcionario.setLogin(rs.getString(23));
+			funcionario.setPassword(rs.getString(24));
 			
 			return funcionario;
 		} catch (Exception e) {
