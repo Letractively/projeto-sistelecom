@@ -105,7 +105,7 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 			rs = ps.executeQuery();
 			List<Cliente> list = new ArrayList<Cliente>();
 			while(rs.next()) {
-				list.add(new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getLong(11), rs.getLong(12), rs.getLong(13), rs.getString(14), rs.getLong(15), rs.getDate(16), rs.getString(17), rs.getString(18), rs.getDate(19), rs.getString(20), rs.getString(21), rs.getDate(22), rs.getString(23), rs.getString(24), rs.getDate(25)));
+				list.add(new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getInt(11), rs.getLong(12), rs.getLong(13), rs.getLong(14), rs.getString(15), rs.getLong(16), rs.getDate(17), rs.getString(18), rs.getString(19), rs.getDate(20), rs.getString(21), rs.getString(22), rs.getDate(23), rs.getString(24), rs.getString(25), rs.getDate(26)));
 			}
 			return list;
 		} catch (Exception e) {

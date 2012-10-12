@@ -12,9 +12,11 @@ import javax.faces.model.SelectItem;
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
+import br.com.sistelecom.dao.ClienteDAOImpl;
 import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.dao.DepartamentoDAOImpl;
 import br.com.sistelecom.dao.FuncionarioDAOImpl;
+import br.com.sistelecom.entity.Cliente;
 import br.com.sistelecom.entity.Funcionario;
 import br.com.sistelecom.to.FuncionarioTO;
 
@@ -23,10 +25,13 @@ public class FuncionarioController implements Controller<Funcionario>{
 	private Funcionario funcionario;
 	private List<FuncionarioTO> lista;
 	private List<SelectItem> listaFuncionario;
+	private List<SelectItem> listaCliente;
 	private DAO<Funcionario> funcionarioDAO = new FuncionarioDAOImpl();
 		
 	public FuncionarioController() {
 		this.listarTodos();
+		listarFuncionarioComCargoConsultor();
+		listarClientes();
 	}
 	
 	public void novoRegistro() {
@@ -209,6 +214,55 @@ public class FuncionarioController implements Controller<Funcionario>{
 	 */
 	public void setListaFuncionario(List<SelectItem> listaFuncionario) {
 		this.listaFuncionario = listaFuncionario;
+	}
+
+	/**
+	 * @return the listaFuncionario
+	 */
+	public List<SelectItem> getListaFuncionario() {
+		return listaFuncionario;
+	}
+
+	private void listarFuncionarioComCargoConsultor() {
+		final List<Funcionario> listaFuncionariosComCargoConsultor = this.getDao().buscarFuncionarioComCargoConsultorComercial(9);
+		
+		if(!listaFuncionariosComCargoConsultor.isEmpty()){
+			if(this.listaFuncionario == null){
+				this.listaFuncionario = new LinkedList<SelectItem>();
+			}
+			
+			for (Funcionario funcionario : listaFuncionariosComCargoConsultor) {
+				this.listaFuncionario.add(new SelectItem(funcionario.getIdFuncionario(), funcionario.getNome()));
+			}
+		}
+	}
+	
+	private void listarClientes() {
+		final List<Cliente> listaCliente = new ClienteDAOImpl().listarTodos();
+		
+		if(!listaCliente.isEmpty()){
+			if(this.listaCliente == null){
+				this.listaCliente = new LinkedList<SelectItem>();
+			}
+			
+			for (Cliente cliente : listaCliente) {
+				this.listaCliente.add(new SelectItem(cliente.getIdCliente(), cliente.getRazaoSocial()));
+			}
+		}
+	}
+
+	/**
+	 * @return the listaCliente
+	 */
+	public List<SelectItem> getListaCliente() {
+		return listaCliente;
+	}
+
+	/**
+	 * @param listaCliente the listaCliente to set
+	 */
+	public void setListaCliente(List<SelectItem> listaCliente) {
+		this.listaCliente = listaCliente;
 	}
 
 }
