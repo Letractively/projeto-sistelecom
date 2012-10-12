@@ -18,23 +18,18 @@
 					<rich:menuGroup value="Gestão de usuários">
 						<rich:menuItem submitMode="ajax" value="Alteração dos meus dados" />
 						<rich:menuItem submitMode="ajax" value="Gestão de funcionários" onclick="window.location='/SisTelecom/paginas/cadastros/funcionario/funcionario.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Gestão de departamentos"/>
-						<rich:menuItem submitMode="ajax" value="Gestão de funções"/>
+						<rich:menuItem submitMode="ajax" value="Gestão de departamentos" onclick="window.location='/SisTelecom/paginas/cadastros/departamento/departamento.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Gestão de funções" onclick="window.location='/SisTelecom/paginas/cadastros/cargo/cargo.jsf'"/>
 					</rich:menuGroup>
 					
 					<rich:menuGroup value="Gestão de carteira">
-						<rich:menuItem submitMode="ajax" value="Cliente"/>
+						<rich:menuItem submitMode="ajax" value="Cliente" onclick="window.location='/SisTelecom/paginas/cadastros/cliente/cliente.jsf'"/>
 						<rich:menuItem submitMode="ajax" value="Contatos"/>
-						<rich:menuItem submitMode="ajax" value="Atividades econômicas"/>
+						<rich:menuItem submitMode="ajax" value="Atividades econômicas" onclick="window.location='/SisTelecom/paginas/cadastros/ramo/ramo.jsf'"/>
 					</rich:menuGroup>
 					
 					<rich:menuGroup value="Gestão de produtos">
-						<rich:menuItem submitMode="ajax" value="Telefonia móvel"/>
-						<rich:menuItem submitMode="ajax" value="Telefoni fixa"/>
-						<rich:menuItem submitMode="ajax" value="Internet 3G"/>
-						<rich:menuItem submitMode="ajax" value="Internet fixa"/>
-						<rich:menuItem submitMode="ajax" value="Voz avançada"/>
-						<rich:menuItem submitMode="ajax" value="Dados avançados"/>
+						<rich:menuItem submitMode="ajax" value="Inclusão" onclick="window.location='/SisTelecom/paginas/cadastros/produto/produto.jsf'"/>
 					</rich:menuGroup>
 					
 					<rich:menuGroup value="Relatórios">
@@ -46,6 +41,8 @@
 						<rich:menuItem submitMode="ajax" value="Funções"/>
 						<rich:menuItem submitMode="ajax" value="Pedidos"/>
 					</rich:menuGroup>		
+					
+					<rich:menuItem submitMode="ajax" value="Input de pedido" onclick="window.location='/SisTelecom/paginas/operacoes/registroVenda.jsf'"></rich:menuItem>
 	
 				</rich:dropDownMenu>
 	

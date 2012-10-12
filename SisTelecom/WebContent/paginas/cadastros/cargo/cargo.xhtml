@@ -6,24 +6,28 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-<head>
-		<a4j:loadScript src="resource://jquery.js"></a4j:loadScript>
-		<script type="text/javascript">
-					function inibir(){
-						jQuery("#id-cargo").bind("keypress",function(e){
-							e.preventDefault();
-						});
-					}
-		</script>
+	<ui:composition template="/templates/template-menu.xhtml">
+	
+			<ui:define name="scripts">
 		
-		<style type="text/css">
-			.rich-messages-label{
-				font-weight:bold;
-			}
-		</style>
-	</head>
+				<script type="text/javascript">
+						function inibir(){
+							jQuery("#id-cargo").bind("keypress",function(e){
+								e.preventDefault();
+							});
+						}
+				</script>
+		
+				<style type="text/css">
+					.rich-messages-label{
+						font-weight:bold;
+					}
+				</style>
+				
+		</ui:define>
 
-	<body>
+	<ui:define name="body">
+	
 		<rich:panel style="800px;">
 	
 			<f:facet name="header">
@@ -32,7 +36,7 @@
 	
 			<h:form id="formulario-dados" prependId="false">
 	
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" style="width:100%">
 	
 					<h:outputLabel value="Id:" />
 					<h:inputText id="id-cargo" value="#{cargoController.cargo.idCargo}"
@@ -118,5 +122,6 @@
 				</rich:dataTable>
 			</a4j:form>
 		</rich:panel>
-	</body>
+	</ui:define>
+	</ui:composition>
 </html>
