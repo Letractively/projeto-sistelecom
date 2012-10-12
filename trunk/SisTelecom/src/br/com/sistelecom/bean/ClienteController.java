@@ -83,11 +83,20 @@ public class ClienteController implements Controller<Cliente>{
 	}
 	
 	public void atualizarRegistro() {
+		
+		final int id = cliente.getIdCliente();
+		
 		if (validarDadosFormulario()) {
 			try {
-				this.getDao().atualizar(this.getCliente());
-				this.listarTodos();
-				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Cliente atualizado com sucesso.",""));
+				if(clienteDAO.obterPorId(id) != null){
+		
+					this.getDao().atualizar(this.getCliente());
+					this.listarTodos();
+					FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Cliente atualizado com sucesso.",""));
+				}
+				else{
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Cliente a ser atualizado não existe.",""));
+				}
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na atualização do cliente.",""));
 				return;
