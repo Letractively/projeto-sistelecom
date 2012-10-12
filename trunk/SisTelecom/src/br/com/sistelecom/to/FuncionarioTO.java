@@ -6,17 +6,19 @@ public class FuncionarioTO {
 	private int id;
 	private String cpf;
 	private int departamento;
+	private String nomeDepartamento;
 	private String nome;
 	
 	public FuncionarioTO() {
 	
 	}
 	
-	public FuncionarioTO(boolean selecionado, int id, String cpf, int departamento, String nome) {
+	public FuncionarioTO(boolean selecionado, int id, String cpf, int departamento, String nomeDepartamento, String nome) {
 		super();
 		this.selecionado = selecionado;
 		this.id = id;
 		this.departamento = departamento;
+		this.nomeDepartamento = nomeDepartamento;
 		this.cpf = cpf;
 		this.nome = nome;
 	}
@@ -56,6 +58,20 @@ public class FuncionarioTO {
 	 */
 	public void setDepartamento(int departamento) {
 		this.departamento = departamento;
+	}
+
+	/**
+	 * @return the nomeDepartamento
+	 */
+	public String getNomeDepartamento() {
+		return nomeDepartamento;
+	}
+
+	/**
+	 * @param nomeDepartamento the nomeDepartamento to set
+	 */
+	public void setNomeDepartamento(String nomeDepartamento) {
+		this.nomeDepartamento = nomeDepartamento;
 	}
 
 	/**

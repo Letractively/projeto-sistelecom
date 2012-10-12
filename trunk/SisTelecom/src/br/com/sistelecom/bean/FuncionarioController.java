@@ -12,6 +12,7 @@ import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
 import br.com.sistelecom.dao.DAO;
+import br.com.sistelecom.dao.DepartamentoDAOImpl;
 import br.com.sistelecom.dao.FuncionarioDAOImpl;
 import br.com.sistelecom.entity.Funcionario;
 import br.com.sistelecom.to.FuncionarioTO;
@@ -41,8 +42,21 @@ public class FuncionarioController implements Controller<Funcionario>{
 	}
 	
 	public void listarTodos() {
+		
 		this.lista = new LinkedList<FuncionarioTO>();
-		this.setLista(this.getDao().todosFuncionariosParaExibirEmTabela());
+		
+		List<FuncionarioTO> listaFuncionarios = this.getDao().todosFuncionariosParaExibirEmTabela();
+		
+		for (FuncionarioTO funcionarioTO : listaFuncionarios) {
+			
+			final int idDepartamento  = funcionarioTO.getDepartamento();
+			
+			final String nomeDepartamento = new DepartamentoDAOImpl().obterPorId(idDepartamento).getNomeDepartamento();
+			
+			funcionarioTO.setNomeDepartamento(nomeDepartamento);
+		}
+		
+		this.setLista(listaFuncionarios);
 	}
 	
 	public void carregarRegistro(ActionEvent evento) {
@@ -55,7 +69,26 @@ public class FuncionarioController implements Controller<Funcionario>{
 		this.getFuncionario().setCpf(funcionario.getCpf());
 		this.getFuncionario().setDepartamento(funcionario.getDepartamento());
 		this.getFuncionario().setNome(funcionario.getNome());
-		//this.getFuncionario().setLogradouro(funcionario.getLogradouro());
+		this.getFuncionario().setLogradouro(funcionario.getLogradouro());
+		this.getFuncionario().setNumero(funcionario.getNumero());
+		this.getFuncionario().setComplemento(funcionario.getComplemento());
+		this.getFuncionario().setBairro(funcionario.getBairro());
+		this.getFuncionario().setCidade(funcionario.getCidade());
+		this.getFuncionario().setUf(funcionario.getUf());
+		this.getFuncionario().setCep(funcionario.getCep());
+		this.getFuncionario().setNasc(funcionario.getNasc());
+		this.getFuncionario().setTel1(funcionario.getTel1());
+		this.getFuncionario().setTel2(funcionario.getTel2());
+		this.getFuncionario().setEmail(funcionario.getEmail());
+		this.getFuncionario().setDoc(funcionario.getDoc());
+		this.getFuncionario().setTipoDoc(funcionario.getTipoDoc());
+		this.getFuncionario().setCargo(funcionario.getCargo());
+		this.getFuncionario().setSupervFuncao(funcionario.getSupervFuncao());
+		this.getFuncionario().setSupervNome(funcionario.getSupervNome());
+		this.getFuncionario().setAdmissao(funcionario.getAdmissao());
+		this.getFuncionario().setStatus(funcionario.getStatus());
+		this.getFuncionario().setLogin(funcionario.getLogin());
+		this.getFuncionario().setPassword(funcionario.getPassword());
 	}
 	
 	public void atualizarRegistro() {
