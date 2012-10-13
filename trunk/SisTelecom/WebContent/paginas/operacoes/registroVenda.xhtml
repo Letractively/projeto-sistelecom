@@ -42,11 +42,11 @@
 							<h:outputText value="Dados do Cliente" />
 						</f:facet>
 						
-						<h:selectOneMenu id="cliente" value="#{funcionarioController.funcionario.idFuncionario}" style="width:100%">
+						<h:selectOneMenu id="cliente" value="#{clienteController.cliente.idCliente}" style="width:100%">
 								
 								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 								
-								<f:selectItems value="#{funcionarioController.listaCliente}" />
+								<f:selectItems value="#{clienteController.listaCliente}" />
 								
 						</h:selectOneMenu>						
 					</rich:panel>
