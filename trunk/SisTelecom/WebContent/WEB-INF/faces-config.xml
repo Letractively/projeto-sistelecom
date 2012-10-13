@@ -45,7 +45,7 @@
  <managed-bean>
   <managed-bean-name>itensController</managed-bean-name>
   <managed-bean-class>br.com.sistelecom.bean.ItensController</managed-bean-class>
-  <managed-bean-scope>request</managed-bean-scope>
+  <managed-bean-scope>session</managed-bean-scope>
  </managed-bean>
  <application>
   <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
