@@ -190,7 +190,7 @@
 		</rich:panel>
 	
 			
-		<rich:modalPanel id="modal" width="1300" height="100">
+		<rich:modalPanel id="modal" width="500" height="230">
 			<f:facet name="header">
 				<h:outputText value="Adicionar Item" />
 			</f:facet>
@@ -201,82 +201,97 @@
 		
 		
 			<a4j:form id="form-modal">
-			
-				<h:outputLabel value="Produto: " />
-				<h:inputText id="nome-ramo" />
 				
-				<h:outputLabel value="Status: " />
-				
-				<h:selectOneMenu id="status-produto">
-           		
-           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-           		
-        			<f:selectItem itemLabel="Aguardando redirecionamento" itemValue="Aguardando redirecionamento"/>
-           		
-           			<f:selectItem itemLabel="Cadastro/Pedido Enviado" itemValue="Cadastro/Pedido Enviado"/>
-           		
-           			<f:selectItem itemLabel="Negócio Ganho" itemValue="Negócio Ganho"/>
-         		
-         			<f:selectItem itemLabel="Documentação Pendente" itemValue="Documentação Pendente"/>
-         			
-         			<f:selectItem itemLabel="Crédito Negado SA3" itemValue="Crédito Negado SIEBEL"/>
-         		
-         			<f:selectItem itemLabel="Cancelado" itemValue="Cancelado"/>
-         		
-         			<f:selectItem itemLabel="Crédito Negado SIEBEL" itemValue="Crédito Negado SIEBEL"/>
-         			
-         			<f:selectItem itemLabel="Ativando Linhas" itemValue="Ativando Linhas"/>
-         			
-         			<f:selectItem itemLabel="Mercadoria em Rota" itemValue="Mercadoria em Rota"/>
-         			
-         			<f:selectItem itemLabel="Aguardando Portabilidade" itemValue="Aguardando Portabilidade"/>
-         			
-         			<f:selectItem itemLabel="Concluído" itemValue="Concluído"/>
-         				
-         			<f:selectItem itemLabel="Ativo" itemValue="Ativo"/>
-         			
-         			<f:selectItem itemLabel="Concluído c/ Devolução" itemValue="Concluído c/ Devolução"/>      			
+				<h:panelGrid columns="3">
+					
+					<h:panelGroup>
+						<h:panelGrid>
+							<h:outputLabel value="Produto: " for="produto"/>
+							<h:inputText id="produto" style="width:150px;"/>
+						</h:panelGrid>
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<h:panelGrid>
+							<h:outputLabel value="Status: " />
+							<h:selectOneMenu id="status-produto" style="width:150px;">
+			           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+			        			<f:selectItem itemLabel="Aguardando redirecionamento" itemValue="Aguardando redirecionamento"/>
+			           			<f:selectItem itemLabel="Cadastro/Pedido Enviado" itemValue="Cadastro/Pedido Enviado"/>
+			           			<f:selectItem itemLabel="Negócio Ganho" itemValue="Negócio Ganho"/>
+			         			<f:selectItem itemLabel="Documentação Pendente" itemValue="Documentação Pendente"/>
+			         			<f:selectItem itemLabel="Crédito Negado SA3" itemValue="Crédito Negado SIEBEL"/>
+			         			<f:selectItem itemLabel="Cancelado" itemValue="Cancelado"/>
+			         			<f:selectItem itemLabel="Crédito Negado SIEBEL" itemValue="Crédito Negado SIEBEL"/>
+			         			<f:selectItem itemLabel="Ativando Linhas" itemValue="Ativando Linhas"/>
+			         			<f:selectItem itemLabel="Mercadoria em Rota" itemValue="Mercadoria em Rota"/>
+			         			<f:selectItem itemLabel="Aguardando Portabilidade" itemValue="Aguardando Portabilidade"/>
+			         			<f:selectItem itemLabel="Concluído" itemValue="Concluído"/>
+			         			<f:selectItem itemLabel="Ativo" itemValue="Ativo"/>
+			         			<f:selectItem itemLabel="Concluído c/ Devolução" itemValue="Concluído c/ Devolução"/>      			
+			 		       	</h:selectOneMenu>
+		 		       	</h:panelGrid>
+	 		       	</h:panelGroup>
+	 		       	
+	 		       	<h:panelGroup>
+	 		       		<h:panelGrid>
+	 		       			<h:outputLabel value="Número SA3: " for="numero-sa3-item"/>
+							<h:inputText id="numero-sa3-item" style="width:150px;"/>
+						</h:panelGrid>
+	 		       	</h:panelGroup>
+ 		       	</h:panelGrid>
  		       	
- 		       	</h:selectOneMenu>
+ 		       	<h:panelGrid columns="3">
+ 		       		<h:panelGroup>
+ 		       			<h:panelGrid>
+ 							<h:outputLabel value="Número Siebel: " />
+							<h:inputText id="numero-siebel-item" style="width:150px;"/>
+						</h:panelGrid>		       		
+ 		       		</h:panelGroup>
  		       	
- 		       	<h:outputLabel value="Número SA3: " />
-				<h:inputText id="numero-sa3-item" />
+ 		       		<h:panelGroup>
+ 		       			<h:panelGrid>
+ 		       				<h:outputLabel value="Número Oi B2b: " />
+							<h:inputText id="numero-oib2b-item" style="width:150px;"/>
+						</h:panelGrid>
+					</h:panelGroup>
+ 		       		
+ 		       		<h:panelGroup>
+ 		       			<h:panelGrid>
+ 		       				<h:outputLabel value="Número OS: " />
+							<h:inputText id="numero-os-item" style="width:150px;"/>
+						</h:panelGrid>		
+					</h:panelGroup>
+ 		       	</h:panelGrid>
 				
-				<h:outputLabel value="Número Siebel: " />
-				<h:inputText id="numero-siebel-item" />
+				<h:panelGrid columns="2">
+					<h:panelGroup>
+						<h:panelGrid>
+							<h:outputLabel value="Fidelidade: " />
+							<h:selectOneMenu id="fidelidade-item" style="width:150px;">
+			           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+			           			<f:selectItem itemValue="Sim" itemLabel="Sim" />
+			           			<f:selectItem itemValue="Não" itemLabel="Não" />		
+			           		</h:selectOneMenu>
+		           		</h:panelGrid>
+					</h:panelGroup>
+					
+					<h:panelGroup>
+						<h:panelGrid>
+							<h:outputLabel value="Prazo: " />
+							<h:selectOneMenu id="prazo-item" style="width:150px;">
+			           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+			           			<f:selectItem itemValue="12" itemLabel="12 meses" />
+			           			<f:selectItem itemValue="24" itemLabel="24 meses" />
+			           			<f:selectItem itemValue="36" itemLabel="36 meses" />		
+			           		</h:selectOneMenu>
+		           		</h:panelGrid>
+		         	</h:panelGroup>
+				</h:panelGrid>
 				
-				<h:outputLabel value="Número Oi B2b " />
-				<h:inputText id="numero-oib2b-item" />
+				<rich:spacer width="100%" height="5px"/>
 				
-				<h:outputLabel value="Número OS " />
-				<h:inputText id="numero-os-item" />		
-				
-				<h:outputLabel value="Fidelidade: " />
-				
-				<h:selectOneMenu id="fidelidade-item">
-           		
-           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-           			
-           			<f:selectItem itemValue="Sim" itemLabel="Sim" />
-           			
-           			<f:selectItem itemValue="Não" itemLabel="Não" />		
-           		
-           		</h:selectOneMenu>
-           		
-           		<h:selectOneMenu id="prazo-item">
-           		
-           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-           			
-           			<f:selectItem itemValue="12 meses" itemLabel="12 meses" />
-           			
-           			<f:selectItem itemValue="24 meses" itemLabel="24 meses" />
-           			
-           			<f:selectItem itemValue="36 meses" itemLabel="36 meses" />		
-           		
-           		</h:selectOneMenu>
-           		
            		<a4j:commandButton value="Incluir item"/>
-			
 			</a4j:form>
 		</rich:modalPanel>
 	</ui:define>
