@@ -54,6 +54,31 @@
 								jQuery("#tel2-cliente").val(celularFormatado);
 								
 							}
+
+
+							var cpfFormatado = jQuery("#cpf-administrador-cliente").val().replace(".","").replace(".","").replace("-","");
+
+							if(cpfFormatado != ""){
+
+								jQuery("#cpf-administrador-cliente").val(cpfFormatado);
+								
+							}
+
+							var cpfFormatado = jQuery("#cpf-socio1-cliente").val().replace(".","").replace(".","").replace("-","");
+
+							if(cpfFormatado != ""){
+
+								jQuery("#cpf-socio1-cliente").val(cpfFormatado);
+								
+							}
+
+							var cpfFormatado = jQuery("#cpf-socio2-cliente").val().replace(".","").replace(".","").replace("-","");
+
+							if(cpfFormatado != ""){
+
+								jQuery("#cpf-socio2-cliente").val(cpfFormatado);
+								
+							}
 	
 						});
 					}
@@ -182,7 +207,7 @@
 								onkeypress="this.style.textTransform = 'uppercase';"
 								value="#{clienteController.cliente.bairro}" />
 	
-							<h:outputLabel value="Uf:" />
+							<h:outputLabel value="UF:" />
 							
 							<a4j:region>
 							<h:selectOneMenu id="uf-cliente"
@@ -261,15 +286,15 @@
 						
 							<h:outputLabel value="CPF do Administrador:" />
 							
-							<h:inputText id="cpf-administrador-cliente"
-								onkeypress="this.style.textTransform = 'uppercase';"
-								value="#{clienteController.cliente.cpfResp1}" />
+							<h:inputText id="cpf-administrador-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp1}" >
+							
+								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-administrador-cliente" timing="onload"/>
+								
+							</h:inputText>
 	
 							<h:outputLabel value="Nome do Administrador:" />
 							
-							<h:inputText id="nome-administrador-cliente"
-								onkeypress="this.style.textTransform = 'uppercase';"
-								value="#{clienteController.cliente.nomeResp1}" />
+							<h:inputText id="nome-administrador-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.nomeResp1}" />
 	
 							<h:outputLabel value="Data de nascimento do Administrador:" />
 							
@@ -281,15 +306,15 @@
 	
 							<h:outputLabel value="CPF do Sócio 1: " />
 							
-							<h:inputText id="cpf-socio1-cliente"
-								onkeypress="this.style.textTransform = 'uppercase';"
-								value="#{clienteController.cliente.cpfResp2}" />
+							<h:inputText id="cpf-socio1-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp2}" >
+							
+								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-socio1-cliente" timing="onload"/>
+								
+							</h:inputText>
 	
 							<h:outputLabel value="Nome do Sócio 1:" />
 							
-							<h:inputText id="nome-socio1-cliente"
-								onkeypress="this.style.textTransform = 'uppercase';"
-								value="#{clienteController.cliente.nomeResp2}" />
+							<h:inputText id="nome-socio1-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.nomeResp2}" />
 	
 							<h:outputLabel value="Data de nascimento do Sócio 1:" />
 							
@@ -301,9 +326,11 @@
 	
 							<h:outputLabel value="CPF do Sócio 2:" />
 							
-							<h:inputText id="cpf-socio2-cliente"
-								onkeypress="this.style.textTransform = 'uppercase';"
-								value="#{clienteController.cliente.cpfResp3}" />
+							<h:inputText id="cpf-socio2-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp3}" >
+							
+								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-socio2-cliente" timing="onload"/>
+								
+							</h:inputText>
 	
 							<h:outputLabel value="Nome do Sócio 2:" />
 							

@@ -125,11 +125,12 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 			rs = ps.executeQuery();
 			List<ClienteTO> list = new ArrayList<ClienteTO>();
 			while(rs.next()) {
+				
 				int idCliente = rs.getInt(1);
 				String cnpj = rs.getString(2);
 				String razaoSocial = rs.getString(3);
-				String nomeResp1 = rs.getString(4);
-				long tel1 = rs.getLong(5);
+				String nomeResp1 = rs.getString(19);
+				long tel1 = rs.getLong(13);
 
 				list.add(new ClienteTO(Boolean.FALSE, idCliente, cnpj, razaoSocial, nomeResp1, tel1));
 			}
