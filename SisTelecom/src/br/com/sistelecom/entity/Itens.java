@@ -5,6 +5,85 @@ import java.util.List;
 public class Itens {
 	
 	private int idItens;
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((fidelidade == null) ? 0 : fidelidade.hashCode());
+		result = prime * result + idItens;
+		result = prime * result
+				+ ((listaDeItens == null) ? 0 : listaDeItens.hashCode());
+		result = prime * result + (int) (numeroOIB2B ^ (numeroOIB2B >>> 32));
+		result = prime * result
+				+ ((numeroOS == null) ? 0 : numeroOS.hashCode());
+		result = prime * result + (int) (numeroSA3 ^ (numeroSA3 >>> 32));
+		result = prime * result
+				+ ((numeroSiebel == null) ? 0 : numeroSiebel.hashCode());
+		result = prime * result + ((prazo == null) ? 0 : prazo.hashCode());
+		result = prime * result + produto;
+		result = prime * result
+				+ ((situacao == null) ? 0 : situacao.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Itens other = (Itens) obj;
+		if (fidelidade == null) {
+			if (other.fidelidade != null)
+				return false;
+		} else if (!fidelidade.equals(other.fidelidade))
+			return false;
+		if (idItens != other.idItens)
+			return false;
+		if (listaDeItens == null) {
+			if (other.listaDeItens != null)
+				return false;
+		} else if (!listaDeItens.equals(other.listaDeItens))
+			return false;
+		if (numeroOIB2B != other.numeroOIB2B)
+			return false;
+		if (numeroOS == null) {
+			if (other.numeroOS != null)
+				return false;
+		} else if (!numeroOS.equals(other.numeroOS))
+			return false;
+		if (numeroSA3 != other.numeroSA3)
+			return false;
+		if (numeroSiebel == null) {
+			if (other.numeroSiebel != null)
+				return false;
+		} else if (!numeroSiebel.equals(other.numeroSiebel))
+			return false;
+		if (prazo == null) {
+			if (other.prazo != null)
+				return false;
+		} else if (!prazo.equals(other.prazo))
+			return false;
+		if (produto != other.produto)
+			return false;
+		if (situacao == null) {
+			if (other.situacao != null)
+				return false;
+		} else if (!situacao.equals(other.situacao))
+			return false;
+		return true;
+	}
+
 	private int produto;
 	private String situacao;
 	private long numeroSA3;

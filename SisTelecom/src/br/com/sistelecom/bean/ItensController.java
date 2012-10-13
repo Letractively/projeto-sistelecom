@@ -130,6 +130,39 @@ public class ItensController implements Controller<Itens>{
 		return new ItemDAOImpl();
 	}
 	
+	public void adicionarItem(ActionEvent evento){
+		if(this.getLista() == null){
+			this.lista = new LinkedList<Itens>();
+		}
+		
+		final Itens item = new Itens();
+		item.setProduto(this.getItem().getProduto());
+		item.setSituacao(this.getItem().getSituacao());
+		item.setNumeroSA3(this.getItem().getNumeroSA3());
+		item.setNumeroSiebel(this.getItem().getNumeroSiebel());
+		item.setNumeroOIB2B(this.getItem().getNumeroOIB2B());
+		item.setNumeroOS(this.getItem().getNumeroOS());
+		item.setFidelidade(this.getItem().getFidelidade());
+		item.setPrazo(this.getItem().getPrazo());
+		item.setIdItens(new Double(Math.random()).intValue());
+		
+		this.getLista().add(item);
+	}
+	
+	public void removerItem(ActionEvent evento){
+		if(this.getLista() != null){
+			int indice = 0;
+			for (Itens item : this.getLista()) {
+				if(item.getIdItens() == this.getItem().getIdItens()){
+					this.getLista().remove(indice);
+					break;
+				}
+				indice++;
+			}	
+		}
+		
+		//final ItensController itensController = (ItensController)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("itensController");
+	}
 	/**
 	 * @return the item
 	 */

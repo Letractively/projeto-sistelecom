@@ -76,7 +76,7 @@
 				
 				<a4j:commandButton value="Inserir item" onclick="Richfaces.showModalPanel('modal');" />
 					
-				
+				</h:form>
 				<rich:spacer width="100%" height="5px"/>
 				
 				<rich:panel style="100%px">
@@ -85,107 +85,117 @@
 					</f:facet>
 				
 					<a4j:form id="formulario-tabela" prependId="false" >
-						<rich:dataTable id="tabela" value=""
-							var="itens" style="width:100%;">
+						<rich:dataTable id="tabela" value="#{itensController.lista}" var="item" style="width:100%;"
+						rowKeyVar="linha">
+						
+						<rich:column width="150">
+							<f:facet name="header">
+								<h:outputLabel value="ID Temporário" />
+							</f:facet>
 	
-						<rich:column width="20">
-							<div id="div-id-item" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Item" />
-								</f:facet>
-	
-								<h:outputLabel value="" />
+							<div id="div-produto" align="center">
+								<h:outputLabel value="#{item.idItens}" />
 							</div>
-						</rich:column>
+						</rich:column>	
 	
 						<rich:column width="150">
-							<div id="div-produto" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Descrição do produto" />
-								</f:facet>
+							<f:facet name="header">
+								<h:outputLabel value="Descrição do produto" />
+							</f:facet>
 	
-								<h:outputLabel value="" />
+							<div id="div-produto" align="center">
+								<h:outputLabel value="#{item.produto}" />
 							</div>
 						</rich:column>
 	
 						<rich:column width="50">
-							<div id="div-status" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Status" />
-								</f:facet>
+							<f:facet name="header">
+								<h:outputLabel value="Status" />
+				    		</f:facet>
 	
-								<h:outputLabel value="" />
+							<div id="div-status" align="center">
+								<h:outputLabel value="#{item.situacao}" />
 							</div>
 							
 						</rich:column>
 						
 						<rich:column width="50">
+							<f:facet name="header">
+								<h:outputLabel value="Número SA3" />
+							</f:facet>
 							<div id="div-status" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Número SA3" />
-								</f:facet>
-	
-								<h:outputLabel value="" />
+								<h:outputLabel value="#{item.numeroSA3}" />
 							</div>
 						</rich:column>
 						
 						<rich:column width="50">
+							<f:facet name="header">
+								<h:outputLabel value="Número Siebel" />
+							</f:facet>
+							
 							<div id="div-status" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Número Siebel" />
-								</f:facet>
+								
 	
-								<h:outputLabel value="" />
+								<h:outputLabel value="#{item.numeroSiebel}" />
 							</div>
 						</rich:column>
 						
 						<rich:column width="50">
+							<f:facet name="header">
+								<h:outputLabel value="Número OI B2B" />
+							</f:facet>
+							
 							<div id="div-status" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Número OI B2B" />
-								</f:facet>
+								
 	
-								<h:outputLabel value="" />
+								<h:outputLabel value="#{item.numeroOIB2B}" />
 							</div>
 						</rich:column>
 						
 						<rich:column width="50">
-							<div id="div-status" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Número da OS" />
-								</f:facet>
+							<f:facet name="header">
+								<h:outputLabel value="Número da OS" />
+							</f:facet>
 	
-								<h:outputLabel value="" />
+							<div id="div-status" align="center">
+								<h:outputLabel value="#{item.numeroOS}" />
 							</div>
 						</rich:column>
 						
 						<rich:column width="50">
+							<f:facet name="header">
+								<h:outputLabel value="Fidelidade" />
+							</f:facet>
+							
 							<div id="div-status" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Fidelidade" />
-								</f:facet>
-	
-								<h:outputLabel value="" />
+								<h:outputLabel value="#{item.fidelidade}" />
 							</div>
 						</rich:column>
 						
 						<rich:column width="50">
+							<f:facet name="header">
+								<h:outputLabel value="Prazo da Fidelidade" />
+							</f:facet>
 							<div id="div-status" align="center">
-								<f:facet name="header">
-									<h:outputLabel value="Prazo da Fidelidade" />
-								</f:facet>
-	
-								<h:outputLabel value="" />
+								<h:outputLabel value="#{item.prazo}" />
 							</div>
 						</rich:column>
 						
-	
-				</rich:dataTable>
-			</a4j:form>
-				
+						<rich:column>
+							<f:facet name="header">
+								<h:outputLabel value="Ações" />
+							</f:facet>
+							
+							<div align="center">
+								<a4j:commandButton value="Excluir" image="/imagens/delete.png" actionListener="#{itensController.removerItem}"
+								oncomplete="jQuery('#formulario-input').submit();">
+									<f:setPropertyActionListener target="#{itensController.item.idItens}" value="#{item.idItens}" />
+								</a4j:commandButton>
+							</div>
+						</rich:column>
+					</rich:dataTable>
+				  </a4j:form>
 				</rich:panel>
-
-			</h:form>
 
 		</rich:panel>
 	
@@ -207,20 +217,20 @@
 					<h:panelGroup>
 						<h:panelGrid>
 							<h:outputLabel value="Produto: " for="produto"/>
-							<h:inputText id="produto" style="width:150px;"/>
+							<h:inputText id="produto" style="width:150px;" value="#{itensController.item.produto}"/>
 						</h:panelGrid>
 					</h:panelGroup>
 					
 					<h:panelGroup>
 						<h:panelGrid>
 							<h:outputLabel value="Status: " />
-							<h:selectOneMenu id="status-produto" style="width:150px;">
+							<h:selectOneMenu id="situacao-item" style="width:150px;" value="#{itensController.item.situacao}">
 			           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 			        			<f:selectItem itemLabel="Aguardando redirecionamento" itemValue="Aguardando redirecionamento"/>
 			           			<f:selectItem itemLabel="Cadastro/Pedido Enviado" itemValue="Cadastro/Pedido Enviado"/>
 			           			<f:selectItem itemLabel="Negócio Ganho" itemValue="Negócio Ganho"/>
 			         			<f:selectItem itemLabel="Documentação Pendente" itemValue="Documentação Pendente"/>
-			         			<f:selectItem itemLabel="Crédito Negado SA3" itemValue="Crédito Negado SIEBEL"/>
+			         			<f:selectItem itemLabel="Crédito Negado SA3" itemValue="Crédito Negado SA3"/>
 			         			<f:selectItem itemLabel="Cancelado" itemValue="Cancelado"/>
 			         			<f:selectItem itemLabel="Crédito Negado SIEBEL" itemValue="Crédito Negado SIEBEL"/>
 			         			<f:selectItem itemLabel="Ativando Linhas" itemValue="Ativando Linhas"/>
@@ -236,7 +246,7 @@
 	 		       	<h:panelGroup>
 	 		       		<h:panelGrid>
 	 		       			<h:outputLabel value="Número SA3: " for="numero-sa3-item"/>
-							<h:inputText id="numero-sa3-item" style="width:150px;"/>
+							<h:inputText id="numero-sa3-item" style="width:150px;" value="#{itensController.item.numeroSA3}"/>
 						</h:panelGrid>
 	 		       	</h:panelGroup>
  		       	</h:panelGrid>
@@ -245,21 +255,21 @@
  		       		<h:panelGroup>
  		       			<h:panelGrid>
  							<h:outputLabel value="Número Siebel: " />
-							<h:inputText id="numero-siebel-item" style="width:150px;"/>
+							<h:inputText id="numero-siebel-item" style="width:150px;" value="#{itensController.item.numeroSiebel}"/>
 						</h:panelGrid>		       		
  		       		</h:panelGroup>
  		       	
  		       		<h:panelGroup>
  		       			<h:panelGrid>
  		       				<h:outputLabel value="Número Oi B2b: " />
-							<h:inputText id="numero-oib2b-item" style="width:150px;"/>
+							<h:inputText id="numero-oib2b-item" style="width:150px;" value="#{itensController.item.numeroOIB2B}"/>
 						</h:panelGrid>
 					</h:panelGroup>
  		       		
  		       		<h:panelGroup>
  		       			<h:panelGrid>
  		       				<h:outputLabel value="Número OS: " />
-							<h:inputText id="numero-os-item" style="width:150px;"/>
+							<h:inputText id="numero-os-item" style="width:150px;" value="#{itensController.item.numeroOS}"/>
 						</h:panelGrid>		
 					</h:panelGroup>
  		       	</h:panelGrid>
@@ -268,7 +278,7 @@
 					<h:panelGroup>
 						<h:panelGrid>
 							<h:outputLabel value="Fidelidade: " />
-							<h:selectOneMenu id="fidelidade-item" style="width:150px;">
+							<h:selectOneMenu id="fidelidade-item" style="width:150px;" value="#{itensController.item.fidelidade}">
 			           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 			           			<f:selectItem itemValue="Sim" itemLabel="Sim" />
 			           			<f:selectItem itemValue="Não" itemLabel="Não" />		
@@ -279,19 +289,24 @@
 					<h:panelGroup>
 						<h:panelGrid>
 							<h:outputLabel value="Prazo: " />
-							<h:selectOneMenu id="prazo-item" style="width:150px;">
+							<h:selectOneMenu id="prazo-item" style="width:150px;" value="#{itensController.item.prazo}">
 			           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-			           			<f:selectItem itemValue="12" itemLabel="12 meses" />
-			           			<f:selectItem itemValue="24" itemLabel="24 meses" />
-			           			<f:selectItem itemValue="36" itemLabel="36 meses" />		
+			           			<f:selectItem itemValue="12 meses" itemLabel="12 meses" />
+			           			<f:selectItem itemValue="24 meses" itemLabel="24 meses" />
+			           			<f:selectItem itemValue="36 meses" itemLabel="36 meses" />		
 			           		</h:selectOneMenu>
 		           		</h:panelGrid>
 		         	</h:panelGroup>
+		         	
+				</h:panelGrid>
+				
+				<h:panelGrid>
+		       	 	<a4j:commandButton value="Incluir item" style="padding-left:15px;" actionListener="#{itensController.adicionarItem}"
+		       	 	oncomplete="jQuery('#formulario-input').submit();Richfaces.hideModalPanel('modal');"/>
 				</h:panelGrid>
 				
 				<rich:spacer width="100%" height="5px"/>
-				
-           		<a4j:commandButton value="Incluir item"/>
+		   		
 			</a4j:form>
 		</rich:modalPanel>
 	</ui:define>
