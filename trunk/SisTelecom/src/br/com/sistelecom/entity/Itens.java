@@ -5,10 +5,10 @@ public class Itens {
 	private int idItens;
 	private int produto;
 	private String situacao;
-	private int numeroSA3;
-	private int numeroSiebel;
-	private int numeroOS;
-	private int numeroOIB2B;
+	private long numeroSA3;
+	private String numeroSiebel;
+	private String numeroOS;
+	private long numeroOIB2B;
 	private String fidelidade;
 	private String prazo;
 	
@@ -16,8 +16,8 @@ public class Itens {
 		super();
 	}
 
-	public Itens(int idItens, int produto, String situacao, int numeroSA3,
-			int numeroSiebel, int numeroOS, int numeroOIB2B, String fidelidade,
+	public Itens(int idItens, int produto, String situacao, long numeroSA3,
+			String numeroSiebel, String numeroOS, long numeroOIB2B, String fidelidade,
 			String prazo) {
 		super();
 		this.idItens = idItens;
@@ -76,56 +76,56 @@ public class Itens {
 	/**
 	 * @return the numeroSA3
 	 */
-	public int getNumeroSA3() {
+	public long getNumeroSA3() {
 		return numeroSA3;
 	}
 
 	/**
 	 * @param numeroSA3 the numeroSA3 to set
 	 */
-	public void setNumeroSA3(int numeroSA3) {
+	public void setNumeroSA3(long numeroSA3) {
 		this.numeroSA3 = numeroSA3;
 	}
 
 	/**
 	 * @return the numeroSiebel
 	 */
-	public int getNumeroSiebel() {
+	public String getNumeroSiebel() {
 		return numeroSiebel;
 	}
 
 	/**
 	 * @param numeroSiebel the numeroSiebel to set
 	 */
-	public void setNumeroSiebel(int numeroSiebel) {
+	public void setNumeroSiebel(String numeroSiebel) {
 		this.numeroSiebel = numeroSiebel;
 	}
 
 	/**
 	 * @return the numeroOS
 	 */
-	public int getNumeroOS() {
+	public String getNumeroOS() {
 		return numeroOS;
 	}
 
 	/**
 	 * @param numeroOS the numeroOS to set
 	 */
-	public void setNumeroOS(int numeroOS) {
+	public void setNumeroOS(String numeroOS) {
 		this.numeroOS = numeroOS;
 	}
 
 	/**
 	 * @return the numeroOIB2B
 	 */
-	public int getNumeroOIB2B() {
+	public long getNumeroOIB2B() {
 		return numeroOIB2B;
 	}
 
 	/**
 	 * @param numeroOIB2B the numeroOIB2B to set
 	 */
-	public void setNumeroOIB2B(int numeroOIB2B) {
+	public void setNumeroOIB2B(long numeroOIB2B) {
 		this.numeroOIB2B = numeroOIB2B;
 	}
 
