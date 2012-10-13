@@ -248,6 +248,8 @@ public class FuncionarioController implements Controller<Funcionario>{
 			for (Cliente cliente : listaCliente) {
 				this.listaCliente.add(new SelectItem(cliente.getIdCliente(), cliente.getRazaoSocial()));
 			}
+		}else{
+			this.listaCliente = new LinkedList<SelectItem>();
 		}
 	}
 
