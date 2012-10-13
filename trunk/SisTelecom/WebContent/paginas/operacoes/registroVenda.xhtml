@@ -34,9 +34,9 @@
 	
 			<h:form id="formulario-input" prependId="false">
 	
-				<h:panelGrid columns="2" style="width:50%">
+				<h:panelGrid columns="4" style="width:50%">
 					
-					<rich:panel style="width:50%">
+					<rich:panel style="width:100%">
 					
 						<f:facet name="header">
 							<h:outputText value="Dados do Cliente" />
@@ -50,11 +50,10 @@
 								
 						</h:selectOneMenu>						
 					</rich:panel>
-				</h:panelGrid>
+					
+					<rich:spacer width="10px"/>
 				
-				<h:panelGrid columns="2" style="width:50%">
-				
-					<rich:panel style="width:50%">
+					<rich:panel style="width:100%">
 					
 						<f:facet name="header">
 							<h:outputText value="Dados do Consultor" />
@@ -67,8 +66,18 @@
 								<f:selectItems value="#{funcionarioController.listaFuncionario}" />
 								
 						</h:selectOneMenu>						
+						
 					</rich:panel>
+					
 				</h:panelGrid>
+				
+				<rich:spacer width="100%" height="5px"/>
+				
+				
+				<a4j:commandButton value="Inserir item" onclick="Richfaces.showModalPanel('modal');" />
+					
+				
+				<rich:spacer width="100%" height="5px"/>
 				
 				<rich:panel style="100%px">
 					<f:facet name="header">
@@ -179,6 +188,98 @@
 			</h:form>
 
 		</rich:panel>
+	
+			
+		<rich:modalPanel id="modal" width="1300" height="100">
+			<f:facet name="header">
+				<h:outputText value="Adicionar Item" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<h:outputLabel value="X" onclick="Richfaces.hideModalPanel('modal');" />
+			</f:facet>
+		
+		
+			<a4j:form id="form-modal">
+			
+				<h:outputLabel value="Produto: " />
+				<h:inputText id="nome-ramo" />
+				
+				<h:outputLabel value="Status: " />
+				
+				<h:selectOneMenu id="status-produto">
+           		
+           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+           		
+        			<f:selectItem itemLabel="Aguardando redirecionamento" itemValue="Aguardando redirecionamento"/>
+           		
+           			<f:selectItem itemLabel="Cadastro/Pedido Enviado" itemValue="Cadastro/Pedido Enviado"/>
+           		
+           			<f:selectItem itemLabel="Negócio Ganho" itemValue="Negócio Ganho"/>
+         		
+         			<f:selectItem itemLabel="Documentação Pendente" itemValue="Documentação Pendente"/>
+         			
+         			<f:selectItem itemLabel="Crédito Negado SA3" itemValue="Crédito Negado SIEBEL"/>
+         		
+         			<f:selectItem itemLabel="Cancelado" itemValue="Cancelado"/>
+         		
+         			<f:selectItem itemLabel="Crédito Negado SIEBEL" itemValue="Crédito Negado SIEBEL"/>
+         			
+         			<f:selectItem itemLabel="Ativando Linhas" itemValue="Ativando Linhas"/>
+         			
+         			<f:selectItem itemLabel="Mercadoria em Rota" itemValue="Mercadoria em Rota"/>
+         			
+         			<f:selectItem itemLabel="Aguardando Portabilidade" itemValue="Aguardando Portabilidade"/>
+         			
+         			<f:selectItem itemLabel="Concluído" itemValue="Concluído"/>
+         				
+         			<f:selectItem itemLabel="Ativo" itemValue="Ativo"/>
+         			
+         			<f:selectItem itemLabel="Concluído c/ Devolução" itemValue="Concluído c/ Devolução"/>      			
+ 		       	
+ 		       	</h:selectOneMenu>
+ 		       	
+ 		       	<h:outputLabel value="Número SA3: " />
+				<h:inputText id="numero-sa3-item" />
+				
+				<h:outputLabel value="Número Siebel: " />
+				<h:inputText id="numero-siebel-item" />
+				
+				<h:outputLabel value="Número Oi B2b " />
+				<h:inputText id="numero-oib2b-item" />
+				
+				<h:outputLabel value="Número OS " />
+				<h:inputText id="numero-os-item" />		
+				
+				<h:outputLabel value="Fidelidade: " />
+				
+				<h:selectOneMenu id="fidelidade-item">
+           		
+           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+           			
+           			<f:selectItem itemValue="Sim" itemLabel="Sim" />
+           			
+           			<f:selectItem itemValue="Não" itemLabel="Não" />		
+           		
+           		</h:selectOneMenu>
+           		
+           		<h:selectOneMenu id="prazo-item">
+           		
+           			<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+           			
+           			<f:selectItem itemValue="12 meses" itemLabel="12 meses" />
+           			
+           			<f:selectItem itemValue="24 meses" itemLabel="24 meses" />
+           			
+           			<f:selectItem itemValue="36 meses" itemLabel="36 meses" />		
+           		
+           		</h:selectOneMenu>
+           		
+           		<a4j:commandButton value="Incluir item"/>
+			
+			</a4j:form>
+		</rich:modalPanel>
 	</ui:define>
+	
 	</ui:composition>
 </html>

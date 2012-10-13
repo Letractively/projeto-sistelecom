@@ -1,5 +1,7 @@
 package br.com.sistelecom.entity;
 
+import java.util.List;
+
 public class Itens {
 	
 	private int idItens;
@@ -11,6 +13,7 @@ public class Itens {
 	private long numeroOIB2B;
 	private String fidelidade;
 	private String prazo;
+	private List<Itens> listaDeItens;
 	
 	public Itens() {
 		super();
@@ -155,6 +158,20 @@ public class Itens {
 	 */
 	public void setPrazo(String prazo) {
 		this.prazo = prazo;
+	}
+
+	/**
+	 * @return the listaDeItens
+	 */
+	public List<Itens> getListaDeItens() {
+		return listaDeItens;
+	}
+
+	/**
+	 * @param listaDeItens the listaDeItens to set
+	 */
+	public void setListaDeItens(List<Itens> listaDeItens) {
+		this.listaDeItens = listaDeItens;
 	}
 	
 
