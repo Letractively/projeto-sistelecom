@@ -2,6 +2,8 @@ package br.com.sistelecom.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
@@ -56,4 +58,20 @@ public class ItemDAOImpl implements ItemDAO{
 		return item.getIdItens();
 	}
 
+	public int getId() {
+		Connection conn = SistelecomSingleConnection.getConnection();
+		
+		String SQL = "select max(iditens) as id from itens";
+       
+		try {
+			PreparedStatement ps = conn.prepareStatement(SQL);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+				return rs.getInt("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
