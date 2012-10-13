@@ -26,6 +26,7 @@ public class ClienteController implements Controller<Cliente>{
 		
 	public ClienteController() {
 		this.listarTodos();
+		this.listarClientes();
 	}
 	
 	public void novoRegistro() {
@@ -181,15 +182,24 @@ public class ClienteController implements Controller<Cliente>{
 		this.lista = lista;
 	}
 	
-	public List<SelectItem> getListaCliente() {
-		List<Cliente> listaDeCliente = clienteDAO.listarTodos();
+	private void listarClientes() {
+		final List<Cliente> listaCliente = new ClienteDAOImpl().listarTodos();
 		
-		if(this.listaCliente == null){
-			this.listaCliente = new LinkedList<SelectItem>();
-			for (Cliente cliente : listaDeCliente) {
-				this.listaCliente.add(new SelectItem(cliente.getIdCliente(), cliente.getCnpj()));
+		if(!listaCliente.isEmpty()){
+			if(this.listaCliente == null){
+				this.listaCliente = new LinkedList<SelectItem>();
+			}
+			
+			for (Cliente cliente : listaCliente) {
+				this.listaCliente.add(new SelectItem(cliente.getIdCliente(), cliente.getRazaoSocial()));
 			}
 		}
+	}
+
+	/**
+	 * @return the listaCliente
+	 */
+	public List<SelectItem> getListaCliente() {
 		return listaCliente;
 	}
 
@@ -199,6 +209,5 @@ public class ClienteController implements Controller<Cliente>{
 	public void setListaCliente(List<SelectItem> listaCliente) {
 		this.listaCliente = listaCliente;
 	}
-
 
 }
