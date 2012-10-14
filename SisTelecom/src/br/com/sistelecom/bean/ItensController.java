@@ -2,6 +2,7 @@ package br.com.sistelecom.bean;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.html.HtmlCommandButton;
@@ -135,6 +136,8 @@ public class ItensController implements Controller<Itens>{
 			this.lista = new LinkedList<Itens>();
 		}
 		
+		final Random idTemporario = new Random();
+		
 		final Itens item = new Itens();
 		item.setProduto(this.getItem().getProduto());
 		item.setSituacao(this.getItem().getSituacao());
@@ -144,7 +147,7 @@ public class ItensController implements Controller<Itens>{
 		item.setNumeroOS(this.getItem().getNumeroOS());
 		item.setFidelidade(this.getItem().getFidelidade());
 		item.setPrazo(this.getItem().getPrazo());
-		item.setIdItens(new Double(Math.random()).intValue());
+		item.setIdItens(Math.abs(idTemporario.nextInt()));
 		
 		this.getLista().add(item);
 	}
