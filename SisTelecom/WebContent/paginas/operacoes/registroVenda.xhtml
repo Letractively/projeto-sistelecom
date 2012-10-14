@@ -42,7 +42,7 @@
 							<h:outputText value="Dados do Cliente" />
 						</f:facet>
 						
-						<h:selectOneMenu id="cliente" value="#{clienteController.cliente.idCliente}" style="width:100%">
+						<h:selectOneMenu id="cliente" value="#{vendaController.idCliente}" style="width:100%">
 								
 								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 								
@@ -59,7 +59,7 @@
 							<h:outputText value="Dados do Consultor" />
 						</f:facet>
 						
-						<h:selectOneMenu id="consultor" value="#{funcionarioController.funcionario.idFuncionario}" style="width:100%">
+						<h:selectOneMenu id="consultor" value="#{vendaController.idFuncionario}" style="width:100%">
 								
 								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 								
@@ -75,11 +75,23 @@
 				
 				
 				<a4j:commandButton value="Inserir item" onclick="Richfaces.showModalPanel('modal');" />
+				
+				<h:commandButton value="Salvar" actionListener="#{vendaController.salvar}" />
+					
+				<rich:messages>
+					 <f:facet name="errorMarker">
+            			<h:graphicImage url="/imagens/alerta.png"/>
+     				 </f:facet>
+
+      				<f:facet name="infoMarker">
+			            <h:graphicImage url="/imagens/ok.png"/>
+				    </f:facet>
+				</rich:messages>
 					
 				</h:form>
 				<rich:spacer width="100%" height="5px"/>
 				
-				<rich:panel style="100%px">
+				<rich:panel style="width:100%;">
 					<f:facet name="header">
 						<h:outputText value="Produtos" />
 					</f:facet>
@@ -215,10 +227,16 @@
 				<h:panelGrid columns="3">
 					
 					<h:panelGroup>
-						<h:panelGrid>
-							<h:outputLabel value="Produto: " for="produto"/>
-							<h:inputText id="produto" style="width:150px;" value="#{itensController.item.produto}"/>
-						</h:panelGrid>
+						
+						<h:outputLabel value="Produto: " />
+						
+						<h:selectOneMenu id="produto-item" value="#{itensController.item.produto}">
+							
+							<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+								
+							<f:selectItems value="#{produtoController.listaProduto}" />
+								
+						</h:selectOneMenu>
 					</h:panelGroup>
 					
 					<h:panelGroup>

@@ -183,6 +183,7 @@ public class ClienteController implements Controller<Cliente>{
 	}
 	
 	private void listarClientes() {
+		
 		final List<Cliente> listaCliente = new ClienteDAOImpl().listarTodos();
 		
 		if(!listaCliente.isEmpty()){
