@@ -11,7 +11,6 @@ import javax.faces.model.SelectItem;
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
-import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.dao.ProdutoDAOImpl;
 import br.com.sistelecom.entity.Produto;
 
@@ -20,7 +19,6 @@ public class ProdutoController implements Controller<Produto>{
 	private Produto produto;
 	private List<Produto> lista;
 	private List<SelectItem> listaProduto;
-	private DAO<Produto> produtoDAO = new ProdutoDAOImpl();
 	
 	public ProdutoController(){
 		this.listarTodos();
@@ -142,20 +140,31 @@ public class ProdutoController implements Controller<Produto>{
 		this.lista = lista;
 	}
 	
-	public List<SelectItem> getListaProduto() {
-		List<Produto> listaDeProduto = produtoDAO.listarTodos();
+	public List<SelectItem> listaProduto() {
 		
-		if(this.listaProduto == null){
-			this.listaProduto = new LinkedList<SelectItem>();
+		final List<Produto> listaDeProduto = new ProdutoDAOImpl().listarTodos();
+		
+		final List<SelectItem> produtos = new LinkedList<SelectItem>();
+		
+		if(listaDeProduto != null){
 			for (Produto produto : listaDeProduto) {
-				this.listaProduto.add(new SelectItem(produto.getIdProduto(), produto.getNomeProduto(), produto.getTipo()));
+				produtos.add(new SelectItem(produto.getIdProduto(), produto.getNomeProduto(), produto.getTipo()));
 			}
 		}
+		
+		return produtos;
+	}
+	
+	/**
+	 * @return the listaCliente
+	 */
+	public List<SelectItem> getListaProduto() {
+		this.listaProduto = this.listaProduto();
 		return listaProduto;
 	}
 
 	/**
-	 * @param listaDepartamento the listaDepartamento to set
+	 * @param listaProduto the listaProduto to set
 	 */
 	public void setListaProduto(List<SelectItem> listaProduto) {
 		this.listaProduto = listaProduto;

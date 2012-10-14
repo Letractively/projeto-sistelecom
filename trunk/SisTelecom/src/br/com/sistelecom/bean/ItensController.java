@@ -24,6 +24,7 @@ public class ItensController implements Controller<Itens>{
 	private List<Itens> lista;
 	private List<SelectItem> listaItens;
 	private ItemDAO itensDAO = new ItemDAOImpl();
+	private List<Integer> listaDeItensInseridos = new LinkedList<Integer>();
 	
 	public ItensController() {
 		this.listarTodos();
@@ -63,6 +64,16 @@ public class ItensController implements Controller<Itens>{
 		this.getItem().setFidelidade(item.getFidelidade());
 		this.getItem().setPrazo(item.getPrazo());
 	}
+	
+	public void  salvarItens(final Itens item){
+		try {
+			final int id = this.getDao().salvarItem(item);
+			this.getListaDeItensInseridos().add(new Integer(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void atualizarRegistro() {
 		
 		final int id = item.getIdItens();
@@ -214,6 +225,13 @@ public class ItensController implements Controller<Itens>{
 	 */
 	public void setListaItens(List<SelectItem> listaItens) {
 		this.listaItens = listaItens;
+	}
+
+	/**
+	 * @return the listaDeItensInseridos
+	 */
+	public List<Integer> getListaDeItensInseridos() {
+		return listaDeItensInseridos;
 	}
 
 }
