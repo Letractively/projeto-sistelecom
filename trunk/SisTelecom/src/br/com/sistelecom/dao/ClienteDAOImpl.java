@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
+import br.com.sistelecom.entidade.relatorio.ClienteRelatorio;
 import br.com.sistelecom.entity.Cliente;
 import br.com.sistelecom.to.ClienteTO;
 
@@ -203,6 +204,10 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 		} catch (Exception e) {
 			throw new Exception();
 		}
+	}
+	
+	public List<ClienteRelatorio> getClientes(){
+		return null;
 	}
 
 }
