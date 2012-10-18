@@ -3,42 +3,85 @@ package br.com.sistelecom.entidade.relatorio;
 public class ClienteRelatorio {
 
 	
-	private int id;
-	private String nome;
+	private int idCliente;
+	private String cnpj;
+	private String razaoSocial;
+	private long tel1;
+	private String nomeResp1;
 	
 	
-	/**
-	 * @param id
-	 * @param nome
-	 */
-	public ClienteRelatorio(int id, String nome) {
+	public ClienteRelatorio() {
 		super();
-		this.id = id;
-		this.nome = nome;
+	}
+	
+	public ClienteRelatorio(int idCliente, String cnpj, String razaoSocial, long tel1,
+			String nomeResp1) {
+		super();
+		this.idCliente = idCliente;
+		this.cnpj = cnpj;
+		this.razaoSocial = razaoSocial;
+		this.tel1 = tel1;
+		this.nomeResp1 = nomeResp1;
 	}
 	/**
-	 * @return the id
+	 * @return the idCliente
 	 */
-	public int getId() {
-		return id;
+	public int getIdCliente() {
+		return idCliente;
 	}
 	/**
-	 * @param id the id to set
+	 * @param idCliente the idCliente to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
 	/**
-	 * @return the nome
+	 * @return the cnpj
 	 */
-	public String getNome() {
-		return nome;
+	public String getCnpj() {
+		return cnpj;
 	}
 	/**
-	 * @param nome the nome to set
+	 * @param cnpj the cnpj to set
 	 */
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	/**
+	 * @return the razaoSocial
+	 */
+	public String getRazaoSocial() {
+		return razaoSocial;
+	}
+	/**
+	 * @param razaoSocial the razaoSocial to set
+	 */
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+	/**
+	 * @return the tel1
+	 */
+	public long getTel1() {
+		return tel1;
+	}
+	/**
+	 * @param tel1 the tel1 to set
+	 */
+	public void setTel1(long tel1) {
+		this.tel1 = tel1;
+	}
+	/**
+	 * @return the nomeResp1
+	 */
+	public String getNomeResp1() {
+		return nomeResp1;
+	}
+	/**
+	 * @param nomeResp1 the nomeResp1 to set
+	 */
+	public void setNomeResp1(String nomeResp1) {
+		this.nomeResp1 = nomeResp1;
 	}
 	
 	
