@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
+import br.com.sistelecom.entidade.relatorio.FuncionarioRelatorio;
 import br.com.sistelecom.entity.Funcionario;
 import br.com.sistelecom.to.FuncionarioTO;
 
@@ -230,6 +232,35 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
+		return null;
+	}
+	
+	public List<FuncionarioRelatorio> listarParaRelatorio(){
+		
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
+
+		try{
+			ps = conn.prepareStatement("select * from funcionario");
+			rs = ps.executeQuery();
+			List<FuncionarioRelatorio> listRelatorio = new ArrayList<FuncionarioRelatorio>();
+			while(rs.next()) {
+				
+				int idFuncionario = rs.getInt(1);
+				String nome = rs.getString(4);
+				long tel1 = rs.getLong(13);
+				String email = rs.getString(15);
+				Date admissao = rs.getDate(21);
+				String status = rs.getString(22);
+				String login = rs.getString(23);
+				
+				listRelatorio.add(new FuncionarioRelatorio(idFuncionario, nome, tel1, email, admissao, status, login));
+			}
+			return listRelatorio;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

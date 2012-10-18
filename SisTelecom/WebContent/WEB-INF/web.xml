@@ -43,17 +43,24 @@
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
-  
   <servlet>
     <description></description>
     <display-name>ClienteServlet</display-name>
     <servlet-name>ClienteServlet</servlet-name>
     <servlet-class>br.com.sistelecom.relatorio.servlet.ClienteServlet</servlet-class>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>ClienteServlet</servlet-name>
     <url-pattern>/RelatorioCliente</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>FuncionarioServlet</display-name>
+    <servlet-name>FuncionarioServlet</servlet-name>
+    <servlet-class>br.com.sistelecom.relatorio.servlet.FuncionarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FuncionarioServlet</servlet-name>
+    <url-pattern>/RelatorioFuncionario</url-pattern>
+  </servlet-mapping>
 </web-app>
