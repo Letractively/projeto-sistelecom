@@ -114,6 +114,33 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 		}
 		return null;
 	}
+	
+	public List<ClienteRelatorio> listarParaRelatorio(){
+		
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
+
+		try{
+			ps = conn.prepareStatement("select * from cliente");
+			rs = ps.executeQuery();
+			List<ClienteRelatorio> listRelatorio = new ArrayList<ClienteRelatorio>();
+			while(rs.next()) {
+				
+				int idCliente = rs.getInt(1);
+				String cnpj = rs.getString(2);
+				String razaoSocial = rs.getString(3);
+				long tel1 = rs.getLong(13);
+				String nomeResp1 = rs.getString(19);
+				
+				listRelatorio.add(new ClienteRelatorio(idCliente, cnpj, razaoSocial, tel1, nomeResp1));
+			}
+			return listRelatorio;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public List<ClienteTO> todosClientesParaExibirEmTabela() {
 

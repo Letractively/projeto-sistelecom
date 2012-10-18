@@ -14,25 +14,21 @@ FROM
 	<field name="cargo_nome_cargo" class="java.lang.String"/>
 	<background>
 		<band height="555" splitType="Stretch">
-			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
-				<reportElement uuid="ad9b7ae4-b077-4fd0-950a-649fdd57d1da" x="0" y="0" width="803" height="555"/>
-				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom PF_1.jpg"]]></imageExpression>
+			<image>
+				<reportElement uuid="9d770ff8-682e-4624-bcdc-629cc11d9308" x="0" y="0" width="802" height="555"/>
+				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom1.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
 	<title>
 		<band height="49" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="6508f555-eb3d-4dd7-9955-89ebf59c1ef0" x="0" y="0" width="519" height="49"/>
+				<reportElement uuid="6508f555-eb3d-4dd7-9955-89ebf59c1ef0" x="0" y="0" width="802" height="49"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cargos - SisTelecom]]></text>
 			</staticText>
-			<image hAlign="Center" vAlign="Middle">
-				<reportElement uuid="004d8d48-4458-4515-b07a-4d3d1e0b6f08" x="518" y="0" width="284" height="49"/>
-				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

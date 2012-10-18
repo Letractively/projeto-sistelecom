@@ -17,12 +17,8 @@ FROM
 	</background>
 	<title>
 		<band height="49" splitType="Stretch">
-			<image hAlign="Center" vAlign="Middle">
-				<reportElement uuid="004d8d48-4458-4515-b07a-4d3d1e0b6f08" x="518" y="0" width="284" height="49"/>
-				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom.jpg"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement uuid="bbf9c3e5-978b-465d-a7a6-66f39add07f5" x="0" y="0" width="518" height="49"/>
+				<reportElement uuid="bbf9c3e5-978b-465d-a7a6-66f39add07f5" x="284" y="0" width="518" height="49"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20" isBold="true"/>
 				</textElement>
