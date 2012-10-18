@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
+import br.com.sistelecom.entidade.relatorio.DepartamentoRelatorio;
 import br.com.sistelecom.entity.Departamento;
 
 public class DepartamentoDAOImpl implements DAO<Departamento>{
@@ -56,6 +57,25 @@ public class DepartamentoDAOImpl implements DAO<Departamento>{
 				list.add(new Departamento(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
 			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<DepartamentoRelatorio> listarParaRelatorio(){
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
+
+		try{
+			ps = conn.prepareStatement("select * from departamento");
+			rs = ps.executeQuery();
+			List<DepartamentoRelatorio> listaRelatorio = new ArrayList<DepartamentoRelatorio>();
+			while(rs.next()) {
+				listaRelatorio.add(new DepartamentoRelatorio(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			return listaRelatorio;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
