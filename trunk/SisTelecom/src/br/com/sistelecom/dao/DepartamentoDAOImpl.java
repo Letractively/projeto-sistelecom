@@ -64,6 +64,7 @@ public class DepartamentoDAOImpl implements DAO<Departamento>{
 	}
 	
 	public List<DepartamentoRelatorio> listarParaRelatorio(){
+		
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
@@ -73,9 +74,11 @@ public class DepartamentoDAOImpl implements DAO<Departamento>{
 			rs = ps.executeQuery();
 			List<DepartamentoRelatorio> listaRelatorio = new ArrayList<DepartamentoRelatorio>();
 			while(rs.next()) {
+				
 				listaRelatorio.add(new DepartamentoRelatorio(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
 			return listaRelatorio;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -63,4 +63,24 @@
     <servlet-name>FuncionarioServlet</servlet-name>
     <url-pattern>/RelatorioFuncionario</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DepartamentoServlet</display-name>
+    <servlet-name>DepartamentoServlet</servlet-name>
+    <servlet-class>br.com.sistelecom.relatorio.servlet.DepartamentoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DepartamentoServlet</servlet-name>
+    <url-pattern>/RelatorioDepartamento</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProdutoServlet</display-name>
+    <servlet-name>ProdutoServlet</servlet-name>
+    <servlet-class>br.com.sistelecom.relatorio.servlet.ProdutoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProdutoServlet</servlet-name>
+    <url-pattern>/RelatorioProduto</url-pattern>
+  </servlet-mapping>
 </web-app>

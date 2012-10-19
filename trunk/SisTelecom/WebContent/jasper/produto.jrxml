@@ -19,21 +19,22 @@ FROM
 	<field name="valorReceita" class="java.lang.Float"/>
 	<field name="criacao" class="java.sql.Date"/>
 	<background>
-		<band height="555" splitType="Stretch"/>
+		<band height="555" splitType="Stretch">
+			<image>
+				<reportElement uuid="8426969c-8d95-4f9a-b459-7a44673b6224" x="0" y="0" width="802" height="555"/>
+				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom1.jpg"]]></imageExpression>
+			</image>
+		</band>
 	</background>
 	<title>
 		<band height="49" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="2df3c892-f496-400b-822d-3aaff5e9fcdc" positionType="Float" x="0" y="0" width="519" height="49" backcolor="#3300FF"/>
+				<reportElement uuid="2df3c892-f496-400b-822d-3aaff5e9fcdc" positionType="Float" x="0" y="0" width="802" height="49" backcolor="#3300FF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20" isBold="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[Produtos - SisTelecom]]></text>
 			</staticText>
-			<image hAlign="Center" vAlign="Middle">
-				<reportElement uuid="004d8d48-4458-4515-b07a-4d3d1e0b6f08" x="519" y="0" width="284" height="49"/>
-				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
