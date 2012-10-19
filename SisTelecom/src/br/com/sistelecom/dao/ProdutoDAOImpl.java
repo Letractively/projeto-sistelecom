@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
+import br.com.sistelecom.entidade.relatorio.ProdutoRelatorio;
 import br.com.sistelecom.entity.Produto;
 
 public class ProdutoDAOImpl implements DAO<Produto> {
@@ -65,7 +66,29 @@ public class ProdutoDAOImpl implements DAO<Produto> {
 		}
 		return null;
 	}
+	
+	public List<ProdutoRelatorio> listarParaRelatorio(){
+		
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
 
+		try{
+			ps = conn.prepareStatement("select * from produto");
+			rs = ps.executeQuery();
+			List<ProdutoRelatorio> listaRelatorio = new ArrayList<ProdutoRelatorio>();
+			while(rs.next()) {
+				listaRelatorio.add(new ProdutoRelatorio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getDate(5)));
+			}
+			
+			return listaRelatorio;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public Produto obterPorId(int id){
 
 		PreparedStatement ps = null;
