@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ramo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5fe8a690-f1a1-49e8-9d61-78c161b20d82">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="idRamo" class="java.lang.String"/>
+	<field name="nomeRamo" class="java.lang.String"/>
+	<background>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement uuid="8426969c-8d95-4f9a-b459-7a44673b6224" x="0" y="0" width="555" height="802"/>
+				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2df3c892-f496-400b-822d-3aaff5e9fcdc" positionType="Float" x="0" y="0" width="555" height="49" backcolor="#3300FF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Atividades econômicas (Ramos) - SisTelecom]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6d0917eb-0556-4902-bbf7-b951bcab6d82" x="0" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4fdfe635-3994-48fe-af95-90cbe8438ce6" x="100" y="0" width="455" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Atividade econômica]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="558254ce-0f70-4b3b-92f0-71578c9a5d1c" x="0" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idRamo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="82cae018-b82c-44b6-b218-9e98a4cee747" x="100" y="0" width="455" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nomeRamo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9fea93e2-6eb7-467e-8ed4-65a2db7d249f" x="0" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3db0082d-f0e6-4a1d-9f3b-7b558ad82ffe" x="166" y="0" width="223" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SisTelecom]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="a8f7b4d7-76f4-471c-a241-83e363b1948e" x="531" y="0" width="24" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e3fbe9d0-07c1-4ac7-afd7-1e268613b897" x="433" y="0" width="98" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="20">
+			<textField>
+				<reportElement uuid="9fea93e2-6eb7-467e-8ed4-65a2db7d249f" x="0" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3db0082d-f0e6-4a1d-9f3b-7b558ad82ffe" x="166" y="0" width="223" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SisTelecom]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="a8f7b4d7-76f4-471c-a241-83e363b1948e" x="531" y="0" width="24" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e3fbe9d0-07c1-4ac7-afd7-1e268613b897" x="433" y="0" width="98" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER} + " de "]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

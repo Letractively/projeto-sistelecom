@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
+import br.com.sistelecom.entidade.relatorio.CargoRelatorio;
 import br.com.sistelecom.entity.Cargo;
 
 public class CargoDAOImpl implements DAO<Cargo>{
@@ -57,6 +58,27 @@ public class CargoDAOImpl implements DAO<Cargo>{
 				list.add(new Cargo(rs.getInt(1), rs.getString(2)));
 			}
 			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<CargoRelatorio> listarParaRelatorio(){
+		
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
+
+		try{
+			ps = conn.prepareStatement("select * from cargo");
+			rs = ps.executeQuery();
+			List<CargoRelatorio> listaRelatorio = new ArrayList<CargoRelatorio>();
+			while(rs.next()) {
+				listaRelatorio.add(new CargoRelatorio(rs.getInt(1), rs.getString(2)));
+			}
+			return listaRelatorio;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
