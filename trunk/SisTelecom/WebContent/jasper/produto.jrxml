@@ -169,6 +169,13 @@ FROM
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement uuid="3db0082d-f0e6-4a1d-9f3b-7b558ad82ffe" x="296" y="0" width="223" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SisTelecom]]></text>
+			</staticText>
 		</band>
 	</lastPageFooter>
 	<summary>

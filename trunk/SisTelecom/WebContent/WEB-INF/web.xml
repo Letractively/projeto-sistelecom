@@ -83,4 +83,24 @@
     <servlet-name>ProdutoServlet</servlet-name>
     <url-pattern>/RelatorioProduto</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CargoServlet</display-name>
+    <servlet-name>CargoServlet</servlet-name>
+    <servlet-class>br.com.sistelecom.relatorio.servlet.CargoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CargoServlet</servlet-name>
+    <url-pattern>/RelatorioCargo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RamoServlet</display-name>
+    <servlet-name>RamoServlet</servlet-name>
+    <servlet-class>br.com.sistelecom.relatorio.servlet.RamoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RamoServlet</servlet-name>
+    <url-pattern>/RelatorioRamo</url-pattern>
+  </servlet-mapping>
 </web-app>

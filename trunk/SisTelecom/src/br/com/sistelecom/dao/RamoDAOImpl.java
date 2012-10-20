@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import br.com.sistelecom.connection.SistelecomSingleConnection;
+import br.com.sistelecom.entidade.relatorio.RamoRelatorio;
 import br.com.sistelecom.entity.Ramo;
 import br.com.sistelecom.to.RamoTO;
 
@@ -62,6 +63,26 @@ public class RamoDAOImpl implements DAO<Ramo> {
 				list.add(new Ramo(rs.getInt(1), rs.getString(2)));
 			}
 			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<RamoRelatorio> listarParaRelatorio(){
+		
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
+
+		try{
+			ps = conn.prepareStatement("select * from ramo");
+			rs = ps.executeQuery();
+			List<RamoRelatorio> listaRelatorio = new ArrayList<RamoRelatorio>();
+			while(rs.next()) {
+				listaRelatorio.add(new RamoRelatorio(rs.getInt(1), rs.getString(2)));
+			}
+			return listaRelatorio;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
