@@ -130,7 +130,11 @@ public class ItemDAOImpl implements ItemDAO{
 			
 			final ResultSet rs = ps.getGeneratedKeys();
 			
-			return rs.getInt(1);
+			if(rs.next()){
+				return rs.getInt(1);
+			}
+			
+			return RESULTADO_SEM_REGISTROS;
 			
 		}catch (Exception e){
 			return RESULTADO_SEM_REGISTROS;
