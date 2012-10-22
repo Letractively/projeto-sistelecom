@@ -22,16 +22,45 @@ public class VendaDAOImpl implements DAO<Venda>{
 			
 			String SQL = "INSERT INTO reg_venda (cliente, funcionario, data_venda) values (?, ?, ?)";
 			
-			PreparedStatement ps = conn.prepareStatement(SQL);
+			PreparedStatement ps = conn.prepareStatement(SQL,PreparedStatement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, venda.getIdCliente());
 			ps.setInt(2, venda.getIdFuncionario());
 			ps.setDate(3, new java.sql.Date(venda.getDataVenda().getTime()));
 			ps.executeUpdate();
 			
+			final ResultSet rs = ps.getGeneratedKeys();
+			
+			if (rs.next()) {
+				System.out.println(rs.getLong(1));
+			}
+			
+			
 		} catch (Exception e) {
 			throw new Exception();
 		} 
 	}
+	
+	public Integer salvarVenda(Venda venda) throws Exception{
+		try{
+			Connection conn = SistelecomSingleConnection.getConnection();
+			
+			String SQL = "INSERT INTO reg_venda (cliente, funcionario, data_venda) values (?, ?, ?)";
+			
+			PreparedStatement ps = conn.prepareStatement(SQL,PreparedStatement.RETURN_GENERATED_KEYS);
+			ps.setInt(1, venda.getIdCliente());
+			ps.setInt(2, venda.getIdFuncionario());
+			ps.setDate(3, new java.sql.Date(venda.getDataVenda().getTime()));
+			ps.executeUpdate();
+			
+			final ResultSet rs = ps.getGeneratedKeys();
+			
+			return rs.getInt(1);
+			
+		} catch (Exception e) {
+			return RESULTADO_SEM_REGISTROS;
+		}
+		
+	} 
 
 	public void excluir(Venda venda) throws Exception {
 		
