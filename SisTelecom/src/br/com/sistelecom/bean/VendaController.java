@@ -49,8 +49,10 @@ public class VendaController implements Controller<Venda> {
 				venda.setIdFuncionario(this.getIdFuncionario());
 				venda.setDataVenda(new Date());
 				
+				final ItensController controllerItem = this.getItensController();
+				
 				for(Itens item: this.getItensController().getLista()){
-					this.getItensController().salvarItens(item);	
+					controllerItem.salvarItens(item);	
 				}
 				
 				final int idVenda = this.getDao().salvarVenda(venda);
