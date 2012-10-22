@@ -1,6 +1,7 @@
 package br.com.sistelecom.bean;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -9,9 +10,11 @@ import javax.faces.event.ActionEvent;
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
-import br.com.sistelecom.dao.DAO;
+import br.com.sistelecom.dao.VendaDAOImpl;
+import br.com.sistelecom.dao.VendaItemDAOImpl;
 import br.com.sistelecom.entity.Itens;
 import br.com.sistelecom.entity.Venda;
+import br.com.sistelecom.entity.VendaItem;
 
 
 public class VendaController implements Controller<Venda> {
@@ -50,7 +53,19 @@ public class VendaController implements Controller<Venda> {
 					this.getItensController().salvarItens(item);	
 				}
 				
-				this.getDao().salvar(venda);
+				final int idVenda = this.getDao().salvarVenda(venda);
+				
+				List<Integer> inseridos = this.getItensController().getListaDeItensInseridos();
+				
+				for (Integer idItemInserido : inseridos) {
+					
+					final VendaItem vendaItem = new VendaItem(); 
+					vendaItem.setIdVenda(idVenda);
+					vendaItem.setIdItem(idItemInserido);
+					
+					new VendaItemDAOImpl().salvar(vendaItem);
+				}
+				
 				this.listarTodos();
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Pedido incluído com sucesso.",""));
 			} catch (Exception e) {
@@ -109,9 +124,8 @@ public class VendaController implements Controller<Venda> {
 		
 	}
 
-	public DAO<Venda> getDao() {
-		// TODO Auto-generated method stub
-		return null;
+	public VendaDAOImpl getDao() {
+		return new VendaDAOImpl();
 	}
 	
 	
