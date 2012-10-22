@@ -1,5 +1,6 @@
 package br.com.sistelecom.bean;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class VendaController implements Controller<Venda> {
 	public void salvar(ActionEvent evento) {
 		
 		if(this.getVenda().getIdVenda() == 0){
+			this.getItensController().setListaDeItensInseridos(new ArrayList<Integer>());
 			this.novoRegistro();
 		}else{
 			this.atualizarRegistro();
