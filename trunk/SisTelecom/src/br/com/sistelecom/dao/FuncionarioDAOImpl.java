@@ -264,7 +264,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		return null;
 	}
 	
-	public Funcionario validarLogin (String login, String password) throws Exception{
+	public String validarLogin (String login, String password) throws Exception{
 		
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
@@ -285,7 +285,8 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 			String passwordBD = rs.getString(24);
 			
 			if(login == loginBD && senha == passwordBD){
-				return funcionario;
+				String nome = rs.getString(4);
+				return nome;
 			}
 		}catch(Exception e){	
 			e.printStackTrace();
