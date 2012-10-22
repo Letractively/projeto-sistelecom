@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface DAO<E> {
 
+	public static int RESULTADO_SEM_REGISTROS = 0;
+	
     List<E> listarTodos();
 
     void salvar(E entidade) throws Exception;
