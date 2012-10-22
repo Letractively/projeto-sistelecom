@@ -233,5 +233,9 @@ public class ItensController implements Controller<Itens>{
 	public List<Integer> getListaDeItensInseridos() {
 		return listaDeItensInseridos;
 	}
+	
+	public void setListaDeItensInseridos(List<Integer> listaDeItensInseridos) {
+		this.listaDeItensInseridos = listaDeItensInseridos;
+	}
 
 }
