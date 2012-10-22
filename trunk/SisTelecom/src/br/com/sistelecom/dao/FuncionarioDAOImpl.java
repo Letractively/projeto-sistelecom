@@ -263,5 +263,33 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		}
 		return null;
 	}
+	
+	public Funcionario validarLogin (String login, String password) throws Exception{
+		
+		PreparedStatement ps = null;
+		Connection conn = SistelecomSingleConnection.getConnection();
+		ResultSet rs = null;
 
+		try {
+			ps = conn.prepareStatement("select * from funcionario where `login` = ?");
+			ps.setString(1, login);
+			rs = ps.executeQuery();
+			if (!rs.next()) {
+				throw new Exception("Login digitado incorretamente: " + login);
+			}
+			
+			Funcionario funcionario = new Funcionario();
+			String senha = funcionario.getPassword();
+			
+			String loginBD = rs.getString(23);
+			String passwordBD = rs.getString(24);
+			
+			if(login == loginBD && senha == passwordBD){
+				return funcionario;
+			}
+		}catch(Exception e){	
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
