@@ -15,13 +15,15 @@
 			<ui:insert name="scripts"/>
 			<ui:insert name="styles"/>
 			<style type="text/css">
-				body{background-image: "url(/imagens/SisTelecom1.jpg)"}
+				body{background-image: url(imagens/SisTelecom1.jpg)}
 			</style>
+			
 		</head>
 	
-		<body>
+		<body background= "url(/imagens/SisTelecom1.jpg)">
 			<ui:include src="/paginas/menu/menu.xhtml" />
 			<ui:insert name="body"/>
+			
 		</body>
 		
 	</ui:composition>
