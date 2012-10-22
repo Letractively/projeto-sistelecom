@@ -90,7 +90,7 @@
 					}
 	
 			</script>
-		
+					
 		</ui:define>
 	
 		<ui:define name="body">
@@ -115,31 +115,55 @@
 							
 						</f:facet>
 						
-						<h:panelGrid columns="6">
 						
-							<h:outputLabel value="Id:" />
-							
-							<h:inputText id="id-cliente" value="#{clienteController.cliente.idCliente}" style="width:50px;" />
+						<h:panelGrid columns="4">
 						
-							<h:outputLabel value="CNPJ:" />
+							<h:outputLabel value="Id*: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+						
+							<h:inputText id="id-cliente" value="#{clienteController.cliente.idCliente}" style="width:50px;" title="O número de registro do cliente é gerado automaticamente!"/>
 							
-							<h:inputText id="cnpj-cliente" style="width:125px;" value="#{clienteController.cliente.cnpj}" >
+							<rich:spacer width="20px"/>
+							<h:outputText value="*Obs.: O Id será gerado de forma automática no caso de novos cadastros." style="FONT-WEIGHT: bold; FONT-SIZE: x-small; COLOR: #c0c0c0; FONT-FAMILY: 'SansSerif';"/>
+						</h:panelGrid>
+						
+						<rich:spacer height="15px"/>
+						<rich:separator width="100%"/>
+						<rich:spacer height="15px"/>
+						
+						<h:panelGrid columns="11">
+						
+							<h:outputLabel value="Razão Social: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="102px"></rich:spacer>
+							
+							<h:inputText id="razao-social-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.razaoSocial}" style="width:368px"/>
+							
+							<rich:spacer width="10px"></rich:spacer>
+							
+							<h:outputLabel value="CNPJ: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="77px"></rich:spacer>
+							
+							<h:inputText id="cnpj-cliente" style="width:115px;" value="#{clienteController.cliente.cnpj}" >
 								
 								<rich:jQuery query="mask('99.999.999/9999-99');" selector="#cnpj-cliente" timing="onload"/>
 								
 							</h:inputText>
-	
-							<h:outputLabel value="Razão Social:" />
 							
-							<h:inputText id="razao-social-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.razaoSocial}" style="width:200px"/>
-	
-							<h:outputLabel value="Nome Fantasia:" />
+							<rich:spacer width="10px"></rich:spacer>
 							
-							<h:inputText id="nome-fantasia-cliente"
-								onkeypress="this.style.textTransform = 'uppercase';"
+							<h:outputLabel value="Nome Fantasia: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="11px"></rich:spacer>
+							
+							<h:inputText id="nome-fantasia-cliente" style="width:305px;" onkeypress="this.style.textTransform = 'uppercase';"
 								value="#{clienteController.cliente.nomeFantasia}" />
+								
+						</h:panelGrid>
+						
+						<h:panelGrid columns="8">
 	
-							<h:outputLabel value="Ramo (Atividade econômica):" />
+							<h:outputLabel value="Ramo (Atividade econômica):" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 							
 							<h:selectOneMenu id="ramo-cliente"
 								value="#{clienteController.cliente.ramo}">
@@ -149,16 +173,20 @@
 								<f:selectItems value="#{ramoController.listaRamo}" />
 								
 							</h:selectOneMenu>
-	
-							<h:outputLabel value="Inscrição Estadual:" />
 							
-							<h:inputText id="inscest-cliente" value="#{clienteController.cliente.inscEst}" >
+							<rich:spacer width="10px"></rich:spacer>
+							
+							<h:outputLabel value="Inscrição Estadual:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<h:inputText id="inscest-cliente" style="width:115px;" value="#{clienteController.cliente.inscEst}" >
 								
 								<rich:jQuery query="mask('99.999.999-99')" selector="#inscest-cliente" timing="onload"/>
 								
 							</h:inputText>
+							
+							<rich:spacer width="10px"></rich:spacer>
 								
-							<h:outputLabel value="Data de fundação:" />
+							<h:outputLabel value="Data de fundação:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 							
 							<rich:calendar value="#{clienteController.cliente.desde}" datePattern="dd/MM/yyyy">
 								
@@ -182,32 +210,41 @@
 							
 						</f:facet>
 	
-						<h:panelGrid columns="10">
+						<h:panelGrid columns="16">
 	
-							<h:outputLabel value="Logradouro:" />
+							<h:outputLabel value="Logradouro:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 							
-							<h:inputText id="logradouro-cliente"
-								onkeypress="this.style.textTransform = 'uppercase';"
-								value="#{clienteController.cliente.logradouro}" />
-	
-							<h:outputLabel value="Número:" />
+							<h:inputText id="logradouro-cliente" style="width:200px" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.logradouro}" />
 							
-							<h:inputText id="numero-cliente"
-								value="#{clienteController.cliente.numero}" />
-	
-							<h:outputLabel value="Complemento: " />
+							<rich:spacer width="10px"/>
+							
+							<h:outputLabel value="Número:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<h:inputText id="numero-cliente" style="width:60px" value="#{clienteController.cliente.numero}" />
+							
+							<rich:spacer width="10px"/>
+							
+							<h:outputLabel value="Complemento: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 							
 							<h:inputText id="complemento-cliente"
 								onkeypress="this.style.textTransform = 'uppercase';"
 								value="#{clienteController.cliente.complemento}" />
-	
-							<h:outputLabel value="Bairro: " />
+							
+							<rich:spacer width="10px"/>
+							
+							<h:outputLabel value="Bairro: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="1px"/>
 							
 							<h:inputText id="bairro-cliente"
 								onkeypress="this.style.textTransform = 'uppercase';"
 								value="#{clienteController.cliente.bairro}" />
-	
-							<h:outputLabel value="UF:" />
+							
+							<rich:spacer width="10px"/>
+							
+							<h:outputLabel value="UF:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="19px"/>
 							
 							<a4j:region>
 							<h:selectOneMenu id="uf-cliente"
@@ -225,46 +262,61 @@
 							</h:selectOneMenu>
 							</a4j:region>
 							
-							<h:outputLabel value="Cidade:" />
+							</h:panelGrid>
 							
-							<h:selectOneMenu id="cidade-cliente"
-								value="#{clienteController.cliente.cidade}">
+							<h:panelGrid columns="17">
+							
+							<h:outputLabel value="Cidade:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="25px"/>
+							
+							<h:selectOneMenu id="cidade-cliente" style="width:200px;" value="#{clienteController.cliente.cidade}">
 								
 								<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
 								
 								<f:selectItems value="#{cidadeController.listaCidade}" />
 								
 							</h:selectOneMenu>
-	
-							<h:outputLabel value="CEP:" />
 							
-							<h:inputText id="cep-cliente" value="#{clienteController.cliente.cep}" >
+							<rich:spacer width="11px"/>
+							
+							<h:outputLabel value="CEP:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="19px"/>
+							
+							<h:inputText id="cep-cliente" style="width:60px" value="#{clienteController.cliente.cep}" >
 									
 								<rich:jQuery query="mask('99999-999');" selector="#cep-cliente" timing="onload"/>
 									
 							</h:inputText>
-	
-							<h:outputLabel value="Telefone:" />
 							
-							<h:inputText id="tel1-cliente" value="#{clienteController.cliente.tel1}" >
+							<rich:spacer width="10px"/>
+							
+							<h:outputLabel value="Telefone:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="31px"/>
+
+							<h:inputText id="tel1-cliente" style="width:83px" value="#{clienteController.cliente.tel1}" >
 								
 								<rich:jQuery query="mask('(99) 9999-9999');" selector="#tel1-cliente" timing="onload"/>
 								
 							</h:inputText>
-	
-							<h:outputLabel value="Celular:" />
 							
-							<h:inputText id="tel2-cliente" value="#{clienteController.cliente.tel2}" >
+							<rich:spacer width="66px"/>
+							
+							<h:outputLabel value="Celular:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<h:inputText id="tel2-cliente" style="width:83px;" value="#{clienteController.cliente.tel2}" >
 							
 								<rich:jQuery query="mask('(99) 9999-9999');" selector="#tel2-cliente" timing="onload"/>
 							
 							</h:inputText>
 	
-							<h:outputLabel value="E-mail:" />
+							<rich:spacer width="67px"/>
 							
-							<h:inputText id="email-cliente"
-								onkeypress="this.style.textTransform = 'lowercase';"
-								value="#{clienteController.cliente.email}" />
+							<h:outputLabel value="E-mail:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<h:inputText id="email-cliente" style="width:300px" onkeypress="this.style.textTransform = 'lowercase';" value="#{clienteController.cliente.email}" />
 	
 						</h:panelGrid>
 						
@@ -282,63 +334,93 @@
 							
 						</f:facet>
 						
-						<h:panelGrid columns="6">
+						<h:panelGrid columns="8">
 						
-							<h:outputLabel value="CPF do Administrador:" />
+							<h:outputLabel value="CPF do Administrador:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 							
-							<h:inputText id="cpf-administrador-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp1}" >
+							<h:inputText id="cpf-administrador-cliente" style="width:85px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp1}" >
 							
 								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-administrador-cliente" timing="onload"/>
 								
 							</h:inputText>
-	
-							<h:outputLabel value="Nome do Administrador:" />
 							
-							<h:inputText id="nome-administrador-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.nomeResp1}" />
+							<rich:spacer width="10px;"/>
 	
-							<h:outputLabel value="Data de nascimento do Administrador:" />
+							<h:outputLabel value="Nome do Administrador:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<h:inputText id="nome-administrador-cliente" style="width:400px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.nomeResp1}" />
+							
+							<rich:spacer width="10px;"/>
+							
+							<h:outputLabel value="Data de nascimento do Administrador:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 							
 							<rich:calendar value="#{clienteController.cliente.nascResp1}" datePattern="dd/MM/yyyy">
 								
 								<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
 								
 							</rich:calendar>
-	
-							<h:outputLabel value="CPF do Sócio 1: " />
 							
-							<h:inputText id="cpf-socio1-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp2}" >
+						</h:panelGrid>
+						
+						<h:panelGrid columns="11">
+						
+							<h:outputLabel value="CPF do Sócio 1: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="40px"/>
+							
+							<h:inputText id="cpf-socio1-cliente" style="width:85px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp2}" >
 							
 								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-socio1-cliente" timing="onload"/>
 								
 							</h:inputText>
-	
-							<h:outputLabel value="Nome do Sócio 1:" />
 							
-							<h:inputText id="nome-socio1-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.nomeResp2}" />
+							<rich:spacer width="10px"/>
 	
-							<h:outputLabel value="Data de nascimento do Sócio 1:" />
+							<h:outputLabel value="Nome do Sócio 1:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="42px"/>
+							
+							<h:inputText id="nome-socio1-cliente" style="width:400px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.nomeResp2}" />
+							
+							<rich:spacer width="10px"/>
+							
+							<h:outputLabel value="Data de nascimento do Sócio 1:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="41px"/>
 							
 							<rich:calendar value="#{clienteController.cliente.nascResp2}" datePattern="dd/MM/yyyy">
 								
 								<f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy" />
 								
 							</rich:calendar>
-	
-							<h:outputLabel value="CPF do Sócio 2:" />
 							
-							<h:inputText id="cpf-socio2-cliente" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp3}" >
+						</h:panelGrid>
+						
+						<h:panelGrid columns="11">
+						
+							<h:outputLabel value="CPF do Sócio 2:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="40px"/>
+							
+							<h:inputText id="cpf-socio2-cliente" style="width:85px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp3}" >
 							
 								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-socio2-cliente" timing="onload"/>
 								
 							</h:inputText>
-	
-							<h:outputLabel value="Nome do Sócio 2:" />
 							
-							<h:inputText id="nome-socio2-cliente"
-								onkeypress="this.style.textTransform = 'uppercase';"
-								value="#{clienteController.cliente.nomeResp3}" />
+							<rich:spacer width="10px"/>
+							
+							<h:outputLabel value="Nome do Sócio 2:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="42px"/>
+							
+							<h:inputText id="nome-socio2-cliente" style="width:400px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.nomeResp3}" />
 	
-							<h:outputLabel value="Data de nascimento do Sócio 2:" />
+							<rich:spacer width="10px"/>							
+							
+							<h:outputLabel value="Data de nascimento do Sócio 2:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+							
+							<rich:spacer width="41px"/>
 							
 							<rich:calendar value="#{clienteController.cliente.nascResp3}" datePattern="dd/MM/yyyy">
 								
