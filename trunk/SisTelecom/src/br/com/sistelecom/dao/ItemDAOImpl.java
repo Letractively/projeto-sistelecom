@@ -117,7 +117,7 @@ public class ItemDAOImpl implements ItemDAO{
 			
 			String SQL = "INSERT INTO itens (produto, situacao, numeroSa3, numeroSiebel, numeroOs, numeroOib2b, fidelidade, prazo) values (?, ?, ?, ?, ?, ?, ?, ?)";
 			
-			PreparedStatement ps = conn.prepareStatement(SQL);
+			PreparedStatement ps = conn.prepareStatement(SQL, PreparedStatement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, item.getProduto());
 			ps.setString(2, item.getSituacao());
 			ps.setLong(3, item.getNumeroSA3());
@@ -128,12 +128,13 @@ public class ItemDAOImpl implements ItemDAO{
 			ps.setString(8, item.getPrazo());
 			ps.executeUpdate();
 			
-		}	catch (Exception e){
+			final ResultSet rs = ps.getGeneratedKeys();
 			
-			e.printStackTrace();
+			return rs.getInt(1);
+			
+		}catch (Exception e){
+			return RESULTADO_SEM_REGISTROS;
 		}
-		
-		return item.getIdItens();
 	}
 
 	public int getId() {

@@ -1,10 +1,13 @@
 package br.com.sistelecom.dao;
 
-import org.junit.Test;
-
-import br.com.sistelecom.entity.Venda;
+import java.util.Date;
 
 import junit.framework.TestCase;
+
+import org.junit.Test;
+
+import br.com.sistelecom.entity.Funcionario;
+import br.com.sistelecom.entity.Venda;
 
 public class VendaDAOImplTest extends TestCase{
 
@@ -12,14 +15,19 @@ public class VendaDAOImplTest extends TestCase{
 	
 	@Test
 	public void testSalvar(){
-		final Venda venda = new Venda();
-		//TODO: Povoar Objeto
 		
-		try {
+		/*System.out.println("create");
+	    final Venda venda = new Venda();
+	    final FuncionarioDAOImpl instance = new FuncionarioDAOImpl();
+	    instance.salvar(funcionario);
+	    assertNotNull("funcionario", funcionario);
+	    assertTrue(funcionario.getNome().length() > 0);
+	        
+		/*try {
 			dao.salvar(venda);
 			assertTrue(Boolean.TRUE);
 		} catch (Exception e) {
 			assertTrue(Boolean.FALSE);
-		}
+		}*/
 	}
 }
