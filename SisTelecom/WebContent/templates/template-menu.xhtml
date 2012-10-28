@@ -14,13 +14,14 @@
 			<a4j:loadScript src="/recursos/js/jquery.maskedinput-1.2.1.js"></a4j:loadScript>	
 			<ui:insert name="scripts"/>
 			<ui:insert name="styles"/>
+			
 			<style type="text/css">
-				body{background-image: url(imagens/SisTelecom1.jpg)}
+				body{background-image: url('/SisTelecom/imagens/SisTelecom1.jpg')};
 			</style>
 			
 		</head>
 	
-		<body background= "url(/imagens/SisTelecom1.jpg)">
+		<body>
 			<ui:include src="/paginas/menu/menu.xhtml" />
 			<ui:insert name="body"/>
 			

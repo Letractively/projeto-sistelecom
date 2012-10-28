@@ -24,7 +24,6 @@
 					
 					<rich:menuGroup value="Gestão de carteira">
 						<rich:menuItem submitMode="ajax" value="Cliente" onclick="window.location='/SisTelecom/paginas/cadastros/cliente/cliente.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Contatos"/>
 						<rich:menuItem submitMode="ajax" value="Atividades econômicas" onclick="window.location='/SisTelecom/paginas/cadastros/ramo/ramo.jsf'"/>
 					</rich:menuGroup>
 					
@@ -33,13 +32,12 @@
 					</rich:menuGroup>
 					
 					<rich:menuGroup value="Relatórios">
-						<rich:menuItem submitMode="ajax" value="Usuários"/>
-						<rich:menuItem submitMode="ajax" value="Clientes"/>
-						<rich:menuItem submitMode="ajax" value="Atividades econômicas"/>
-						<rich:menuItem submitMode="ajax" value="Produtos"/>
-						<rich:menuItem submitMode="ajax" value="Departamentos"/>
-						<rich:menuItem submitMode="ajax" value="Funções"/>
-						<rich:menuItem submitMode="ajax" value="Pedidos"/>
+						<rich:menuItem submitMode="ajax" value="Usuários" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-funcionario.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Clientes" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-cliente.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Atividades econômicas" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-ramo.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Produtos" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-produto.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Departamentos" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-departamento.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Funções" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-cargo.jsf'"/>
 					</rich:menuGroup>		
 					
 					<rich:menuItem submitMode="ajax" value="Input de pedido" onclick="window.location='/SisTelecom/paginas/operacoes/registroVenda.jsf'"></rich:menuItem>
