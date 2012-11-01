@@ -15,14 +15,14 @@
 							<h:outputText value="Menu"/>
 					</f:facet>
 					
-					<rich:menuGroup value="Gestão de usuários">
+					<rich:menuGroup value="Gestão de usuários" icon="/imagens/gestao_usuario.png">
 						<rich:menuItem submitMode="ajax" value="Alteração dos meus dados" />
 						<rich:menuItem submitMode="ajax" value="Gestão de funcionários" onclick="window.location='/SisTelecom/paginas/cadastros/funcionario/funcionario.jsf'"/>
 						<rich:menuItem submitMode="ajax" value="Gestão de departamentos" onclick="window.location='/SisTelecom/paginas/cadastros/departamento/departamento.jsf'"/>
 						<rich:menuItem submitMode="ajax" value="Gestão de funções" onclick="window.location='/SisTelecom/paginas/cadastros/cargo/cargo.jsf'"/>
 					</rich:menuGroup>
 					
-					<rich:menuGroup value="Gestão de carteira">
+					<rich:menuGroup value="Gestão de carteira" icon="">
 						<rich:menuItem submitMode="ajax" value="Cliente" onclick="window.location='/SisTelecom/paginas/cadastros/cliente/cliente.jsf'"/>
 						<rich:menuItem submitMode="ajax" value="Atividades econômicas" onclick="window.location='/SisTelecom/paginas/cadastros/ramo/ramo.jsf'"/>
 					</rich:menuGroup>
@@ -31,7 +31,7 @@
 						<rich:menuItem submitMode="ajax" value="Inclusão" onclick="window.location='/SisTelecom/paginas/cadastros/produto/produto.jsf'"/>
 					</rich:menuGroup>
 					
-					<rich:menuGroup value="Relatórios">
+					<rich:menuGroup value="Relatórios" icon="/imagens/relatorio.png">
 						<rich:menuItem submitMode="ajax" value="Usuários" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-funcionario.jsf'"/>
 						<rich:menuItem submitMode="ajax" value="Clientes" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-cliente.jsf'"/>
 						<rich:menuItem submitMode="ajax" value="Atividades econômicas" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-ramo.jsf'"/>

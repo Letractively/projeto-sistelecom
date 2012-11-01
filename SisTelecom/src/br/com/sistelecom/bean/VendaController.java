@@ -40,7 +40,6 @@ public class VendaController implements Controller<Venda> {
 		}
 		
 		this.limpar();
-		
 	}
 
 	public void novoRegistro() {
@@ -72,6 +71,7 @@ public class VendaController implements Controller<Venda> {
 				
 				this.listarTodos();
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Pedido incluído com sucesso.",""));
+				this.limpar();
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na inclusão do pedido.",""));
 				return;

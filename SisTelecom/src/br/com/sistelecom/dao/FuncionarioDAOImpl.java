@@ -11,6 +11,7 @@ import java.util.List;
 import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entidade.relatorio.FuncionarioRelatorio;
 import br.com.sistelecom.entity.Funcionario;
+import br.com.sistelecom.entity.Login;
 import br.com.sistelecom.to.FuncionarioTO;
 
 public class FuncionarioDAOImpl implements DAO<Funcionario>{
@@ -264,27 +265,28 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		return null;
 	}
 	
-	public String validarLogin (String login, String password) throws Exception{
+	public String validarLogin () throws Exception{
 		
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
+		
+		Login usuario = new Login();
 
 		try {
 			ps = conn.prepareStatement("select * from funcionario where `login` = ?");
-			ps.setString(1, login);
+			ps.setString(1, usuario.getUsuario());
 			rs = ps.executeQuery();
 			if (!rs.next()) {
-				throw new Exception("Login digitado incorretamente: " + login);
+				throw new Exception("Login digitado incorretamente: " + usuario.getUsuario());
 			}
 			
-			Funcionario funcionario = new Funcionario();
-			String senha = funcionario.getPassword();
+			String senha = usuario.getPassword();
 			
 			String loginBD = rs.getString(23);
 			String passwordBD = rs.getString(24);
 			
-			if(login == loginBD && senha == passwordBD){
+			if(usuario.getUsuario() == loginBD && senha == passwordBD){
 				String nome = rs.getString(4);
 				return nome;
 			}
