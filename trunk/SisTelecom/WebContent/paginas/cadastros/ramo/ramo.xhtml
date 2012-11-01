@@ -31,18 +31,18 @@
 		<rich:panel style="800px;">
 	
 			<f:facet name="header">
-				<h:outputLabel value="Ramo (Atividade Econômica)" />
+				<h:outputLabel value="Ramo (Atividade Econômica)" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 			</f:facet>
 	
 			<h:form id="formulario-dados" prependId="false">
 	
-				<h:panelGrid columns="2" style="width:100%">
+				<h:panelGrid columns="2">
 					
-					<h:outputLabel value="Id:" />
+					<h:outputLabel value="Id:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 					<h:inputText id="id-ramo" value="#{ramoController.ramo.idRamo}"
 						style="width:50px;" />
 	
-					<h:outputLabel value="Nome:" />
+					<h:outputLabel value="Nome:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 					<h:inputText id="nome-ramo" value="#{ramoController.ramo.nomeRamo}" />
 	
 				</h:panelGrid>
@@ -50,7 +50,7 @@
 				<rich:spacer width="100%" height="10px" />
 	
 				<h:commandButton value="Salvar"
-					actionListener="#{ramoController.salvar}" />
+					actionListener="#{ramoController.salvar}" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 					
 				<rich:messages>
 					 <f:facet name="errorMarker">

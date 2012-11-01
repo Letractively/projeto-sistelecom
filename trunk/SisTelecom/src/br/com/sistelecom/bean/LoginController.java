@@ -7,11 +7,13 @@ import javax.faces.event.ActionEvent;
 import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.dao.FuncionarioDAOImpl;
 import br.com.sistelecom.entity.Funcionario;
+import br.com.sistelecom.entity.Login;
 
 public class LoginController implements Controller<Funcionario>{
 	
 	private Funcionario funcionario = new Funcionario();
 	private DAO<Funcionario> funcionarioDAO = new FuncionarioDAOImpl();
+	private Login usuario = new Login();	
 	
 	public LoginController(){
 	}
@@ -44,20 +46,18 @@ public class LoginController implements Controller<Funcionario>{
 	
 	public void validacao(){
 		
-		final String login = funcionario.getLogin();
-		final String password = funcionario.getPassword();
-		
 		if(validarDadosFormulario()){
 			
 			try{
-				if(((FuncionarioDAOImpl) funcionarioDAO).validarLogin(login, password) != null){
-					this.getDao().validarLogin(login, password);
+				if(((FuncionarioDAOImpl) funcionarioDAO).validarLogin() != null){
+					this.getDao().validarLogin();
+					FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Bem vindo ao SisTelecom" ,""));
 				}
 				else{
-				
+					FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Seu usuário e/ou senha estão incorretos. Tente novamente.",""));
 				}
 			} catch(Exception e){
-				
+				e.printStackTrace();
 			}
 		}
 		
@@ -85,6 +85,14 @@ public class LoginController implements Controller<Funcionario>{
 	 */
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
+	}
+
+	public Login getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Login usuario) {
+		this.usuario = usuario;
 	}
 
 }
