@@ -438,12 +438,6 @@
 	
 				<h:commandButton value="Salvar" actionListener="#{clienteController.salvar}" onclick="submeter('formulario-dados');" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
-				<rich:modalPanel id="sugestao">
-				
-					<h:outputText value="#{clienteController.produtosSugeridos}" />
-				
-				</rich:modalPanel>
-	
 				<rich:messages>
 				
 					 <f:facet name="errorMarker">
@@ -459,7 +453,7 @@
     				</f:facet>
 					
 				</rich:messages>
-	
+				
 			</h:form>
 	
 			<rich:spacer width="100%" height="10px" />
