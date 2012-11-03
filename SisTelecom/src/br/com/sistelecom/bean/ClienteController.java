@@ -1,7 +1,10 @@
 package br.com.sistelecom.bean;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.html.HtmlCommandButton;
@@ -12,10 +15,15 @@ import javax.faces.model.SelectItem;
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
 
+import com.sun.org.apache.commons.collections.MapUtils;
+
 import br.com.sistelecom.dao.ClienteDAOImpl;
 import br.com.sistelecom.dao.DAO;
+import br.com.sistelecom.dao.ProdutoDAOImpl;
+import br.com.sistelecom.dao.VendaDAOImpl;
 import br.com.sistelecom.entity.Cliente;
 import br.com.sistelecom.to.ClienteTO;
+import br.com.sistelecom.to.ProdutoTO;
 
 public class ClienteController implements Controller<Cliente>{
 	
@@ -23,6 +31,7 @@ public class ClienteController implements Controller<Cliente>{
 	private List<ClienteTO> lista;
 	private List<SelectItem> listaCliente;
 	private DAO<Cliente> clienteDAO = new ClienteDAOImpl();
+	private List<ProdutoTO> produtosSugeridos; 
 		
 	public ClienteController() {
 		this.listarTodos();
@@ -35,10 +44,58 @@ public class ClienteController implements Controller<Cliente>{
 				this.getDao().salvar(this.getCliente());
 				this.listarTodos();
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Cliente incluído com sucesso.",""));
+				this.sugerirProduto();
 			} catch (Exception e) {
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na inclusão do cliente.",""));
 				return;
 			}
+		}
+	}
+	
+	public void sugerirProduto(){
+		final int idRamo = this.getCliente().getRamo();
+		
+		final List<Integer> listaIdClientes = new ClienteDAOImpl().buscarClientePorRamo(idRamo);
+		
+		if(!listaIdClientes.isEmpty()){
+			
+			final VendaDAOImpl venda = new VendaDAOImpl();
+			final List<Integer> listaIdVenda = new LinkedList<Integer>();
+			
+			for (Integer id : listaIdClientes) {
+				
+				final Integer idVenda = venda.isExisteVenda(id);
+				
+				if(!venda.isExisteVenda(id).equals(new Integer(0))){
+					
+					listaIdClientes.remove(id);
+					
+				}else{
+					
+					listaIdVenda.add(idVenda);
+					
+				}
+				
+			}
+			
+			final Map<Integer, List<ProdutoTO>> produtosDaVenda = new HashMap<Integer,List<ProdutoTO>>();
+			
+			if(!listaIdVenda.isEmpty()){
+				
+				 for (Integer idVenda : listaIdVenda) {
+					
+					 final List<ProdutoTO> produtos = new ProdutoDAOImpl().sugerirProdutos(idVenda);
+					 
+					 if(!produtos.isEmpty()){
+						 
+						 produtosDaVenda.put(idVenda, produtos);
+						 
+					 }
+							 
+				}
+				
+			}
+			this.setProdutosSugeridos((List<ProdutoTO>)produtosDaVenda.values().toArray()[0]);
 		}
 	}
 	
@@ -209,6 +266,20 @@ public class ClienteController implements Controller<Cliente>{
 	 */
 	public void setListaCliente(List<SelectItem> listaCliente) {
 		this.listaCliente = listaCliente;
+	}
+
+	/**
+	 * @return the produtosSugeridos
+	 */
+	public List<ProdutoTO> getProdutosSugeridos() {
+		return produtosSugeridos;
+	}
+
+	/**
+	 * @param produtosSugeridos the produtosSugeridos to set
+	 */
+	public void setProdutosSugeridos(List<ProdutoTO> produtosSugeridos) {
+		this.produtosSugeridos = produtosSugeridos;
 	}
 
 }
