@@ -3,6 +3,7 @@ package br.com.sistelecom.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.LinkedList;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
@@ -113,6 +114,38 @@ public class VendaDAOImpl implements DAO<Venda>{
 			e.printStackTrace();
 		} 
 		return null;
+	}
+	
+	/**
+	 * Verifica se existe venda para os clientes.
+	 * @param idCliente
+	 * @return
+	 */
+	public Integer isExisteVenda(final Integer idCliente){
+		Connection conn = SistelecomSingleConnection.getConnection();
+		
+		final StringBuilder sb = new StringBuilder();
+		sb.append("select idreg_venda from reg_venda ");
+		sb.append("where cliente = ?; ");
+		
+		try {
+			
+			PreparedStatement ps = conn.prepareStatement(sb.toString());
+			ps.setInt(1, idCliente);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt("");
+			}else{
+				return new Integer(0);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return new Integer(0);
 	}
 
 }

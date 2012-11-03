@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import br.com.sistelecom.connection.SistelecomSingleConnection;
@@ -233,8 +234,37 @@ public class ClienteDAOImpl implements DAO<Cliente>{
 		}
 	}
 	
-	public List<ClienteRelatorio> getClientes(){
-		return null;
-	}
+	/**
+	 * <p>Retorna os clientes por um ramo de atividade econômica</p>
+	 * @param idRamo
+	 * @return List
+	 */
+	public List<Integer> buscarClientePorRamo(final int idRamo){
+		
+		Connection conn = SistelecomSingleConnection.getConnection();
+		
+		final StringBuilder sb = new StringBuilder();
+		sb.append("select idcliente from cliente as cl ");
+		sb.append("inner join ramo as r ");
+		sb.append("on cl.ramo = r.idramo ");
+		sb.append("where r.idramo  = ?; ");
 
+		final List<Integer> listaIdClientes = new LinkedList<Integer>();
+		
+		try {
+			
+			PreparedStatement ps = conn.prepareStatement(sb.toString());
+			ps.setInt(1, idRamo);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				listaIdClientes.add(new Integer(rs.getInt("idcliente")));
+			}
+			return listaIdClientes;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return listaIdClientes;
+	}
 }
