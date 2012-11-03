@@ -1,9 +1,12 @@
 package br.com.sistelecom.bean;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.html.HtmlCommandButton;
@@ -13,6 +16,10 @@ import javax.faces.model.SelectItem;
 
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
+import org.richfaces.util.CollectionsUtils;
+
+import com.sun.org.apache.commons.collections.CollectionUtils;
+import com.sun.org.apache.commons.collections.ListUtils;
 
 import br.com.sistelecom.dao.ClienteDAOImpl;
 import br.com.sistelecom.dao.DAO;
@@ -28,7 +35,6 @@ public class ClienteController implements Controller<Cliente>{
 	private List<ClienteTO> lista;
 	private List<SelectItem> listaCliente;
 	private DAO<Cliente> clienteDAO = new ClienteDAOImpl();
-	private List<ProdutoTO> produtosSugeridos; 
 		
 	public ClienteController() {
 		this.listarTodos();
@@ -36,8 +42,7 @@ public class ClienteController implements Controller<Cliente>{
 	}
 	
 	public void novoRegistro() {
-		this.sugerirProduto();
-		/*if (validarDadosFormulario()) {
+		if (validarDadosFormulario()) {
 			try {
 				this.getDao().salvar(this.getCliente());
 				this.listarTodos();
@@ -47,7 +52,7 @@ public class ClienteController implements Controller<Cliente>{
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na inclusão do cliente.",""));
 				return;
 			}
-		}*/
+		}
 	}
 	
 	public void sugerirProduto(){
@@ -64,11 +69,7 @@ public class ClienteController implements Controller<Cliente>{
 				
 				final Integer idVenda = venda.isExisteVenda(id);
 				
-				if(idVenda.equals(new Integer(0))){
-					
-					listaIdClientes.remove(id);
-					
-				}else{
+				if(!idVenda.equals(new Integer(0))){
 					
 					listaIdVenda.add(idVenda);
 					
@@ -93,7 +94,40 @@ public class ClienteController implements Controller<Cliente>{
 				}
 				
 			}
-			this.setProdutosSugeridos((List<ProdutoTO>)produtosDaVenda.values().toArray()[0]);
+			final Set<Entry<Integer, List<ProdutoTO>>> p = produtosDaVenda.entrySet();
+			
+			List<ProdutoTO> lst = new LinkedList<ProdutoTO>();
+			
+			for (Entry<Integer, List<ProdutoTO>> entry : p) {
+				lst.addAll(entry.getValue());
+			}
+			
+			Set<ProdutoTO> listaFinalProdutos = new HashSet<ProdutoTO>();
+			
+			for (ProdutoTO produtoTO : lst) {
+				listaFinalProdutos.add(produtoTO);
+			}
+			
+			if(!listaFinalProdutos.isEmpty() && listaFinalProdutos.size() > 3){
+				
+				FacesContext fc = FacesContext.getCurrentInstance();
+				fc.addMessage(null, new FacesMessage(null,"Produtos Sugeridos!"));
+				
+				int numeroDeProdutosExibidos = 0;
+				
+				for (ProdutoTO produtoTO : listaFinalProdutos) {
+					
+					if(numeroDeProdutosExibidos == 3){
+						break;
+					}
+					
+					fc.addMessage(null, new FacesMessage(produtoTO.getNomeProduto()));
+					
+					numeroDeProdutosExibidos++;
+					
+				}
+				
+			}
 		}
 	}
 	
@@ -264,20 +298,6 @@ public class ClienteController implements Controller<Cliente>{
 	 */
 	public void setListaCliente(List<SelectItem> listaCliente) {
 		this.listaCliente = listaCliente;
-	}
-
-	/**
-	 * @return the produtosSugeridos
-	 */
-	public List<ProdutoTO> getProdutosSugeridos() {
-		return produtosSugeridos;
-	}
-
-	/**
-	 * @param produtosSugeridos the produtosSugeridos to set
-	 */
-	public void setProdutosSugeridos(List<ProdutoTO> produtosSugeridos) {
-		this.produtosSugeridos = produtosSugeridos;
 	}
 
 }

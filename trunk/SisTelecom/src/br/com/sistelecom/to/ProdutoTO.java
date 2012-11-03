@@ -22,4 +22,9 @@ public class ProdutoTO {
 		this.nomeProduto = nomeProduto;
 	}
 	
+	@Override
+	public String toString() {
+		return this.nomeProduto == null ? "" : this.nomeProduto;
+	}
+	
 }
