@@ -136,7 +136,7 @@ public class VendaDAOImpl implements DAO<Venda>{
 			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
-				return rs.getInt("");
+				return rs.getInt("idreg_venda");
 			}else{
 				return new Integer(0);
 			}

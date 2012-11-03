@@ -1,6 +1,5 @@
 package br.com.sistelecom.bean;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,8 +13,6 @@ import javax.faces.model.SelectItem;
 
 import org.ajax4jsf.component.html.HtmlActionParameter;
 import org.ajax4jsf.component.html.HtmlAjaxCommandButton;
-
-import com.sun.org.apache.commons.collections.MapUtils;
 
 import br.com.sistelecom.dao.ClienteDAOImpl;
 import br.com.sistelecom.dao.DAO;
@@ -39,7 +36,8 @@ public class ClienteController implements Controller<Cliente>{
 	}
 	
 	public void novoRegistro() {
-		if (validarDadosFormulario()) {
+		this.sugerirProduto();
+		/*if (validarDadosFormulario()) {
 			try {
 				this.getDao().salvar(this.getCliente());
 				this.listarTodos();
@@ -49,7 +47,7 @@ public class ClienteController implements Controller<Cliente>{
 				FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro na inclusão do cliente.",""));
 				return;
 			}
-		}
+		}*/
 	}
 	
 	public void sugerirProduto(){
@@ -66,7 +64,7 @@ public class ClienteController implements Controller<Cliente>{
 				
 				final Integer idVenda = venda.isExisteVenda(id);
 				
-				if(!venda.isExisteVenda(id).equals(new Integer(0))){
+				if(idVenda.equals(new Integer(0))){
 					
 					listaIdClientes.remove(id);
 					
