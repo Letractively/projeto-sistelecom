@@ -40,7 +40,7 @@ public class LoginController implements Controller<Funcionario>{
 		if (this.getFuncionario().getLogin() == null || this.getFuncionario().getPassword().equals("")) {
 			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Informe login/senha para ter acesso.",""));
 			return false;
-		}
+		}	
 		return true;
 	}
 	
