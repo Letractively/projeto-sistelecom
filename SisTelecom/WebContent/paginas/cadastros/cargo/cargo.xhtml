@@ -45,7 +45,7 @@
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<h:outputLabel value="Nome:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
-					<h:inputText id="nome-cargo" value="#{cargoController.cargo.nomeCargo}" />
+					<h:inputText id="nome-cargo" style="width:200px" onkeypress="this.style.textTransform = 'uppercase';" value="#{cargoController.cargo.nomeCargo}" />
 	
 				</h:panelGrid>
 	
