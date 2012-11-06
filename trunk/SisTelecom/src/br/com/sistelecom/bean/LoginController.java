@@ -1,5 +1,7 @@
 package br.com.sistelecom.bean;
 
+import java.awt.event.ActionListener;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -44,7 +46,7 @@ public class LoginController implements Controller<Funcionario>{
 		return true;
 	}
 	
-	public void validacao(){
+	public void validacao(ActionListener actionListener){
 		
 		if(validarDadosFormulario()){
 			
@@ -88,6 +90,9 @@ public class LoginController implements Controller<Funcionario>{
 	}
 
 	public Login getUsuario() {
+		if(this.usuario == null){
+			this.usuario = new Login();
+		}
 		return usuario;
 	}
 
