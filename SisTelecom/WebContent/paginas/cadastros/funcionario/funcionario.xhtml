@@ -91,13 +91,22 @@
 		
 					</f:facet>
 		
-					<h:panelGrid columns="6">
+					<h:panelGrid columns="4">
 						
-						<h:outputLabel value="Id:" />
+						<h:outputLabel value="Id:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 						
 						<h:inputText id="id-funcionario" value="#{funcionarioController.funcionario.idFuncionario}" style="width:50px;" />
-				
-						<h:outputLabel value="CPF:" />
+						<rich:spacer width="20px"/>
+						<h:outputText value="*Obs.: O Id será gerado de forma automática no caso de novos cadastros." style="FONT-WEIGHT: bold; FONT-SIZE: x-small; COLOR: #c0c0c0; FONT-FAMILY: 'SansSerif';"/>
+						
+					</h:panelGrid>
+					
+					<rich:spacer height="15px"/>
+					<rich:separator width="100%"/>
+					<rich:spacer height="15px"/>
+					
+					<h:panelGrid columns="6">
+						<h:outputLabel value="CPF:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 						
 						<h:inputText id="cpf-funcionario" value="#{funcionarioController.funcionario.cpf}" >
 				
@@ -105,11 +114,11 @@
 							
 						</h:inputText>
 	
-						<h:outputLabel value="Nome Completo:" />
+						<h:outputLabel value="Nome Completo:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 						
 						<h:inputText id="nome-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.nome}" />
 				
-						<h:outputLabel value="Data de nascimento:" />
+						<h:outputLabel value="Data de nascimento:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 		        		
 		        		<rich:calendar value="#{funcionarioController.funcionario.nasc}" datePattern="dd/MM/yyyy">
 	      	   		 	 
@@ -117,7 +126,7 @@
 	      	   		 	 
 	      	   		 	  </rich:calendar>
 				
-						<h:outputLabel value="Departamento:" />
+						<h:outputLabel value="Departamento:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 					
 						<h:selectOneMenu id="departamento-funcionario" value="#{funcionarioController.funcionario.departamento}">
             		
@@ -127,11 +136,11 @@
                		
                			</h:selectOneMenu>
                	
-               	        <h:outputLabel value="Número de documento:" />
+               	        <h:outputLabel value="Número de documento:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 						<h:inputText id="doc-funcionario" value="#{funcionarioController.funcionario.doc}" />
 				
-						<h:outputLabel value="Tipo de documento: " />
+						<h:outputLabel value="Tipo de documento: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 						<h:selectOneMenu id="tipo-doc-funcionario" value="#{funcionarioController.funcionario.tipoDoc}">
            		
@@ -147,7 +156,7 @@
 		        
 		        		</h:selectOneMenu>
 				
-						<h:outputLabel value="Data de admissão: " />
+						<h:outputLabel value="Data de admissão: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 		   		
 		   			    <rich:calendar value="#{funcionarioController.funcionario.admissao}" datePattern="dd/MM/yyyy">
 	      	   	
@@ -155,7 +164,7 @@
 	      	   	
 	      	   		 	</rich:calendar>
 	           	 
-	        		    <h:outputLabel value="Status: " />
+	        		    <h:outputLabel value="Status: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 						<h:selectOneMenu id="status-funcionario" value="#{funcionarioController.funcionario.status}">
            		
@@ -173,7 +182,7 @@
  		       	
  		       			</h:selectOneMenu>
         		
-        				<h:outputLabel value="Cargo: " />
+        				<h:outputLabel value="Cargo: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 						<h:selectOneMenu id="cargo-funcionario" value="#{funcionarioController.funcionario.cargo}" >
        		    
@@ -183,7 +192,7 @@
        	   		
        	   		     	</h:selectOneMenu>
 				
-						<h:outputLabel value="Cargo Supervisor: " />
+						<h:outputLabel value="Cargo Supervisor: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 						<h:selectOneMenu id="cargo-supervisor-funcionario" value="#{funcionarioController.funcionario.supervFuncao}" >
        		 	
@@ -193,7 +202,7 @@
             	
             	 	  	</h:selectOneMenu>
 				
-						<h:outputLabel value="Nome do Supervisor:" />
+						<h:outputLabel value="Nome do Supervisor:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 						<h:inputText id="nome-supervisor-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.supervNome}" />
         		
@@ -213,23 +222,23 @@
 				
 				<h:panelGrid columns="6">
 				
-				<h:outputLabel value="Logradouro:" />
+				<h:outputLabel value="Logradouro:" style="FONT-FAMILY: 'SansSerif'; FONT-SIZE: medium;"/>
 
 				<h:inputText id="logradouro-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.logradouro}" />
 				
-				<h:outputLabel value="Número:" />
+				<h:outputLabel value="Número:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 
 				<h:inputText id="numero-funcionario" value="#{funcionarioController.funcionario.numero}" />
 				
-				<h:outputLabel value="Complemento: " />
+				<h:outputLabel value="Complemento: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 
 				<h:inputText id="complemento-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.complemento}" />
 				
-				<h:outputLabel value="Bairro: " />
+				<h:outputLabel value="Bairro: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 
 				<h:inputText id="bairro-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.bairro}" />
 				
-				<h:outputLabel value="UF:" />
+				<h:outputLabel value="UF:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 				<a4j:region>
 					
@@ -245,7 +254,7 @@
 					
 				</a4j:region>
 							
-				<h:outputLabel value="Cidade:" />
+				<h:outputLabel value="Cidade:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 							
 					<h:selectOneMenu id="cidade-funcionario" value="#{funcionarioController.funcionario.cidade}">
 								
@@ -255,7 +264,7 @@
 								
 				</h:selectOneMenu>
                	
-               	<h:outputLabel value="CEP:" />
+               	<h:outputLabel value="CEP:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 			
 				<h:inputText id="cep-funcionario" value="#{funcionarioController.funcionario.cep}" >
 					
@@ -263,7 +272,7 @@
 					
 				</h:inputText>
 	            
-	            <h:outputLabel value="Telefone:" />
+	            <h:outputLabel value="Telefone:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 				<h:inputText id="tel1-funcionario" value="#{funcionarioController.funcionario.tel1}" >
 					
@@ -271,7 +280,7 @@
 					
 				</h:inputText>
 					
-				<h:outputLabel value="Celular:" />
+				<h:outputLabel value="Celular:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 				<h:inputText id="tel2-funcionario" value="#{funcionarioController.funcionario.tel2}" >
 					
@@ -279,7 +288,7 @@
 					
 				</h:inputText>
 					
-				<h:outputLabel value="E-mail:" />
+				<h:outputLabel value="E-mail:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 				<h:inputText id="email-funcionario" onkeypress="this.style.textTransform = 'lowercase';" value="#{funcionarioController.funcionario.email}" />
         		
@@ -295,10 +304,10 @@
         			</f:facet>
         			<h:panelGrid columns="2">
         			
-        			<h:outputLabel value="Login SisTelecom:" />
+        			<h:outputLabel value="Login SisTelecom:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				<h:inputText id="login-funcionario" value="#{funcionarioController.funcionario.login}" title="Digite seu login em caixa baixa"/>
 				
-				<h:outputLabel value="Senha SisTelecom:" />
+				<h:outputLabel value="Senha SisTelecom:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				<h:inputSecret id="password-funcionario" value="#{funcionarioController.funcionario.password}" redisplay="true"/>
 				</h:panelGrid>
 				</rich:panel>
