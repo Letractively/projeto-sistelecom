@@ -76,7 +76,7 @@
 			<rich:panel style="800px;">
 
 			<f:facet name="header">
-				<h:outputLabel value="Colaboradores" />
+				<h:outputLabel value="Colaboradores" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 			</f:facet>
 
 			<h:form id="formulario-dados" prependId="false">
@@ -87,7 +87,7 @@
 					
 					<f:facet name="header">
 		
-						<h:outputLabel value="Dados pessoais" />
+						<h:outputLabel value="Dados pessoais" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 		
 					</f:facet>
 		
@@ -105,26 +105,33 @@
 					<rich:separator width="100%"/>
 					<rich:spacer height="15px"/>
 					
-					<h:panelGrid columns="6">
+					<h:panelGrid columns="16">
+					
 						<h:outputLabel value="CPF:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 						
-						<h:inputText id="cpf-funcionario" value="#{funcionarioController.funcionario.cpf}" >
+						<h:inputText id="cpf-funcionario" value="#{funcionarioController.funcionario.cpf}" style="width:80px;">
 				
 							<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-funcionario" timing="onload"/>
 							
 						</h:inputText>
-	
-						<h:outputLabel value="Nome Completo:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 						
-						<h:inputText id="nome-funcionario" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.nome}" />
-				
+						<rich:spacer width="10px"/>
+	
+						<h:outputLabel value="Nome:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+						
+						<h:inputText id="nome-funcionario" style="width:270px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{funcionarioController.funcionario.nome}" />
+						
+						<rich:spacer width="10px"/>
+						
 						<h:outputLabel value="Data de nascimento:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 		        		
-		        		<rich:calendar value="#{funcionarioController.funcionario.nasc}" datePattern="dd/MM/yyyy">
+		        		<rich:calendar style="width:40px;" value="#{funcionarioController.funcionario.nasc}" datePattern="dd/MM/yyyy">
 	      	   		 	 
 	      	   		 	  <f:convertDateTime id="padraoDataNascimento" pattern="dd/MM/yyyy"/>
 	      	   		 	 
-	      	   		 	  </rich:calendar>
+	      	   		 	</rich:calendar>
+	      	   		 	
+	      	   		 	<rich:spacer width="10px"/>
 				
 						<h:outputLabel value="Departamento:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 					
@@ -135,6 +142,22 @@
             		       	<f:selectItems value="#{departamentoController.listaDepartamento}" />
                		
                			</h:selectOneMenu>
+               			
+               			<rich:spacer width="10px"/>
+               			
+               			<h:outputLabel value="Cargo: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+				
+						<h:selectOneMenu id="cargo-funcionario" value="#{funcionarioController.funcionario.cargo}" >
+       		    
+       		            	<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
+       		    
+       		            	<f:selectItems value="#{cargoController.listaCargo}" />
+       	   		
+       	   		     	</h:selectOneMenu>
+               			
+               			</h:panelGrid>
+               			
+               			<h:panelGrid columns="6">
                	
                	        <h:outputLabel value="Número de documento:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
@@ -181,16 +204,6 @@
          					<f:selectItem itemLabel="Outro" itemValue="Outro"/>
  		       	
  		       			</h:selectOneMenu>
-        		
-        				<h:outputLabel value="Cargo: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
-				
-						<h:selectOneMenu id="cargo-funcionario" value="#{funcionarioController.funcionario.cargo}" >
-       		    
-       		            	<f:selectItem itemValue="#{0}" itemLabel="Selecione..." />
-       		    
-       		            	<f:selectItems value="#{cargoController.listaCargo}" />
-       	   		
-       	   		     	</h:selectOneMenu>
 				
 						<h:outputLabel value="Cargo Supervisor: " style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
