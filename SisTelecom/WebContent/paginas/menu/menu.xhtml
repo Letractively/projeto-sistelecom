@@ -9,7 +9,7 @@
 	<ui:composition>
 		
 		<a4j:form id="formulario_menu" prependId="false">
-			<rich:toolBar>
+			<rich:toolBar style="width:100%;">
 				<rich:dropDownMenu>
 					<f:facet name="label">
 							<h:outputText value="Menu" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
@@ -80,12 +80,13 @@
 						</h:outputLink>
 					</rich:menuItem>
 					
+							
+					
 				</rich:dropDownMenu>
+				
+				<h:commandLink value="Sair" onclick="window.location='/SisTelecom'"/>
+				
 			</rich:toolBar>
-			
-			<div>
-				<h:commandLink value="Sair" onclick="window.location='/SisTelecom'" />
-			</div>
 			
 		</a4j:form>
 		
