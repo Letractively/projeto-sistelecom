@@ -14,6 +14,9 @@ import br.com.sistelecom.to.ClienteTO;
 
 public class ClienteDAOImpl implements DAO<Cliente>{
 
+/**
+ * Metódo que salva cliente
+ */
 	public void salvar(Cliente cliente) throws Exception {
 		try{
 			Connection conn = SistelecomSingleConnection.getConnection();
