@@ -12,71 +12,71 @@
 			<rich:toolBar>
 				<rich:dropDownMenu>
 					<f:facet name="label">
-							<h:outputText value="Menu"/>
+							<h:outputText value="Menu" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 					</f:facet>
 					
-					<rich:menuGroup value="Gestão de usuários" icon="/imagens/gestao_usuario.png">
-						<rich:menuItem submitMode="ajax" value="Alteração dos meus dados" />
-						<rich:menuItem submitMode="ajax" value="Gestão de funcionários" onclick="window.location='/SisTelecom/paginas/cadastros/funcionario/funcionario.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Gestão de departamentos" onclick="window.location='/SisTelecom/paginas/cadastros/departamento/departamento.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Gestão de funções" onclick="window.location='/SisTelecom/paginas/cadastros/cargo/cargo.jsf'"/>
+					<rich:menuGroup value="Gestão de usuários" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" icon="/imagens/gestao_usuario.png">
+						<rich:menuItem submitMode="ajax" value="Alteração dos meus dados" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
+						<rich:menuItem submitMode="ajax" value="Gestão de funcionários" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/cadastros/funcionario/funcionario.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Gestão de departamentos" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/cadastros/departamento/departamento.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Gestão de funções" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/cadastros/cargo/cargo.jsf'"/>
 					</rich:menuGroup>
 					
-					<rich:menuGroup value="Gestão de carteira" icon="">
-						<rich:menuItem submitMode="ajax" value="Cliente" onclick="window.location='/SisTelecom/paginas/cadastros/cliente/cliente.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Atividades econômicas" onclick="window.location='/SisTelecom/paginas/cadastros/ramo/ramo.jsf'"/>
+					<rich:menuGroup value="Gestão de carteira" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" icon="">
+						<rich:menuItem submitMode="ajax" value="Cliente" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/cadastros/cliente/cliente.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Atividades econômicas" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/cadastros/ramo/ramo.jsf'"/>
 					</rich:menuGroup>
 					
-					<rich:menuGroup value="Gestão de produtos">
-						<rich:menuItem submitMode="ajax" value="Inclusão" onclick="window.location='/SisTelecom/paginas/cadastros/produto/produto.jsf'"/>
+					<rich:menuGroup value="Gestão de produtos" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';">
+						<rich:menuItem submitMode="ajax" value="Inclusão" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/cadastros/produto/produto.jsf'"/>
 					</rich:menuGroup>
 					
-					<rich:menuGroup value="Relatórios" icon="/imagens/relatorio.png">
-						<rich:menuItem submitMode="ajax" value="Usuários" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-funcionario.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Clientes" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-cliente.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Atividades econômicas" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-ramo.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Produtos" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-produto.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Departamentos" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-departamento.jsf'"/>
-						<rich:menuItem submitMode="ajax" value="Funções" target="_blank" onclick="window.location='/SisTelecom/paginas/relatorios/rel-cargo.jsf'"/>
+					<rich:menuGroup value="Relatórios" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" icon="/imagens/relatorio.png">
+						<rich:menuItem submitMode="ajax" value="Usuários" target="_blank" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/relatorios/rel-funcionario.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Clientes" target="_blank" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/relatorios/rel-cliente.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Atividades econômicas" target="_blank" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/relatorios/rel-ramo.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Produtos" target="_blank" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/relatorios/rel-produto.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Departamentos" target="_blank" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/relatorios/rel-departamento.jsf'"/>
+						<rich:menuItem submitMode="ajax" value="Funções" target="_blank" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/relatorios/rel-cargo.jsf'"/>
 					</rich:menuGroup>		
 					
-					<rich:menuItem submitMode="ajax" value="Input de pedido" onclick="window.location='/SisTelecom/paginas/operacoes/registroVenda.jsf'"></rich:menuItem>
+					<rich:menuItem submitMode="ajax" value="Input de pedido" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';" onclick="window.location='/SisTelecom/paginas/operacoes/registroVenda.jsf'"></rich:menuItem>
 	
 				</rich:dropDownMenu>
 	
 				<rich:dropDownMenu>
 	
 					<f:facet name="label">
-							<h:outputText value="Links" />
+							<h:outputText value="Links" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 					</f:facet>
 					
 					<rich:menuItem submitMode="none" onclick="http://www.telemarnetwork.com.br/">
 						<h:outputLink value="http://www.telemarnetwork.com.br/" target="_blank">
-							<h:outputText value="Telemarnetwork"/>
+							<h:outputText value="Telemarnetwork" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 						</h:outputLink>
 					</rich:menuItem>
 					
 					<rich:menuItem submitMode="none" onclick="http://sa3.oi.net.br/sa3/index.aspx">
 						<h:outputLink value="http://sa3.oi.net.br/sa3/index.aspx" target="_blank">
-							<h:outputText value="Oi SA3"/>
+							<h:outputText value="Oi SA3" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 						</h:outputLink>
 					</rich:menuItem>
 					
 					<rich:menuItem submitMode="none" onclick="http://www.oivendasb2b.com.br/">
 						<h:outputLink value="http://www.oivendasb2b.com.br/" target="_blank">
-							<h:outputText value="Oi Vendas B2B"/>
+							<h:outputText value="Oi Vendas B2B" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 						</h:outputLink>
 					</rich:menuItem>
 					
 					<rich:menuItem submitMode="none" onclick="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Solicitacao.asp">
 						<h:outputLink value="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Solicitacao.asp" target="_blank">
-							<h:outputText value="Receita Federal - Consulta CNPJ"/>
+							<h:outputText value="Receita Federal - Consulta CNPJ" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 						</h:outputLink>
 					</rich:menuItem>
 					
 					<rich:menuItem submitMode="none" onclick="http://www.sintegra.gov.br/">
 						<h:outputLink value="http://www.sintegra.gov.br/" target="_blank">
-							<h:outputText value="Sintegra - Consulta inscrição estadual"/>
+							<h:outputText value="Sintegra - Consulta inscrição estadual" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 						</h:outputLink>
 					</rich:menuItem>
 					
