@@ -6,10 +6,17 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 	
+	<ui:composition>
 	
-	
-	<ui:composition template="/templates/template-menu.xhtml">
-		<ui:define name="body">
+		<head>
+			<style type="text/css">
+					body{
+						background-image: url('/SisTelecom/imagens/SisTelecom1.jpg');
+						background-position: center;
+					}
+			</style>
+		</head>
+		<body>
 			<h:form id="formu-login" prependId="false">
 				<br />
 				<br />
@@ -22,32 +29,49 @@
 				<br />
 				<div id="div-login" align="center">
 					
-					<rich:panel style="width:270px">
+					<rich:panel style="width:210px;opacity:0.8;">
 						<f:facet name="header">
 							<h:outputText value="Acesso ao SisTelecom" style="FONT-FAMILY: 'SansSerif'; FONT-SIZE: medium;"/>
 						</f:facet>
 						
 							<h:panelGrid columns="1" style="width:100%">
 							
-								<h:outputLabel id="lab-nome" value="Usuário:" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
-								<h:inputText id="txt-nome" style="width:100%;" value="#{loginController.usuario.usuario}"/>
+								<h:outputLabel value="Usuário:" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
+								<h:inputText style="width:100%;" value="#{loginController.usuario.usuario}"/>
 					
-								<h:outputLabel id="lab-senha" value="Senha:" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
-								<h:inputSecret id="txt-senha" style="FONT-WEIGHT: bold; width:100%;" value="#{loginController.usuario.password}"/>
+								<h:outputLabel value="Senha:" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
+								<h:inputSecret style="FONT-WEIGHT: bold; width:100%;" value="#{loginController.usuario.password}"/>
 							
 								<h:panelGroup>
-									<a4j:commandButton value="Enviar" actionListener="#{loginController.validacao}" oncomplete="Richfaces.showModalPanel('modal');"
-									process="inf-nome,inf-senha" reRender="inf-nome,inf-senha" style="FONT-FAMILY: 'SansSerif'; FONT-SIZE: medium;"/>
-								
-									<a4j:commandButton value="Limpar" type="reset" process="inf-nome,inf-senha" reRender="inf-nome,inf-senha" style="FONT-FAMILY: 'SansSerif'; FONT-SIZE: medium;"/>
+									<center>
+										<h:commandButton value="Enviar" actionListener="#{loginController.validacao}" />
+										<rich:spacer width="5px"/>	
+										<h:commandButton value="Limpar" type="reset" onclick="jQuery('form').submit();"/>
+									</center>
 								</h:panelGroup>
 								
 							</h:panelGrid>
 					</rich:panel>
+					
+							<rich:messages>
+				
+					 <f:facet name="errorMarker">
+           				<h:graphicImage url="/imagens/error.png"/>
+    				 </f:facet>
+
+     				<f:facet name="infoMarker">
+			            <h:graphicImage url="/imagens/ok.png"/>
+				    </f:facet>
+			    
+				    <f:facet name="warnMarker">
+           				<h:graphicImage url="/imagens/alerta.png"/>
+    				</f:facet>
+					
+				</rich:messages>
 									
 				</div>
 				
 			</h:form>
-		</ui:define>
+		</body>
 	</ui:composition>
 </html>

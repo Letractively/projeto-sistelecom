@@ -11,90 +11,89 @@ import java.util.List;
 import br.com.sistelecom.connection.SistelecomSingleConnection;
 import br.com.sistelecom.entidade.relatorio.FuncionarioRelatorio;
 import br.com.sistelecom.entity.Funcionario;
-import br.com.sistelecom.entity.Login;
 import br.com.sistelecom.to.FuncionarioTO;
 
 public class FuncionarioDAOImpl implements DAO<Funcionario>{
-	
+
 	public void salvar(Funcionario funcionario) throws Exception {
 		try{
 			Connection conn = SistelecomSingleConnection.getConnection();
-			
+
 			String SQL = "INSERT INTO funcionario (cpf, departamento, nome, logradouro, numero, complemento, bairro, cidade, uf, cep, nasc, tel_1, tel_2, email, doc, tipo_doc, cargo, superv_funcao,"
-                    + " superv_nome, admissao, status, login, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			
+					+ " superv_nome, admissao, status, login, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setString(1, funcionario.getCpf());
-            ps.setInt(2, funcionario.getDepartamento());
-            ps.setString(3, funcionario.getNome());
-            ps.setString(4, funcionario.getLogradouro());
-            ps.setInt(5, funcionario.getNumero());
-            ps.setString(6, funcionario.getComplemento());
-            ps.setString(7, funcionario.getBairro());
-            ps.setInt(8, funcionario.getCidade());
-            ps.setInt(9, funcionario.getUf());
-            ps.setLong(10, funcionario.getCep());
-            ps.setDate(11, new java.sql.Date(funcionario.getNasc().getTime()));
-            ps.setLong(12, funcionario.getTel1());
-            ps.setLong(13, funcionario.getTel2());
-            ps.setString(14, funcionario.getEmail());
-            ps.setLong(15, funcionario.getDoc());
-            ps.setString(16, funcionario.getTipoDoc());
-            ps.setInt(17, funcionario.getCargo());
-            ps.setInt(18, funcionario.getSupervFuncao());
-            ps.setString(19, funcionario.getSupervNome());
-            ps.setDate(20, new java.sql.Date(funcionario.getAdmissao().getTime()));
-            ps.setString(21, funcionario.getStatus());
-            ps.setString(22, funcionario.getLogin());
-            ps.setString(23, funcionario.getPassword());
+			ps.setInt(2, funcionario.getDepartamento());
+			ps.setString(3, funcionario.getNome());
+			ps.setString(4, funcionario.getLogradouro());
+			ps.setInt(5, funcionario.getNumero());
+			ps.setString(6, funcionario.getComplemento());
+			ps.setString(7, funcionario.getBairro());
+			ps.setInt(8, funcionario.getCidade());
+			ps.setInt(9, funcionario.getUf());
+			ps.setLong(10, funcionario.getCep());
+			ps.setDate(11, new java.sql.Date(funcionario.getNasc().getTime()));
+			ps.setLong(12, funcionario.getTel1());
+			ps.setLong(13, funcionario.getTel2());
+			ps.setString(14, funcionario.getEmail());
+			ps.setLong(15, funcionario.getDoc());
+			ps.setString(16, funcionario.getTipoDoc());
+			ps.setInt(17, funcionario.getCargo());
+			ps.setInt(18, funcionario.getSupervFuncao());
+			ps.setString(19, funcionario.getSupervNome());
+			ps.setDate(20, new java.sql.Date(funcionario.getAdmissao().getTime()));
+			ps.setString(21, funcionario.getStatus());
+			ps.setString(22, funcionario.getLogin());
+			ps.setString(23, funcionario.getPassword());
 			ps.executeUpdate();
-			
+
 		} catch (Exception e) {
 			throw new Exception();
 		} 
 	}
-	
+
 	public void atualizar(Funcionario funcionario) throws Exception{
 		try{
 			Connection conn = SistelecomSingleConnection.getConnection();
-			
+
 			String SQL = "UPDATE funcionario SET cpf=?, departamento=?, nome=?, logradouro=?, numero=?, complemento=?, " +
-                    "bairro=?, cidade=?, uf=?, cep=?, nasc=?, tel_1=?, tel_2=?, email=?, doc=?, tipo_doc=?, cargo=?, superv_funcao=?, superv_nome=?, " +
-                    "admissao=?, status=?, login=?, password=? " +
-                    "where idfuncionario = ?;";
-			
+					"bairro=?, cidade=?, uf=?, cep=?, nasc=?, tel_1=?, tel_2=?, email=?, doc=?, tipo_doc=?, cargo=?, superv_funcao=?, superv_nome=?, " +
+					"admissao=?, status=?, login=?, password=? " +
+					"where idfuncionario = ?;";
+
 			PreparedStatement ps = conn.prepareStatement(SQL);
-			 ps.setString(1, funcionario.getCpf());
-	            ps.setInt(2, funcionario.getDepartamento());
-	            ps.setString(3, funcionario.getNome());
-	            ps.setString(4, funcionario.getLogradouro());
-	            ps.setInt(5, funcionario.getNumero());
-	            ps.setString(6, funcionario.getComplemento());
-	            ps.setString(7, funcionario.getBairro());
-	            ps.setInt(8, funcionario.getCidade());
-	            ps.setInt(9, funcionario.getUf());
-	            ps.setLong(10, funcionario.getCep());
-	            ps.setDate(11, new java.sql.Date(funcionario.getNasc().getTime()));
-	            ps.setLong(12, funcionario.getTel1());
-	            ps.setLong(13, funcionario.getTel2());
-	            ps.setString(14, funcionario.getEmail());
-	            ps.setLong(15, funcionario.getDoc());
-	            ps.setString(16, funcionario.getTipoDoc());
-	            ps.setInt(17, funcionario.getCargo());
-	            ps.setInt(18, funcionario.getSupervFuncao());
-	            ps.setString(19, funcionario.getSupervNome());
-	            ps.setDate(20, new java.sql.Date(funcionario.getAdmissao().getTime()));
-	            ps.setString(21, funcionario.getStatus());
-	            ps.setString(22, funcionario.getLogin());
-	            ps.setString(23, funcionario.getPassword());
-	            ps.setInt(24, funcionario.getIdFuncionario());
+			ps.setString(1, funcionario.getCpf());
+			ps.setInt(2, funcionario.getDepartamento());
+			ps.setString(3, funcionario.getNome());
+			ps.setString(4, funcionario.getLogradouro());
+			ps.setInt(5, funcionario.getNumero());
+			ps.setString(6, funcionario.getComplemento());
+			ps.setString(7, funcionario.getBairro());
+			ps.setInt(8, funcionario.getCidade());
+			ps.setInt(9, funcionario.getUf());
+			ps.setLong(10, funcionario.getCep());
+			ps.setDate(11, new java.sql.Date(funcionario.getNasc().getTime()));
+			ps.setLong(12, funcionario.getTel1());
+			ps.setLong(13, funcionario.getTel2());
+			ps.setString(14, funcionario.getEmail());
+			ps.setLong(15, funcionario.getDoc());
+			ps.setString(16, funcionario.getTipoDoc());
+			ps.setInt(17, funcionario.getCargo());
+			ps.setInt(18, funcionario.getSupervFuncao());
+			ps.setString(19, funcionario.getSupervNome());
+			ps.setDate(20, new java.sql.Date(funcionario.getAdmissao().getTime()));
+			ps.setString(21, funcionario.getStatus());
+			ps.setString(22, funcionario.getLogin());
+			ps.setString(23, funcionario.getPassword());
+			ps.setInt(24, funcionario.getIdFuncionario());
 			ps.executeUpdate();
-			
+
 		} catch (Exception e) {
 			throw new Exception();
 		}
 	}
-	
+
 	public List<Funcionario> listarTodos(){
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
@@ -115,7 +114,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 	}
 
 	public List<FuncionarioTO> todosFuncionariosParaExibirEmTabela() {
-		
+
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
@@ -129,7 +128,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 				String cpf = rs.getString(2);
 				int departamento = rs.getInt(3);
 				String nomeFuncionario = rs.getString(4);
-		
+
 
 				list.add(new FuncionarioTO(Boolean.FALSE, idFuncionario, cpf, departamento, null, nomeFuncionario));
 			}
@@ -139,7 +138,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		}
 		return null;
 	}
-	
+
 	public Funcionario obterPorId(int id){
 
 		PreparedStatement ps = null;
@@ -153,7 +152,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 			if (!rs.next()) {
 				throw new Exception("Não foi encontrado o funcionario com esse id: " + id);
 			}
-			
+
 			Funcionario funcionario = new Funcionario();
 			funcionario.setIdFuncionario(id);
 			funcionario.setCpf(rs.getString(2));
@@ -179,36 +178,36 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 			funcionario.setStatus(rs.getString(22));
 			funcionario.setLogin(rs.getString(23));
 			funcionario.setPassword(rs.getString(24));
-			
+
 			return funcionario;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		return null;
 	}
-	
+
 	public void excluir(Funcionario funcionario) throws Exception {
 		try{
 			Connection conn = SistelecomSingleConnection.getConnection();
-			
+
 			String SQL = "delete from funcionario where idfuncionario = ?";
-			
+
 			PreparedStatement ps = conn.prepareStatement(SQL);
 			ps.setInt(1, funcionario.getIdFuncionario());
 			ps.executeUpdate();
-			
+
 		} catch (Exception e) {
 			throw new Exception();
 		}
 	}
-	
+
 	public List<Funcionario> buscarFuncionarioComCargoConsultorComercial(final int idCargo){
-		
+
 		String sql = "select f.idfuncionario, f.nome from funcionario as f ";
 		sql += "inner join cargo as c ";
 		sql += "on f.cargo = c.idcargo ";
 		sql += "where c.idcargo = ?";
-		
+
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
@@ -216,28 +215,28 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, idCargo);
-			
+
 			rs = ps.executeQuery();
-			
+
 			List<Funcionario> lista = new LinkedList<Funcionario>();
-			
+
 			while (rs.next()) {
 				Funcionario funcionario = new Funcionario();
 				funcionario.setIdFuncionario(rs.getInt("idfuncionario"));
 				funcionario.setNome(rs.getString("nome"));
-				
+
 				lista.add(funcionario);
 			}
-			
+
 			return lista;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		return null;
 	}
-	
+
 	public List<FuncionarioRelatorio> listarParaRelatorio(){
-		
+
 		PreparedStatement ps = null;
 		Connection conn = SistelecomSingleConnection.getConnection();
 		ResultSet rs = null;
@@ -247,7 +246,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 			rs = ps.executeQuery();
 			List<FuncionarioRelatorio> listRelatorio = new ArrayList<FuncionarioRelatorio>();
 			while(rs.next()) {
-				
+
 				int idFuncionario = rs.getInt(1);
 				String nome = rs.getString(4);
 				long tel1 = rs.getLong(13);
@@ -255,7 +254,7 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 				Date admissao = rs.getDate(21);
 				String status = rs.getString(22);
 				String login = rs.getString(23);
-				
+
 				listRelatorio.add(new FuncionarioRelatorio(idFuncionario, nome, tel1, email, admissao, status, login));
 			}
 			return listRelatorio;
@@ -264,35 +263,25 @@ public class FuncionarioDAOImpl implements DAO<Funcionario>{
 		}
 		return null;
 	}
-	
-	public String validarLogin () throws Exception{
-		
-		PreparedStatement ps = null;
+
+	public Boolean validarLogin(final String nome, final String senha){
+
 		Connection conn = SistelecomSingleConnection.getConnection();
-		ResultSet rs = null;
-		
-		Login usuario = new Login();
 
 		try {
-			ps = conn.prepareStatement("select * from funcionario where `login` = ?");
-			ps.setString(1, usuario.getUsuario());
-			rs = ps.executeQuery();
-			if (!rs.next()) {
-				throw new Exception("Login digitado incorretamente: " + usuario.getUsuario());
+			PreparedStatement ps = conn.prepareStatement("select login, password from funcionario where login = ? and password = ?;");
+			ps.setString(1, nome);
+			ps.setString(2, senha);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return Boolean.TRUE;
+			}else{
+				return Boolean.FALSE;
 			}
-			
-			String senha = usuario.getPassword();
-			
-			String loginBD = rs.getString(23);
-			String passwordBD = rs.getString(24);
-			
-			if(usuario.getUsuario() == loginBD && senha == passwordBD){
-				String nome = rs.getString(4);
-				return nome;
-			}
-		}catch(Exception e){	
-			e.printStackTrace();
-		}
-		return null;
+		}catch(Exception e){}
+
+		return Boolean.FALSE;
 	}
 }

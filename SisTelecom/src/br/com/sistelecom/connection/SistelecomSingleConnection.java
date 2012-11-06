@@ -14,7 +14,7 @@ public final class SistelecomSingleConnection {
 	private static Connection connection;
 	private static final String URL = "jdbc:mysql://localhost/sistelecom";
 	private static final String USERNAME = "root";
-	private static final String PASSWORD = "danilo";
+	private static final String PASSWORD = "";
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	
 	static{
