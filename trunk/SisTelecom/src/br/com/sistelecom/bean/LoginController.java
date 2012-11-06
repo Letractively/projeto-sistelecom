@@ -1,22 +1,21 @@
 package br.com.sistelecom.bean;
 
-import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import br.com.sistelecom.dao.DAO;
 import br.com.sistelecom.dao.FuncionarioDAOImpl;
 import br.com.sistelecom.entity.Funcionario;
 import br.com.sistelecom.entity.Login;
 
 public class LoginController implements Controller<Funcionario>{
-	
+
 	private Funcionario funcionario = new Funcionario();
-	private DAO<Funcionario> funcionarioDAO = new FuncionarioDAOImpl();
 	private Login usuario = new Login();	
-	
+	private static final String URL_HOME = "/SisTelecom/paginas/home/home.jsf";
+
 	public LoginController(){
 	}
 
@@ -45,33 +44,29 @@ public class LoginController implements Controller<Funcionario>{
 		}	
 		return true;
 	}
-	
-	public void validacao(ActionListener actionListener){
-		
-		if(validarDadosFormulario()){
-			
-			try{
-				if(((FuncionarioDAOImpl) funcionarioDAO).validarLogin() != null){
-					this.getDao().validarLogin();
-					FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_INFO,"Bem vindo ao SisTelecom" ,""));
-				}
-				else{
-					FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"Seu usuário e/ou senha estão incorretos. Tente novamente.",""));
-				}
-			} catch(Exception e){
+
+	public void validacao(ActionEvent evento){
+		final String nome = this.getUsuario().getUsuario();
+		final String senha = this.getUsuario().getPassword();
+
+		if(this.getDao().validarLogin(nome, senha)){
+			try {
+				FacesContext.getCurrentInstance().getExternalContext().redirect(URL_HOME);
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Dados inválidos!", ""));
 		}
-		
 	}
-
+	
 	public void limpar() {
 	}
 
 	public FuncionarioDAOImpl getDao() {
 		return new FuncionarioDAOImpl();
 	}
-	
+
 	/**
 	 * @return the funcionario
 	 */
