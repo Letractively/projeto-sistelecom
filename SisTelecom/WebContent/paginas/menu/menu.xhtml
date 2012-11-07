@@ -9,6 +9,7 @@
 	<ui:composition>
 		
 		<a4j:form id="formulario_menu" prependId="false">
+		
 			<rich:toolBar style="width:100%;">
 				<rich:dropDownMenu>
 					<f:facet name="label">
@@ -78,13 +79,11 @@
 						<h:outputLink value="http://www.sintegra.gov.br/" target="_blank">
 							<h:outputText value="Sintegra - Consulta inscrição estadual" style="FONT-SIZE: small; FONT-FAMILY: 'SansSerif';"/>
 						</h:outputLink>
-					</rich:menuItem>
-					
-							
+					</rich:menuItem>	
 					
 				</rich:dropDownMenu>
 				
-				<h:commandLink value="Sair" onclick="window.location='/SisTelecom'"/>
+            		<h:commandLink value="Sair" onclick="window.location='/SisTelecom'" style="COLOR: #000000; FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 				
 			</rich:toolBar>
 			

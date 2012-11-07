@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="produto" language="groovy" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2ce26eb9-e0b0-4795-bc6d-005817e1d843">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="6"/>
+	<property name="ireport.y" value="51"/>
 	<queryString>
 		<![CDATA[SELECT
      produto.`idproduto` AS produto_idproduto,
@@ -21,8 +21,8 @@ FROM
 	<background>
 		<band height="555" splitType="Stretch">
 			<image>
-				<reportElement uuid="8426969c-8d95-4f9a-b459-7a44673b6224" x="0" y="0" width="802" height="555"/>
-				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom1.jpg"]]></imageExpression>
+				<reportElement uuid="c365d4c5-41f9-4645-8d71-62e7f4b49d96" x="0" y="0" width="802" height="555"/>
+				<imageExpression><![CDATA["/Users/hedneyoliveira/Documents/workspace/SisTelecom/WebContent/imagens/SisTelecom1.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>

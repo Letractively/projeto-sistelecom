@@ -72,6 +72,7 @@ public class ItensController implements Controller<Itens>{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		this.setLista(new LinkedList<Itens>());
 	}
 	
 	public void atualizarRegistro() {
@@ -136,6 +137,11 @@ public class ItensController implements Controller<Itens>{
 	
 	public void limpar() {
 		this.item = new Itens();
+	}
+	
+	public String limparItens() {
+		this.setLista(new LinkedList<Itens>());
+		return null;
 	}
 	
 	public ItemDAOImpl getDao() {

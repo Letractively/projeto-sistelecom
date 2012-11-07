@@ -2,15 +2,15 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="departamento" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="25f171a3-bc63-4a57-8568-b8cac07f1bfa">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="32"/>
 	<field name="idDepartamento" class="java.lang.String"/>
 	<field name="nomeDepartamento" class="java.lang.String"/>
 	<field name="gerenteDepartamento" class="java.lang.String"/>
 	<background>
 		<band height="555" splitType="Stretch">
 			<image>
-				<reportElement uuid="8426969c-8d95-4f9a-b459-7a44673b6224" x="0" y="0" width="802" height="555"/>
-				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom1.jpg"]]></imageExpression>
+				<reportElement uuid="8ff22720-6ddf-4b4b-91c6-718f033a0e29" x="0" y="0" width="802" height="555"/>
+				<imageExpression><![CDATA["/Users/hedneyoliveira/Documents/workspace/SisTelecom/WebContent/imagens/SisTelecom1.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
