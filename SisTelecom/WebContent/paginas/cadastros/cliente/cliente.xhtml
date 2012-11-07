@@ -338,7 +338,7 @@
 						
 							<h:outputLabel value="CPF do Administrador:" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
 							
-							<h:inputText id="cpf-administrador-cliente" style="width:85px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp1}" >
+							<h:inputText id="cpf-administrador-cliente" style="width:88px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp1}" >
 							
 								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-administrador-cliente" timing="onload"/>
 								
@@ -368,7 +368,7 @@
 							
 							<rich:spacer width="40px"/>
 							
-							<h:inputText id="cpf-socio1-cliente" style="width:85px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp2}" >
+							<h:inputText id="cpf-socio1-cliente" style="width:88px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp2}" >
 							
 								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-socio1-cliente" timing="onload"/>
 								
@@ -402,7 +402,7 @@
 							
 							<rich:spacer width="40px"/>
 							
-							<h:inputText id="cpf-socio2-cliente" style="width:85px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp3}" >
+							<h:inputText id="cpf-socio2-cliente" style="width:88px;" onkeypress="this.style.textTransform = 'uppercase';" value="#{clienteController.cliente.cpfResp3}" >
 							
 								<rich:jQuery query="mask('999.999.999-99');" selector="#cpf-socio2-cliente" timing="onload"/>
 								
@@ -436,7 +436,7 @@
 	
 				<rich:spacer width="100%" height="10px" />
 	
-				<h:commandButton value="Salvar" actionListener="#{clienteController.salvar}" onclick="submeter('formulario-dados');" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif';"/>
+				<h:commandButton value="Salvar" actionListener="#{clienteController.salvar}" onclick="submeter('formulario-dados');" style="FONT-SIZE: medium; FONT-FAMILY: 'SansSerif'; width:100px"/>
 				
 				<rich:messages>
 				
@@ -485,7 +485,7 @@
 						
 					</rich:column>
 	
-					<rich:column width="70">
+					<rich:column width="30">
 					
 						<div id="div-cnpj" align="center">
 						
@@ -501,7 +501,7 @@
 						
 					</rich:column>
 	
-					<rich:column width="100">
+					<rich:column width="140">
 					
 						<div id="div-razao-social" align="center">
 						
