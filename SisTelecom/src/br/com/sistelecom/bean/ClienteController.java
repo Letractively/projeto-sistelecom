@@ -1,5 +1,7 @@
 package br.com.sistelecom.bean;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -108,24 +110,29 @@ public class ClienteController implements Controller<Cliente>{
 				listaFinalProdutos.add(produtoTO);
 			}
 			
-			if(!listaFinalProdutos.isEmpty() && listaFinalProdutos.size() > 3){
+			for (ProdutoTO produtoTO : listaFinalProdutos) {
+				for (ProdutoTO ps : lst) {
+					if(produtoTO.getNomeProduto().equals(ps.getNomeProduto())){
+						int quantidade = produtoTO.getQuantidade();
+						produtoTO.setQuantidade(quantidade++);
+						ps.setQuantidade(quantidade);
+					}
+				}
+			}
+			
+			Collection<ProdutoTO> c = new LinkedList<ProdutoTO>(listaFinalProdutos);
+			
+			ProdutoTO[] produtos = new ProdutoTO[c.size()];
+			
+			c.toArray(produtos);
+			
+			Arrays.sort(produtos);
+			
+			if(produtos.length > 0){
 				
 				FacesContext fc = FacesContext.getCurrentInstance();
-				fc.addMessage(null, new FacesMessage(null,"Produtos Sugeridos!"));
 				
-				int numeroDeProdutosExibidos = 0;
-				
-				for (ProdutoTO produtoTO : listaFinalProdutos) {
-					
-					if(numeroDeProdutosExibidos == 3){
-						break;
-					}
-					
-					fc.addMessage(null, new FacesMessage(produtoTO.getNomeProduto()));
-					
-					numeroDeProdutosExibidos++;
-					
-				}
+				fc.getExternalContext().getRequestMap().put("produto", produtos[produtos.length - 1].getNomeProduto());
 				
 			}
 		}

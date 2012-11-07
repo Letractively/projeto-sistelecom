@@ -454,6 +454,9 @@
 					
 				</rich:messages>
 				
+				<h:outputLabel value="O Produto mais indicado é #{requestScope['produto']}" rendered="#{not empty requestScope['produto']}"
+				style="font-weight:bold;"/>
+				
 			</h:form>
 	
 			<rich:spacer width="100%" height="10px" />
