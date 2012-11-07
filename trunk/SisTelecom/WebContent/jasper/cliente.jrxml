@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cliente" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="948d8e2d-d920-4bb0-91b1-13e6a2c0d997">
 	<property name="ireport.zoom" value="0.75"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="82"/>
 	<field name="idCliente" class="java.lang.String"/>
 	<field name="cnpj" class="java.lang.String"/>
 	<field name="razaoSocial" class="java.lang.String"/>
@@ -11,8 +11,8 @@
 	<background>
 		<band height="555" splitType="Stretch">
 			<image>
-				<reportElement uuid="8426969c-8d95-4f9a-b459-7a44673b6224" x="0" y="0" width="802" height="555"/>
-				<imageExpression><![CDATA["C:\\SisTelecom\\Projeto\\SisTelecom\\WebContent\\imagens\\SisTelecom1.jpg"]]></imageExpression>
+				<reportElement uuid="49d9dc5e-130a-40a5-9f04-711aa6fbf892" x="0" y="0" width="802" height="555"/>
+				<imageExpression><![CDATA["/Users/hedneyoliveira/Documents/workspace/SisTelecom/WebContent/imagens/SisTelecom1.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</background>
