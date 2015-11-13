@@ -1,0 +1,1 @@
+Software de gestão de franquias de empresas telefônicas.
